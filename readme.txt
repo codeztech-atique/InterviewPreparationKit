@@ -1,1 +1,5 @@
+This Repositary is all about finding TimeComplexity of a program, Javascript ES5, Javascript ES6 promises.
+
+
 ES5 - firm firste -- Easy way to Remember
+ES6 - find and findIndex | isFinite | isNaN | isInteger | isSafeInteger
