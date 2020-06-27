@@ -8,7 +8,7 @@ ES6 - find and findIndex | isFinite | isNaN | isInteger | isSafeInteger
 JavaScript ES5 - 
 
 F - forEach()
-I - indexOf() | lastIndexOf()
+I - indexOf() and lastIndexOf()
 R - reduce()
 M - map()
 
