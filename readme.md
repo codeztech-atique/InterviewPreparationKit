@@ -3,3 +3,18 @@ This Repositary is all about finding TimeComplexity of a program, Javascript ES5
 
 ES5 - firm firste -- Easy way to Remember
 ES6 - find and findIndex | isFinite | isNaN | isInteger | isSafeInteger
+
+
+JavaScript ES5 - 
+
+F - forEach()
+I - indexOf() | lastIndexOf()
+R - reduce()
+M - map()
+
+F - filter()
+I - isArray()
+R - reduceRight()
+S - some()
+T - trim()
+E - every()
