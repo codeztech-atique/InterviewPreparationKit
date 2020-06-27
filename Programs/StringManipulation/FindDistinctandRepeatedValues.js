@@ -1,4 +1,4 @@
-function TestingFindDistinctValue(test) {
+function TestingFindDuplicateValue(test) {
   var duplicates= "";
   
   //Find Duplicates
@@ -11,7 +11,7 @@ function TestingFindDistinctValue(test) {
   return duplicates;
 }
 
-function TestingFindDuplicateValue(test) {
+function TestingFindDistinctValue(test) {
     var distincts= "";
     //Find Distinct
     for(var i=0;i<test.length;i++) {
