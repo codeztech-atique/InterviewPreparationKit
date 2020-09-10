@@ -48,7 +48,7 @@ function TimeComplexity_DoubleForLoop() {
             console.log(i," ------> ", j);
         }
     }
-    console.log("Example 6 - Time Complexity its repeating for N2 times: O(N2) -- N Square");
+    console.log("Example 6 - Time Complexity its repeating for N2 times: O(N2) -- N Square Quadratic");
 }
 
 

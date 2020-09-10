@@ -1,0 +1,5 @@
+What is 3 pillers of programming ?
+
+1. Readable 
+2. Memory (Space Complexity)
+3. Speed (Time Complexity)

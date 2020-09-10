@@ -6,5 +6,5 @@ function CheckisNan(data) {
    return isNaN(data);
 }
 
-console.log("Is Finite:", CheckisFinite(342e124));
-console.log("Is NaN:", CheckisNan(NaN));
+console.log("Is Finite:", CheckisFinite("asdfadsf"));
+console.log("Is NaN:", CheckisNan("12321323"));

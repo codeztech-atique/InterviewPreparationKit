@@ -7,7 +7,7 @@ function checkAdult(age) {
     } 
 }
 
-var ages = [33, 43, 65, 22];
+var ages = [21, 19, 10, 30];
 
 
 console.log("Example of Some function:", ages.some(checkAdult)); // Because some age are still greater than 30

@@ -16,4 +16,4 @@ for(var i=n;i>1;i=i/3) {}    // Time Complexity -- > O(log n base 3)
 
 
 // Order if O(√n) Formula
-for(var i=1;i*i<n;i++) {}    //Time Complexitty --- > O(√n)
+for(var i=1;i*i<n;i++) {}    // Time Complexitty --- > O(√n)

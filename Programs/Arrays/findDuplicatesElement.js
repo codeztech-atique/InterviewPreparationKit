@@ -5,5 +5,12 @@ function findDuplicates(data) {
    return result;
 }
 
-var arr = [1,2,3,4,1,2,4,3,5,6];
-console.log("Find Duplicates Element from Array:", findDuplicates(arr));
+function Duplicateds(data) {
+  var result = data.filter((a, b, c) => {
+     return c.indexOf(a) !== b;
+  })
+  return result
+}
+
+var arr = [1,1,1,1];
+console.log("Find Duplicates Element from Array:", Duplicateds(arr));
