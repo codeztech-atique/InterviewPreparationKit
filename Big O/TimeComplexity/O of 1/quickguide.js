@@ -8,3 +8,4 @@ else {}    // Time Complexity -- > O(1)
 var abc1 // Time Complexity -- > O(1) 
 let abc2  // Time Complexity -- > O(1) 
 const abc3  // Time Complexity -- > O(1) 
+abc = abc+1; //-*/

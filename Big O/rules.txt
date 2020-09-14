@@ -3,7 +3,7 @@ Rules for Big O --
 1. Worst Case
 2. Remove constant
 3. Different terms of input
-4. Drop Non Dominants (constant)
+4. Drop Non Dominants (constant) O(2n) => O(n)
 
 
 #Big O Cheat Sheet:

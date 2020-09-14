@@ -1,4 +1,4 @@
-let val=5, n=10;
+let val=3, n=1000000000;
 
 function TimeComplexity_ConditionalStatement() {
     if(val>4) {
