@@ -24,7 +24,7 @@ function TestingFindDistinctValue(test) {
   }
   
 
-var str = "A recursive function is a function that calls itself during its execution. This enables the function to repeat itself several times";
+var str = "bellla";
 
-console.log("Find Distinct - ", TestingFindDistinctValue(str));
+// console.log("Find Distinct - ", TestingFindDistinctValue(str));
 console.log("Find Duplicates - ", TestingFindDuplicateValue(str));

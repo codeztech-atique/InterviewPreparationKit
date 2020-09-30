@@ -14,6 +14,10 @@ strings.pop(); //O(1) --> Happening to end of the array
 //unshift
 strings.unshift('x') //O(n) --> Happening to beginning of the array
 
+//shift
+strings.shift() //O(n) --> Happening to beginning of the array (remove from the beginning from the array)
+
+
 //splice
 strings.splice(2, 0, 'alien'); //O(n/2) => //O(n) -> Index the 2 position and shift the rest entire array
 

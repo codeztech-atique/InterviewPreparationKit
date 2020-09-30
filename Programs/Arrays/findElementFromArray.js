@@ -32,11 +32,11 @@ function findElement2(arr1, arr2) {
   }
   return false;
 }
-// console.log(findElement2(arr1, arr2));
+console.log(findElement2(arr1, arr2));
 
 function findElement3(arr1, arr2) {
     return arr1.some(data => arr2.includes(data))
 }
 
-console.log(findElement3(arr1, arr2));
+// console.log(findElement3(arr1, arr2));
 
