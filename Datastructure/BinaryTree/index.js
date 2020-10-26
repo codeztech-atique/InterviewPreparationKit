@@ -201,7 +201,6 @@ class BinarySearchTree {
                 queue.push(currentNode.right)
             }
         }
-
         return result
     }
 }
@@ -220,8 +219,8 @@ console.log(bst.size());
 console.log(bst.min());
 console.log(bst.max());
 
-console.log(bst.lookup(2));
-console.log(bst.lookup(9));
+// console.log(bst.lookup(2));
+// console.log(bst.lookup(9));
 
 // DFS!!!
 // in-order: 2, 3, 12, 15, 28, 36, 39

@@ -37,6 +37,7 @@ function firtRepeatingElement2(arr) {
            res[i] = arr[i];
        }
    }
+   console.log(res);
    return rep;
 }
 
