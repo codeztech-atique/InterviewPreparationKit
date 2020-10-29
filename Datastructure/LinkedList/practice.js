@@ -63,19 +63,19 @@ class LinkedList {
         return this;
     }
     insert(index, value) {
-       if(index >= this.length) {
-          return this.append(value);
-       }
-       let newNode = {
-          value: value,
-          next: null
-       };
-       let leader = this.traverse(index-1);
-       let nextNode = leader.next;
-       leader.next = newNode;
-       newNode.next = nextNode;
-       this.length++;
-       return this.printList();
+        if(index >= this.length) {
+            return this.append(value);
+        }
+        let newNode = {
+            value: value,
+            next: null
+        };
+        let leader = this.traverse(index - 1);
+        let nextNode = leader.next;
+        leader.next = newNode;
+        newNode.next = nextNode;
+        this.length++;
+        return this.printList();
     }
     remove(index) {
         if(index > this.length) {
@@ -107,20 +107,20 @@ class LinkedList {
     traverse(index) {
         let counter = 0;
         let currentNode = this.head;
-        while(counter!==index) {
+        while(index !== counter) {
             currentNode = currentNode.next;
             counter++;
         }
         return currentNode;
     }
     printList() {
-        let arr = [];
-        let currentNode = this.head;
-        while(currentNode !== null) {
-            arr.push(currentNode.value);
-            currentNode = currentNode.next;
-        } 
-        return arr;
+       let arr = [];
+       let currentNode = this.head;
+       while(currentNode!==null) {
+          arr.push(currentNode.value);
+          currentNode = currentNode.next;
+       }
+       return arr;
     }
 }
 

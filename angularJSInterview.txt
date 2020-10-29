@@ -1,0 +1,58 @@
+Angular JS interview questions - 
+
+Angular2+ Interview Questions - 
+
+1. RXJS — Done
+2. Obsersable, Observer, Subscriber — Done
+3. Sharing data between components 3 method - Done
+4. How to define routes in Angular2+ - Done
+5. Diff between angular1 and angular2
+6. Dependency injection?
+7. 
+8. What is Authguard ? https://www.youtube.com/watch?v=UrfhqE7I-3o&list=PLC3y8-rFHvwg2RBz6UplKTGIXREj9dV0G&index=26&t=0s
+9. CanActivate and CanDeactivate Routes https://www.youtube.com/watch?v=UrfhqE7I-3o&list=PLC3y8-rFHvwg2RBz6UplKTGIXREj9dV0G&index=26&t=0s
+10. Interface
+11. View Encapsualtion in Angular - https://www.youtube.com/watch?v=MfDZ1BrmnKM - all the style name angular takes care about it, comes as a <div ngContent1></div> — Import inside the component = There are 4 types.
+12. http interceptor | Error Handling
+13. How to load dynamic component - https://www.youtube.com/watch?v=LjCOe1PcP5g — Need to add under EntryComponent Inside ngModule, call method ngAfterContentInit
+14. Cancel promise in angular
+15. A pure pipe - https://www.youtube.com/watch?v=ZGwcLYujQlU
+16. An impure pipe - https://www.youtube.com/watch?v=ZGwcLYujQlU
+17. How to create a pipe in Angular 6+
+18. What is Providers ? - Done
+19. Lazy Loading - https://www.youtube.com/watch?v=6iWw1XfvFzQ - Done
+20. What all are the directives are there in angular6 - Done
+21. Single page and multi page application - https://www.youtube.com/watch?v=jA7Xvw1JNw4 - Done
+22. Template driven and Model Driven in Angular 6 - Done
+23. In Rxjs why we use map operator - Done
+24. In Rxjs pipe method | RXJS switch - Done
+25. Switch map in Rxjs - Done
+26. Promise and observable diff - Done
+27. Dynamic component generate in angular8 -  https://stackoverflow.com/questions/39285550/what-is-impure-pipe-in-angular#:~:text=A%20pure%20pipe%20is%20only,or%20parameter(s)%20changes.
+28.  AngularJs and Angular 2 Differance [Template Driven and Model Driven] - Done
+29. Learn SDLC Life cycle
+
+
+
+Normal Video Watch - 
+
+1. RXJS  - Observables vs Promise
+
+
+Differance between subject and behaviourSubject - 
+
+1. If we change the routes, Behavior subject always holds the last Data.
+But Subject does lose all the data, if we change the routes. https://www.youtube.com/watch?v=U0Dx5gm6Ylw
+
+2. Subject is not storing new value, but behaviourSubject it will store the new value.
+
+Senario
+
+If the user login, need to show the name top of the dashboard, where behaviour subject comes into the picture.
+
+RXJS - ForkJoin - 
+
+https://www.youtube.com/watch?v=5TnWFaI49aw
+
+Act Like javascript Promise.All[]
+

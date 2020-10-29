@@ -1,8 +1,10 @@
 //Array Sort using JavaSrcipt
-
 function ArraySort(a, b) {
     return b-a;
 }
+
+// Sort the array based on time stamp accending order -> Javascript ES6
+arr.sort((a, b) => parseFloat(a.timeStamp) - parseFloat(b.timeStamp));
 
 var orginalArr = [4,6,1,2,88,10,111];
 var copyArr = [...orginalArr];

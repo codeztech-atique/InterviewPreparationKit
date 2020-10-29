@@ -1,0 +1,29 @@
+Deploy to S3 Bucket
+
+Staging - 
+
+Copy s3 code - aws s3 cp s3://yourdomain./ --recursiveDeploy code to s3 - aws s3 sync ./ s3://staging-cms.asianetnews.co --metadata-directive REPLACE \
+  --cache-control max-age=86400
+
+
+Beta - 
+
+Copy s3 code - aws s3 cp s3://yourdomain ./ --recursiveDeploy code to s3 - aws s3 sync ./ s3://beta-cms.asianetnews.com
+
+Production
+
+Copy s3 code - aws s3 cp s3://yourdomain ./ --recursiveDeploy code to s3 - aws s3 sync ./ s3://cms.asianetnews.com --metadata-directive REPLACE \
+--cache-control max-age=86400
+
+
+TagAPI
+
+Cache control maxage 30 days 2592000
+Cache control maxage 7 days 604800
+
+Copy s3 code - aws s3 cp s3://yourdomain ./ --recursiveDeploy code to s3 - aws s3 sync ./ s3://yourdomain --recursive --cache-control max-age=604800  --region ap-south-1
+
+Deploy code to s3 using max age - aws s3 sync ./ s3://yourdomain --metadata-directive REPLACE \
+  --cache-control max-age=604800
+
+86400 -  1day

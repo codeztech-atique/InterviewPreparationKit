@@ -1,5 +1,5 @@
 function Distinct(array) {
-    return unique = array.filter((v, i) => array.indexOf(v) === array.lastIndexOf(v));
+    return unique = array.filter((v, i) => array.indexOf(v) === array.lastIndexOf(v) );
  }
 
 

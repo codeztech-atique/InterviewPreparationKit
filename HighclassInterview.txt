@@ -1,0 +1,33 @@
+Paypal Interview - 
+
+1. Call Stack - https://www.youtube.com/watch?v=iLWTnMzWtj4 —> How javascript Executes function —>(Global execution context) Manage execution context — Done
+2. Sum(1)(2)(3)(4) -> Solve this using recursive way — Done
+3. All the datastructure also - (Array, LinkedList, Graph, Tree) — Done
+4. All the Program find -> Duplicates to everything
+5. Time Complexity
+6. Sorting algorithm (Quick sort, Merge Sort, Bubble sort)
+7. Example - Debouncing and Throughtling Concept
+8. Program of braces
+9. 4 pillers of Java
+10. Javascript scope chaining —> https://www.youtube.com/watch?v=vGGOOYOXoQ4 — Done
+
+
+If time is there - 
+
+1. Call, apply and bind - https://www.youtube.com/watch?v=75W8UPQ5l7k
+2. Function curring - https://www.youtube.com/watch?v=vQcCNpuaJO8
+
+Remaining - 
+
+Stack and Queue braces program - Done
+Hashtable program — Done
+Find Repeating and duplicates from the array - Done
+Recursion - Done
+PrimeNumber
+FiboNacci
+GCD and LCM
+Javascript ES5 and ES6
+Four Pillars Concepts - Java
+Javascript scope chaining —> https://www.youtube.com/watch?v=vGGOOYOXoQ4 — Done
+
+Quick sort, Merge Sort
