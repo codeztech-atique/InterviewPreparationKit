@@ -1,0 +1,6 @@
+What is Lambda function concurrency limit ? 
+How to do Authentication and Authorization in the API getway Level ?
+Lambda with EFS (Elastic file system) --> So it can store the data inside EFS instade of storing in the lambda function 
+
+Tutorial - 
+https://www.youtube.com/watch?v=DId1cFqo5ww
