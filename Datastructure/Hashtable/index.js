@@ -1,37 +1,35 @@
-const hash = (key, size) => {
-  let hashedKey = 0
-  for (let i = 0; i < key.length; i++) {
-    hashedKey += key.charCodeAt(i)
-  }
-  return hashedKey % size
-}
+// HASH TABLE
+
+// Get Item, Set Item, Delete Item, Search Item
+
+// Insert O(1)
+// Lookup O(1)
+// Delete O(1)
+// Space O(n)
 
 class HashTable {
   constructor() {
-    this.size = 20
-    this.buckets = Array(this.size) 
-
-    // populate each bucket with a Map()
-    for (let i = 0; this.buckets.length; i++) {
-      this.buckets[i] = new Map()
-    }
+    this.bucket = {};
   }
 
   insert(key, value) {
-    let idx = hash(key, this.size) 
-    this.buckets[idx].set(key, value)
+    this.bucket[key] = value;
+    return this;
   }
 
   remove(key) {
-    let idx = hash(key, this.size)
-    let deleted = this.buckets[idx].get(key)
-    this.buckets[idx].delete(key)
-    return deleted 
+    delete this.bucket[key];
+    return this;
   }
 
   search(key) {
-    let idx = hash(key, this.size)
-    return this.buckets[idx].get(key)
+    for (let data in this.bucket) {
+      if(data === key) {
+        // console.log(this.bucket[key]);
+        return true;
+      }
+    };
+    return false;
   }
 }
 
@@ -43,12 +41,15 @@ hashTable.insert('rei', 'mars')
 hashTable.insert('lita', 'jupiter')
 hashTable.insert('mina', 'venus')
 hashTable.insert('darien', 'tuxedo mask')
+console.log("After insert in my hash table!!");
+console.log(hashTable);
 
-hashTable.search('rei')
-hashTable.search('lita')
-hashTable.search('serena')
+console.log(hashTable.search('rei'))
+console.log(hashTable.search('lita1'))
+console.log(hashTable.search('serena'))
 
 hashTable.remove('darien')
 hashTable.remove('mina')
 
+console.log("After remove from my hash table!!");
 console.log(hashTable);
