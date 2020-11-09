@@ -11,29 +11,36 @@ class HashTable {
   constructor() {
     this.bucket = {};
   }
-
-  insert(key, value) {
+  insert(key, value) { // O(1)
     this.bucket[key] = value;
     return this;
   }
-
-  remove(key) {
-    delete this.bucket[key];
-    return this;
-  }
-
-  search(key) {
-    for (let data in this.bucket) {
+  search(key) { // O(1)
+    for(let data in this.bucket) {
       if(data === key) {
-        // console.log(this.bucket[key]);
         return true;
       }
-    };
+    }
     return false;
+  }
+  remove(key) {
+    var isFound = false;
+    for(let data in this.bucket) {
+      if(data === key) {
+        isFound = true;
+        delete this.bucket[key];
+      }
+    }
+    if(isFound) {
+      return "Item Deleted!!";
+    } else {
+      return "Item Not Found!!"
+    }
   }
 }
 
-const hashTable = new HashTable()
+const hashTable = new HashTable();
+
 
 hashTable.insert('serena', 'moon')
 hashTable.insert('amy', 'mercury')
@@ -48,8 +55,8 @@ console.log(hashTable.search('rei'))
 console.log(hashTable.search('lita1'))
 console.log(hashTable.search('serena'))
 
-hashTable.remove('darien')
-hashTable.remove('mina')
+console.log(hashTable.remove('darien'));
+console.log(hashTable.remove('mina11'));
 
 console.log("After remove from my hash table!!");
 console.log(hashTable);

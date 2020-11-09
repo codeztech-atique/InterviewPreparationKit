@@ -7,8 +7,8 @@ Angular2+ Interview Questions -
 3. Sharing data between components 3 method - Done
 4. How to define routes in Angular2+ - Done
 5. Diff between angular1 and angular2
-6. Dependency injection?
-7. 
+6. Dependency injection? https://www.youtube.com/watch?v=jWODteEGQmw
+7. Angular Dynamic component generate
 8. What is Authguard ? https://www.youtube.com/watch?v=UrfhqE7I-3o&list=PLC3y8-rFHvwg2RBz6UplKTGIXREj9dV0G&index=26&t=0s
 9. CanActivate and CanDeactivate Routes https://www.youtube.com/watch?v=UrfhqE7I-3o&list=PLC3y8-rFHvwg2RBz6UplKTGIXREj9dV0G&index=26&t=0s
 10. Interface
@@ -16,12 +16,13 @@ Angular2+ Interview Questions -
 12. http interceptor | Error Handling
 13. How to load dynamic component - https://www.youtube.com/watch?v=LjCOe1PcP5g — Need to add under EntryComponent Inside ngModule, call method ngAfterContentInit
 14. Cancel promise in angular
-15. A pure pipe - https://www.youtube.com/watch?v=ZGwcLYujQlU
-16. An impure pipe - https://www.youtube.com/watch?v=ZGwcLYujQlU
+15. A pure pipe - https://www.youtube.com/watch?v=ZGwcLYujQlU  --> Any changes detact on the pipe
+16. An impure pipe - https://www.youtube.com/watch?v=ZGwcLYujQlU --> Any changes detact on the angular app
 17. How to create a pipe in Angular 6+
-18. What is Providers ? - Done
-19. Lazy Loading - https://www.youtube.com/watch?v=6iWw1XfvFzQ - Done
-20. What all are the directives are there in angular6 - Done
+18. What is Providers ? - Done (Including modules to access that services accross the components)
+19. Lazy Loading - https://www.youtube.com/watch?v=6iWw1XfvFzQ - Done [We can use loadChildren in while defining the routes]
+20. What all are the directives are there in angular6 - https://www.youtube.com/watch?v=puiweCUmcOc
+20. Custom directives  - https://www.youtube.com/watch?v=lxts9If94xA
 21. Single page and multi page application - https://www.youtube.com/watch?v=jA7Xvw1JNw4 - Done
 22. Template driven and Model Driven in Angular 6 - Done
 23. In Rxjs why we use map operator - Done
@@ -29,7 +30,7 @@ Angular2+ Interview Questions -
 25. Switch map in Rxjs - Done
 26. Promise and observable diff - Done
 27. Dynamic component generate in angular8 -  https://stackoverflow.com/questions/39285550/what-is-impure-pipe-in-angular#:~:text=A%20pure%20pipe%20is%20only,or%20parameter(s)%20changes.
-28.  AngularJs and Angular 2 Differance [Template Driven and Model Driven] - Done
+28. AngularJs and Angular 2 Differance [Template Driven and Model Driven] - Done
 29. Learn SDLC Life cycle
 
 

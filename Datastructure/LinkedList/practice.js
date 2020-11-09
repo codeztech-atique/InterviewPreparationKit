@@ -2,11 +2,17 @@
 
 // Formula - 
 
-// Prepend -> O(1) -> Find the Element Beginning of the Array
-// Append  -> O(1) -> Find the Element End of the Array
+// Time Complexity
+
+// Prepend -> O(1) -> Find the Element Beginning of the Linked List
+// Append  -> O(1) -> Find the Element End of the Linked List
 // Lookup  -> O(n) -> Search for a Element in the Linked list
 // Insert  -> O(n) -> Insert a Element in the Linked list
 // Delete  -> O(n) -> Delete a Element from the List 
+
+// Space Complexity
+
+// Space  -> O(n)
 
 // 10->5->16     (10 is head and 16 is tail)
 
@@ -46,7 +52,7 @@ class LinkedList {
         let newNode = {
             value: value,
             next: null
-        };
+        }
         newNode.next = this.head;
         this.head = newNode;
         this.length++;
@@ -56,7 +62,7 @@ class LinkedList {
         let newNode = {
             value: value,
             next: null
-        };
+        }
         this.tail.next = newNode;
         this.tail = newNode;
         this.length++;
@@ -69,23 +75,23 @@ class LinkedList {
         let newNode = {
             value: value,
             next: null
-        };
-        let leader = this.traverse(index - 1);
+        }
+        let leader = this.traverse(index-1);
         let nextNode = leader.next;
         leader.next = newNode;
         newNode.next = nextNode;
         this.length++;
-        return this.printList();
+        this.printList();
     }
     remove(index) {
-        if(index > this.length) {
+        if(index > this.counter) {
             return "Invalid Input!";
         }
         let leader = this.traverse(index-1);
         let removeNode = leader.next;
         leader.next = removeNode.next;
         this.length--;
-        return this.printList();
+        this.printList();
     }
     reverse() {
         if(!this.head.next) {
@@ -102,31 +108,34 @@ class LinkedList {
         }
         this.head.next = null;
         this.head = first;
-        return this.printList();
+        this.printList();
     }
     traverse(index) {
         let counter = 0;
         let currentNode = this.head;
-        while(index !== counter) {
+        while(index!==counter) {
             currentNode = currentNode.next;
             counter++;
         }
         return currentNode;
     }
     printList() {
-       let arr = [];
-       let currentNode = this.head;
-       while(currentNode!==null) {
-          arr.push(currentNode.value);
-          currentNode = currentNode.next;
-       }
-       return arr;
+        let arr = [];
+        let currentNode = this.head;
+        while(currentNode!==null) {
+            arr.push(currentNode.value);
+            currentNode = currentNode.next;
+        }
+        return arr;
     }
 }
 
 var myLinkedList = new LinkedList(10);
-myLinkedList.append(5);
-myLinkedList.append(52);
+for(var i = 1;i< 10;i++) {
+    myLinkedList.append(i);
+}
+// myLinkedList.append(5);
+// myLinkedList.append(52);
 myLinkedList.prepend(9);
 myLinkedList.insert(200, 99); //If the index location more than length it gonna insert last
 myLinkedList.insert(2, 19);

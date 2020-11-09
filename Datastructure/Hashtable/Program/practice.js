@@ -1,19 +1,12 @@
-var arr2 = [2,5,1,90,3,44,6,2];
+// var arr2 = [55,5,1,5,1,90,3,44,6];
 
-function firtRepeatingElement2(arr) {
-    var rep;
-    var res = {};
-    for(var i=0;i<arr.length;i++) {
-        if(Object.values(res).indexOf(arr[i])> -1) {
-            rep = arr[i]
-        } else {
-            res[i] = arr[i];
-        }
-    }
-    if(!rep) {
-        rep = 'No duplicates found!';
-    }
-    return rep;
+var uniqueCount = ["a","b","c","d","d","e","a","b","c","f","g","h","h","h","e","a"];
+
+const countData = (arr) => {
+    var obj = {};
+    arr.filter(function(i) { 
+      obj[i] = (obj[i]||0)+1;
+    })
+    return obj;
 }
-
-console.log(firtRepeatingElement2(arr2));
+console.log(countData(uniqueCount))
