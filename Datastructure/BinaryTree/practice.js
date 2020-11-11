@@ -30,23 +30,24 @@ class BinarySearchTree {
       this.count = 1;
    }
    insert(value) {
+      this.count++;
       let newNode = new Node(value);
       let searchTree = node => {
          if(value < node.value) {
             if(!node.left) {
                node.left = newNode;
             } else {
-               searchTree(node.left);
+               searchTree(node.left)
             }
          } else if(value > node.value) {
             if(!node.right) {
                node.right = newNode;
             } else {
-               searchTree(node.right);
+               searchTree(node.right)
             }
          }
       }
-      searchTree(this.root); 
+      searchTree(this.root);
    }
    size() {
       return this.count;
@@ -70,11 +71,10 @@ class BinarySearchTree {
       while(currentNode) {
          if(value === currentNode.value) {
             return true;
-         }
-         if(value < currentNode.value) {
-            currentNode = currentNode.left;
+         }  if(value < currentNode.value) {
+            currentNode = currentNode.left
          } else {
-            currentNode = currentNode.right;
+            currentNode = currentNode.right
          }
       }
       return false;
@@ -89,8 +89,8 @@ class BinarySearchTree {
 
       // Output = 2,3,12,15,28,36,39
       let result = [];
-      let traverse = (node) => {
-         if(node.left) traverse(node.left);
+      let traverse = node => {
+         if(node.left) traverse(node.left)
          result.push(node.value)
          if(node.right) traverse(node.right)
       }
@@ -107,9 +107,9 @@ class BinarySearchTree {
       
       // Output = 15,3,2,12,36,28,39
       let result = [];
-      let traverse = (node) => {
+      let traverse = node => {
          result.push(node.value)
-         if(node.left) traverse(node.left);
+         if(node.left) traverse(node.left)
          if(node.right) traverse(node.right)
       }
       traverse(this.root);
@@ -125,9 +125,9 @@ class BinarySearchTree {
 
       // Output = 2,12,3,28,39,36,15
       let result = [];
-      let traverse = (node) => {
-         if(node.left) traverse(node.left);
-         if(node.right) traverse(node.right);
+      let traverse = node => {
+         if(node.left) traverse(node.left)
+         if(node.right) traverse(node.right)
          result.push(node.value)
       }
       traverse(this.root);
@@ -143,18 +143,18 @@ class BinarySearchTree {
        // Output - 15,3,36,2,12,28,39
        let result = [];
        let queue = [];
-       queue.push(this.root);
+       queue.push(this.root)
        while(queue.length) {
-          let currentNode = queue.shift();
+         let currentNode = queue.shift()
           result.push(currentNode.value);
           if(currentNode.left) {
              queue.push(currentNode.left);
           } if(currentNode.right) {
-            queue.push(currentNode.right);
+             queue.push(currentNode.right);
           }
        }
        return result;
-   }
+    }
 }
 
 

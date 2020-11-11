@@ -1,16 +1,17 @@
 
-// Braces Program Find the Balance String 
-const expr = "([{}]){}{}(-)";
 
-if (removeBrackets(expr)) {
-   console.log("Balanced");
-} else {
-   console.log("Not Balanced");
-}
+// Braces Program Find the Balance String 
+// const expr = "([{}]){}{}(-)";
+
+// if (removeBrackets(expr)) {
+//    console.log("Balanced");
+// } else {
+//    console.log("Not Balanced");
+// }
 
 
 // Find the Duplicates Hash table
-// var arr2 = [22,5,5,90,3,44,1,2];
+// var arr2 = [22,5,22,90,3,44,1,2];
 // console.log(findDuplicatesUsingHash(arr2))
 
 
@@ -24,7 +25,7 @@ if (removeBrackets(expr)) {
 
 
 // Find the distint elements
-// var arr = [4,1,2,1,5,5,5,5,7];
+// var arr = [4,1,2,1,5,5,5,5,4,7];
 // console.log(findDistinct(arr));
 
 
@@ -47,7 +48,16 @@ if (removeBrackets(expr)) {
 
 // Prime Number
 
-// var arr = [1,2,4,7,11,12,15,17,19,21,27,29];
-// console.log(SinglePrimeNumber(3));
+// var arr = [1,2,4,7,11,12,15,17,19,21,27,29,43,44];
+// console.log(SinglePrimeNumber(43));
 
 // console.log(MultiplePrimeNumber(arr));
+
+
+// Fibonacci -
+
+// 0, 1 - for return
+// 1, 2 - If statement
+
+// === -1 (distinct)
+// > -1 (Find the first duplicates)

@@ -76,22 +76,22 @@ class LinkedList {
             value: value,
             next: null
         }
-        let leader = this.traverse(index-1);
+        let leader = this.traverse(index - 1);
         let nextNode = leader.next;
         leader.next = newNode;
         newNode.next = nextNode;
         this.length++;
-        this.printList();
+        return this.printList();
     }
     remove(index) {
-        if(index > this.counter) {
-            return "Invalid Input!";
-        }
-        let leader = this.traverse(index-1);
-        let removeNode = leader.next;
-        leader.next = removeNode.next;
-        this.length--;
-        this.printList();
+       if(index > this.length) {
+          return "Err, Data Not Present Inside the Singly LinkedList!";
+       }
+       let leader = this.traverse(index - 1);
+       let removeNode = leader.next;
+       leader.next = removeNode.next;
+       this.length--;
+       return this;
     }
     reverse() {
         if(!this.head.next) {
@@ -108,25 +108,25 @@ class LinkedList {
         }
         this.head.next = null;
         this.head = first;
-        this.printList();
+        return this.printList();
     }
     traverse(index) {
         let counter = 0;
         let currentNode = this.head;
-        while(index!==counter) {
+        while(counter!==index) {
             currentNode = currentNode.next;
             counter++;
         }
         return currentNode;
     }
     printList() {
-        let arr = [];
+        let result = [];
         let currentNode = this.head;
         while(currentNode!==null) {
-            arr.push(currentNode.value);
+            result.push(currentNode.value);
             currentNode = currentNode.next;
         }
-        return arr;
+        return result;
     }
 }
 
