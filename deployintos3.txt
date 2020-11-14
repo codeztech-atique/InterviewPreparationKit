@@ -2,17 +2,17 @@ Deploy to S3 Bucket
 
 Staging - 
 
-Copy s3 code - aws s3 cp s3://yourdomain./ --recursiveDeploy code to s3 - aws s3 sync ./ s3://staging-cms.asianetnews.co --metadata-directive REPLACE \
+Copy s3 code - aws s3 cp s3://yourdomain./ --recursiveDeploy code to s3 - aws s3 sync ./ s3://yourdomain --metadata-directive REPLACE \
   --cache-control max-age=86400
 
 
 Beta - 
 
-Copy s3 code - aws s3 cp s3://yourdomain ./ --recursiveDeploy code to s3 - aws s3 sync ./ s3://beta-cms.asianetnews.com
+Copy s3 code - aws s3 cp s3://yourdomain ./ --recursiveDeploy code to s3 - aws s3 sync ./ s3://yourdomain 
 
 Production
 
-Copy s3 code - aws s3 cp s3://yourdomain ./ --recursiveDeploy code to s3 - aws s3 sync ./ s3://cms.asianetnews.com --metadata-directive REPLACE \
+Copy s3 code - aws s3 cp s3://yourdomain ./ --recursiveDeploy code to s3 - aws s3 sync ./ s3://yourdomain  --metadata-directive REPLACE \
 --cache-control max-age=86400
 
 

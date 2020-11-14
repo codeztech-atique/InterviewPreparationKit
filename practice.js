@@ -1,5 +1,10 @@
-
-
+let addNumbers = function addNumbers() {
+   var abc = new Array("a","b","c")
+   var A = new Array(1,2,3)
+   console.log(abc);
+   console.log(A)
+}
+addNumbers();
 // Braces Program Find the Balance String 
 // const expr = "([{}]){}{}(-)";
 
