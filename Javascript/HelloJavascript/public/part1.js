@@ -11,3 +11,6 @@ console.log("Hello");
 
 
 console.log(c);
+
+// Closer
+// Function along with lexical scope -> Bundel together form a closer

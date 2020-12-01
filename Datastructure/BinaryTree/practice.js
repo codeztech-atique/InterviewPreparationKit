@@ -27,8 +27,11 @@ class Node {
 class BinarySearchTree {
    constructor(value) {
       this.root = new Node(value);
-      this.count = 1;
+      this.count  = 1;
    }
+   size() {
+      return this.count;
+    }
    insert(value) {
       this.count++;
       let newNode = new Node(value);
@@ -37,20 +40,17 @@ class BinarySearchTree {
             if(!node.left) {
                node.left = newNode;
             } else {
-               searchTree(node.left)
+               searchTree(node.left);
             }
          } else if(value > node.value) {
             if(!node.right) {
                node.right = newNode;
             } else {
-               searchTree(node.right)
+               searchTree(node.right);
             }
          }
       }
       searchTree(this.root);
-   }
-   size() {
-      return this.count;
    }
    min() {
       let currentNode = this.root;
@@ -70,13 +70,13 @@ class BinarySearchTree {
       let currentNode = this.root;
       while(currentNode) {
          if(value === currentNode.value) {
-            return true;
-         }  if(value < currentNode.value) {
-            currentNode = currentNode.left
+           return true;
+         } if(value < currentNode.value) {
+            currentNode = currentNode.left;
          } else {
-            currentNode = currentNode.right
+            currentNode = currentNode.right;
          }
-      }
+      } 
       return false;
    }
    dfsInorder() {
@@ -86,7 +86,7 @@ class BinarySearchTree {
       //     3      36
       //    /  \   /  \
       //   2   12 28  39
-
+      
       // Output = 2,3,12,15,28,36,39
       let result = [];
       let traverse = node => {
@@ -96,6 +96,7 @@ class BinarySearchTree {
       }
       traverse(this.root);
       return result;
+
    }
    dfsPreorder() {
       // middle, left, right
@@ -141,16 +142,16 @@ class BinarySearchTree {
        //   2   12 28  39    
 
        // Output - 15,3,36,2,12,28,39
-       let result = [];
        let queue = [];
-       queue.push(this.root)
+       let result = [];
+       queue.push(this.root);
        while(queue.length) {
-         let currentNode = queue.shift()
+          let currentNode = queue.shift();
           result.push(currentNode.value);
           if(currentNode.left) {
-             queue.push(currentNode.left);
+            queue.push(currentNode.left)
           } if(currentNode.right) {
-             queue.push(currentNode.right);
+            queue.push(currentNode.right)
           }
        }
        return result;

@@ -40,15 +40,98 @@ class Node {
 // 4 -> 1 -> 3 -> 6-> 82
 
 class LinkedList {
-    
+    constructor(value) {
+        this.head = {
+            value: value,
+            next: null
+        }
+        this.tail = this.head;
+        this.length = 1;
+    }
+    prepend(value) {
+        let newNode = {
+            value: value,
+            next: null
+        };
+        newNode.next = this.head;
+        this.head = newNode;
+        this.length++;
+        return this;
+    }
+    append(value) {
+        let newNode = {
+            value: value,
+            next: null
+        };
+        this.tail.next = newNode;
+        this.tail = newNode;
+        this.length++;
+        return this;
+    }
+    insert(index, value) {
+        this.length++;
+        if(index >= this.length) {
+            return this.append(value);
+        }
+        let newNode = {
+           value: value,
+           next: null
+        };
+        let leader = this.traverse(index-1);
+        let nextNode = leader.next;
+        leader.next = newNode;
+        newNode.next = nextNode;
+        return this.printList();
+    }
+    remove(index) {
+        if(index > this.length) {
+            return "Invalid Input!";
+        }
+        let leader = this.traverse(index-1);
+        let removeNode = leader.next;
+        leader.next = removeNode.next;
+        return this.printList();
+    }
+    reverse() {
+        if(!this.head.next) {
+            return this.head;
+        }
+        let first = this.head;
+        let tail = this.head;
+        let second = first.next;
+        while(second) {
+            let temp = second.next;
+            second.next = first;
+            first = second;
+            second = temp;
+        }
+        this.head.next = null;
+        this.head = first;
+        return this.printList();
+    }
+    traverse(index) {
+        let counter = 0;
+        let currentNode = this.head;
+        while(index !== counter) {
+            counter++;
+            currentNode = currentNode.next;
+        }
+        return currentNode;
+    }
+    printList() {
+       let result = [];
+       let currentNode = this.head;
+       while(currentNode!==null) {
+         result.push(currentNode.value);  
+         currentNode = currentNode.next;
+       }
+       return result;
+    }
 }
 
 var myLinkedList = new LinkedList(10);
-for(var i = 1;i< 10;i++) {
-    myLinkedList.append(i);
-}
-// myLinkedList.append(5);
-// myLinkedList.append(52);
+myLinkedList.append(5);
+myLinkedList.append(52);
 myLinkedList.prepend(9);
 myLinkedList.insert(200, 99); //If the index location more than length it gonna insert last
 myLinkedList.insert(2, 19);
