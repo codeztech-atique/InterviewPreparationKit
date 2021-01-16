@@ -41,10 +41,6 @@ class LinkedList {
       this.length = 1;
   }
   append(value) {
-   //   const newEle = {
-   //       value: value,
-   //       next: null
-   //   }
     var newEle = new Node(value); //same thing
     this.tail.next = newEle;
     this.tail = newEle;

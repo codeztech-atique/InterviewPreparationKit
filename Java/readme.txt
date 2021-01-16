@@ -1,4 +1,12 @@
-A software system may consist of many classes. But in any case, when you have many, it needs to be managed. Think of a big organization, with its work force exceeding several thousand employees (let's take one employee as a one class). In order to manage such a work force, you need to have proper management policies in place. Same technique can be applies to manage classes of your software system as well. In order to manage the classes of a software system, and to reduce the complexity, the system designers use several techniques, which can be grouped under four main concepts:
+A software system may consist of many classes. But in any case, when you have many, 
+it needs to be managed. Think of a big organization, with its work force exceeding 
+several thousand employees (let's take one employee as a one class). In order to 
+manage such a work force, you need to have proper management policies in place. 
+Same technique can be applies to manage classes of your software system as well. 
+In order to manage the classes of a software system, and to reduce the complexity, 
+the system designers use several techniques, which can be grouped under 
+four main concepts:
+
 
 Encapsulation
 Abstraction

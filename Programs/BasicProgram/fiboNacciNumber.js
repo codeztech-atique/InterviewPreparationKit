@@ -21,4 +21,4 @@ function fiboNacciNumbersUsing_Recursion(number) {
 
 
 console.log("Fibonacci Numbers are - ", fiboNacciNumbers(8));
-console.log("Fibonacci Numbers using recursion - ", fiboNacciNumbersUsing_Recursion(8));
+console.log("Fibonacci Numbers using recursion - ", fiboNacciNumbersUsing_Recursion(9));

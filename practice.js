@@ -1,23 +1,39 @@
-let addNumbers = function addNumbers() {
-   var abc = new Array("a","b","c")
-   var A = new Array(1,2,3)
-   console.log(abc);
-   console.log(A)
+const removeBrackets = (data) => {
+    var res = [];
+    for(var i=0;i<data.length;i++) {
+        var braces = data[i];
+        if(braces === '(' || braces === '{' || braces === '[') {
+            res.push(braces);
+        }
+        if(res.length === 0) {
+            return false;
+        }
+        switch(braces) {
+            case ')' : res.pop(); break;
+            case '}' : res.pop(); break;
+            case ']' : res.pop(); break;
+        }
+    }
+    if(res.length === 0) {
+        return true;
+    } else {
+        return false;
+    }
 }
-addNumbers();
-// Braces Program Find the Balance String 
-// const expr = "([{}]){}{}(-)";
 
-// if (removeBrackets(expr)) {
-//    console.log("Balanced");
-// } else {
-//    console.log("Not Balanced");
-// }
+// Braces Program Find the Balance String 
+const expr = "(}";
+
+if (removeBrackets(expr)) {
+   console.log("Balanced");
+} else {
+   console.log("Not Balanced");
+}
 
 
 // Find the Duplicates Hash table
 // var arr2 = [22,5,22,90,3,44,1,2];
-// console.log(findDuplicatesUsingHash(arr2))
+// console.log(findDuplicatesUsingHash(arr2));
 
 
 // Recursion of Below Problem
@@ -52,9 +68,8 @@ addNumbers();
 // console.log("FiboNacci of a Number using recurssion:", FiboNacciRecurssion(8));
 
 // Prime Number
-
 // var arr = [1,2,4,7,11,12,15,17,19,21,27,29,43,44];
-// console.log(SinglePrimeNumber(43));
+// console.log(SinglePrimeNumber(7));
 
 // console.log(MultiplePrimeNumber(arr));
 

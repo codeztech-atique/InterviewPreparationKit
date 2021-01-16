@@ -42,9 +42,9 @@ class Node {
 class LinkedList {
     constructor(value) {
         this.head = {
-            value: value,
-            next: null
-        }
+           value: value,
+           next: null
+        };
         this.tail = this.head;
         this.length = 1;
     }
@@ -52,7 +52,7 @@ class LinkedList {
         let newNode = {
             value: value,
             next: null
-        };
+        }
         newNode.next = this.head;
         this.head = newNode;
         this.length++;
@@ -74,30 +74,28 @@ class LinkedList {
             return this.append(value);
         }
         let newNode = {
-           value: value,
-           next: null
+            value: value,
+            next: null
         };
         let leader = this.traverse(index-1);
         let nextNode = leader.next;
         leader.next = newNode;
         newNode.next = nextNode;
-        return this.printList();
+        this.printList();
     }
     remove(index) {
         if(index > this.length) {
-            return "Invalid Input!";
+            return "Invalid Input !!!"
         }
         let leader = this.traverse(index-1);
         let removeNode = leader.next;
         leader.next = removeNode.next;
-        return this.printList();
+        this.length--;
+        this.printList();
     }
     reverse() {
-        if(!this.head.next) {
-            return this.head;
-        }
+        this.tail = this.head;
         let first = this.head;
-        let tail = this.head;
         let second = first.next;
         while(second) {
             let temp = second.next;
@@ -109,23 +107,23 @@ class LinkedList {
         this.head = first;
         return this.printList();
     }
-    traverse(index) {
-        let counter = 0;
+    traverse(index){
         let currentNode = this.head;
-        while(index !== counter) {
-            counter++;
+        let counter = 0;
+        while(index!=counter) {
             currentNode = currentNode.next;
+            counter++;
         }
         return currentNode;
     }
     printList() {
-       let result = [];
-       let currentNode = this.head;
-       while(currentNode!==null) {
-         result.push(currentNode.value);  
-         currentNode = currentNode.next;
-       }
-       return result;
+        let result = [];
+        let currentNode = this.head;
+        while(currentNode!==null) {
+            result.push(currentNode.value);
+            currentNode = currentNode.next;
+        }
+        return result;
     }
 }
 
