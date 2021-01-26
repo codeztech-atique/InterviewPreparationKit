@@ -1,34 +1,15 @@
-const removeBrackets = (data) => {
-    var res = [];
-    for(var i=0;i<data.length;i++) {
-        var braces = data[i];
-        if(braces === '(' || braces === '{' || braces === '[') {
-            res.push(braces);
-        }
-        if(res.length === 0) {
-            return false;
-        }
-        switch(braces) {
-            case ')' : res.pop(); break;
-            case '}' : res.pop(); break;
-            case ']' : res.pop(); break;
-        }
-    }
-    if(res.length === 0) {
-        return true;
-    } else {
-        return false;
-    }
+const SinglePrimeNumber = (data) => {
+    
 }
 
 // Braces Program Find the Balance String 
-const expr = "(}";
+// const expr = "(}";
 
-if (removeBrackets(expr)) {
-   console.log("Balanced");
-} else {
-   console.log("Not Balanced");
-}
+// if (removeBrackets(expr)) {
+//    console.log("Balanced");
+// } else {
+//    console.log("Not Balanced");
+// }
 
 
 // Find the Duplicates Hash table
@@ -81,3 +62,25 @@ if (removeBrackets(expr)) {
 
 // === -1 (distinct)
 // > -1 (Find the first duplicates)
+
+
+// Sap Exam Asked
+
+let findPermutations = (string) => {
+    if (!string || typeof string !== "string"){
+      return "Please enter a string"
+    } else if (string.length < 2 ){
+      return string
+}
+
+let permutationsArray = [];
+  for (let i = 0; i < string.length; i++){
+    let char = string[i]
+    let remainingChars = string.slice(0, i) + string.slice(i + 1, string.length)
+    for (let permutation of findPermutations(remainingChars)){
+      permutationsArray.push(char + permutation) }
+  }
+  return permutationsArray;
+}
+
+console.log(findPermutations("aabc"))

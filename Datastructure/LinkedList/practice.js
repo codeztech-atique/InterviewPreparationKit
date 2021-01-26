@@ -1,5 +1,6 @@
 // Java does have a linkedList, JavaScript don't, So we need to make it
 
+
 // Formula - 
 
 // Time Complexity
@@ -14,118 +15,27 @@
 
 // Space  -> O(n)
 
-// 10->5->16     (10 is head and 16 is tail)
+// 4 -> 1 -> 3
+// (4 is head and 3 is tail)
 
 // Create the below linked list:
 // myLinkedList = {
 //   head: {
-//     value: 10
+//     value: 4
 //     next: {
-//       value: 5
+//       value: 1
 //       next: {
-//         value: 16
+//         value: 3
 //         next: null
 //       }
 //     }
 //   }
 // };
 
-class Node {
-    constructor(value) {
-        this.value = value,
-        this.next = null
-    }
-}
 
-// 4 -> 1 -> 3 -> 6-> 82
 
-class LinkedList {
-    constructor(value) {
-        this.head = {
-           value: value,
-           next: null
-        };
-        this.tail = this.head;
-        this.length = 1;
-    }
-    prepend(value) {
-        let newNode = {
-            value: value,
-            next: null
-        }
-        newNode.next = this.head;
-        this.head = newNode;
-        this.length++;
-        return this;
-    }
-    append(value) {
-        let newNode = {
-            value: value,
-            next: null
-        };
-        this.tail.next = newNode;
-        this.tail = newNode;
-        this.length++;
-        return this;
-    }
-    insert(index, value) {
-        this.length++;
-        if(index >= this.length) {
-            return this.append(value);
-        }
-        let newNode = {
-            value: value,
-            next: null
-        };
-        let leader = this.traverse(index-1);
-        let nextNode = leader.next;
-        leader.next = newNode;
-        newNode.next = nextNode;
-        this.printList();
-    }
-    remove(index) {
-        if(index > this.length) {
-            return "Invalid Input !!!"
-        }
-        let leader = this.traverse(index-1);
-        let removeNode = leader.next;
-        leader.next = removeNode.next;
-        this.length--;
-        this.printList();
-    }
-    reverse() {
-        this.tail = this.head;
-        let first = this.head;
-        let second = first.next;
-        while(second) {
-            let temp = second.next;
-            second.next = first;
-            first = second;
-            second = temp;
-        }
-        this.head.next = null;
-        this.head = first;
-        return this.printList();
-    }
-    traverse(index){
-        let currentNode = this.head;
-        let counter = 0;
-        while(index!=counter) {
-            currentNode = currentNode.next;
-            counter++;
-        }
-        return currentNode;
-    }
-    printList() {
-        let result = [];
-        let currentNode = this.head;
-        while(currentNode!==null) {
-            result.push(currentNode.value);
-            currentNode = currentNode.next;
-        }
-        return result;
-    }
-}
+
+
 
 var myLinkedList = new LinkedList(10);
 myLinkedList.append(5);
