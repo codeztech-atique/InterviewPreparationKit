@@ -1,5 +1,3 @@
-const strings= ['a', 'b', 'c', 'd'];
-const numbers = [1,2,3,4,5];
 
 
 // Variable array is somewhere in memory and the computer knows it.
@@ -14,13 +12,12 @@ const numbers = [1,2,3,4,5];
 // console.log(strings.pop()); //O(1) --> Happening to end of the array
 
 //unshift
-// strings.unshift('x') //O(n) --> Happening to beginning of the array
+// strings.unshift('x') //O(n) --> Inserting to beginning of the array
 
 //shift
 // strings.shift() //O(n) --> Happening to beginning of the array (remove from the beginning from the array)
 
 
 //splice
-strings.splice(2, 0, 'alien'); //O(n/2) => //O(n) -> Index the 2 position and shift the rest entire array
+// strings.splice(2, 0, 'alien'); //O(n/2) => //O(n) -> Index the 2 position and shift the rest entire array
 
-console.log(strings)

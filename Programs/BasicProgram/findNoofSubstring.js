@@ -3,7 +3,7 @@ function getAllSubstrings(str) {
   
     for (i = 0; i < str.length; i++) {
         for (j = i + 1; j < str.length + 1; j++) {
-            result.push(str.slice(i, j));
+            result.push(str.slice(i, j)); //splice | slice
         }
     }
     return result;

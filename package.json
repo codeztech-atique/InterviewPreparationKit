@@ -1,0 +1,22 @@
+{
+  "name": "interviewpreparationkit",
+  "version": "1.0.0",
+  "description": "Big O - https://www.bigocheatsheet.com/",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codeztech-atique/InterviewPreparationKit.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codeztech-atique/InterviewPreparationKit/issues"
+  },
+  "homepage": "https://github.com/codeztech-atique/InterviewPreparationKit#readme",
+  "dependencies": {
+    "events": "^3.2.0"
+  }
+}

@@ -1,6 +1,4 @@
-const SinglePrimeNumber = (data) => {
-    
-}
+
 
 // Braces Program Find the Balance String 
 // const expr = "(}";
@@ -10,6 +8,14 @@ const SinglePrimeNumber = (data) => {
 // } else {
 //    console.log("Not Balanced");
 // }
+
+// Get all the subssrting  
+// var theString = 'somerandomword';
+// console.log(getAllSubstrings(theString));
+
+// Wave Sorting
+// var waved = waveSort([73, 80, 40, 86, 14, 96, 10, 56, 61, 84, 82, 36, 85]);
+// console.log(JSON.stringify(waved));
 
 
 // Find the Duplicates Hash table
@@ -65,22 +71,4 @@ const SinglePrimeNumber = (data) => {
 
 
 // Sap Exam Asked
-
-let findPermutations = (string) => {
-    if (!string || typeof string !== "string"){
-      return "Please enter a string"
-    } else if (string.length < 2 ){
-      return string
-}
-
-let permutationsArray = [];
-  for (let i = 0; i < string.length; i++){
-    let char = string[i]
-    let remainingChars = string.slice(0, i) + string.slice(i + 1, string.length)
-    for (let permutation of findPermutations(remainingChars)){
-      permutationsArray.push(char + permutation) }
-  }
-  return permutationsArray;
-}
-
-console.log(findPermutations("aabc"))
+// console.log(findPermutations("aabc"))
