@@ -1,30 +1,58 @@
+var https = require('https');
+https.get('https://coderbyte.com/api/challenges/json/age-counting',  (res) => {
+      res.setEncoding('utf8');
+      let rawData = '';
+      res.on('data', (chunk) => {
+        rawData += chunk;
+      });
 
+      res.on('end', () => {
+        try {
+            const parsedData = JSON.parse(rawData);
+            var arr = parsedData.data;
+            let counter = 0;
+            arr = arr.split(', ');
+           
+            for (let i=0;i<arr.length;i++) {
+                let splitD = arr[i].split("=");
+                if(splitD[0] === 'age' && !isNaN(parseInt(splitD[1]))) {
+                    if(splitD[1] >= 50) {
+                        counter++;
+                    }
+                }
+            }
+            console.log(counter);
+        } catch (e) {
+          console.log(e.message);
+        }
+      });
 
-// Braces Program Find the Balance String 
-// const expr = "(}";
+    
+}).on("error", (err) => {
+    console.log("Error: " + err.message);
+  });
 
-// if (removeBrackets(expr)) {
-//    console.log("Balanced");
-// } else {
-//    console.log("Not Balanced");
-// }
+function parseData(str) {
+    return Function(`'use strict'; return (${str})`)()
+}
+  
+console.log(parseData("6*(4/2)+3*1")); 
+console.log(parseData("6/3-1")); 
 
 // Get all the subssrting  
 // var theString = 'somerandomword';
 // console.log(getAllSubstrings(theString));
 
-// Wave Sorting
-// var waved = waveSort([73, 80, 40, 86, 14, 96, 10, 56, 61, 84, 82, 36, 85]);
-// console.log(JSON.stringify(waved));
-
-
 // Find the Duplicates Hash table
-// var arr2 = [22,5,22,90,3,44,1,2];
+// var arr2 = [22,5,3,90,3,44,1,2];
 // console.log(findDuplicatesUsingHash(arr2));
 
 
 // Recursion of Below Problem
 // console.log(sum(1)(2)(32)());
+// console.log(sum(1)(2)(22)());
+// console.log(sum(1)(2)(12)());
+// console.log(sum(1)(2)());
 
 
 // Find the count of each elements from the array
@@ -72,3 +100,7 @@
 
 // Sap Exam Asked
 // console.log(findPermutations("aabc"))
+
+//Wave Sort
+// var waved = waveSort([73, 80, 40, 86, 14, 96, 10, 56, 61, 84, 82, 36, 85]);
+// console.log(waved);

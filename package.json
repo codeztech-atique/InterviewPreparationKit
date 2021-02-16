@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/codeztech-atique/InterviewPreparationKit#readme",
   "dependencies": {
-    "events": "^3.2.0"
+    "config": "^3.3.3",
+    "events": "^3.2.0",
+    "googleapis": "^67.0.0",
+    "https": "^1.0.0"
   }
 }

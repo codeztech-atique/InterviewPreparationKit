@@ -1,18 +1,18 @@
 class Graph {
    constructor() {
-      this.noOfConnections = 0;
-      this.adjecentVertices = {};
+    this.numberOfNodes = 0; 
+    this.adjacentList = {}; 
    }
    addVertex(node) {
-     this.noOfConnections++;
-     this.adjecentVertices[node] = []
+    this.adjacentList[node] = []; 
+    this.numberOfNodes++;
    }
    addEdge(node1, node2) {
-     this.adjecentVertices[node1].push(node2);
-     this.adjecentVertices[node2].push(node1);
+     this.adjacentList[node1].push(node2);
+     this.adjacentList[node2].push(node1);
    }
    showConnections() {
-     console.log(this.adjecentVertices);
+     console.log(this.adjacentList);
    }
 }
 

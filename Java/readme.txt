@@ -7,12 +7,10 @@ In order to manage the classes of a software system, and to reduce the complexit
 the system designers use several techniques, which can be grouped under 
 four main concepts:
 
-
 Encapsulation
 Abstraction
 Inheritance
 Polymorphism
-
 
 Encapsulation - 
 
@@ -26,7 +24,6 @@ your stuff like books and pens and document etc. to keep it safe from the outsid
 School_BagHere you are hiding your books and pen by putting them inside the 
 Bag similarly in OOP we encapsulate the data and methods inside the class 
 to keep it safe and accessible only to authorized member.
-
 
 Abstraction -- 
 
@@ -71,7 +68,6 @@ It has 2 types -
 Runtime Polymorphism - Method Overriding
 
 CompileTime Polymorphism - Method Overloading
-
 
 Static and Dynamic Binding -- 
 
