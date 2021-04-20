@@ -67,17 +67,7 @@ class BinarySearchTree {
       }
       return currentNode.value;
    }
-   getLeafCountOfBinaryTree(node) {
-      if(node === null) return 0;
-      if(node.left === null && node.right === null) return 1;
-      return getLeafCountOfBinaryTree(node.left) + getLeafCountOfBinaryTree(node.right);
-   }
-   hightOfBinaryTree() {
-      // Rules b = (n-1)/2
-      let totalNodes = this.count;
-      let height = Math.floor((totalNodes - 1) / 2); 
-      return height;
-   }
+
    lookup(value) {
       let currentNode = this.root;
       while(currentNode) {
@@ -189,7 +179,6 @@ console.log("BST Size: ",bst.size());
 
 console.log("BST Min: ",bst.min());
 console.log("BST Max: ",bst.max());
-console.log("HIGHT OF BINARY TREE: ", bst.hightOfBinaryTree(bst));
 
 console.log("Is Found 2: ",bst.lookup(2));
 console.log("Is Found 9: ",bst.lookup(9));
@@ -214,3 +203,18 @@ function getLeafCountOfBinaryTree(node) {
    return getLeafCountOfBinaryTree(node.left) + getLeafCountOfBinaryTree(node.right);
 }
 console.log("COUNT LEAF NODE: ", getLeafCountOfBinaryTree(bst.root));
+
+function hightOfBinaryTree(node) {
+   if(node == null) {
+      return 0;
+   }  else {
+      let lDepth = hightOfBinaryTree(node.left);
+      let rDepth = hightOfBinaryTree(node.right);
+      if (lDepth > rDepth)
+         return (lDepth + 1);
+      else
+         return (rDepth + 1);
+   }
+}
+
+console.log("HIGHT OF BINARY TREE: ", hightOfBinaryTree(bst.root));

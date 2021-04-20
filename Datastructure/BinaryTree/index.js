@@ -210,6 +210,22 @@ function getLeafCountOfBinaryTree(node) {
     return getLeafCountOfBinaryTree(node.left) + getLeafCountOfBinaryTree(node.right);
  }
  console.log("COUNT LEAF NODE: ", getLeafCountOfBinaryTree(bst.root));
+
+ function hightOfBinaryTree(node) {
+   if(node == null) {
+      return 0;
+   }  else {
+      let lDepth = hightOfBinaryTree(node.left);
+      let rDepth = hightOfBinaryTree(node.right);
+      if (lDepth > rDepth)
+         return (lDepth + 1);
+      else
+         return (rDepth + 1);
+   }
+}
+
+console.log("HIGHT OF BINARY TREE: ", hightOfBinaryTree(bst.root));
+
  
 //       1
 //     /   \ 
