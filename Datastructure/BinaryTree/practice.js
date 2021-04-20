@@ -67,12 +67,11 @@ class BinarySearchTree {
       }
       return currentNode.value;
    }
-   getLeafCountOfBinaryTree() {
-      let currentNode = this.root;
-      if(currentNode === null) return 0;
-      if(currentNode.left === null && currentNode.right === null) return 1;
-       return getLeafCountOfBinaryTree(currentNode.left) + getLeafCountOfBinaryTree(currentNode.right);
-      }
+   getLeafCountOfBinaryTree(node) {
+      if(node === null) return 0;
+      if(node.left === null && node.right === null) return 1;
+      return getLeafCountOfBinaryTree(node.left) + getLeafCountOfBinaryTree(node.right);
+   }
    hightOfBinaryTree() {
       // Rules b = (n-1)/2
       let totalNodes = this.count;
@@ -172,27 +171,25 @@ class BinarySearchTree {
 }
 
 
-// const bst = new BinarySearchTree(15)
-// bst.insert(112)
-// bst.insert(3)
-// bst.insert(36)
-// bst.insert(2)
-// bst.insert(12)
-// bst.insert(28)
-// bst.insert(39)
-const bst = new BinarySearchTree(1)
+const bst = new BinarySearchTree(15)
+bst.insert(112)
 bst.insert(3)
-bst.insert(6)
-bst.insert(8)
+bst.insert(36)
+bst.insert(2)
+bst.insert(12)
+bst.insert(28)
+bst.insert(39)
+
+// const bst = new BinarySearchTree(1)
+// bst.insert(3)
+// bst.insert(6)
+// bst.insert(8)
 
 console.log("BST Size: ",bst.size());
 
 console.log("BST Min: ",bst.min());
 console.log("BST Max: ",bst.max());
 console.log("HIGHT OF BINARY TREE: ", bst.hightOfBinaryTree(bst));
-
-console.log("COUNT LEAF NODE: ", bst.getLeafCountOfBinaryTree());
-
 
 console.log("Is Found 2: ",bst.lookup(2));
 console.log("Is Found 9: ",bst.lookup(9));
@@ -210,3 +207,10 @@ console.log("Postorder:",bst.dfsPostorder());
 // BFS!!!
 // 15, 3, 36, 2, 12, 28, 39
 console.log("BFS:",bst.bfs());
+
+function getLeafCountOfBinaryTree(node) {
+   if(node === null) return 0;
+   if(node.left === null && node.right === null) return 1;
+   return getLeafCountOfBinaryTree(node.left) + getLeafCountOfBinaryTree(node.right);
+}
+console.log("COUNT LEAF NODE: ", getLeafCountOfBinaryTree(bst.root));
