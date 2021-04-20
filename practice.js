@@ -1,43 +1,37 @@
-var https = require('https');
-https.get('https://coderbyte.com/api/challenges/json/age-counting',  (res) => {
-      res.setEncoding('utf8');
-      let rawData = '';
-      res.on('data', (chunk) => {
-        rawData += chunk;
-      });
+// const obj = [
+//     {
+//         name: 'Atique',
+//         percentage: 50
+//     },
+//     {
+//         name: 'Sunny',
+//         percentage: 150
+//     },
+//     {
+//         name: 'Rina',
+//         percentage: 120
+//     }
+// ];
 
-      res.on('end', () => {
-        try {
-            const parsedData = JSON.parse(rawData);
-            var arr = parsedData.data;
-            let counter = 0;
-            arr = arr.split(', ');
-           
-            for (let i=0;i<arr.length;i++) {
-                let splitD = arr[i].split("=");
-                if(splitD[0] === 'age' && !isNaN(parseInt(splitD[1]))) {
-                    if(splitD[1] >= 50) {
-                        counter++;
-                    }
-                }
-            }
-            console.log(counter);
-        } catch (e) {
-          console.log(e.message);
-        }
-      });
-
-    
-}).on("error", (err) => {
-    console.log("Error: " + err.message);
-  });
-
-function parseData(str) {
-    return Function(`'use strict'; return (${str})`)()
-}
-  
-console.log(parseData("6*(4/2)+3*1")); 
-console.log(parseData("6/3-1")); 
+// function Arrsort(a, b) {
+//     return b.percentage - a.percentage;
+// }
+// console.log(obj.sort(Arrsort));
+// const findNonRepeated = (arr) => {
+//     // var ress = ['12341234','5678901234','10','7890','123456a'].map(parseInt);
+//     var ress = ['5678901234', '12341234','5678901234','10','7890','123456a'].map(parseInt);
+//     console.log(ress);
+//     return res = arr.filter((v, i) => arr.indexOf(v) !== arr.lastIndexOf(v));
+// }
+// const findDuplicates = (arr) => {
+//     return res = arr.filter((v, i) => arr.indexOf(v) === arr.lastIndexOf(v));
+// }
+// function parseData(str) {
+//     //return Function(`'use strict'; return (${str})`)()
+//     return Function (`return ${str}`)();
+// }
+// var str = "somerandomword";
+// var res = str.splice(0, 5);
 
 // Get all the subssrting  
 // var theString = 'somerandomword';
@@ -61,8 +55,10 @@ console.log(parseData("6/3-1"));
 
 
 // Find the distint elements
-// var arr = [4,1,2,1,5,5,5,5,4,7];
-// console.log(findDistinct(arr));
+// var arrD = [4,1,2,1,5,5,5,5,4,7];
+// console.log(findNonRepeated(arrD));
+// console.log(findDuplicates(arrD));
+
 
 
 // Find Repeating and Non Repeating Elements

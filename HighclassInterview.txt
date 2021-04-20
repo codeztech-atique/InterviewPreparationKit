@@ -31,3 +31,16 @@ Four Pillars Concepts - Java
 Javascript scope chaining —> https://www.youtube.com/watch?v=vGGOOYOXoQ4 — Done
 
 Quick sort, Merge Sort
+
+
+I always preffer to go with ES6. 
+
+Reason - 
+
+1. ES6 is fast
+2. ES6 has the object oriented classes
+3. ES6 has a arrow function
+4. Using ES6 memory allocation will be fast.
+5. ES6 has a new keyword, const, let which allows a developer to write 
+the safer code. (Example - Java - Public, Private, Protected)
+6. ES6 is having cool feature, like spread operators.

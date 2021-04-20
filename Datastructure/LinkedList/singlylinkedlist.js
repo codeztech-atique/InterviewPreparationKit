@@ -120,7 +120,6 @@ class LinkedList {
       }
       return array;
   }
-
 }
 
 var myLinkedList = new LinkedList(10);

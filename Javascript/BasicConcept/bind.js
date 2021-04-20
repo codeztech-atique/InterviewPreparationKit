@@ -27,4 +27,4 @@ Function.prototype.myOwnBind = function(newThis) {
     return function boundFunction() {
       return boundTargetFunction.apply(newThis);
     };
-  };
+};

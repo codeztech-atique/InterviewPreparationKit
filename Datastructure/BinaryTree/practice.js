@@ -2,6 +2,8 @@
 // Insert - O(log n) -> Balanced
 // Delete - O(log n) -> Balanced
 
+const { auth } = require("googleapis/build/src/apis/abusiveexperiencereport");
+
 
 // Lookup - O(n) -> UnBalanced
 // Insert - O(n) -> UnBalanced
@@ -28,27 +30,28 @@ class BinarySearchTree {
       this.root = new Node(value);
       this.count = 1;
    }
-   size() {
-      return this.count;
-   }
    insert(value) {
+      this.count++;
       let newNode = new Node(value);
-      let searchTree = node => {
+      const traverse = node => {
          if(value < node.value) {
             if(!node.left) {
                node.left = newNode;
             } else {
-               searchTree(node.left);
+               traverse(node.left);
             }
          } else if(value > node.value) {
             if(!node.right) {
                node.right = newNode;
             } else {
-               searchTree(node.right);
+               traverse(node.right);
             }
          }
       }
-      searchTree(this.root);
+      traverse(this.root);
+   }
+   size() {
+      return this.count;
    }
    min() {
       let currentNode = this.root;
@@ -64,20 +67,32 @@ class BinarySearchTree {
       }
       return currentNode.value;
    }
+   getLeafCountOfBinaryTree() {
+      let currentNode = this.root;
+      if(currentNode === null) return 0;
+      if(currentNode.left === null && currentNode.right === null) return 1;
+       return getLeafCountOfBinaryTree(currentNode.left) + getLeafCountOfBinaryTree(currentNode.right);
+      }
+   hightOfBinaryTree() {
+      // Rules b = (n-1)/2
+      let totalNodes = this.count;
+      let height = Math.floor((totalNodes - 1) / 2); 
+      return height;
+   }
    lookup(value) {
       let currentNode = this.root;
       while(currentNode) {
          if(value === currentNode.value) {
             return true;
-         }
-         if(value < currentNode.value) {
-            currentNode = currentNode.left;
+         } else if(value < currentNode.value) {
+            currentNode = currentNode.left
          } else {
             currentNode = currentNode.right;
          }
       }
-      return false;
+      return false
    }
+   
    dfsInorder() {
       // left, middle, right
       //        15
@@ -85,14 +100,15 @@ class BinarySearchTree {
       //     3      36
       //    /  \   /  \
       //   2   12 28  39
+      
       // Output = 2,3,12,15,28,36,39
       let result = [];
-      let traverse = node => {
-         if(node.left) traverse(node.left);
+      const searchTree = node => {
+         if(node.left) searchTree(node.left);
          result.push(node.value);
-         if(node.right) traverse(node.right);
+         if(node.right) searchTree(node.right);
       }
-      traverse(this.root);
+      searchTree(this.root);
       return result;
    }
    dfsPreorder() {
@@ -105,15 +121,15 @@ class BinarySearchTree {
       
       // Output = 15,3,2,12,36,28,39
       let result = [];
-      let traverse = node => {
+      const searchTree = node => {
          result.push(node.value);
-         if(node.left) traverse(node.left);
-         if(node.right) traverse(node.right);
+         if(node.left) searchTree(node.left);
+         if(node.right) searchTree(node.right);
       }
-      traverse(this.root);
+      searchTree(this.root);
       return result;
    }
-    dfsPostorder() {
+   dfsPostorder() {
       // left, right, middle
       //        15
       //      /    \
@@ -121,56 +137,65 @@ class BinarySearchTree {
       //    /  \   /  \
       //   2   12 28  39    
       
-      // Output = 2,12,3,28,39,36,15
+      // Output = 2,12,3,15,36,28,39
       let result = [];
-      let traverse = node => {
-         if(node.left) traverse(node.left);
-         if(node.right) traverse(node.right);
+      const searchTree = node => {
+         if(node.left) searchTree(node.left);
+         if(node.right) searchTree(node.right);
          result.push(node.value);
       }
-      traverse(this.root);
+      searchTree(this.root);
       return result;
-    }
-    bfs() {
+   }
+   bfs() {
       //        15
       //      /    \
       //     3      36
       //    /  \   /  \
       //   2   12 28  39    
-      // Output - 15, 3, 36, 2, 12,28, 39
+      // Output - 15,3,36,2,12,28,39
       let result = [];
-      let queue = [];
-      queue.push(this.root);
+      let queue = []
+      queue.push(this.root)
       while(queue.length) {
          let currentNode = queue.shift();
          result.push(currentNode.value);
          if(currentNode.left) {
-            queue.push(currentNode.left)
-         } if(currentNode.right) {
-            queue.push(currentNode.right)
+            queue.push(currentNode.left);
          }
+         if (currentNode.right) {
+            queue.push(currentNode.right)
+        }
       }
-      return result; 
-    }
+      return result;
+   }
 }
 
 
-const bst = new BinarySearchTree(15)
-
+// const bst = new BinarySearchTree(15)
+// bst.insert(112)
+// bst.insert(3)
+// bst.insert(36)
+// bst.insert(2)
+// bst.insert(12)
+// bst.insert(28)
+// bst.insert(39)
+const bst = new BinarySearchTree(1)
 bst.insert(3)
-bst.insert(36)
-bst.insert(2)
-bst.insert(12)
-bst.insert(28)
-bst.insert(39)
+bst.insert(6)
+bst.insert(8)
 
-console.log(bst.size());
+console.log("BST Size: ",bst.size());
 
-console.log(bst.min());
-console.log(bst.max());
+console.log("BST Min: ",bst.min());
+console.log("BST Max: ",bst.max());
+console.log("HIGHT OF BINARY TREE: ", bst.hightOfBinaryTree(bst));
 
-console.log(bst.lookup(2));
-console.log(bst.lookup(9));
+console.log("COUNT LEAF NODE: ", bst.getLeafCountOfBinaryTree());
+
+
+console.log("Is Found 2: ",bst.lookup(2));
+console.log("Is Found 9: ",bst.lookup(9));
 
 // DFS!!!
 // in-order: 2, 3, 12, 15, 28, 36, 39
