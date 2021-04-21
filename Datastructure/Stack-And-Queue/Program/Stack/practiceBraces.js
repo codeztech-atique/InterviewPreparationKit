@@ -1,7 +1,7 @@
 function BalancedString(expression) {
-   var arr = [];
-   for(var i =0;i<expression.length;i++) {
-       var data = expression[i];
+   const arr = [];
+   for(let i=0;i<expression.length;i++) {
+       let data = expression[i];
        if(data === '(' || data === '{' || data === '[') {
            arr.push(data);
        }
@@ -10,12 +10,12 @@ function BalancedString(expression) {
        }
        switch(data) {
            case ')': arr.pop(); break;
-           case ']': arr.pop(); break;
            case '}': arr.pop(); break;
+           case ']': arr.pop(); break;
        }
    }
    if(arr.length === 0) {
-      return true;
+       return true;
    } else {
        return false;
    }
@@ -23,7 +23,7 @@ function BalancedString(expression) {
 
 
 
-const expr = "([{}]){}{}()";
+const expr = "([{}]){}{}}";
 
 if(BalancedString(expr)) {
     console.log("Its a balanced string!");

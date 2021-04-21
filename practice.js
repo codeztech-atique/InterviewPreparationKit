@@ -17,21 +17,19 @@
 //     return b.percentage - a.percentage;
 // }
 // console.log(obj.sort(Arrsort));
-// const findNonRepeated = (arr) => {
-//     // var ress = ['12341234','5678901234','10','7890','123456a'].map(parseInt);
-//     var ress = ['5678901234', '12341234','5678901234','10','7890','123456a'].map(parseInt);
-//     console.log(ress);
-//     return res = arr.filter((v, i) => arr.indexOf(v) !== arr.lastIndexOf(v));
-// }
-// const findDuplicates = (arr) => {
-//     return res = arr.filter((v, i) => arr.indexOf(v) === arr.lastIndexOf(v));
-// }
+
+
+
 // function parseData(str) {
 //     //return Function(`'use strict'; return (${str})`)()
 //     return Function (`return ${str}`)();
 // }
-// var str = "somerandomword";
-// var res = str.splice(0, 5);
+
+// const parseEquation = (str) => {
+//     return Function(`'use strict!'; return ${str}`)();
+// }
+
+console.log(parseEquation(`1+3+5+(5-3)`));
 
 // Get all the subssrting  
 // var theString = 'somerandomword';
@@ -41,7 +39,7 @@
 // var arr2 = [22,5,3,90,3,44,1,2];
 // console.log(findDuplicatesUsingHash(arr2));
 
-
+// let sum = a => b => b ? sum(a+b) : a;
 // Recursion of Below Problem
 // console.log(sum(1)(2)(32)());
 // console.log(sum(1)(2)(22)());
@@ -56,9 +54,7 @@
 
 // Find the distint elements
 // var arrD = [4,1,2,1,5,5,5,5,4,7];
-// console.log(findNonRepeated(arrD));
-// console.log(findDuplicates(arrD));
-
+// console.log(findDistinct(arrD));
 
 
 // Find Repeating and Non Repeating Elements
@@ -66,6 +62,8 @@
 // var arr = [4,1,2,1,2];
 // console.log(repetingElements(arr))
 // console.log(nonRepetingElements(arr))
+
+
 
 // GCD and LCM
 // GCDandLCM(72, 120);
@@ -78,9 +76,11 @@
 // console.log("FiboNacci of a Number:", FiboNacci(8));
 // console.log("FiboNacci of a Number using recurssion:", FiboNacciRecurssion(8));
 
+
+
 // Prime Number
 // var arr = [1,2,4,7,11,12,15,17,19,21,27,29,43,44];
-// console.log(SinglePrimeNumber(7));
+// console.log(SinglePrimeNumber(5));
 
 // console.log(MultiplePrimeNumber(arr));
 

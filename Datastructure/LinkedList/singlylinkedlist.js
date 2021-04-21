@@ -106,8 +106,8 @@ class LinkedList {
       let counter = 0;
       let currentNode = this.head;
       while(index !== counter) {
-          currentNode = currentNode.next;
           counter++;
+          currentNode = currentNode.next;
       }
       return currentNode;
   }

@@ -35,44 +35,72 @@
 class LinkedList {
    constructor(value) {
       this.head = {
-         'value': value,
-         'next': null
+         value: value,
+         next: null,
       };
       this.tail = this.head;
-      this.length = 1;
+      this.counter = 1;  
    }
    prepend(value) {
       let newNode = {
-         'value': value,
-         'next': null
+         value: value,
+         next: null
       };
       newNode.next = this.head;
       this.head = newNode;
-      this.length++;
+      this.counter++;
       return this;
    }
    append(value) {
       let newNode = {
-         'value': value,
-         'next': null
+        value: value,
+        next: null 
       };
       this.tail.next = newNode;
       this.tail = newNode;
-      this.length++;
+      this.counter++;
       return this;
    }
    insert(index, value) {
-      if(index >= this.length) {
+      if(index >= this.counter) {
          return this.append(value);
       }
       let newNode = {
-         'value': value,
-         'next': null
+         value: value,
+         next: null 
       };
-      let leader = this.traverse(index - 1);
-      let nextNode = leader.next;
-      leader.next = newNode;
+      let header = this.traverse(index-1);
+      let nextNode = header.next;
+      header.next = newNode;
       newNode.next = nextNode;
+      this.counter++;
+      this.printList();
+   }
+   remove(index) {
+      if(index > this.counter) {
+         return "Invalid Input !!!";
+      }
+      let leader = this.traverse(index-1);
+      let unwantedNode = leader.next;
+      leader.next = unwantedNode.next;
+      this.counter--;
+      return this.printList();
+   }
+   reverse() {
+      if(!this.head.next) {
+         return this.head;
+      }
+      this.tail = this.head;
+      let first = this.head;
+      let second = first.next;
+      while(second) {
+         let temp = second.next;
+         second.next = first;
+         first = second;
+         second = temp;
+      }
+      this.head.next = null;
+      this.head = first;
       return this.printList();
    }
    traverse(index) {
@@ -92,30 +120,6 @@ class LinkedList {
          currentNode = currentNode.next;
       }
       return result;
-   }
-   remove(index) {
-      if(index > this.length) {
-         return "Invalid Length !!";
-      }
-      let leader = this.traverse(index - 1);
-      let unwantedNode = leader.next;
-      leader.next = unwantedNode.next;
-      this.length--;
-      return this.printList();
-   }
-   reverse() {
-      let first = this.head;
-      let second = first.next;
-      this.tail = this.head;
-      while(second) {
-         let temp = second.next;
-         second.next = first;
-         first = second;
-         second = temp;
-      }
-      this.head.next = null;
-      this.head = first;
-      return this.printList();
    }
 }
 
