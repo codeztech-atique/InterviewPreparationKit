@@ -2,7 +2,7 @@ function BalancedString(expression) {
    const arr = [];
    for(let i=0;i<expression.length;i++) {
        let data = expression[i];
-       if(data === '(' || data === '{' || data === '[') {
+       if(data == '(' || data == '{' || data == '[') {
            arr.push(data);
        }
        if(arr.length === 0) {
@@ -23,7 +23,7 @@ function BalancedString(expression) {
 
 
 
-const expr = "([{}]){}{}}";
+const expr = "([{}]){}{}())";
 
 if(BalancedString(expr)) {
     console.log("Its a balanced string!");

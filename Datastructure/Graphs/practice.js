@@ -1,19 +1,20 @@
 class Graph {
-   constructor() {
-     this.noOfNodes = 0;
-     this.adjacentList = {};
-   }
-   addEdge(node1, node2) {
-    this.adjacentList[node1].push(node2);
-    this.adjacentList[node2].push(node1);
-   }
-   addVertex(node) {
-     this.adjacentList[node] = [];
-     this.noOfNodes++;
-   }
-   showConnections() {
-     console.log(this.adjacentList)
-   }
+    constructor() {
+      this.countNoOfNodes = 0;
+      this.adjecentList = {};
+    }
+    addVertex(node) {
+      this.adjecentList[node] = [];
+      this.countNoOfNodes++;
+    }
+    addEdge(node1, node2) {
+      this.adjecentList[node1].push(node2);
+      this.adjecentList[node2].push(node1);
+    }
+    showConnections() {
+      console.log(this.adjecentList);
+      console.log(this.countNoOfNodes);
+    }
 }
 
 var myGraph = new Graph();

@@ -1,0 +1,56 @@
+OSI Model - 
+
+A - Application Layer (Software Layer)
+P - Presentation Layer (Software Layer)
+S - Session Layer (Software Layer)
+T - Transpot Layer (Heart of OSI Model)
+N - Network Layer (Hardware Layer)
+D - DataLink Layer (Hardware Layer)
+P - Physical Layer (Hardware Layer)
+
+Diff Between SSL, TLS, HTTP, HTTPS -->
+
+Video -  https://www.youtube.com/watch?v=hExRDVZHhig
+
+HTTP - Hypertext Transerfer Protocol (Transerfer simple text between web to my computer) || Its okay if we don't have any
+       Sensitive information (Its traver via public internet)
+
+HTTPS - Secure Hypertext Transerfer Protocol (Transerfer simple text between web to my computer)
+        It encrypts the data from Sender to receiver - Using Asymetric Key. (Webserver they do have private Key) 
+        in order to encrypts the user information whichj received from the user.
+                                             ____
+                                             |/\| 
+        A lot of web browsers also show the ||  || Lock Sign, In order to indicate its secure.
+                                            ||__||
+
+SSL  - Secure Sokect Layer, (That uses the security over the internet)
+
+Using SSL, user first send the SSL certificates to Web Browser, once web browsers, Indentifies that he/she is a Valid User,
+Then Data Transerfer will be happening via, Our Computer to Webserver.
+
+TSL - Transport Layer Security. 
+Also authenticated, client, server and encrypts the data.
+
+Details - 
+
+Video -  https://www.youtube.com/watch?v=hExRDVZHhig
+
+
+
+Encryption vs Hashing
+
+https://www.youtube.com/watch?v=Sre8D9X1BzE
+
+Encryption  -
+
+1. Symmetric - Same key used to for encoding and decoding (AES Encryption)
+2. ASymmetric - Data is dycripted, Using Diff Key. (RSA Algorithm)
+
+Hasing - 
+
+Hashing the userId or Password while storing in the database. 
+example - SHA256, MD5 
+
+Note - In case of Encryption it can reversable, Hashing won't. Means Once the text encrypted, 
+       It can be decrypted, But in the case of Hashing its not possible.
+

@@ -36,58 +36,76 @@ class LinkedList {
    constructor(value) {
       this.head = {
          value: value,
-         next: null,
+         next: null
       };
       this.tail = this.head;
-      this.counter = 1;  
+      this.count = 1;
    }
-   prepend(value) {
+   prepand(value) { // Inserting elements beginning of the LinkedList
       let newNode = {
          value: value,
          next: null
       };
       newNode.next = this.head;
       this.head = newNode;
-      this.counter++;
+      this.count++;
       return this;
    }
    append(value) {
       let newNode = {
-        value: value,
-        next: null 
+         value: value,
+         next: null
       };
       this.tail.next = newNode;
       this.tail = newNode;
-      this.counter++;
+      this.count++;
       return this;
    }
    insert(index, value) {
-      if(index >= this.counter) {
+      if(index >= this.count) {
          return this.append(value);
       }
+      this.count++;
       let newNode = {
          value: value,
-         next: null 
+         next: null
       };
-      let header = this.traverse(index-1);
-      let nextNode = header.next;
-      header.next = newNode;
+      let leader = this.traverse(index-1);
+      let nextNode = leader.next;
+      leader.next = newNode;
       newNode.next = nextNode;
-      this.counter++;
-      this.printList();
+      return this.printList();
+   }
+   traverse(index) {
+      let counter = 0;
+      let currentNode = this.head;
+      while(counter!=index) {
+         counter++;
+         currentNode = currentNode.next;
+      }
+      return currentNode;
+   }
+   printList() {
+      let result = [];
+      let currentNode = this.head;
+      while(currentNode!=null) {
+         result.push(currentNode.value);
+         currentNode = currentNode.next;
+      }
+      return result;
    }
    remove(index) {
-      if(index > this.counter) {
-         return "Invalid Input !!!";
+      if(index > this.count) {
+         return "Invalid Input !!!"
       }
       let leader = this.traverse(index-1);
       let unwantedNode = leader.next;
       leader.next = unwantedNode.next;
-      this.counter--;
+      this.count--;
       return this.printList();
    }
    reverse() {
-      if(!this.head.next) {
+      if(!this.head.next) { // this.count === 1
          return this.head;
       }
       this.tail = this.head;
@@ -103,39 +121,22 @@ class LinkedList {
       this.head = first;
       return this.printList();
    }
-   traverse(index) {
-      let counter = 0;
-      let currentNode = this.head;
-      while(index != counter) {
-         counter++;
-         currentNode = currentNode.next;
-      }
-      return currentNode;
-   }
-   printList() {
-      let result = [];
-      let currentNode = this.head;
-      while(currentNode!=null) {
-         result.push(currentNode.value);
-         currentNode = currentNode.next;
-      }
-      return result;
-   }
 }
 
-var myLinkedList = new LinkedList(10);
-myLinkedList.append(5);
-myLinkedList.append(52);
-myLinkedList.prepend(9);
-myLinkedList.insert(200, 99); //If the index location more than length it gonna insert last
-myLinkedList.insert(2, 19);
-console.log(JSON.stringify(myLinkedList));
-console.log("Array--------------------->");
-console.log(myLinkedList.printList());
-myLinkedList.remove(2);
-console.log("Array Remove--------------------->");
-console.log(myLinkedList.printList());
-console.log("Reverse LinkedList--------------------->");
-myLinkedList.reverse();
-console.log(JSON.stringify(myLinkedList));
-console.log(myLinkedList.printList());
+const ll = new LinkedList(44);
+ll.prepand(79);
+ll.prepand(77);
+ll.prepand(24);
+ll.prepand(33);
+ll.prepand(18);
+ll.prepand(85);
+ll.append(80);
+ll.insert(2, 90);
+ll.insert(200, 95);
+ll.remove(3);
+console.log(JSON.stringify(ll));
+console.log(ll.printList());
+console.log(ll.reverse());
+
+// 85 -> 18 -> 24 -> 77 -> 79 -> 44 -> 80 -> 95
+// 95 -> 80 -> 44 -> 79 -> 77 -> 24 -> 18 -> 85 // reverse
