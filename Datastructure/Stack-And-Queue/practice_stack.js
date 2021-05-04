@@ -1,30 +1,34 @@
-//Using Array
+// Using Array
+
 class Stack {
    constructor() {
-      this.array = [];
+      this.arr = [];
    }
-   push(value) {
-      this.array.push(value);
+   push(data) {
+      this.arr.push(data);
       return this;
    }
    pop() {
-      this.array.pop();
+      this.arr.pop();
       return this;
    }
    peek() {
-      let length = this.array.length-1;
-      var peekData = this.array[length];
-      return peekData;
-   } 
+      let elements = this.arr.length - 1;
+      elements = this.arr[elements];
+      return elements;
+   }
+   display() {
+      return this.arr;
+   }
 }
 
-var StackData = new Stack();
-console.log(StackData.push(12));
-console.log(StackData.push(13));
-console.log(StackData.push(10));
-console.log(StackData.push(17));
-console.log(StackData.push(19));
-console.log(StackData.pop());
-console.log(StackData.pop());
-console.log(StackData.pop());
-console.log(StackData.peek());
+var stc = new Stack();
+stc.push(7);
+stc.push(29);
+stc.push(6);
+stc.push(85);
+stc.push(43);
+stc.pop();
+stc.pop();
+console.log(stc.peek());
+console.log(stc.display());

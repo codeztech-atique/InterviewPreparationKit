@@ -23,7 +23,7 @@ HTTPS - Secure Hypertext Transerfer Protocol (Transerfer simple text between web
         A lot of web browsers also show the ||  || Lock Sign, In order to indicate its secure.
                                             ||__||
 
-SSL  - Secure Sokect Layer, (That uses the security over the internet)
+SSL  - Secure Socket Layer, (That uses the security over the internet)
 
 Using SSL, user first send the SSL certificates to Web Browser, once web browsers, Indentifies that he/she is a Valid User,
 Then Data Transerfer will be happening via, Our Computer to Webserver.
@@ -44,7 +44,7 @@ https://www.youtube.com/watch?v=Sre8D9X1BzE
 Encryption  -
 
 1. Symmetric - Same key used to for encoding and decoding (AES Encryption)
-2. ASymmetric - Data is dycripted, Using Diff Key. (RSA Algorithm)
+2. Asymmetric - Data is decrypted, Using Diff Key. (RSA Algorithm)
 
 Hasing - 
 

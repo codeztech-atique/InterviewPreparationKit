@@ -9,7 +9,7 @@ function displayDetails(ownerName) {
 }
 
 
-displayDetails.apply(car, ["Sunny", "Audi"]); // Vivian, this is your car: GA12345 Toyota
+displayDetails.apply(car, ["Sunny"]); // Vivian, this is your car: GA12345 Toyota
 
 
 displayDetails.call(car, "Vivian"); // Vivian, this is your car: GA12345 Toyota

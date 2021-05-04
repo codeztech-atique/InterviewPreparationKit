@@ -1,24 +1,16 @@
-var car = { 
-    registrationNumber: "GA12345",
-    brand: "Toyota",
-
-    displayDetails: function(){
-        console.log(this.registrationNumber + " " + this.brand);
-    }
+var car = {
+   registrationDetails: "WB-32124",
+   brand: "Hyundai",
+   details: function() {
+     return this.brand+" "+this.registrationDetails
+   }
 }
 
-car.displayDetails(); // GA12345 Toyota
-
-var myCarDetails =  car.displayDetails;
-myCarDetails();
-
-
-var myCarDetails = car.displayDetails.bind(car); 
-myCarDetails(); // GA12345 Toyota
+var copyCar = car.details.bind(car);
+console.log(copyCar());
 
 
 // Creating my own bind function
-
 Function.prototype.myOwnBind = function(newThis) {
     if (typeof this !== "function") {
       throw new Error(this + "cannot be bound as it's not callable");

@@ -64,7 +64,7 @@
 
 
 // GCD and LCM
-GCDandLCM(72, 120);
+// GCDandLCM(72, 120);
 // GCD:- 24
 // LCM:- 360
 

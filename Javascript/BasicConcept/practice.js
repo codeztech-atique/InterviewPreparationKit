@@ -1,30 +1,23 @@
-const debounce =  (func, delay) => {
-    let isDebounce;
+const debounce1 = (func, delay) => {
+    let inDebounce
     return function() {
-        const context = this;
-        const args = arguments;
-        clearTimeout(isDebounce);
-        isDebounce = setTimeout(() => func.apply(context, args), delay)
+      const context = this
+      const args = arguments
+      clearTimeout(inDebounce)
+      inDebounce = setTimeout(() => func.apply(context, args), delay)
     }
 }
 
-debounceBtn.addEventListener('click', debounce(function() {
+debounceBtn.addEventListener('click', debounce1(function() {
     console.info('Hey! It is', new Date().toUTCString());
 }, 3000));
 
-const throttle = (func, limit) => {
-    let inThrottle
-    return function() {
-      const args = arguments
-      const context = this
-      if (!inThrottle) {
-        func.apply(context, args)
-        inThrottle = true
-        setTimeout(() => inThrottle = false, limit)
-      }
-    }
+const debounce = (func, delay) => {
+  let debounce;
+  return function() {
+      const context = this;
+      const args = arguments;
+      clearTimeout(debounce) 
+      debounce = setTimeout(() => func.apply(context, args), delay)
+  }   
 }
-
-throttleBtn.addEventListener('click', throttle(function() {
-    return console.log('Hey! It is', new Date().toUTCString());
-}, 1000));

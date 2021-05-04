@@ -1,58 +1,28 @@
-
 // Using Array
-class QueueArray {
-   constructor() {
-       this.array = [];
-   }
-   enqueue(value) {
-       this.array.push(value);
-       return this;
-   }
-   dequeue() {
-       this.array.shift();
-       return this;
-   }
-   printData() {
-       console.log(this.array);
-   }
-}
 
-var queueData1 = new QueueArray();
-queueData1.enqueue(12);
-queueData1.enqueue(11);
-queueData1.enqueue(10);
-queueData1.printData();
-queueData1.dequeue();
-
-queueData1.printData();
-
-
-
-class QueueObject {
+class Queue {
     constructor() {
-        this.obj = {};
-        this.head = 0;
-        this.tail = 0;
+        this.arr = [];
     }
-    enqueue(value) {
-        this.obj[this.tail++] = value;
+    enqueue(data) {
+        this.arr.push(data);
         return this;
     }
     dequeue() {
-        delete this.obj[this.head];
-        this.head++;
+        this.arr.shift();
         return this;
     }
-    printData() {
-        console.log(this.obj);
+    printList() {
+        return this.arr;
     }
- }
+}
 
- var queueData2 = new QueueObject();
-queueData2.enqueue("Hello");
-queueData2.enqueue("Hey");
-queueData2.enqueue("How are you?");
-queueData2.printData();
-queueData2.dequeue();
-queueData2.dequeue();
-queueData2.printData();
+const queueArr = new Queue();
+queueArr.enqueue(5);
+queueArr.enqueue(16);
+queueArr.enqueue(93);
+queueArr.enqueue(33);
+queueArr.enqueue(85);
+queueArr.dequeue();
+queueArr.dequeue();
+console.log(queueArr.printList());

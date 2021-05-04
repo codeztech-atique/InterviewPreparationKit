@@ -32,11 +32,12 @@
 //   }
 // };
 
-class LinkedList {
+class DoublyLinkedList {
    constructor(value) {
       this.head = {
          value: value,
-         next: null
+         next: null,
+         prev: null
       };
       this.tail = this.head;
       this.count = 1;
@@ -44,18 +45,22 @@ class LinkedList {
    prepand(value) { // Inserting elements beginning of the LinkedList
       let newNode = {
          value: value,
-         next: null
+         next: null,
+         prev: null
       };
       newNode.next = this.head;
+      this.head.prev = newNode; // for doubly linkedList
       this.head = newNode;
       this.count++;
       return this;
    }
-   append(value) {
+   append(value) { // Inserting elements end of the LinkedList
       let newNode = {
          value: value,
-         next: null
+         next: null,
+         prev: null
       };
+      newNode.prev = this.tail; // for doubly linkedList
       this.tail.next = newNode;
       this.tail = newNode;
       this.count++;
@@ -68,12 +73,15 @@ class LinkedList {
       this.count++;
       let newNode = {
          value: value,
-         next: null
+         next: null,
+         prev:null
       };
       let leader = this.traverse(index-1);
       let nextNode = leader.next;
       leader.next = newNode;
+      newNode.prev = leader; // for doubly linkedList
       newNode.next = nextNode;
+      nextNode.prev = newNode; // for doubly linkedList
       return this.printList();
    }
    traverse(index) {
@@ -123,7 +131,7 @@ class LinkedList {
    }
 }
 
-const ll = new LinkedList(44);
+const ll = new DoublyLinkedList(44);
 ll.prepand(79);
 ll.prepand(77);
 ll.prepand(24);
@@ -134,9 +142,8 @@ ll.append(80);
 ll.insert(2, 90);
 ll.insert(200, 95);
 ll.remove(3);
-console.log(JSON.stringify(ll));
 console.log(ll.printList());
 console.log(ll.reverse());
 
-// 85 -> 18 -> 24 -> 77 -> 79 -> 44 -> 80 -> 95
-// 95 -> 80 -> 44 -> 79 -> 77 -> 24 -> 18 -> 85 // reverse
+// 85 <-> 18 <-> 24 <-> 77 <-> 79 <-> 44 <-> 80 <-> 95
+// 95 <-> 80 <-> 44 <-> 79 <-> 77 <-> 24 <-> 18 <-> 85 // reverse

@@ -16,6 +16,12 @@
 
 // Total No of Nodes - (2^4 - 1) = 15 nodes (if 4 level, if 3 level (2^3 -1) = 7 nodes)
 
+//        10
+//      /    \
+//     5      19
+//    /  \   /  \
+//   1    6 17  21
+
 class Node {
    constructor(value) {
       this.value = value;
@@ -23,40 +29,40 @@ class Node {
       this.right = null;
    }
 }
-
 class BinarySearchTree {
    constructor(value) {
       this.root = new Node(value);
       this.count = 1;
    }
-   size() {
-      return this.count;
-   }
    insert(value) {
+      this.count++;
       let newNode = new Node(value);
-      let searchTree = node => {
+      let traverse = node => {
          if(value < node.value) {
             if(!node.left) {
                node.left = newNode;
             } else {
-               searchTree(node.left);
+               traverse(node.left);
             }
          } else if(value > node.value) {
             if(!node.right) {
                node.right = newNode;
             } else {
-               searchTree(node.right);
+               traverse(node.right);
             }
          }
       }
-      searchTree(this.root);
+      traverse(this.root);
+   }
+   size() {
+      return this.count;
    }
    min() {
-     let currentNode = this.root;
-     while(currentNode.left) {
-        currentNode = currentNode.left;
-     }
-     return currentNode.value;
+      let currentNode = this.root;
+      while(currentNode.left) {
+         currentNode = currentNode.left;
+      }
+      return currentNode.value;
    }
    max() {
       let currentNode = this.root;
@@ -68,7 +74,7 @@ class BinarySearchTree {
    lookup(value) {
       let currentNode = this.root;
       while(currentNode) {
-         if(value == currentNode.value) {
+         if(value === currentNode.value) {
             return true;
          }
          if(value < currentNode.value) {
@@ -81,64 +87,64 @@ class BinarySearchTree {
    }
    dfsInorder() {
       // left, middle, right
-      //        15
+      //        10
       //      /    \
-      //     3      36
+      //     5      19
       //    /  \   /  \
-      //   2   12 28  39
+      //   1    6 17  21
       
-      // Output = 2,3,12,15,28,36,39
+      // Output = 1,5,6,10,17,19,21
       let result = [];
-      let traverse = node => {
-         if(node.left) traverse(node.left);
+      let searchtree = node => {
+         if(node.left) searchtree(node.left);
          result.push(node.value);
-         if(node.right) traverse(node.right);
+         if(node.right) searchtree(node.right);
       }
-      traverse(this.root);
+      searchtree(this.root);
       return result;
    }
    dfsPreorder() {
       // middle, left, right
-      //        15
+      //        10
       //      /    \
-      //     3      36
+      //     5      19
       //    /  \   /  \
-      //   2   12 28  39
+      //   1    6 17  21
       
-      // Output = 15,3,2,12,36,28,39
+      // Output = 10,5,1,6,19,17,21
       let result = [];
-      let traverse = node => {
+      let searchtree = node => {
          result.push(node.value);
-         if(node.left) traverse(node.left);
-         if(node.right) traverse(node.right);
+         if(node.left) searchtree(node.left);
+         if(node.right) searchtree(node.right);
       }
-      traverse(this.root);
+      searchtree(this.root);
       return result;
    }
    dfsPostorder() {
       // left, right, middle
-      //        15
+      //        10
       //      /    \
-      //     3      36
+      //     5      19
       //    /  \   /  \
-      //   2   12 28  39    
-      // Output = 2,12,3,28,39,36,15
+      //   1    6 17  21
+      // Output = 1,6,5,17,21,19,10
       let result = [];
-      let traverse = node => {
-         if(node.left) traverse(node.left);
-         if(node.right) traverse(node.right);
+      let searchtree = node => {
+         if(node.left) searchtree(node.left);
+         if(node.right) searchtree(node.right);
          result.push(node.value);
       }
-      traverse(this.root);
+      searchtree(this.root);
       return result;
    }
    bfs() {
-      //        15
+      //        10
       //      /    \
-      //     3      36
+      //     5      19
       //    /  \   /  \
-      //   2   12 28  39    
-      // Output - 15,3,36,2,12,28,39
+      //   1    6 17  21
+      // Output - 10,5,19,1,6,17,21
       let result = [];
       let queue = [];
       queue.push(this.root);
@@ -156,18 +162,17 @@ class BinarySearchTree {
 }
 
 
-const bst = new BinarySearchTree(15)
-bst.insert(3)
-bst.insert(36)
-bst.insert(2)
-bst.insert(12)
-bst.insert(28)
-bst.insert(39)
 
-// const bst = new BinarySearchTree(1)
-// bst.insert(3)
-// bst.insert(6)
-// bst.insert(8)
+
+
+
+const bst = new BinarySearchTree(10)
+bst.insert(5)
+bst.insert(1)
+bst.insert(6)
+bst.insert(19)
+bst.insert(17)
+bst.insert(21)
 
 console.log("BST Size: ",bst.size());
 
@@ -175,25 +180,24 @@ console.log("BST Min: ",bst.min());
 console.log("BST Max: ",bst.max());
 
 console.log("Is Found 2: ",bst.lookup(2));
-console.log("Is Found 9: ",bst.lookup(9));
+console.log("Is Found 6: ",bst.lookup(6));
 
 // DFS!!!
-// in-order: 2, 3, 12, 15, 28, 36, 39
+// in-order: 1, 5, 6, 10, 17, 19, 21
 console.log("Inorder:",bst.dfsInorder());
 
-// pre-order: 15, 3, 2, 12, 36, 28, 39
+// pre-order: 10, 5, 1, 6, 19, 17, 21
 console.log("Preorder:",bst.dfsPreorder());
 
-// post-order: 2, 12, 3, 28, 39, 36, 15
+// post-order: 1, 6, 5, 17, 21, 19, 10
 console.log("Postorder:",bst.dfsPostorder());
 
-// BFS!!!
-// 15, 3, 36, 2, 12, 28, 39
+// BFS: 10, 5, 19, 1, 6, 17, 21
 console.log("BFS:",bst.bfs());
 
 function getLeafCountOfBinaryTree(node) {
-  if(node == null) return 0;
-  if(node.left == null && node.right == null) return 1;
+  if(node==null) return 0;
+  if(node.left==null && node.right==null) return 1;
   return getLeafCountOfBinaryTree(node.left)+getLeafCountOfBinaryTree(node.right);
 }
 
@@ -204,11 +208,11 @@ function hightOfBinaryTree(node) {
       return 0;
    } else {
       let lTree = hightOfBinaryTree(node.left);
-      let RTree = hightOfBinaryTree(node.right);
-      if(lTree > RTree) {
-         return lTree+1;
+      let rTree = hightOfBinaryTree(node.right);
+      if(lTree > rTree) {
+         return lTree + 1;
       } else {
-         return RTree+1;
+         return rTree + 1;
       }
    }
 }
