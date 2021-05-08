@@ -1,37 +1,37 @@
-class Graph {
-    constructor() {
-      this.countNoOfNodes = 0;
-      this.adjecentList = {};
-    }
-    addVertex(node) {
-      this.adjecentList[node] = [];
-      this.countNoOfNodes++;
-    }
-    addEdge(node1, node2) {
-      this.adjecentList[node1].push(node2);
-      this.adjecentList[node2].push(node1);
-    }
-    showConnections() {
-      console.log(this.adjecentList);
-      console.log(this.countNoOfNodes);
-    }
+class UndirectedGraph {
+   constructor() {
+     this.noOfEdges = 0;
+     this.adjecentList = {};
+   }
+   addVertices(node) {
+    this.adjecentList[node] = [];
+    this.noOfEdges++;
+   }
+   addEdges(node1, node2) {
+     this.adjecentList[node1].push(node2);
+     this.adjecentList[node2].push(node1);
+   }
+   showConnections() {
+     console.log(this.adjecentList);
+   }
 }
+const undirectedGrph = new UndirectedGraph();
+undirectedGrph.addVertices('0');
+undirectedGrph.addVertices('1');
+undirectedGrph.addVertices('2');
+undirectedGrph.addVertices('3');
+undirectedGrph.addVertices('4');
+undirectedGrph.addVertices('5');
+undirectedGrph.addVertices('6');
 
-var myGraph = new Graph();
-  myGraph.addVertex('0');
-  myGraph.addVertex('1');
-  myGraph.addVertex('2');
-  myGraph.addVertex('3');
-  myGraph.addVertex('4');
-  myGraph.addVertex('5');
-  myGraph.addVertex('6');
-  myGraph.addEdge('3', '1'); 
-  myGraph.addEdge('3', '4'); 
-  myGraph.addEdge('4', '2'); 
-  myGraph.addEdge('4', '5'); 
-  myGraph.addEdge('1', '2'); 
-  myGraph.addEdge('1', '0'); 
-  myGraph.addEdge('0', '2'); 
-  myGraph.addEdge('6', '5');
-  
-  myGraph.showConnections(); 
+undirectedGrph.addEdges('3', '1');
+undirectedGrph.addEdges('3', '4');
+undirectedGrph.addEdges('4', '2');
+undirectedGrph.addEdges('4', '5');
+
+undirectedGrph.addEdges('1', '2');
+undirectedGrph.addEdges('1', '0');
+undirectedGrph.addEdges('0', '2');
+undirectedGrph.addEdges('6', '5');
+
+undirectedGrph.showConnections();

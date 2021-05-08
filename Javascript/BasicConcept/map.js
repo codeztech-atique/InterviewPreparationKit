@@ -15,14 +15,24 @@ console.log("Using Map 1: ", items1);
 console.log("Using Map 2: ", items2);
 
 
-Array.prototype.atMap = function(callback){
-    let newArray = [];
-    let x = this.length;
-    for (let i = 0; i < x; i++) {
-      let counter = callback(this[i]);
-      newArray.push(counter);
-    }
-    return newArray;
+// Array.prototype.atMap = function(callback){
+//     let newArray = [];
+//     let x = this.length;
+//     for (let i = 0; i < x; i++) {
+//       let counter = callback(this[i]);
+//       newArray.push(counter);
+//     }
+//     return newArray;
+// }
+
+Array.prototype.atMap = function(callback) {
+  let newArray = [];
+  let x = this.length;
+  for(let i=0;i<x;i++) {
+    let cnt = callback(this[i]);
+    newArray.push(cnt);
+  }
+  return newArray;
 }
 
 let arr = [1, 2, 3];
