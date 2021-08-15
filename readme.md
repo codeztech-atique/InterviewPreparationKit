@@ -1,3 +1,11 @@
+Datastructure Needs to Complete ---
+
+1. Dynamic Programming,
+2. Recussion and Back Tracking
+3. Divide and Concure
+
+
+
 Big O - https://www.bigocheatsheet.com/
 
 

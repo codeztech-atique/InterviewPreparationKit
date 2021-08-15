@@ -57,9 +57,19 @@
 
 // Find Repeating and Non Repeating Elements
 
-// var arr = [4,1,2,1,2];
-// console.log(repetingElements(arr))
-// console.log(nonRepetingElements(arr))
+const repetingElements = (arr) => {
+    result =  arr.filter((v, i) => arr.indexOf(v) === arr.lastIndexOf(v));
+    return result;
+}
+
+const nonRepetingElements = (arr) => {
+    result =  arr.filter((v, i) => arr.indexOf(v) !== arr.lastIndexOf(v));
+    return result;
+}
+
+var arr = [4,1,2,1,2];
+console.log(repetingElements(arr))
+console.log(nonRepetingElements(arr))
 
 
 
