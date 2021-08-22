@@ -39,6 +39,17 @@
 // console.log(arrStr.sort(arrStrSort));
 // console.log(arrNum.sort(arrSort))
 
+// Swap 2 number without using 3rd variable
+
+// var a = 2;
+// var b = 4;
+
+// a = a + b;
+// b = a - b;
+// a = a - b;
+
+// console.log(a,  b);
+
 // function parseData(str) {
 //     //return Function(`'use strict'; return (${str})`)()
 //     return Function (`return ${str}`)();
