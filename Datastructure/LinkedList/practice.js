@@ -43,7 +43,7 @@ class SinglyLinkedList {
       this.head = {
          value: value,
          next: null
-      };
+      }
       this.tail = this.head;
       this.length = 1;
    }
@@ -55,51 +55,33 @@ class SinglyLinkedList {
       return this;
    }
    append(value) {
-      let newNode = new Node(value);
-      this.tail.next = newNode;
-      this.tail = newNode;
+      var newEle = new Node(value); //same thing
+      this.tail.next = newEle;
+      this.tail = newEle;
       this.length++;
       return this;
    }
    insert(index, value) {
-      if(index > this.length) {
+      if(index >= this.length) {
          return this.append(value);
       }
-      this.length++;
       let newNode = new Node(value);
       let leaderNode = this.traverse(index-1);
       let nextNode = leaderNode.next;
       leaderNode.next = newNode;
       newNode.next = nextNode;
+      this.length++;
       return this.printList();
    }
    remove(index) {
       if(index > this.length) {
-         return "Invalid Input !!!"
+         return "Invalid Input!!!"
       }
       let leaderNode = this.traverse(index-1);
       let unwantedNode = leaderNode.next;
       leaderNode.next = unwantedNode.next;
       this.length--;
       return this.printList();
-   }
-   traverse(index) {
-      let counter = 0;
-      let currentNode = this.head;
-      while(index != counter) {
-         currentNode = currentNode.next;
-         counter++;
-      }
-      return currentNode;
-   }
-   printList() {
-      let result = [];
-      let currentNode = this.head;
-      while(currentNode!=null) {
-         result.push(currentNode.value);
-         currentNode = currentNode.next;
-      }
-      return result;
    }
    reverse() {
       if(!this.head.next) {
@@ -118,14 +100,33 @@ class SinglyLinkedList {
       this.head = first;
       return this.printList();
    }
+   traverse(index) {
+      let counter = 0;
+      let currentNode = this.head;
+      while(index !== counter) {
+         counter++;
+         currentNode = currentNode.next;
+      }
+      return currentNode;
+   }
+   printList() {
+      let result = [];
+      let currentNode = this.head;
+      while(currentNode!=null) {
+         result.push(currentNode.value);
+         currentNode = currentNode.next;
+      }
+      return result;
+   }
 }
+
 
 const ll = new SinglyLinkedList(85);
 ll.prepand(18);
 ll.prepand(24);
 ll.append(30);
 ll.append(35);
-ll.insert(3, 20);
+ll.insert(2, 20);
 console.log(ll.printList())
 ll.remove(2)
 console.log(ll.printList())

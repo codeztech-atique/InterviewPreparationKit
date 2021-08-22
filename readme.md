@@ -3,7 +3,18 @@ Datastructure Needs to Complete ---
 1. Dynamic Programming,
 2. Recussion and Back Tracking
 3. Divide and Concure
+4. Tower of Hanio
 
+
+Below is simple query to find the employee whose salary is highest. 
+
+    select *from employee where salary=(select Max(salary) from employee);
+
+We can nest the above query to find the second largest salary. 
+
+    select *from employee 
+    group by salary 
+    order by  salary desc limit 1,1;
 
 
 Big O - https://www.bigocheatsheet.com/
