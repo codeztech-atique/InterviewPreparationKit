@@ -13,4 +13,8 @@ Watch this for better understanding - https://www.toptal.com/developers/sorting-
 
 Follow the screenshot for better understanding
 
+
+Time Complexity - Cheat Sheet
+https://www.bigocheatsheet.com/
+
 Link - https://www.geeksforgeeks.org/analysis-of-different-sorting-techniques/

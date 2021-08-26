@@ -1,3 +1,5 @@
+// Time Complexity - O(n * 2)
+// Space Complexity - O(1) --> We are not creating any datastructure
 
 const bubbleSort = (arr) => {
     for(let i = 1; i < arr.length; i++) {
@@ -17,5 +19,6 @@ const bubbleSort = (arr) => {
     return arr;
 }
 
-const arr = [3, 6, 12, 44, 41, 90, 22, 1];
+const arr = [99, 44, 6, 2, 1, 5, 63, 87, 283, 4, 0];
+
 console.log(bubbleSort(arr))
