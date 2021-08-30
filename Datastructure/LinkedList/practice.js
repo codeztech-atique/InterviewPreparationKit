@@ -43,7 +43,7 @@ class SinglyLinkedList {
       this.head = {
          value: value,
          next: null
-      }
+      };
       this.tail = this.head;
       this.length = 1;
    }
@@ -55,9 +55,9 @@ class SinglyLinkedList {
       return this;
    }
    append(value) {
-      var newEle = new Node(value); //same thing
-      this.tail.next = newEle;
-      this.tail = newEle;
+      let newNode = new Node(value);
+      this.tail.next = newNode;
+      this.tail = newNode;
       this.length++;
       return this;
    }
@@ -75,12 +75,11 @@ class SinglyLinkedList {
    }
    remove(index) {
       if(index > this.length) {
-         return "Invalid Input!!!"
+         return "Invalid Length !!!"
       }
       let leaderNode = this.traverse(index-1);
       let unwantedNode = leaderNode.next;
       leaderNode.next = unwantedNode.next;
-      this.length--;
       return this.printList();
    }
    reverse() {
@@ -103,9 +102,9 @@ class SinglyLinkedList {
    traverse(index) {
       let counter = 0;
       let currentNode = this.head;
-      while(index !== counter) {
-         counter++;
+      while(index != counter) {
          currentNode = currentNode.next;
+         counter++;
       }
       return currentNode;
    }
@@ -127,6 +126,8 @@ ll.prepand(24);
 ll.append(30);
 ll.append(35);
 ll.insert(2, 20);
+ll.insert(200, 22);
+console.log(JSON.stringify(ll));
 console.log(ll.printList())
 ll.remove(2)
 console.log(ll.printList())
