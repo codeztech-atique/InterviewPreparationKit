@@ -1,6 +1,6 @@
 Types of Sorting ----- 
 
-1. Bubble Sort
+1. Bubble Sort - Done
 2. Insertion Sort
 3. Selection Sort
 4. Merge Sort
