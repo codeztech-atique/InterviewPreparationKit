@@ -64,12 +64,13 @@ class BinarySearchTree {
       return currentNode.value;
    }
 
-   hightOfBinaryTree() {
-      // Rules b = (n-1)/2
-      let totalNodes = this.count;
-      let height = Math.floor((totalNodes - 1) / 2); 
-      return height;
-   }
+   // hightOfBinaryTree() {
+   //    // Rules b = (n-1)/2
+   //    let totalNodes = this.count;
+   //    let height = Math.floor((totalNodes - 1) / 2); 
+   //    return height;
+   // }
+   
    lookup(value) {
       let currentNode = this.root;
       while(currentNode) {

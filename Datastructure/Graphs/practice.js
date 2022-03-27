@@ -4,8 +4,7 @@ class UndirectedGraph {
      this.adjecentList = {};
    }
    addVertices(node) {
-    this.adjecentList[node] = [];
-    this.noOfEdges++;
+     this.adjecentList[node] = [];
    }
    addEdges(node1, node2) {
      this.adjecentList[node1].push(node2);

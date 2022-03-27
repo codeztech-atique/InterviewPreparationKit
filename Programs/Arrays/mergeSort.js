@@ -7,6 +7,6 @@ const merge = (arr1, arr2) => {
     };
   
     return sorted.concat(arr1.slice().concat(arr2.slice()));
-  };
+};
   
-  console.log(merge([2, 5, 10, 57], [9, 12, 13]));
+console.log(merge([2, 5, 3, 0, 57], [9, 12, 13]));

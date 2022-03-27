@@ -4,7 +4,7 @@ Angular2+ Interview Questions -
 
 1. RXJS — Done
 2. Obsersable, Observer, Subscriber — Done
-3. Sharing data between components 3 method - Done
+3. Sharing data between components 4 method - Done
 4. How to define routes in Angular2+ - Done
 5. Diff between angular1 and angular2
 6. Dependency injection? https://www.youtube.com/watch?v=jWODteEGQmw
@@ -31,7 +31,9 @@ Angular2+ Interview Questions -
 26. Promise and observable diff - Done
 27. Dynamic component generate in angular8 -  https://stackoverflow.com/questions/39285550/what-is-impure-pipe-in-angular#:~:text=A%20pure%20pipe%20is%20only,or%20parameter(s)%20changes.
 28. AngularJs and Angular 2 Differance [Template Driven and Model Driven] - Done
-29. Learn SDLC Life cycle
+29. Subject vs Behavior Subject 
+30. How angular works - https://www.youtube.com/watch?v=jt32RlXUBuI
+31. Learn SDLC Life cycle
 
 
 

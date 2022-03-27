@@ -34,11 +34,7 @@ class Node {
   
   class LinkedList {
     constructor(value) {
-        this.head = {
-            value: value,
-            next: null,
-            prev: null    // for doubly linkedList
-        }
+        this.head = new Node(value);
         this.tail = this.head;
         this.length = 1;
     }

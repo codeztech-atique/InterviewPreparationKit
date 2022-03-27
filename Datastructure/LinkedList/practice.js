@@ -36,26 +36,26 @@ class Node {
    constructor(value) {
       this.value = value;
       this.next = null;
+      this.prev = null;
    }
 }
 class SinglyLinkedList {
    constructor(value) {
-      this.head = {
-         value: value,
-         next: null
-      };
+      this.head = new Node(value);
       this.tail = this.head;
       this.length = 1;
    }
    prepand(value) {
       let newNode = new Node(value);
       newNode.next = this.head;
+      this.head.prev = newNode; // for doubly linkedList
       this.head = newNode;
       this.length++;
       return this;
    }
    append(value) {
       let newNode = new Node(value);
+      newNode.prev = this.tail; // for doubly linkedList
       this.tail.next = newNode;
       this.tail = newNode;
       this.length++;
@@ -66,25 +66,29 @@ class SinglyLinkedList {
          return this.append(value);
       }
       let newNode = new Node(value);
-      let leaderNode = this.traverse(index-1);
-      let nextNode = leaderNode.next;
-      leaderNode.next = newNode;
+      let leader = this.traverse(index - 1);
+      let nextNode = leader.next;
+      leader.next = newNode;
+      newNode.prev = leader; // for doubly linkedList
       newNode.next = nextNode;
-      this.length++;
+      nextNode.prev = newNode // for doubly linkedList
       return this.printList();
    }
+
    remove(index) {
       if(index > this.length) {
-         return "Invalid Length !!!"
-      }
-      let leaderNode = this.traverse(index-1);
-      let unwantedNode = leaderNode.next;
-      leaderNode.next = unwantedNode.next;
+         return "Not possible !!!";
+      } 
+      let leader = this.traverse(index - 1);
+      let unwantedNode = leader.next;
+      leader.next = unwantedNode.next;
+      this.length--;
       return this.printList();
    }
+
    reverse() {
       if(!this.head.next) {
-         return this.head;
+        return this.head;
       }
       this.tail = this.head;
       let first = this.head;
@@ -99,9 +103,10 @@ class SinglyLinkedList {
       this.head = first;
       return this.printList();
    }
+
    traverse(index) {
-      let counter = 0;
       let currentNode = this.head;
+      let counter = 0;
       while(index != counter) {
          currentNode = currentNode.next;
          counter++;
@@ -111,7 +116,7 @@ class SinglyLinkedList {
    printList() {
       let result = [];
       let currentNode = this.head;
-      while(currentNode!=null) {
+      while(currentNode != null) {
          result.push(currentNode.value);
          currentNode = currentNode.next;
       }
@@ -119,23 +124,44 @@ class SinglyLinkedList {
    }
 }
 
+// Singly LinkedList
+// const ll = new SinglyLinkedList(85);
+// ll.prepand(18);
+// ll.prepand(24);
+// ll.append(30);
+// ll.append(35);
+// ll.insert(2, 20);
+// ll.insert(200, 22);
+// console.log();
+// console.log("Your LinkedList Are ========>");
+// console.log();
+// console.log(ll.printList())
+// console.log();
+// console.log("After Remove from LinkedList ========>");
+// console.log();
+// ll.remove(2);
+// console.log(ll.printList())
+// console.log();
+// console.log("After Reverse LinkedList ========>");
+// console.log();
+// ll.reverse();
+// console.log(ll.printList())
+// console.log();
+// console.log("Full LinkedList ========>");
+// console.log();
+// console.log(JSON.stringify(ll));
+// console.log();
 
-const ll = new SinglyLinkedList(85);
-ll.prepand(18);
-ll.prepand(24);
-ll.append(30);
-ll.append(35);
-ll.insert(2, 20);
-ll.insert(200, 22);
-console.log(JSON.stringify(ll));
-console.log(ll.printList())
-ll.remove(2)
-console.log(ll.printList())
-ll.reverse();
-console.log(ll.printList())
-
-console.log(JSON.stringify(ll));
-
+// Doubly LinkedList
+const ll = new SinglyLinkedList(10);
+ll.append(5);
+ll.append(52);
+ll.prepand(9);
+ll.insert(200, 99); //If the index location more than length it gonna insert last
+ll.insert(2, 19);
+console.log(ll);
+// console.log("Array--------------------->");
+console.log(ll.printList());
 
 // 85 <-> 18 <-> 24 <-> 77 <-> 79 <-> 44 <-> 80 <-> 95
 // 95 <-> 80 <-> 44 <-> 79 <-> 77 <-> 24 <-> 18 <-> 85 // reverse

@@ -16,11 +16,9 @@
 // function Arrsort(a, b) {
 //     return a.percentage - b.percentage;
 // }
+
 // console.log(obj.sort(Arrsort));
 
-// function arrSort(a, b) {
-//     return a - b;
-// }
 
 // function arrStrSort(a, b) {
 //     var nA = a.toLowerCase();
@@ -33,7 +31,10 @@
 //     }
 //     return 0;
 // }
+
+
 // const arrStr = ['sunny', 'atique', 'hello', 'bollow', 'collow'];
+// console.log(arrStr.sort(sortArr));
 
 // const arrNum = [4, 6, 1, 2, 44, 12, 11];
 // console.log(arrStr.sort(arrStrSort));
@@ -43,6 +44,7 @@
 
 // var a = 2;
 // var b = 4;
+
 
 // a = a + b;
 // b = a - b;
@@ -55,6 +57,10 @@
 //     return Function (`return ${str}`)();
 // }
 // function parseEquation(str) {
+//    return Function(`return ${str}`)()
+// }
+
+// function parseEquation(str) {
 //     return Function(`return ${str}`)()
 // }
 
@@ -62,13 +68,42 @@
 
 // Get all the subssrting  
 
+// const getAllSubstrings = (str) => {
+//     let result = [];
+//     for(let i=0;i<str.length;i++) {
+//         for(let j=i+1;j<str.length+1;j++) {
+//             result.push(str.slice(i, j))
+//         }
+//     }
+//     return result;
+// }
+
 // var theString = 'somerandomword';
 // console.log(getAllSubstrings(theString));
 
+// const findDuplicatesUsingHash = (arr) => {
+//    var obj = {}, dup;
+//    for(let i=0;i<arr.length;i++) {
+//        if(Object.values(obj).indexOf(arr[i]) > -1) {
+//         if(obj[arr[i]]) {
+//           dup = arr[i]; break;
+//        } else {
+//            obj[i] = arr[i]
+//        }
+//    }
+//    console.log(dup);
+//    return dup;
+// };
+
+// const findDuplicatesUsingHash = (arr) => {
+
+// }
 
 // Find the Duplicates Hash table
 // var arr2 = [22,5,3,90,3,44,1,2];
 // console.log(findDuplicatesUsingHash(arr2));
+
+// let sum = a => b => b ? sum(a + b) : a;
 
 // Recursion of Below Problem
 // console.log(sum(1)(2)(32)());
@@ -76,11 +111,27 @@
 // console.log(sum(1)(2)(12)());
 // console.log(sum(1)(2)());
 
-
+// let findCountOfEachElementsOfArray = (arr) => {
+//     let obj = {};
+//     arr.forEach((i) => {
+//       obj[i] = (obj[i] || 0) + 1
+//     });
+//     return obj
+// }
 
 // Find the count of each elements from the array
 // var arr = ["atique","atique","sunny","ahmed","sunny"];
 // console.log(findCountOfEachElementsOfArray(arr));
+
+// const findDistinct = (arr) => {
+//    var dist = [];
+//    for(let i=0;i<arr.length;i++) {
+//        if(dist.indexOf(arr[i]) === -1) {
+//            dist.push(arr[i])
+//        }
+//    }
+//    return dist;
+// };
 
 // Find the distint elements
 // var arrD = [4,1,2,1,5,5,5,5,4,7];
@@ -106,6 +157,8 @@
 //     return res;
 // };
 
+
+
 // console.log(factorialUsingRecurssion(6));
 // console.log(factorialUsingIterative(6));
 // Find Repeating and Non Repeating Elements
@@ -120,11 +173,10 @@
 //     return result;
 // }
 
+
 // var arr = [4,1,2,1,2];
 // console.log(repetingElements(arr))
 // console.log(nonRepetingElements(arr))
-
-
 
 
 // GCD and LCM
@@ -163,11 +215,68 @@
 // console.log("FiboNacci of a Number:", FiboNacci(8));
 // console.log("FiboNacci of a Number using recurssion:", FiboNacciRecurssion(8));
 
+// const SinglePrimeNumber = (number) => {
+//     if(number==1 || number==2) {
+//         return true;
+//     } else {
+//         for(let i=2;i<=Math.sqrt(number);i++) {
+//             if(number%i == 0) {
+//                 return false;
+//             }
+//         }
+//         return true;
+//     }
+// }
 
-// var arr = [1,2,4,7,11,12,15,17,19,21,27,29,43,44];
-// console.log(SinglePrimeNumber(7));
+// const MultiplePrimeNumber = (arr) => {
+//     var primeNums = arr.filter((number) => {
+//         if(number==1 || number==2) {
+//             return true;
+//         } else {
+//             for(let i=2;i<=Math.sqrt(number);i++) {
+//                 if(number%i == 0) {
+//                     return false;
+//                 }
+//             }
+//             return true;
+//         }
+//     });
+//     return primeNums;
+// }
 
-// console.log(MultiplePrimeNumber(arr));
+const SinglePrimeNumber = (data) => {
+    if(data <= 2) {
+        return true;
+    } else {
+        for(let i=2;i<=Math.sqrt(data);i++) {
+            if(data % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
+const MultiplePrimeNumber = (arr) => {
+    arr = arr.filter((data) => {
+        if(data <= 2) {
+            return true;
+        } else {
+            for(let i=2;i<=Math.sqrt(data);i++) {
+                if(data % i == 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    })
+    return arr;
+}
+
+var arr = [1,2,4,7,11,12,15,17,19,21,27,29,43,44];
+console.log(SinglePrimeNumber(17));
+
+console.log(MultiplePrimeNumber(arr));
 
 
 // Fibonacci -
@@ -188,3 +297,19 @@
 //Wave Sort
 // var waved = waveSort([73, 80, 40, 86, 14, 96, 10, 56, 61, 84, 82, 36, 85]);
 // console.log(waved);
+
+// function getMissingNo(arr) {
+//     let n = arr.length;
+//     let total = Math.floor((n + 1) * (n + 2) / 2);
+//     for (let i = 0; i < n; i++)
+//         total -= arr[i];
+//     return total;
+// }
+
+// Driver Code
+
+// let arr = [ 1, 3 ];
+
+// let miss = getMissingNo(arr);
+
+// console.log(miss)
