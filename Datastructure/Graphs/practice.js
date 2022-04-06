@@ -1,18 +1,21 @@
 class UndirectedGraph {
-   constructor() {
-     this.noOfEdges = 0;
-     this.adjecentList = {};
-   }
-   addVertices(node) {
-     this.adjecentList[node] = [];
-   }
-   addEdges(node1, node2) {
-     this.adjecentList[node1].push(node2);
-     this.adjecentList[node2].push(node1);
-   }
-   showConnections() {
-     console.log(this.adjecentList);
-   }
+    constructor() {
+      this.noOfEdges = 0;
+      this.adjacentList = {};
+    }
+
+    addVertices(node) {
+      this.adjacentList[node] = [];
+    }
+
+    addEdges(node1, node2) {
+      this.adjacentList[node1].push(node2);
+      this.adjacentList[node2].push(node1);
+    }
+    
+    showConnections() {
+      return console.log(this.adjacentList);
+    }
 }
 const undirectedGrph = new UndirectedGraph();
 undirectedGrph.addVertices('0');

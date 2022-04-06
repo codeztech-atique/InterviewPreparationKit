@@ -13,6 +13,7 @@
 //     }
 // ];
 
+
 // function Arrsort(a, b) {
 //     return a.percentage - b.percentage;
 // }
@@ -95,9 +96,6 @@
 //    return dup;
 // };
 
-// const findDuplicatesUsingHash = (arr) => {
-
-// }
 
 // Find the Duplicates Hash table
 // var arr2 = [22,5,3,90,3,44,1,2];
@@ -157,10 +155,10 @@
 //     return res;
 // };
 
-
-
 // console.log(factorialUsingRecurssion(6));
 // console.log(factorialUsingIterative(6));
+
+
 // Find Repeating and Non Repeating Elements
 
 // const repetingElements = (arr) => {
@@ -180,7 +178,21 @@
 
 
 // GCD and LCM
-// GCDandLCM(72, 120);
+
+// const gcdAndLcm = (m, n) => {
+//     let a = m, b = n;
+//     while(m != n) {
+//         if(m > n) {
+//             m = m - n;
+//         } else {
+//             n = n - m;
+//         }
+//     }
+//     console.log("GCD:", (m + n));
+//     console.log("LCM:", (a + b) / m);
+// }
+
+// gcdAndLcm(72, 120);
 // GCD:- 24
 // LCM:- 360
 
@@ -244,39 +256,10 @@
 //     return primeNums;
 // }
 
-const SinglePrimeNumber = (data) => {
-    if(data <= 2) {
-        return true;
-    } else {
-        for(let i=2;i<=Math.sqrt(data);i++) {
-            if(data % i == 0) {
-                return false;
-            }
-        }
-        return true;
-    }
-}
+// var arr = [1,2,4,7,11,12,15,17,19,21,27,29,43,44];
+// console.log(SinglePrimeNumber(17));
 
-const MultiplePrimeNumber = (arr) => {
-    arr = arr.filter((data) => {
-        if(data <= 2) {
-            return true;
-        } else {
-            for(let i=2;i<=Math.sqrt(data);i++) {
-                if(data % i == 0) {
-                    return false;
-                }
-            }
-            return true;
-        }
-    })
-    return arr;
-}
-
-var arr = [1,2,4,7,11,12,15,17,19,21,27,29,43,44];
-console.log(SinglePrimeNumber(17));
-
-console.log(MultiplePrimeNumber(arr));
+// console.log(MultiplePrimeNumber(arr));
 
 
 // Fibonacci -
@@ -294,7 +277,7 @@ console.log(MultiplePrimeNumber(arr));
 // Merge Sort
 // console.log(merge([2, 5, 10, 57], [9, 12, 13]));
 
-//Wave Sort
+// Wave Sort
 // var waved = waveSort([73, 80, 40, 86, 14, 96, 10, 56, 61, 84, 82, 36, 85]);
 // console.log(waved);
 

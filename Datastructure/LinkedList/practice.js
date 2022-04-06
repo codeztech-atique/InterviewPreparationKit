@@ -45,51 +45,47 @@ class SinglyLinkedList {
       this.tail = this.head;
       this.length = 1;
    }
-   prepand(value) {
+   append(value) {
       let newNode = new Node(value);
       newNode.next = this.head;
-      this.head.prev = newNode; // for doubly linkedList
+      this.head.prev = newNode; // Doubly LinkedList
       this.head = newNode;
       this.length++;
       return this;
    }
-   append(value) {
+   prepand(value) {
       let newNode = new Node(value);
-      newNode.prev = this.tail; // for doubly linkedList
       this.tail.next = newNode;
+      newNode.prev = this.tail; // Doubly LinkedList
       this.tail = newNode;
       this.length++;
       return this;
    }
-   insert(index, value) {
+   insert(value, index) {
       if(index >= this.length) {
          return this.append(value);
       }
       let newNode = new Node(value);
-      let leader = this.traverse(index - 1);
-      let nextNode = leader.next;
-      leader.next = newNode;
-      newNode.prev = leader; // for doubly linkedList
+      let leaderNode = this.traverse(index - 1);
+      let nextNode = leaderNode.next;
+      leaderNode.next = newNode;
+      newNode.prev = leaderNode; // Doubly LinkedList
       newNode.next = nextNode;
-      nextNode.prev = newNode // for doubly linkedList
+      nextNode.prev = newNode; // Doubly LinkedList
+      this.length++;
       return this.printList();
    }
-
    remove(index) {
       if(index > this.length) {
-         return "Not possible !!!";
-      } 
-      let leader = this.traverse(index - 1);
-      let unwantedNode = leader.next;
-      leader.next = unwantedNode.next;
+         return "Invalid Input !!!"
+      }
+      let leaderNode = this.traverse(index - 1);
+      let unwantedNode = leaderNode.next;
+      leaderNode.next = unwantedNode.next;
       this.length--;
       return this.printList();
    }
-
    reverse() {
-      if(!this.head.next) {
-        return this.head;
-      }
       this.tail = this.head;
       let first = this.head;
       let second = first.next;
@@ -103,13 +99,12 @@ class SinglyLinkedList {
       this.head = first;
       return this.printList();
    }
-
    traverse(index) {
+      let count = 0;
       let currentNode = this.head;
-      let counter = 0;
-      while(index != counter) {
+      while(index != count) {
+         count++;
          currentNode = currentNode.next;
-         counter++;
       }
       return currentNode;
    }
