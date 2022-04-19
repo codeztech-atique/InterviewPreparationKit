@@ -20,3 +20,20 @@ Function.prototype.myOwnBind = function(newThis) {
       return boundTargetFunction.apply(newThis);
     };
 };
+
+// const person = {
+//   firstName:"John",
+//   lastName: "Doe",
+//   fullName: function () {
+//     return this.firstName + " " + this.lastName;
+//   }
+// }
+
+// const member = {
+//   firstName:"Hege",
+//   lastName: "Nilsen",
+// }
+
+// let fullName = person.fullName;
+
+// console.log(fullName())

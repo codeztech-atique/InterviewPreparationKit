@@ -35,8 +35,8 @@
 class Node {
    constructor(value) {
       this.value = value;
-      this.next = null;
       this.prev = null;
+      this.next = null;
    }
 }
 class SinglyLinkedList {
@@ -45,44 +45,33 @@ class SinglyLinkedList {
       this.tail = this.head;
       this.length = 1;
    }
-   append(value) {
-      let newNode = new Node(value);
-      newNode.next = this.head;
-      this.head.prev = newNode; // Doubly LinkedList
-      this.head = newNode;
-      this.length++;
-      return this;
-   }
    prepand(value) {
       let newNode = new Node(value);
       this.tail.next = newNode;
-      newNode.prev = this.tail; // Doubly LinkedList
+      newNode.prev = this.tail.prev; //here
       this.tail = newNode;
       this.length++;
       return this;
    }
-   insert(value, index) {
+   append(value) {
+      let newNode = new Node(value);
+      newNode.next = this.head;
+      this.head.prev = newNode; // here
+      this.head = newNode;
+      this.length++;
+      return this;
+   }
+   insert(index, value) {
       if(index >= this.length) {
-         return this.append(value);
+         return this.prepand(index);
       }
       let newNode = new Node(value);
       let leaderNode = this.traverse(index - 1);
-      let nextNode = leaderNode.next;
-      leaderNode.next = newNode;
-      newNode.prev = leaderNode; // Doubly LinkedList
-      newNode.next = nextNode;
-      nextNode.prev = newNode; // Doubly LinkedList
-      this.length++;
-      return this.printList();
-   }
-   remove(index) {
-      if(index > this.length) {
-         return "Invalid Input !!!"
-      }
-      let leaderNode = this.traverse(index - 1);
       let unwantedNode = leaderNode.next;
-      leaderNode.next = unwantedNode.next;
-      this.length--;
+      leaderNode.next = newNode;
+      newNode.prev = leaderNode; // here
+      newNode.next = unwantedNode;
+      unwantedNode.prev = newNode; //here
       return this.printList();
    }
    reverse() {
@@ -97,21 +86,29 @@ class SinglyLinkedList {
       }
       this.head.next = null;
       this.head = first;
+   }
+   remove(index) {
+      if(index > this.length) {
+         return "Invaild Input !!!"
+      }
+      let leader = this.traverse(index - 1);
+      let unwantedNode = leader.next;
+      leader.next = unwantedNode.next;
       return this.printList();
    }
    traverse(index) {
-      let count = 0;
+      let counter = 0;
       let currentNode = this.head;
-      while(index != count) {
-         count++;
+      while(index != counter) {
+         counter++;
          currentNode = currentNode.next;
       }
       return currentNode;
    }
    printList() {
-      let result = [];
       let currentNode = this.head;
-      while(currentNode != null) {
+      let result = [];
+      while(currentNode !== null) {
          result.push(currentNode.value);
          currentNode = currentNode.next;
       }
