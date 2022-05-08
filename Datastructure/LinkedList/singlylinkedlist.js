@@ -2,8 +2,8 @@
 
 // Formula - 
 
-// Prepend -> O(1) -> Find the Element Beginning of the Array
-// Append  -> O(1) -> Find the Element End of the Array
+// Prepend -> O(1) -> Insert the Element Beginning of the List
+// Append  -> O(1) -> Insert the Element End of the List
 // Lookup  -> O(n) -> Search for a Element in the Linked list
 // Insert  -> O(n) -> Insert a Element in the Linked list
 // Delete  -> O(n) -> Delete a Element from the List 
