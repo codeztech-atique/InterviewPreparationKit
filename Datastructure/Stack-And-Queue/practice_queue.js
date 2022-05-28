@@ -1,5 +1,16 @@
 // Using Array
 
+
+// Queue --> First in first Out
+
+// --> Enqueue ---> Push the data in the queue ---> ()
+// --> Dequeue ---> Left from the queue ---> ()
+// --> 
+
+
+
+
+
 class Queue {
     constructor() {
         this.arr = [];

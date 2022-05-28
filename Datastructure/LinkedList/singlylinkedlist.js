@@ -8,7 +8,7 @@
 // Insert  -> O(n) -> Insert a Element in the Linked list
 // Delete  -> O(n) -> Delete a Element from the List 
 
-// 10->5->16     (10 is head and 16 is tail)
+// 10->5->16   (10 is head and 16 is tail)
 
 // Create the below linked list:
 // myLinkedList = {
@@ -40,18 +40,15 @@ class LinkedList {
       this.tail = this.head;
       this.length = 1;
   }
-  append(value) {
-    var newEle = new Node(value); //same thing
+  append(value) { // Insert to the end of the list
+    var newEle = new Node(value); //Intanciting the class
     this.tail.next = newEle;
     this.tail = newEle;
     this.length++;
     return this;
   }
-  prepend(value) {
-      const newEle = {
-          value: value,
-          next: null,
-      }
+  prepend(value) { // Insert to the beginning of the list
+      const newEle = new Node(value);
       newEle.next = this.head;
       this.head = newEle;
       this.length++;
@@ -61,10 +58,7 @@ class LinkedList {
       if(index >= this.length) {
           return this.append(value);
       }
-      const newNode = {
-          value: value,
-          next: null,
-      }
+      const newNode = new Node(value);
       const leader = this.traverSe(index-1);
       const holdingPointer = leader.next;
       leader.next = newNode;
@@ -74,7 +68,7 @@ class LinkedList {
   }
   removeData(index) {
       if(index > this.length) {
-          return "Item can't be larger that array length";
+          return "Item can't be larger that list length";
       }
       const leader = this.traverSe(index-1);
       const unwantedNode = leader.next;
@@ -135,4 +129,5 @@ myLinkedList.removeData(2);
 console.log(myLinkedList.printList());
 console.log("Reverse LinkedList--------------------->");
 myLinkedList.reverse();
-console.log(JSON.stringify(myLinkedList));
+console.log(myLinkedList.printList());
+// console.log(JSON.stringify(myLinkedList));

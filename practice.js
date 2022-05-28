@@ -296,3 +296,25 @@
 // let miss = getMissingNo(arr);
 
 // console.log(miss)
+
+const str = "Cyclone Asani likely to asdfasdfasdfasdfasdfasdfasdf intensify further, move towards Odisha and Andhra Pradesh.";
+const stringOfArray = str.split(" ");
+
+let max = 0;
+let finalString;
+
+console.log(stringOfArray);
+
+for(let i = 0; i < stringOfArray.length; i++) {
+   if(stringOfArray[i].length >= max) {
+       max = stringOfArray[i].length;
+       finalString = stringOfArray[i];
+   }
+}
+
+const arr = [5, 1, 2, 88, 'apple', 's', 73, 88, 'G', 2, 90, 10, "Hello", 'ssp'];
+
+// 1st Eleminated characters and string from array --> 1st Promise
+// Take distinct value from array --> 2nd Promise 
+
+console.log(finalString, max);

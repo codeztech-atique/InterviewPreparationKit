@@ -1,4 +1,13 @@
-// Using Array
+// Stack
+
+// Mug --> Buscuits
+
+// | 1, 1, 1, 1 - top |  -- Last In and First Out -- LIFO
+
+
+// --> Push ---> Keeeping the buscuits
+// --> Pop ---> Removing the buscuits
+// --> Peek ---> Wanted get the last element from the Stack
 
 class Stack {
    constructor() {

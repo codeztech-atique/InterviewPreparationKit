@@ -9,6 +9,10 @@
 // We can do something like this - myarr[myarr.length - 1] <----- Peek
 
 
+
+
+
+
 const stackExample = (mystr) => {
     var myarr = [];
     var str = "";
@@ -20,7 +24,7 @@ const stackExample = (mystr) => {
     console.log("Arr:", myarr);
     // Remove from the Stack
     for(var i=0;i<mystr.length;i++) {
-       console.log(myarr.peek()); 
+    //    console.log(myarr.peek()); 
        str += myarr.pop()
     }
     
@@ -31,7 +35,30 @@ const stackExample = (mystr) => {
     }
 };
 
-console.log("Is PalinDrome:", stackExample('racecar'));
+console.log("Is PalinDrome:", stackExample('racecar'));  // Palindrom or not
+
+// Given Input - racecar
+
+// |r|
+// |a|
+// |c|
+// |e|
+// |c|
+// |a|
+// |r|
+
+// Pop -- variable - after reverse --> racecar
+// |r|
+// |a|
+// |c|
+// |e|
+// |c|
+// |a|
+// |r|
+
+// let palindromStatus = givenInput === afterReverse ? true : false || Ternary oparator
+
+
 
 
 
