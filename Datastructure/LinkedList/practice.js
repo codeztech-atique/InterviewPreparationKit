@@ -35,7 +35,6 @@
 class Node {
    constructor(value) {
       this.value = value;
-      this.prev = null;
       this.next = null;
    }
 }
@@ -47,31 +46,38 @@ class SinglyLinkedList {
    }
    prepand(value) {
       let newNode = new Node(value);
-      this.tail.next = newNode;
-      newNode.prev = this.tail.prev; //here
-      this.tail = newNode;
+      newNode.next = this.head;
+      this.head = newNode;
       this.length++;
       return this;
    }
    append(value) {
       let newNode = new Node(value);
-      newNode.next = this.head;
-      this.head.prev = newNode; // here
-      this.head = newNode;
+      this.tail.next = newNode;
+      this.tail = newNode;
       this.length++;
       return this;
    }
    insert(index, value) {
+      this.length++;
       if(index >= this.length) {
-         return this.prepand(index);
+         return this.append(value);
       }
       let newNode = new Node(value);
       let leaderNode = this.traverse(index - 1);
-      let unwantedNode = leaderNode.next;
+      let nextNode = leaderNode.next;
       leaderNode.next = newNode;
-      newNode.prev = leaderNode; // here
-      newNode.next = unwantedNode;
-      unwantedNode.prev = newNode; //here
+      newNode.next = nextNode;
+      return this.printList();
+   }
+   remove(index) {
+      if(index > this.length) {
+         return "Invalid Length !!!";
+      }
+      let leaderNode = this.traverse(index - 1);
+      let unwantedNode = leaderNode.next;
+      leaderNode.next = unwantedNode.next;
+      this.length--;
       return this.printList();
    }
    reverse() {
@@ -86,74 +92,68 @@ class SinglyLinkedList {
       }
       this.head.next = null;
       this.head = first;
-   }
-   remove(index) {
-      if(index > this.length) {
-         return "Invaild Input !!!"
-      }
-      let leader = this.traverse(index - 1);
-      let unwantedNode = leader.next;
-      leader.next = unwantedNode.next;
       return this.printList();
    }
    traverse(index) {
-      let counter = 0;
-      let currentNode = this.head;
-      while(index != counter) {
-         counter++;
-         currentNode = currentNode.next;
-      }
-      return currentNode;
+       let counter = 0;
+       let currentNode = this.head;
+       while(index != counter) {
+          counter++;
+          currentNode = currentNode.next;
+       }
+       return currentNode;
    }
    printList() {
-      let currentNode = this.head;
-      let result = [];
-      while(currentNode !== null) {
-         result.push(currentNode.value);
-         currentNode = currentNode.next;
-      }
-      return result;
+       let result = [];
+       let currentNode = this.head;
+       while(currentNode != null) {
+          result.push(currentNode.value);
+          currentNode = currentNode.next;
+       }
+       return result;
    }
 }
 
 // Singly LinkedList
-// const ll = new SinglyLinkedList(85);
-// ll.prepand(18);
-// ll.prepand(24);
-// ll.append(30);
-// ll.append(35);
-// ll.insert(2, 20);
-// ll.insert(200, 22);
-// console.log();
-// console.log("Your LinkedList Are ========>");
-// console.log();
-// console.log(ll.printList())
-// console.log();
-// console.log("After Remove from LinkedList ========>");
-// console.log();
-// ll.remove(2);
-// console.log(ll.printList())
-// console.log();
-// console.log("After Reverse LinkedList ========>");
-// console.log();
-// ll.reverse();
-// console.log(ll.printList())
-// console.log();
-// console.log("Full LinkedList ========>");
-// console.log();
-// console.log(JSON.stringify(ll));
-// console.log();
+const ll = new SinglyLinkedList(85);
+ll.prepand(18);
+ll.prepand(24);
+ll.append(30);
+ll.append(35);
+ll.insert(2, 20);
+ll.insert(200, 22);
+console.log();
+console.log("Your LinkedList Are ========>");
+console.log();
+console.log(ll.printList())
+console.log();
+console.log("After Remove from LinkedList ========>");
+console.log();
+ll.remove(2);
+console.log(ll.printList())
+console.log();
+console.log("After Reverse LinkedList ========>");
+console.log();
+ll.reverse();
+console.log(ll.printList())
+console.log();
+console.log("Full LinkedList ========>");
+console.log();
+console.log(JSON.stringify(ll));
+console.log();
 
 // Doubly LinkedList
-const ll = new SinglyLinkedList(10);
-ll.append(5);
-ll.append(52);
-ll.prepand(9);
-ll.insert(200, 99); //If the index location more than length it gonna insert last
-ll.insert(2, 19);
-console.log(ll);
-// console.log("Array--------------------->");
-console.log(ll.printList());
+// const ll = new SinglyLinkedList(10);
+// ll.append(5);
+// ll.append(52);
+// ll.prepand(9);
+// ll.insert(200, 99); //If the index location more than length it gonna insert last
+// ll.insert(2, 19);
+// console.log(ll);
+// ll.remove(2);
+// ll.reverse();
+// // console.log("Array--------------------->");
+// console.log(ll.printList());
 
 // 85 <-> 18 <-> 24 <-> 77 <-> 79 <-> 44 <-> 80 <-> 95
 // 95 <-> 80 <-> 44 <-> 79 <-> 77 <-> 24 <-> 18 <-> 85 // reverse

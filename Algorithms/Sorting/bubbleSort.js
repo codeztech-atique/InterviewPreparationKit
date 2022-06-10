@@ -1,6 +1,11 @@
 // Time Complexity - O(n * 2)
 // Space Complexity - O(1) --> We are not creating any datastructure
 
+// [99, 44, 6, 2, 1, 5, 63, 87, 283, 4, 0];
+// [44, 99, 6, 2, 1, 5, 63, 87, 283, 4, 0]; --> New Array -> 1st Step
+// [44, 6, 99, 2, 1, 5, 63, 87, 283, 4, 0]; --> New Array -> 1st Step
+// [6, 44, 99, 2, 1, 5, 63, 87, 283, 4, 0]; --> New Array -> 1st Step
+
 const bubbleSort = (arr) => { // [99, 44, 6, 2, 1, 5, 63, 87, 283, 4, 0];
     for(let i = 1; i < arr.length; i++) {
         if(arr[i] < arr[i - 1]) {
@@ -19,8 +24,6 @@ const bubbleSort = (arr) => { // [99, 44, 6, 2, 1, 5, 63, 87, 283, 4, 0];
     return arr;
 }
 
-const arr = [99, 44, 6, 2, 1, 5, 63, 87, 283, 4, 0];
-console.log(bubbleSort(arr));
 
 // Bubble sort -->
 
@@ -40,5 +43,8 @@ console.log(bubbleSort(arr));
 //     return arr;
 // }
 
+const arr = [99, 44, 6, 2, 1, 5, 63, 87, 283, 4, 0];
+
+console.log(bubbleSort(arr));
 
 

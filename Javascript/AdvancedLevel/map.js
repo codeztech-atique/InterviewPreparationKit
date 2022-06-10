@@ -1,9 +1,11 @@
 // Javascript Map
-const chalk = require('chalk');
+// const chalk = require('chalk');
 
 const map = new Map();
 
 map.set('foo', 123);
+
+console.log(map);
 // console.log(chalk.gray("Map values:"), map.get('foo'));
 
 // console.log(chalk.green("Map has:"), map.has('foo')); // True
