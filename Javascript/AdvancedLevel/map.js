@@ -3,9 +3,14 @@
 
 const map = new Map();
 
-map.set('foo', 123);
+map.set('foo2', 123);
+map.set('foo3', 13);
 
 console.log(map);
+
+map.forEach((value, key) => {
+    console.log(key + " = " + value);
+  });
 // console.log(chalk.gray("Map values:"), map.get('foo'));
 
 // console.log(chalk.green("Map has:"), map.has('foo')); // True
