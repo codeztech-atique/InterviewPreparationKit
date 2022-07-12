@@ -13,7 +13,7 @@
 //         name: 'Sonu',
 //         percentage: 20
 //     }
-// ]
+// ];
 
 
 // console.log(array.sort(arraySort));
@@ -38,13 +38,11 @@
 // let a = 2;
 // let b = 33;
 
-
 // console.log(a, b);
 
 // Parse the Equations
 
-
-// console.log(parseEquation(`1+3+5+(5-3)+10`))
+// console.log(parseEquation(`1+3+5+(5-3)+10+11`))
 
 
 // var theString = 'somerandomword';
@@ -52,12 +50,16 @@
 
 // --------------------------------------------------------------------------
 
-// // Find the Duplicates Hash table
+// Find the Duplicates Hash table
+
+
 // var arr2 = [22,5,3,90,32,44,1,90,2,2];
 
 // console.log(findDuplicatesUsingHash(arr2));
 
 // // Recursion of Below Problem
+
+
 
 // console.log(sum(1)(2)(32)());
 // console.log(sum(1)(2)(22)());
@@ -65,9 +67,10 @@
 // console.log(sum(1)(2)());
 
 
-// // Find the count of each elements from the array
+// Find the count of each elements from the array
 // var arr = ["atique","atique","sunny","ahmed","sunny","atique"];
 // console.log(findCountOfEachElementsOfArray(arr));
+
 
 
 
@@ -85,15 +88,7 @@
 
 // Find Repeating and Non Repeating Elements
 
-// function repetingElements(arr) {
-//     result = arr.filter((v, i) => arr.indexOf(v) != arr.lastIndexOf(v));
-//     return result;
-// }
 
-// function nonRepetingElements(arr) {
-//     result = arr.filter((v, i) => arr.indexOf(v) == arr.lastIndexOf(v));
-//     return result;
-// }
 
 // var arr = [4,1,2,1,2];
 // console.log(repetingElements(arr))
@@ -102,20 +97,65 @@
 
 // GCD and LCM
 
-
 // gcdAndLcm(72, 120);
 // GCD:- 24
 // LCM:- 360
+
+function FiboNacci(num) {
+    let a = 0, b = 1, c = 0;
+    if(num < 2) {
+        return 1;
+    }
+    for(let i = 2; i <= num; i++) {
+        c = a + b;
+        console.log(a," =====> ", b);
+        a = b;
+        b = c;
+    }
+    return c;
+}
 
 // console.log("FiboNacci of a Number:", FiboNacci(8));
 // console.log("FiboNacci of a Number using recurssion:", FiboNacciRecurssion(8));
 
 // Prime Number Logic
 
-// var arr = [1,2,4,7,11,12,15,17,19,21,27,29,43,44,997];
-// console.log(SinglePrimeNumber(17));
 
-// console.log(MultiplePrimeNumber(arr));
+function SinglePrimeNumber(num) {
+   if(num < 2) {
+        return true;
+   } 
+   else {
+        for(let i = 2; i <= Math.sqrt(num); i++) {
+            if(num % i == 0) {
+                return false;
+            }
+        }
+        return true;
+   }
+}
+
+function MultiplePrimeNumber(arr) {
+    arr = arr.filter((num) => {
+        if(num < 2) {
+            return true;
+        } 
+        else {
+                for(let i = 2; i <= Math.sqrt(num); i++) {
+                    if(num % i == 0) {
+                        return false;
+                    }
+                }
+                return true;
+        }
+    })
+    return arr;
+}
+
+var arr = [1,2,4,7,11,12,15,17,19,21,27,29,43,44,997];
+console.log(SinglePrimeNumber(19));
+
+console.log(MultiplePrimeNumber(arr));
 
 // function getMissingNo(arr) {
  

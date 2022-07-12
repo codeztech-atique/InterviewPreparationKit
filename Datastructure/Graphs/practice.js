@@ -1,18 +1,17 @@
 class UndirectedGraph {
    constructor() {
      this.noOfEdges = 0;
-     this.adjecencyList = {};
+     this.adjacencylist = {};
    }
    addVertices(node) {
-     this.adjecencyList[node] = [];
-     this.noOfEdges++;
+    this.adjacencylist[node] = [];
    }
    addEdges(node1, node2) {
-     this.adjecencyList[node1].push(node2);
-     this.adjecencyList[node2].push(node1);
+    this.adjacencylist[node1].push(node2);
+    this.adjacencylist[node2].push(node1);
    }
    showConnections() {
-     return this.adjecencyList;
+    return this.adjacencylist;
    }
 }
 const undirectedGrph = new UndirectedGraph();

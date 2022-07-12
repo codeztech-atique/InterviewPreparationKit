@@ -52,3 +52,71 @@ The interviews will have NodeJs, ExpressJs, Data Structure(Linked List, Stack, Q
 7. DS - Sorting, Singly LinkedList, Binary Tree, Stack, Queue
 8. AWS - EC2, Lambda - Default time slot
 9. // Recursion of Below Problem // console.log(sum(1)(2)(32)());
+
+
+Design a multi-publisher - multi-consumer which can stream in and out objects. This system should be able to handle more than 1 publisher and 1 consumer. Consumers should be able to reconnect to the system and seek from where they last connected. Consumers should've the choice of consuming from different publishers. Once all connected consumers have consumed data, the system should evict any data. Describe all the necessary classes, entities & efficient strategies required to come up with this system.﻿
+
+
+class UserRole {}
+
+
+
+// role - 
+
+// admin 
+
+// publisher
+
+// freelancer 
+
+
+
+class Publisher {
+
+     1. Create Publisher ( role,
+
+ category )
+
+     2. Create Bulk Publisher
+
+     3. Publish Content 
+
+}
+
+
+
+class Consumer {
+
+    1. Create Consumer
+
+    2. Create Bulk of Consumer.
+
+}
+
+
+
+class MainCatergory {}
+
+class SubCategory {}
+
+
+
+
+
+class Store {
+    1. Who are the consumers 
+
+    2. Who are the publishers
+
+    3. What are the data
+}
+
+class ContentPublish {}
+
+class UpdateContent {}
+
+class Template {}
+
+class Widget {}
+
+class MainCategory {}
