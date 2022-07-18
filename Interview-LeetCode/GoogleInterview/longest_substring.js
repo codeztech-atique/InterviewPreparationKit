@@ -54,5 +54,4 @@ const str = "abcabcbb";
 // const str = "aab"; // 2
 // const str = "dvdf"; // 3
 
-// 317 / 987 test cases passed.
 console.log(longestSubstring(str));
