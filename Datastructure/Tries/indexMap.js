@@ -67,7 +67,7 @@ class Trie {
         return true;
     }
 
-    remove(word) {
+    remove(word) { // We only setup isWordEnd as false
         let curr = this.root;
         for(let i = 0; i < word.length; i++) {
             let charToFindAndDelete = word[i];
