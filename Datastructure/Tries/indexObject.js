@@ -1,4 +1,4 @@
-// This is Tries in Data Structure 
+// This is Tries in Data Structure using object
 
 // Visualization -  https://www.cs.usfca.edu/~galles/visualization/Trie.html
 // Video - https://www.youtube.com/watch?v=Sc80DNJfQs0
@@ -20,7 +20,7 @@
 
 class Node {
     constructor() {
-        this.children = new Map();
+        this.children = {};
         this.isWordEnd = false;
     }
 }
