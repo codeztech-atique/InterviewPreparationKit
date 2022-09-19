@@ -20,17 +20,16 @@
 
 // console.log(obj.sort(Arrsort));
 
-
-// function arrStrSort(a, b) {
-//     var nA = a.toLowerCase();
-//     var nB = b.toLowerCase();
-//     if(nA < nB) {
+// function sortArr(a, b) {
+//     let aT = a.toLowerCase();
+//     let bT = b.toLowerCase();
+//     if(aT < bT) {
 //         return -1;
-//     }
-//     else if(nA > nB) {
+//     } else if(aT > bT) {
 //         return 1;
+//     } else {
+//         return 0;
 //     }
-//     return 0;
 // }
 
 
@@ -53,19 +52,11 @@
 
 // console.log(a,  b);
 
-// function parseData(str) {
-//     //return Function(`'use strict'; return (${str})`)()
-//     return Function (`return ${str}`)();
-// }
 // function parseEquation(str) {
-//    return Function(`return ${str}`)()
+//     return new Function(`return ${str}`)();
 // }
 
-// function parseEquation(str) {
-//     return Function(`return ${str}`)()
-// }
-
-// console.log(parseEquation(`1+3+5+(5-3)`));
+// console.log(parseEquation(`1+3+5+(5-3)+10`));
 
 // Get all the subssrting  
 
@@ -78,6 +69,7 @@
 //     }
 //     return result;
 // }
+
 
 // var theString = 'somerandomword';
 // console.log(getAllSubstrings(theString));
@@ -97,6 +89,17 @@
 // };
 
 
+// const findDuplicatesUsingHash = (arr) => {
+//     let obj = {};
+//     for(let i = 0; i < arr.length; i++) {
+//         if(Object.values(obj).indexOf(arr[i]) > -1) {
+//             return arr[i];
+//         } else {
+//             obj[i] = arr[i]
+//         }
+//     }
+// }
+
 // Find the Duplicates Hash table
 // var arr2 = [22,5,3,90,3,44,1,2];
 // console.log(findDuplicatesUsingHash(arr2));
@@ -109,11 +112,11 @@
 // console.log(sum(1)(2)(12)());
 // console.log(sum(1)(2)());
 
-// let findCountOfEachElementsOfArray = (arr) => {
+// const findCountOfEachElementsOfArray = (arr) => {
 //     let obj = {};
-//     arr.forEach((i) => {
-//       obj[i] = (obj[i] || 0) + 1
-//     });
+//     arr.filter((i) => {
+//         obj[i] = ( obj[i] || 0 ) + 1;
+//     })
 //     return obj
 // }
 
@@ -121,15 +124,17 @@
 // var arr = ["atique","atique","sunny","ahmed","sunny"];
 // console.log(findCountOfEachElementsOfArray(arr));
 
+
 // const findDistinct = (arr) => {
-//    var dist = [];
-//    for(let i=0;i<arr.length;i++) {
-//        if(dist.indexOf(arr[i]) === -1) {
-//            dist.push(arr[i])
-//        }
-//    }
-//    return dist;
-// };
+//     let dist = [];
+//     for(let i = 0; i < arr.length; i++) {
+//         if(dist.indexOf(arr[i]) == -1) {
+//             dist.push(arr[i])
+//         }
+//     }
+//     return dist;
+// }
+
 
 // Find the distint elements
 // var arrD = [4,1,2,1,5,5,5,5,4,7];
@@ -162,15 +167,12 @@
 // Find Repeating and Non Repeating Elements
 
 // const repetingElements = (arr) => {
-//    result = arr.filter((v, i) => arr.indexOf(v) !== arr.lastIndexOf(v));
-//    return result;
+//     return result = arr.filter((i, v) => arr.indexOf(v) != arr.lastIndexOf(v));
 // }
 
 // const nonRepetingElements = (arr) => {
-//     result = arr.filter((v, i) => arr.indexOf(v) === arr.lastIndexOf(v));
-//     return result;
+//     return result = arr.filter((i, v) => arr.indexOf(v) == arr.lastIndexOf(v));
 // }
-
 
 // var arr = [4,1,2,1,2];
 // console.log(repetingElements(arr))
@@ -187,10 +189,11 @@
 //         } else {
 //             n = n - m;
 //         }
-//     }
-//     console.log("GCD:", (m + n));
-//     console.log("LCM:", (a + b) / m);
+//     } 
+//     console.log("LCM:", m);
+//     console.log("GCD:", (a*b)/m)
 // }
+
 
 // gcdAndLcm(72, 120);
 // GCD:- 24
@@ -240,6 +243,19 @@
 //     }
 // }
 
+const SinglePrimeNumber = (number) => {
+    if(number == 1 || number == 2) {
+        return true;
+    } else {
+        for(let i = 2; i <= Math.sqrt(number); i++) {
+            if(number % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
 // const MultiplePrimeNumber = (arr) => {
 //     var primeNums = arr.filter((number) => {
 //         if(number==1 || number==2) {
@@ -256,8 +272,8 @@
 //     return primeNums;
 // }
 
-// var arr = [1,2,4,7,11,12,15,17,19,21,27,29,43,44];
-// console.log(SinglePrimeNumber(17));
+var arr = [1,2,4,7,11,12,15,17,19,21,27,29,43,44];
+console.log(SinglePrimeNumber(18));
 
 // console.log(MultiplePrimeNumber(arr));
 
@@ -297,24 +313,24 @@
 
 // console.log(miss)
 
-const str = "Cyclone Asani likely to asdfasdfasdfasdfasdfasdfasdf intensify further, move towards Odisha and Andhra Pradesh.";
-const stringOfArray = str.split(" ");
+// const str = "Cyclone Asani likely to asdfasdfasdfasdfasdfasdfasdf intensify further, move towards Odisha and Andhra Pradesh.";
+// const stringOfArray = str.split(" ");
 
-let max = 0;
-let finalString;
+// let max = 0;
+// let finalString;
 
-console.log(stringOfArray);
+// console.log(stringOfArray);
 
-for(let i = 0; i < stringOfArray.length; i++) {
-   if(stringOfArray[i].length >= max) {
-       max = stringOfArray[i].length;
-       finalString = stringOfArray[i];
-   }
-}
+// for(let i = 0; i < stringOfArray.length; i++) {
+//    if(stringOfArray[i].length >= max) {
+//        max = stringOfArray[i].length;
+//        finalString = stringOfArray[i];
+//    }
+// }
 
-const arr = [5, 1, 2, 88, 'apple', 's', 73, 88, 'G', 2, 90, 10, "Hello", 'ssp'];
+// const arr = [5, 1, 2, 88, 'apple', 's', 73, 88, 'G', 2, 90, 10, "Hello", 'ssp'];
 
 // 1st Eleminated characters and string from array --> 1st Promise
 // Take distinct value from array --> 2nd Promise 
 
-console.log(finalString, max);
+// console.log(finalString, max);
