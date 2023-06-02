@@ -15,16 +15,12 @@ class Stack {
    }
    push(data) {
       this.arr.push(data);
-      return this;
    }
    pop() {
       this.arr.pop();
-      return this;
    }
    peek() {
-      let elements = this.arr.length - 1;
-      elements = this.arr[elements];
-      return elements;
+      return this.arr[this.arr.length - 1];
    }
    display() {
       return this.arr;

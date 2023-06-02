@@ -21,17 +21,16 @@
 // console.log(obj.sort(Arrsort));
 
 // function sortArr(a, b) {
-//     let aT = a.toLowerCase();
-//     let bT = b.toLowerCase();
-//     if(aT < bT) {
-//         return -1;
-//     } else if(aT > bT) {
-//         return 1;
-//     } else {
-//         return 0;
-//     }
+//    let aT = a.toLowerCase();
+//    let bT = b.toLowerCase();
+//    if(aT < bT) {
+//       return -1;
+//    } else if(aT > bT) {
+//     return 1;
+//    } else {
+//     return 0;
+//    }
 // }
-
 
 // const arrStr = ['sunny', 'atique', 'hello', 'bollow', 'collow'];
 // console.log(arrStr.sort(sortArr));
@@ -52,53 +51,54 @@
 
 // console.log(a,  b);
 
+
 // function parseEquation(str) {
-//     return new Function(`return ${str}`)();
+//    return new Function(`return ${str}`)();
 // }
 
 // console.log(parseEquation(`1+3+5+(5-3)+10`));
 
 // Get all the subssrting  
 
-// const getAllSubstrings = (str) => {
-//     let result = [];
-//     for(let i=0;i<str.length;i++) {
-//         for(let j=i+1;j<str.length+1;j++) {
-//             result.push(str.slice(i, j))
+// function getAllSubstrings(str) {
+//     let arr = [];
+//     for(let i = 0; i < str.length; i++) {
+//         for(let j = i + 1; j < str.length + 1; j++) {
+//             arr.push(str.slice(i, j))
 //         }
 //     }
-//     return result;
+//     return arr;
 // }
-
 
 // var theString = 'somerandomword';
 // console.log(getAllSubstrings(theString));
 
+
 // const findDuplicatesUsingHash = (arr) => {
-//    var obj = {}, dup;
-//    for(let i=0;i<arr.length;i++) {
-//        if(Object.values(obj).indexOf(arr[i]) > -1) {
-//         if(obj[arr[i]]) {
-//           dup = arr[i]; break;
-//        } else {
-//            obj[i] = arr[i]
-//        }
+//    let obj = {}, dup = "";
+//    for(let i = 0; i < arr.length; i++) {
+//       if(Object.values(obj).indexOf(arr[i]) >  -1) {
+//          dup = arr[i]; 
+//          break;
+//       } else {
+//         obj[i] = arr[i];
+//       }
 //    }
-//    console.log(dup);
-//    return dup;
-// };
-
+//    return dup
+// }
 
 // const findDuplicatesUsingHash = (arr) => {
-//     let obj = {};
+//     var obj = {}, dup = "";
 //     for(let i = 0; i < arr.length; i++) {
 //         if(Object.values(obj).indexOf(arr[i]) > -1) {
-//             return arr[i];
+//             dup = arr[i];
+//             break;
 //         } else {
 //             obj[i] = arr[i]
 //         }
 //     }
-// }
+//     return dup;
+// };
 
 // Find the Duplicates Hash table
 // var arr2 = [22,5,3,90,3,44,1,2];
@@ -112,10 +112,10 @@
 // console.log(sum(1)(2)(12)());
 // console.log(sum(1)(2)());
 
-// const findCountOfEachElementsOfArray = (arr) => {
-//     let obj = {};
-//     arr.filter((i) => {
-//         obj[i] = ( obj[i] || 0 ) + 1;
+// function findCountOfEachElementsOfArray(arr) {
+//     var obj = {};
+//     arr.forEach((e) => {
+//         obj[e] = (obj[e] || 0 ) + 1
 //     })
 //     return obj
 // }
@@ -126,13 +126,13 @@
 
 
 // const findDistinct = (arr) => {
-//     let dist = [];
-//     for(let i = 0; i < arr.length; i++) {
-//         if(dist.indexOf(arr[i]) == -1) {
-//             dist.push(arr[i])
-//         }
-//     }
-//     return dist;
+//    var dist = [];
+//    for(let i = 0; i < arr.length; i++) {
+//       if(dist.indexOf(arr[i]) == -1) {
+//          dist.push(arr[i]);
+//       }
+//    }
+//    return dist;
 // }
 
 
@@ -167,11 +167,11 @@
 // Find Repeating and Non Repeating Elements
 
 // const repetingElements = (arr) => {
-//     return result = arr.filter((i, v) => arr.indexOf(v) != arr.lastIndexOf(v));
+//    return arr = arr.filter((i, v) => arr.indexOf(v) != arr.lastIndexOf(v));
 // }
 
 // const nonRepetingElements = (arr) => {
-//     return result = arr.filter((i, v) => arr.indexOf(v) == arr.lastIndexOf(v));
+//     return arr = arr.filter((i, v) => arr.indexOf(v) == arr.lastIndexOf(v));
 // }
 
 // var arr = [4,1,2,1,2];
@@ -189,9 +189,9 @@
 //         } else {
 //             n = n - m;
 //         }
-//     } 
-//     console.log("LCM:", m);
-//     console.log("GCD:", (a*b)/m)
+//     }
+//     console.log("GCD:", m);
+//     console.log("LCM:", (a * b) / m)
 // }
 
 
@@ -230,21 +230,8 @@
 // console.log("FiboNacci of a Number:", FiboNacci(8));
 // console.log("FiboNacci of a Number using recurssion:", FiboNacciRecurssion(8));
 
-// const SinglePrimeNumber = (number) => {
-//     if(number==1 || number==2) {
-//         return true;
-//     } else {
-//         for(let i=2;i<=Math.sqrt(number);i++) {
-//             if(number%i == 0) {
-//                 return false;
-//             }
-//         }
-//         return true;
-//     }
-// }
-
 const SinglePrimeNumber = (number) => {
-    if(number == 1 || number == 2) {
+    if(number < 2) {
         return true;
     } else {
         for(let i = 2; i <= Math.sqrt(number); i++) {
@@ -252,9 +239,21 @@ const SinglePrimeNumber = (number) => {
                 return false;
             }
         }
-        return true;
     }
+    return true;
 }
+
+// const SinglePrimeNumber = (number) => {
+//     if(number < 2) {
+//         return true
+//     }
+//     for(let i = 2; i <= Math.sqrt(number); i++) {
+//       if(number % i == 0) {
+//           return false;
+//       }
+//    }
+//    return true;
+// }
 
 // const MultiplePrimeNumber = (arr) => {
 //     var primeNums = arr.filter((number) => {

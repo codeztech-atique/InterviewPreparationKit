@@ -15,6 +15,7 @@
 
 // Total No of Nodes - (2^4 - 1) = 15 nodes (if 4 level, if 3 level (2^3 -1) = 7 nodes)
 
+const leafNode = [];
 class Node {
    constructor(value) {
       this.value = value;
@@ -207,10 +208,15 @@ console.log("BFS:",bst.bfs());
 
 function getLeafCountOfBinaryTree(node) {
     if(node === null) return 0;
-    if(node.left === null && node.right === null) return 1;
+    if(node.left == null && node.right == null) {
+      leafNode.push(node.value);
+      return 1;
+    } 
     return getLeafCountOfBinaryTree(node.left) + getLeafCountOfBinaryTree(node.right);
 }
+
 console.log("COUNT LEAF NODE: ", getLeafCountOfBinaryTree(bst.root));
+console.log("Leaf Nodes Are: ", leafNode);
 
 function hightOfBinaryTree(node) {
    if(node == null) { 

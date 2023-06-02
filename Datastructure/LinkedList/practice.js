@@ -36,32 +36,25 @@ class Node {
    constructor(value) {
       this.value = value;
       this.next = null;
-      this.prev = null;
    }
 }
 class SinglyLinkedList {
    constructor(value) {
-      this.head = {
-         value: value,
-         next: null,
-         prev: null
-      }
+      this.head = new Node(value);
       this.tail = this.head;
       this.length = 1;
    }
 
-   prepand(value) { // Insert at the beginning
+   prepand(value) {
       let newNode = new Node(value);
       newNode.next = this.head;
-      this.head.prev = newNode; // Doubly LinkedList
       this.head = newNode;
       this.length++;
       return this;
    }
-   
-   append(value) { // Insert at the last
+
+   append(value) {
       let newNode = new Node(value);
-      newNode.prev = this.tail; // Doubly LinkedList
       this.tail.next = newNode;
       this.tail = newNode;
       this.length++;
@@ -76,30 +69,26 @@ class SinglyLinkedList {
       let leaderNode = this.traverse(index - 1);
       let nextNode = leaderNode.next;
       leaderNode.next = newNode;
-      newNode.prev = leaderNode; // Doubly LinkedList
       newNode.next = nextNode;
-      nextNode.prev = newNode; // Doubly LinkedList
-      this.length++;
       return this.printList();
    }
 
    remove(index) {
       if(index > this.length) {
          return "Invalid Input !!!"
-      }
-
+      } 
       let leaderNode = this.traverse(index - 1);
       let unwantedNode = leaderNode.next;
       leaderNode.next = unwantedNode.next;
       this.length--;
-      return this.printList(); 
+      return this.printList();
    }
 
    reverse() {
       if(!this.head.next) {
          return this.head;
       }
-      
+
       this.tail = this.head;
       let first = this.head;
       let second = first.next;
@@ -119,25 +108,23 @@ class SinglyLinkedList {
    traverse(index) {
       let currentNode = this.head;
       let counter = 0;
-      while(counter != index) {
+      while(index != counter) {
          counter++;
          currentNode = currentNode.next;
       }
       return currentNode;
-   }
+   }  
 
    printList() {
       let result = [];
       let currentNode = this.head;
-      while(currentNode != null) {
+      while(currentNode) {
          result.push(currentNode.value);
          currentNode = currentNode.next;
       }
       return result;
-   }
+   } 
 }
-
-
 
 // Singly LinkedList
 const ll = new SinglyLinkedList(85);

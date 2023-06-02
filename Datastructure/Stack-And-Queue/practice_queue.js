@@ -16,12 +16,10 @@ class Queue {
         this.arr = [];
     }
     enqueue(data) {
-        this.arr.push(data);
-        return this;
+        this.arr.unshift(data);
     }
     dequeue() {
         this.arr.shift();
-        return this;
     }
     printList() {
         return this.arr;

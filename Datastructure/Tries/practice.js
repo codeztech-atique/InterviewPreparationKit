@@ -1,10 +1,9 @@
 class Node {
     constructor() {
-        this.children = {};
+        this.children = new Map();
         this.isWordEnd = false;
     }
 }
-
 class Trie {
     constructor() {
         this.root = new Node();
@@ -13,11 +12,11 @@ class Trie {
     insert(word) {
         let curr = this.root;
         for(let i = 0; i < word.length; i++) {
-            let charsToInsert = word[i];
-            if(!(charsToInsert in curr.children)) {
-                curr.children[charsToInsert] = new Node();
+            let charToInsert = word[i];
+            if(!(curr.children.has(charToInsert))) {
+               curr.children.set(charToInsert, new Node());
             }
-            curr = curr.children[charsToInsert];
+            curr = curr.children.get(charToInsert);
         }
         curr.isWordEnd = true;
     }
@@ -25,40 +24,91 @@ class Trie {
     contains(word) {
         let curr = this.root;
         for(let i = 0; i < word.length; i++) {
-            let charsToFind = word[i];
-            if(!(charsToFind in curr.children)) {
-                return false
+            let charToInsert = word[i];
+            if(!(curr.children.has(charToInsert))) {
+               return false;
             }
-            curr = curr.children[charsToFind];
+            curr = curr.children.get(charToInsert);
+        }
+        return false;
+    }
+
+    startWithPrefix(word) {
+        let curr = this.root;
+        for(let i = 0; i < word.length; i++) {
+            let charToInsert = word[i];
+            if(!(curr.children.has(charToInsert))) {
+               return false;
+            }
+            curr = curr.children.get(charToInsert);
         }
         return curr.isWordEnd;
     }
 
-    delete(word) {
-        let wordsFound = this.contains(word);
-        if(wordsFound) {
-            let curr = this.root;
-            console.log(JSON.stringify(curr));
+    remove(word) {
+        let curr = this.root;
+        for(let i = 0; i < word.length; i++) {
+            let charToInsert = word[i];
+            if(curr.children.has(charToInsert)) {
+                curr = curr.children.get(charToInsert);
+            } else {
+                return false;
+            }
         }
+        curr.isWordEnd = false
+        return true;
+    }
+
+    printAllTheWords() {
+        let words = [];
+        let curr = this.root;
+        let searchTree = (node, str) => {
+            for(const entry of node.children.entries()) {
+                let char = entry[0];
+                node = entry[1];
+
+                if(node.isWordEnd) {
+                    words.push(str.concat(char));
+                }
+                searchTree(node, str.concat(char));
+            }
+        }
+        searchTree(curr, "");
+        return words;
     }
 }
 
 
+const root = new Node();
 const trie = new Trie(); 
+
 trie.insert("Atique");
 trie.insert("Ahmed");
 trie.insert("Hanufa");
 trie.insert("Hanuman");
 
-console.log(trie.contains("Atique"));
-console.log(trie.contains("Ati"));
-console.log(trie.contains("Atiq"));
-console.log(trie.contains("Hanufa"));
+console.log("Trie Contains Atique:", trie.contains("Atique"));
+console.log("Trie Contains Ahmed:", trie.contains("Ahmed"));
+console.log("Trie Contains Ati:", trie.contains("Ati"));
+console.log("Trie Contains Atiq:",trie.contains("Atiq"));
+console.log("Trie Contains Hanufa:", trie.contains("Hanufa"));
+console.log("Trie Contains GHY:", trie.contains("GHY"));
 
+console.log();
 
-console.log(trie.contains("Atique"));
-console.log(trie.contains("Ati"));
-console.log(trie.contains("Atiq"));
-console.log(trie.contains("Hanufa"));
+console.log("Starts with Atique:", trie.startWithPrefix("Atique"));
+console.log("Starts with Ahmed:", trie.startWithPrefix("Ahmed"));
+console.log("Starts with Ati:", trie.startWithPrefix("Ati"));
+console.log("Starts with Ahm:", trie.startWithPrefix("Ahm"));
+console.log("Starts with Atiq:", trie.startWithPrefix("Atiq"));
+console.log("Starts with Hanu:", trie.startWithPrefix("Hanu"));
+console.log("Starts with GHY:", trie.contains("GHY"));
 
-trie.delete("Atique");
+trie.remove("Atique");
+
+console.log();
+
+console.log("Trie Contains after remove Atique:", trie.contains("Atique"));
+
+console.log()
+console.log(trie.printAllTheWords())

@@ -1,0 +1,103 @@
+========= Google ===========
+
+Note to Communicate with the Interviewer - 
+
+1. Always Ask Interview are the list are sorted ? 
+2. Walk through the entire process, what you are gonna do then start solving the problem
+3. Tell the time and space complexity
+4. Talk and code - Communication is the main key important point
+
+https://algorithm-visualizer.org/greedy/boyermoores-majority-vote
+
+========= Topics to Cover =========== ( Total 13 topic is pending )
+
+- Iteration and Recursion
+- String Manipulation ( Done )
+- Arrays ( Done ) 
+- Matrixs ( Done )
+- Linked Lists ( Done )
+- Stacks ( Done )
+- Queues ( Done )
+- Sets ( Done )
+- Maps ( Done )
+- Trees ( Done )
+- Binary Search Tree ( Done )
+- Graphs ( DFS, BFS ) ( Done )
+- Hash Table ( Done )
+- Sort ( Quick Sort, Merge Sort, Wave Sort ) —> Quick and Merge is important  - Done
+
+- Two Pointer Approach ( Done )
+- Dynamic Programming ( Break into 2 ) {  Memoization and  Divide and Conquer } ( Done )
+- Sliding Window ( Done )
+- Object Oriented Programming ( Done )
+
+
+- Tries ( Done )
+
+- Binary Heaps ( Pending )
+- Segment trees ( Pending  ) - Must
+- Fenwick trees ( Pending ) - Must
+- Bitmasks ( Pending ) - Must
+- Dijkstra ( Good to know )
+- Bellman Ford ( Good to know )
+- Tower of Hanoi ( Pending )
+- Greedy Algorithim ( Pending )
+
+
+Google Typically used algorithm - 
+
+- Sorting, Searching and Binary Search
+- Divide and conquer
+- Dynamic programming and memorisation
+- Greedy algorithm
+- Recursion
+- Graph Traversal breath first search and depth first search
+
+Content - 
+
+Total Content  - https://www.hackerearth.com/practice/data-structures/advanced-data-structures/trie-keyword-tree/tutorial/#:~:text=Tries%20are%20an%20extremely%20special,and%20thus%20the%20name%20Trie.&text=A%20Trie%20is%20a%20special,consists%20of%20nodes%20and%20edges
+
+Dynamic Programming - https://www.youtube.com/playlist?list=PLrmLmBdmIlpsHaNTPP_jHHDx_os9ItYXr
+
+Leet Code -  https://leetcode.com/explore/interview/card/google/
+
+Problems - https://leetcode.com/company/google/
+
+
+
+* Make sure to brush up on topics like:
+    * Binary search
+    * Graphs, BFS/DFS/Flood fill
+    * Tree traversals
+    * Hash tables
+    * Linked list, stacks, queues, two pointers/sliding window
+    * Binary heaps
+    * Dynamic programming
+    * Union find
+    * Ad hoc/string manipulations
+    * Arrays
+    * Recursion. Backtracking. Greedy algorithms. 
+    * Other good to know topics: Trie, segment trees/fenwick trees, bitmasks
+
+
+1) Sliding Window
+2) Islands (Matrix Traversal)
+3) Two Pointers
+4) Fast & Slow Pointers
+5) Merge Intervals
+6) Cyclic Sort
+7) In-place Reversal of a LinkedList
+8) Tree Breadth-First Search
+9) Tree Depth First Search
+10) Two Heaps
+11) Subsets
+12) Modified Binary Search
+13) Bitwise XOR
+14) Top ‘K’ Elements
+15) K-way Merge
+16) Topological Sort
+17) 0/1 Knapsack
+18) Fibonacci Numbers
+19) Palindromic Subsequence
+20) Longest Common Substring
+

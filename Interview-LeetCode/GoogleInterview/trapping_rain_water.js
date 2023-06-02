@@ -61,6 +61,7 @@ const trappingRainWater = (arr) => {
 const arr = [0,1,0,2,1,0,1,3,2,1,2,1];
 // const arr = [0]
 // const arr = [4, 2, 0, 3, 2, 4, 3, 4];
+
 // const arr = [3,1,2,4,0,1,3,2];
 //    Left  [3,3,3,4,4,4,4,4]
 //    Right [4,4,4,4,3,3,3,2]
