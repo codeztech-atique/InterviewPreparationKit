@@ -6,7 +6,6 @@ class UndirectedGraph {
 
     addVertices(node) {
       this.adjecencyList[node] = [];
-      this.noOfEdges++;
     }
 
     addEdges(node1, node2) {
