@@ -46,12 +46,8 @@ class SinglyLinkedList {
       this.length = 1;
    }
 
-   size() {
-      return this.length;
-   }
-
    append(value) {
-      let newNode = new Node(value);
+      const newNode = new Node(value);
       this.tail.next = newNode;
       this.tail = newNode;
       this.length++;
@@ -59,7 +55,7 @@ class SinglyLinkedList {
    }
 
    prepand(value) {
-      let newNode = new Node(value);
+      const newNode = new Node(value);
       newNode.next = this.head;
       this.head = newNode;
       this.length++;
@@ -70,6 +66,7 @@ class SinglyLinkedList {
       if(index > this.length) {
          return this.append(value);
       }
+
       let newNode = new Node(value);
       let leaderNode = this.traverse(index - 1);
       let nextNode = leaderNode.next;
@@ -80,7 +77,7 @@ class SinglyLinkedList {
    }
 
    remove(index) {
-      if(index > this.length) {
+      if(index > this.counter) {
          return "Invalid input !!!"
       }
       let leaderNode = this.traverse(index - 1);
@@ -91,9 +88,6 @@ class SinglyLinkedList {
    }
 
    reverse() {
-      if(!this.head.next) {
-         return this.head;
-      }
       this.tail = this.head;
       let first = this.head;
       let second = first.next;

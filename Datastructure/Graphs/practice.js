@@ -1,11 +1,12 @@
 class UndirectedGraph {
     constructor() {
-      this.adjecencyList = {};
       this.noOfEdges = 0;
+      this.adjecencyList = {};
     }
 
     addVertices(node) {
       this.adjecencyList[node] = [];
+      this.numberOfNodes++;
     }
 
     addEdges(node1, node2) {
