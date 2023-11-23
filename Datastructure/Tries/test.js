@@ -4,6 +4,7 @@ class Node {
         this.isWordEnd = false;
     }
 }
+
 class Trie {
     constructor() {
         this.root = new Node();
@@ -48,17 +49,17 @@ class Trie {
     remove(word) {
         let curr = this.root;
         for(let i = 0; i < word.length; i++) {
-            let charToInsert = word[i];
-            if(curr.children.has(charToInsert)) {
-                curr = curr.children.get(charToInsert);
+            let chatToInsert = word[i];
+            if(curr.children.has(chatToInsert)) {
+                curr = curr.children.get(chatToInsert);
             } else {
                 return false;
             }
+            
         }
-        curr.isWordEnd = false
+        curr.isWordEnd = false;
         return true;
     }
-
     printAllTheWords() {
         const words = [];
 
@@ -76,9 +77,11 @@ class Trie {
 
         return words;
     }
+
+    printAllTheWordsINMap() {
+        return [...this.root.children.entries()];
+    }
 }
-
-
 const root = new Node();
 const trie = new Trie(); 
 
@@ -98,6 +101,7 @@ console.log();
 
 console.log("Starts with Atique:", trie.startWithPrefix("Atique"));
 console.log("Starts with Ahmed:", trie.startWithPrefix("Ahmed"));
+console.log("Starts with Hanu:", trie.startWithPrefix("Hanufa"));
 console.log("Starts with Ati:", trie.startWithPrefix("Ati"));
 console.log("Starts with Ahm:", trie.startWithPrefix("Ahm"));
 console.log("Starts with Atiq:", trie.startWithPrefix("Atiq"));
@@ -110,5 +114,5 @@ console.log();
 
 console.log("Trie Contains after remove Atique:", trie.contains("Atique"));
 
-console.log()
+
 console.log(trie.printAllTheWords())

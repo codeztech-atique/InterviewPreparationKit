@@ -3,17 +3,13 @@ class UndirectedGraph {
       this.noOfEdges = 0;
       this.adjecencyList = {};
     }
-
     addVertices(node) {
       this.adjecencyList[node] = [];
-      this.numberOfNodes++;
     }
-
     addEdges(node1, node2) {
-      this.adjecencyList[node1].push(node2);
-      this.adjecencyList[node2].push(node1);
+       this.adjecencyList[node1].push(node2);
+       this.adjecencyList[node2].push(node1);
     }
-
     showConnections() {
       return this.adjecencyList;
     }

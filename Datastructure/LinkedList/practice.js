@@ -47,7 +47,7 @@ class SinglyLinkedList {
    }
 
    append(value) {
-      const newNode = new Node(value);
+      let newNode = new Node(value);
       this.tail.next = newNode;
       this.tail = newNode;
       this.length++;
@@ -55,7 +55,7 @@ class SinglyLinkedList {
    }
 
    prepand(value) {
-      const newNode = new Node(value);
+      let newNode = new Node(value);
       newNode.next = this.head;
       this.head = newNode;
       this.length++;
@@ -66,28 +66,29 @@ class SinglyLinkedList {
       if(index > this.length) {
          return this.append(value);
       }
-
       let newNode = new Node(value);
       let leaderNode = this.traverse(index - 1);
       let nextNode = leaderNode.next;
       leaderNode.next = newNode;
       newNode.next = nextNode;
       this.length++;
-      return this;
+      return this.printList();
    }
 
    remove(index) {
-      if(index > this.counter) {
+      if(index > this.length) {
          return "Invalid input !!!"
       }
       let leaderNode = this.traverse(index - 1);
       let unwantedNode = leaderNode.next;
       leaderNode.next = unwantedNode.next;
       this.length--;
-      return this;
+      return this.printList();
    }
-
    reverse() {
+      if(!this.head.next) {
+         return this.head;
+      }
       this.tail = this.head;
       let first = this.head;
       let second = first.next;
@@ -113,8 +114,8 @@ class SinglyLinkedList {
    }
 
    printList() {
-      let currentNode = this.head;
       let result = [];
+      let currentNode = this.head;
       while(currentNode != null) {
          result.push(currentNode.value);
          currentNode = currentNode.next;
@@ -157,8 +158,9 @@ console.log();
 // ll.append(52);
 // ll.prepand(9);
 // ll.insert(200, 99); //If the index location more than length it gonna insert last
+
 // ll.insert(2, 19);
-// console.log(ll);
+// console.log(ll.printList());
 // ll.remove(2);
 // ll.reverse();
 // // console.log("Array--------------------->");
