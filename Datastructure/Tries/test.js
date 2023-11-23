@@ -13,11 +13,11 @@ class Trie {
     insert(word) {
         let curr = this.root;
         for(let i = 0; i < word.length; i++) {
-            let chatToInsert = word[i];
-            if(!(curr.children.has(chatToInsert))) {
-                curr.children.set(chatToInsert, new Node());
+            let charToInsert = word[i];
+            if(!(curr.children.has(charToInsert))) {
+                curr.children.set(charToInsert, new Node());
             }
-            curr = curr.children.get(chatToInsert);
+            curr = curr.children.get(charToInsert);
         }
         curr.isWordEnd = true;
     }
@@ -25,23 +25,23 @@ class Trie {
     contains(word) {
         let curr = this.root;
         for(let i = 0; i < word.length; i++) {
-            let chatToInsert = word[i];
-            if(!(curr.children.has(chatToInsert))) {
+            let charToInsert = word[i];
+            if(!(curr.children.has(charToInsert))) {
                 return false;
             }
-            curr = curr.children.get(chatToInsert);
+            curr = curr.children.get(charToInsert);
         }
         return curr.isWordEnd;
     }
-
+    
     startWithPrefix(word) {
         let curr = this.root;
         for(let i = 0; i < word.length; i++) {
-            let chatToInsert = word[i];
-            if(!(curr.children.has(chatToInsert))) {
+            let charToInsert = word[i];
+            if(!(curr.children.has(charToInsert))) {
                 return false;
             }
-            curr = curr.children.get(chatToInsert);
+            curr = curr.children.get(charToInsert);
         }
         return true;
     }
@@ -49,39 +49,37 @@ class Trie {
     remove(word) {
         let curr = this.root;
         for(let i = 0; i < word.length; i++) {
-            let chatToInsert = word[i];
-            if(curr.children.has(chatToInsert)) {
-                curr = curr.children.get(chatToInsert);
+            let charToInsert = word[i];
+            if((curr.children.has(charToInsert))) {
+                curr = curr.children.get(charToInsert);
             } else {
                 return false;
             }
-            
         }
         curr.isWordEnd = false;
         return true;
     }
+
     printAllTheWords() {
-        const words = [];
-
-        const traverse = (node, currentWord = '') => {
-            if (node.isWordEnd) {
-                words.push(currentWord);
-            }
-
-            for (const [char, childNode] of node.children.entries()) {
-                traverse(childNode, currentWord + char);
-            }
-        };
-
-        traverse(this.root);
-
-        return words;
+       const words = [];
+       let searchTree = (node, currentWord = '') => {
+          if(node.isWordEnd) {
+            words.push(currentWord)
+          }
+          for(const [char, childNode] of node.children.entries()) {
+            searchTree(childNode, currentWord + char)
+          }
+       }
+       searchTree(this.root)
+       return words;
     }
 
     printAllTheWordsINMap() {
-        return [...this.root.children.entries()];
+       return [...this.root.children.entries()]
     }
 }
+
+
 const root = new Node();
 const trie = new Trie(); 
 
@@ -114,5 +112,5 @@ console.log();
 
 console.log("Trie Contains after remove Atique:", trie.contains("Atique"));
 
-
 console.log(trie.printAllTheWords())
+console.log("Tries Contains keys:", trie.printAllTheWordsINMap())
