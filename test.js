@@ -1,34 +1,39 @@
-const removeBrackets = (str) => {
-    let arr = [];
-    for(let i = 0; i < str.length; i++) {
-        if(str[i] === '(' || str[i] === '{' || str[i] === '[') {
-            arr.push(str[i]);
-        }
+const SinglePrimeNumber = (num) => {
+    if(num < 2) {
+        return true;
+    } 
 
-        if(arr.length == 0) {
+    for(let i = 2; i <= Math.sqrt(num); i++) {
+        if(num % i === 0) {
             return false;
         }
+    }
 
-        switch(str[i]) {
-            case ')': arr.pop(); break;
-            case '}': arr.pop(); break;
-            case ']': arr.pop(); break;
+    return true;
+}
+
+const MultiplePrimeNumber = (arr) => {
+    for(let i = 0; i < arr.length; i++) {
+        let num = arr[i];
+    }
+
+    let result = arr.filter((num) => {
+        if(num < 2) {
+            return true;
+        } 
+
+        for(let i = 2; i <= Math.sqrt(num); i++) {
+            if(num % i === 0) {
+                return false;
+            }
         }
-    }
-
-    if(arr.length === 0) {
         return true;
-    } else {
-        return false;
-    }
+    })
+    return result;
 }
 
 
-const expr = "([{}]){}{}";
-const exprClosingBracket = "([{}]))";
+var arr = [1,2,4,7,11,12,15,17,19,21,27,29,43,44];
+console.log(SinglePrimeNumber(17));
 
-if (removeBrackets(exprClosingBracket)) {
-   console.log("Balanced");
-} else {
-   console.log("Not Balanced");
-}
+console.log(MultiplePrimeNumber(arr));

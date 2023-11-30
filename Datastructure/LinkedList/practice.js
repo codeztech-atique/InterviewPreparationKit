@@ -63,7 +63,7 @@ class SinglyLinkedList {
    }
 
    insert(index, value) {
-      if(index > this.length) {
+      if(index >= this.length) {
          return this.append(value);
       }
       let newNode = new Node(value);
@@ -76,15 +76,16 @@ class SinglyLinkedList {
    }
 
    remove(index) {
-      if(index > this.length) {
-         return "Invalid input !!!"
+      if(index > this.counter) {
+         return "Invalid Input !!!"
       }
       let leaderNode = this.traverse(index - 1);
-      let unwantedNode = leaderNode.next;
-      leaderNode.next = unwantedNode.next;
+      let nextNode = leaderNode.next;
+      leaderNode.next = nextNode.next;
       this.length--;
       return this.printList();
    }
+
    reverse() {
       if(!this.head.next) {
          return this.head;

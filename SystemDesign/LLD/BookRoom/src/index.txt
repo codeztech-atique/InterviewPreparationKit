@@ -1,0 +1,84 @@
+class Room {
+    name: string;
+    booked: boolean;
+  
+    constructor(name: string) {
+      this.name = name;
+      this.booked = false;
+    }
+  }
+  
+  class Meeting {
+    start: Date;
+    end: Date;
+    room: Room;
+  
+    constructor(start: Date, end: Date, room: Room) {
+      this.start = start;
+      this.end = end;
+      this.room = room;
+    }
+  }
+  
+  class Scheduler {
+    rooms: Room[];
+    meetings: Meeting[];
+  
+    constructor(rooms: Room[]) {
+      this.rooms = rooms;
+      this.meetings = [];
+    }
+  
+    bookMeeting(startTime: Date, endTime: Date): string | null {
+      const availableRoom = this.findAvailableRoom(startTime, endTime);
+  
+      if (availableRoom) {
+        const newMeeting = new Meeting(startTime, endTime, availableRoom);
+        this.meetings.push(newMeeting);
+        availableRoom.booked = true;
+        return availableRoom.name;
+      }
+  
+      return null; // No available room for the specified time slot
+    }
+  
+    private findAvailableRoom(startTime: Date, endTime: Date): Room | null {
+      for (const room of this.rooms) {
+        if (!room.booked && this.isTimeSlotAvailable(room, startTime, endTime)) {
+          return room;
+        }
+      }
+      return null; // No available room found
+    }
+  
+    private isTimeSlotAvailable(room: Room, startTime: Date, endTime: Date): boolean {
+      for (const meeting of this.meetings) {
+        if (meeting.room === room) {
+          if (
+            (startTime >= meeting.start && startTime < meeting.end) ||
+            (endTime > meeting.start && endTime <= meeting.end) ||
+            (startTime <= meeting.start && endTime >= meeting.end)
+          ) {
+            return false; // Time slot overlaps with an existing meeting
+          }
+        }
+      }
+      return true; // Time slot is available
+    }
+  }
+  
+  // Example usage
+  const roomA = new Room("Room A");
+  const roomB = new Room("Room B");
+  const roomC = new Room("Room C");
+  
+  const scheduler = new Scheduler([roomA, roomB, roomC]);
+  
+  const bookedRoom = scheduler.bookMeeting(new Date("2023-12-01T09:00:00"), new Date("2023-12-01T10:00:00"));
+  
+  if (bookedRoom) {
+    console.log(`Meeting booked successfully in ${bookedRoom}`);
+  } else {
+    console.log("No available room for the specified time slot");
+  }
+  

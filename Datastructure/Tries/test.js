@@ -33,7 +33,7 @@ class Trie {
         }
         return curr.isWordEnd;
     }
-    
+
     startWithPrefix(word) {
         let curr = this.root;
         for(let i = 0; i < word.length; i++) {
@@ -50,10 +50,8 @@ class Trie {
         let curr = this.root;
         for(let i = 0; i < word.length; i++) {
             let charToInsert = word[i];
-            if((curr.children.has(charToInsert))) {
+            if(curr.children.has(charToInsert)) {
                 curr = curr.children.get(charToInsert);
-            } else {
-                return false;
             }
         }
         curr.isWordEnd = false;
@@ -63,21 +61,22 @@ class Trie {
     printAllTheWords() {
        const words = [];
        let searchTree = (node, currentWord = '') => {
-          if(node.isWordEnd) {
-            words.push(currentWord)
-          }
-          for(const [char, childNode] of node.children.entries()) {
-            searchTree(childNode, currentWord + char)
-          }
+            if(node.isWordEnd) {
+                words.push(currentWord)
+            }
+            for(const [char, currNode] of node.children.entries()) {
+                searchTree(currNode, currentWord + char);
+            }
        }
-       searchTree(this.root)
+       searchTree(this.root);
        return words;
     }
 
     printAllTheWordsINMap() {
-       return [...this.root.children.entries()]
+      return [...this.root.children.entries()]
     }
 }
+
 
 
 const root = new Node();

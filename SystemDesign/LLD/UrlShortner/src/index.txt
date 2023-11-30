@@ -1,0 +1,35 @@
+class UrlShorteningService {
+    generatingRandomIndentifier(): string {
+       return Math.random().toString(32).substring(2, 8);
+    }
+
+    shortUrl(): string {
+       const getRandom  = this.generatingRandomIndentifier();
+       const shortURL = `https://tinyurl/`+getRandom;
+       return shortURL;
+    }
+}
+
+class DataBaseService {
+    urlMapping: Map<String, String>;
+    constructor() {
+        this.urlMapping = new Map();
+    }
+
+    saveURL(orginalUrl: string, shortUrl: string) {
+        this.urlMapping.set(orginalUrl, shortUrl);
+    }
+
+    getURLShortUrl(url: string) {
+        return this.urlMapping.get(url);
+    }
+}
+
+const urlShortingService = new UrlShorteningService();
+const getShortUrl = urlShortingService.shortUrl();
+
+const dataBaseService = new DataBaseService();
+dataBaseService.saveURL('https://atiqueahmed.com', getShortUrl);
+
+const redirectUrl = dataBaseService.getURLShortUrl('https://atiqueahmed.com');
+console.log(redirectUrl);

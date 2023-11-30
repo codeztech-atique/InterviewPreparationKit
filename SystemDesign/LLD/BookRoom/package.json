@@ -1,0 +1,16 @@
+{
+  "name": "bookroom",
+  "version": "1.0.0",
+  "description": "Goal(s) of the system",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsc && node dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^20.10.1",
+    "typescript": "^5.3.2"
+  }
+}
