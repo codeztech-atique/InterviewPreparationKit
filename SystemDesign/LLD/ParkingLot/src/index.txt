@@ -1,0 +1,124 @@
+enum VehicleType {
+  CAR = "car",
+  MOTORCYCLE = "motorcycle",
+}
+
+class ParkingTicket {
+  private ticketNumber: string;
+  private entryTime: Date;
+  private vehicleType: VehicleType;
+
+  constructor(ticketNumber: string, entryTime: Date, vehicleType: VehicleType) {
+    this.ticketNumber = ticketNumber;
+    this.entryTime = entryTime;
+    this.vehicleType = vehicleType;
+  }
+
+  getTicketNumber(): string {
+    return this.ticketNumber;
+  }
+
+  getEntryTime(): Date {
+    return this.entryTime;
+  }
+
+  getVehicleType(): VehicleType {
+    return this.vehicleType;
+  }
+}
+
+class ParkingSpace {
+  private spaceNumber: number;
+  private isOccupiedFlag: boolean;
+  private vehicleType: VehicleType | null;
+
+  constructor(spaceNumber: number) {
+    this.spaceNumber = spaceNumber;
+    this.isOccupiedFlag = false;
+    this.vehicleType = null;
+  }
+
+  occupySpace(vehicleType: VehicleType): void {
+    this.isOccupiedFlag = true;
+    this.vehicleType = vehicleType;
+  }
+
+  vacateSpace(): void {
+    this.isOccupiedFlag = false;
+    this.vehicleType = null;
+  }
+
+  isSpaceOccupied(): boolean {
+    return this.isOccupiedFlag;
+  }
+
+  getVehicleType(): VehicleType | null {
+    return this.vehicleType;
+  }
+}
+
+class ParkingLot {
+  private totalSpaces: number;
+  private parkingSpaces: ParkingSpace[];
+  private ticketCounter: number;
+
+  constructor(totalSpaces: number) {
+    this.totalSpaces = totalSpaces;
+    this.parkingSpaces = Array.from({ length: totalSpaces }, (_, i) => new ParkingSpace(i + 1));
+    this.ticketCounter = 1;
+  }
+
+  issueParkingTicket(vehicleType: VehicleType): ParkingTicket | null {
+    const availableSpace = this.findAvailableSpace(vehicleType);
+    if (availableSpace) {
+      const ticket = new ParkingTicket(this.generateTicketNumber(), new Date(), vehicleType);
+      availableSpace.occupySpace(vehicleType);
+      return ticket;
+    }
+    return null;
+  }
+
+  returnParkingTicket(ticket: ParkingTicket): void {
+    const spaceNumber = parseInt(ticket.getTicketNumber().substring(1));
+    const parkingSpace = this.parkingSpaces[spaceNumber - 1];
+    parkingSpace.vacateSpace();
+  }
+
+  getAvailableSpaces(): number {
+    return this.parkingSpaces.filter(space => !space.isSpaceOccupied()).length;
+  }
+
+  private findAvailableSpace(vehicleType: VehicleType): ParkingSpace | null {
+    for (const space of this.parkingSpaces) {
+      if (!space.isSpaceOccupied() && (space.getVehicleType() === null || space.getVehicleType() === vehicleType)) {
+        return space;
+      }
+    }
+    return null;
+  }
+
+  private generateTicketNumber(): string {
+    const ticketNumber = `T${this.ticketCounter}`;
+    this.ticketCounter++;
+    return ticketNumber;
+  }
+}
+
+// Example Usage
+const parkingLot = new ParkingLot(10);
+
+const carTicket = parkingLot.issueParkingTicket(VehicleType.CAR);
+console.log("Car Ticket:", carTicket);
+
+const motorcycleTicket = parkingLot.issueParkingTicket(VehicleType.MOTORCYCLE);
+console.log("Motorcycle Ticket:", motorcycleTicket);
+
+if (carTicket) {
+  parkingLot.returnParkingTicket(carTicket);
+  console.log("Car returned. Available spaces:", parkingLot.getAvailableSpaces());
+}
+
+if (motorcycleTicket) {
+  parkingLot.returnParkingTicket(motorcycleTicket);
+  console.log("Motorcycle returned. Available spaces:", parkingLot.getAvailableSpaces());
+}
