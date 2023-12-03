@@ -42,7 +42,6 @@ class BinarySearchTree {
    }
 
    insert(value) {
-      this.count++;
       let newNode = new Node(value);
       let searchTree = node => {
          if(value < node.value) {
@@ -95,6 +94,7 @@ class BinarySearchTree {
       }
       return false;
    }
+
 
    dfsInorder() {
       // left, middle, right
@@ -244,8 +244,7 @@ function getLeafCountOfBinaryTree(node) {
    } else if(node.left === null && node.right === null) {
       leafNode.push(node.value);
       return 1;
-   } 
-   return getLeafCountOfBinaryTree(node.left) + getLeafCountOfBinaryTree(node.right);
+   } return getLeafCountOfBinaryTree(node.left) + getLeafCountOfBinaryTree(node.right);
 } 
 
 console.log("COUNT LEAF NODE: ", getLeafCountOfBinaryTree(bst.root));

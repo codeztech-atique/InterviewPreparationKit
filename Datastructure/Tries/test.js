@@ -52,28 +52,28 @@ class Trie {
             let charToInsert = word[i];
             if(curr.children.has(charToInsert)) {
                 curr = curr.children.get(charToInsert);
+            } else {
+                return false;
             }
         }
         curr.isWordEnd = false;
         return true;
     }
-
     printAllTheWords() {
-       const words = [];
-       let searchTree = (node, currentWord = '') => {
+        let word = [];
+        let searchTree = (node, currentWord = '') => {
             if(node.isWordEnd) {
-                words.push(currentWord)
+                word.push(currentWord);
             }
             for(const [char, currNode] of node.children.entries()) {
                 searchTree(currNode, currentWord + char);
             }
-       }
-       searchTree(this.root);
-       return words;
+        }
+        searchTree(this.root);
+        return word;
     }
-
     printAllTheWordsINMap() {
-      return [...this.root.children.entries()]
+        return [...this.root.children.entries()]
     }
 }
 

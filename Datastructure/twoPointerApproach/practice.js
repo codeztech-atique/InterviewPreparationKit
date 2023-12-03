@@ -1,19 +1,16 @@
-
 const findPairWithSum = (arr, targetSum) => {
    let left = 0;
    let right = arr.length - 1;
-
    while(left < right) {
-      let totalSum = arr[left] + arr[right];
-      if(totalSum < targetSum) {
+      let total = arr[left] + arr[right];
+      if(total < targetSum) {
          left++;
-      } else if(totalSum > targetSum) {
+      } else if(total > targetSum) {
          right--;
       } else {
-        return [arr[left], arr[right]];
+         return [arr[left], arr[right]];
       }
    }
-   return null
 }
 
 const sortArray = (a, b) => {

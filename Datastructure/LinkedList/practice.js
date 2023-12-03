@@ -45,47 +45,41 @@ class SinglyLinkedList {
       this.tail = this.head;
       this.length = 1;
    }
-
    append(value) {
-      let newNode = new Node(value);
-      this.tail.next = newNode;
-      this.tail = newNode;
-      this.length++;
-      return this;
-   }
-
-   prepand(value) {
       let newNode = new Node(value);
       newNode.next = this.head;
       this.head = newNode;
       this.length++;
       return this;
    }
-
+   prepand(value) {
+      let newNode = new Node(value);
+      this.tail.next = newNode;
+      this.tail = newNode;
+      this.length++;
+      return this;
+   }
    insert(index, value) {
       if(index >= this.length) {
          return this.append(value);
       }
       let newNode = new Node(value);
-      let leaderNode = this.traverse(index - 1);
+      let leaderNode = this.travese(index - 1);
       let nextNode = leaderNode.next;
       leaderNode.next = newNode;
       newNode.next = nextNode;
-      this.length++;
       return this.printList();
    }
-
    remove(index) {
-      if(index > this.counter) {
+      if(index > this.length) {
          return "Invalid Input !!!"
-      }
-      let leaderNode = this.traverse(index - 1);
-      let nextNode = leaderNode.next;
-      leaderNode.next = nextNode.next;
+      } 
+      let leaderNode = this.travese(index - 1);
+      let unwantedNode = leaderNode.next;
+      leaderNode.next = unwantedNode.next;
       this.length--;
       return this.printList();
    }
-
    reverse() {
       if(!this.head.next) {
          return this.head;
@@ -103,8 +97,7 @@ class SinglyLinkedList {
       this.head = first;
       return this.printList();
    }
-
-   traverse(index) {
+   travese(index) {
       let counter = 0;
       let currentNode = this.head;
       while(index != counter) {
@@ -113,7 +106,6 @@ class SinglyLinkedList {
       }
       return currentNode;
    }
-
    printList() {
       let result = [];
       let currentNode = this.head;

@@ -1,39 +1,28 @@
-const SinglePrimeNumber = (num) => {
-    if(num < 2) {
-        return true;
-    } 
 
-    for(let i = 2; i <= Math.sqrt(num); i++) {
-        if(num % i === 0) {
-            return false;
-        }
+
+const merge = (left, right) => {
+   let arr = [];
+   while(left.length && right.length) {
+    if(left[0] < right[0]) {
+        arr.push(left.shift());
+    } else {
+        arr.push(right.shift());
     }
-
-    return true;
+   }
+   return [...arr, ...left, ...right];
 }
 
-const MultiplePrimeNumber = (arr) => {
-    for(let i = 0; i < arr.length; i++) {
-        let num = arr[i];
+const mergeSort = (arr) => {
+    let half = arr.length / 2;
+    
+    if(arr.length < 2) {
+        return arr;
     }
+    
+    let left = arr.splice(0, half);
+    return merge(mergeSort(left), mergeSort(arr));
 
-    let result = arr.filter((num) => {
-        if(num < 2) {
-            return true;
-        } 
-
-        for(let i = 2; i <= Math.sqrt(num); i++) {
-            if(num % i === 0) {
-                return false;
-            }
-        }
-        return true;
-    })
-    return result;
 }
 
 
-var arr = [1,2,4,7,11,12,15,17,19,21,27,29,43,44];
-console.log(SinglePrimeNumber(17));
-
-console.log(MultiplePrimeNumber(arr));
+console.log(mergeSort([2, 5, 10, 57, 9, 12, 13]));
