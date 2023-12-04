@@ -17,10 +17,10 @@ class Scheduler {
         this.rooms = rooms;
         this.meetings = [];
     }
-    bookedMeeting(start, end) {
+    bookMeeting(start, end) {
         const availableRoom = this.findAvailableRoom(start, end);
         if (availableRoom) {
-            let newMeeting = new Meeting(start, end, availableRoom);
+            const newMeeting = new Meeting(start, end, availableRoom);
             this.meetings.push(newMeeting);
             availableRoom.booked = true;
             return availableRoom.name;
@@ -28,18 +28,20 @@ class Scheduler {
     }
     findAvailableRoom(start, end) {
         for (const room of this.rooms) {
-            if (!room.booked && this.isSlotAvailable(room, start, end)) {
+            if (!room.booked && this.findAvailableSlot(room, start, end)) {
                 return room;
             }
         }
         return null;
     }
-    isSlotAvailable(room, start, end) {
+    findAvailableSlot(room, start, end) {
         for (const meeting of this.meetings) {
-            if ((start >= meeting.start && start < meeting.end) ||
-                (end > meeting.start && end <= meeting.end) ||
-                (start <= meeting.start && end >= meeting.end)) {
-                return false;
+            if (meeting.room === room) {
+                if ((start >= meeting.start && end < meeting.end) ||
+                    (end > meeting.start && end <= meeting.end) ||
+                    (start <= meeting.start && end >= meeting.end)) {
+                    return false;
+                }
             }
         }
         return true;
@@ -49,10 +51,31 @@ const roomA = new Room("A");
 const roomB = new Room("B");
 const roomC = new Room("C");
 const scheduler = new Scheduler([roomA, roomB, roomC]);
-const bookedRoom = scheduler.bookedMeeting(new Date("2023-12-01T09:00:00"), new Date("2023-12-01T10:00:00"));
-if (bookedRoom) {
-    console.log("Room booked for ", bookedRoom);
+const bookedRoomA = scheduler.bookMeeting(new Date('2023-12-01T09:00:00'), new Date('2023-12-01T10:00:00'));
+const bookedRoomB = scheduler.bookMeeting(new Date('2023-12-01T09:00:00'), new Date('2023-12-01T10:00:00'));
+const bookedRoomC = scheduler.bookMeeting(new Date('2023-12-01T09:00:00'), new Date('2023-12-01T10:00:00'));
+const bookedRoomD = scheduler.bookMeeting(new Date('2023-12-01T09:00:00'), new Date('2023-12-01T10:00:00'));
+if (bookedRoomA) {
+    console.log("Room is booked for - ", bookedRoomA);
 }
 else {
-    console.log("No room booked.");
+    console.log("Slot not avaliable, please select the different time. ");
+}
+if (bookedRoomB) {
+    console.log("Room is booked for - ", bookedRoomB);
+}
+else {
+    console.log("Slot not avaliable, please select the different time. ");
+}
+if (bookedRoomC) {
+    console.log("Room is booked for - ", bookedRoomC);
+}
+else {
+    console.log("Slot not avaliable, please select the different time. ");
+}
+if (bookedRoomD) {
+    console.log("Room is booked for - ", bookedRoomC);
+}
+else {
+    console.log("Slot not avaliable, please select the different time. ");
 }

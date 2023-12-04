@@ -1,17 +1,17 @@
-enum VehicleType {
+enum VehicalType {
   CAR = "car",
-  MOTORCYCLE = "motorcycle",
+  MOTORCYCLE = "motorcycle"
 }
 
 class ParkingTicket {
   private ticketNumber: string;
   private entryTime: Date;
-  private vehicleType: VehicleType;
+  private vehicalType: string;
 
-  constructor(ticketNumber: string, entryTime: Date, vehicleType: VehicleType) {
+  constructor(ticketNumber:string, entryTime:Date, vehicalType: string) {
     this.ticketNumber = ticketNumber;
     this.entryTime = entryTime;
-    this.vehicleType = vehicleType;
+    this.vehicalType = vehicalType;
   }
 
   getTicketNumber(): string {
@@ -22,103 +22,62 @@ class ParkingTicket {
     return this.entryTime;
   }
 
-  getVehicleType(): VehicleType {
-    return this.vehicleType;
+  getVehicalType(): string {
+    return this.vehicalType;
   }
 }
 
-class ParkingSpace {
-  private spaceNumber: number;
-  private isOccupiedFlag: boolean;
-  private vehicleType: VehicleType | null;
-
-  constructor(spaceNumber: number) {
-    this.spaceNumber = spaceNumber;
-    this.isOccupiedFlag = false;
-    this.vehicleType = null;
-  }
-
-  occupySpace(vehicleType: VehicleType): void {
-    this.isOccupiedFlag = true;
-    this.vehicleType = vehicleType;
-  }
-
-  vacateSpace(): void {
-    this.isOccupiedFlag = false;
-    this.vehicleType = null;
-  }
-
-  isSpaceOccupied(): boolean {
-    return this.isOccupiedFlag;
-  }
-
-  getVehicleType(): VehicleType | null {
-    return this.vehicleType;
-  }
-}
 
 class ParkingLot {
-  private totalSpaces: number;
-  private parkingSpaces: ParkingSpace[];
-  private ticketCounter: number;
-
-  constructor(totalSpaces: number) {
-    this.totalSpaces = totalSpaces;
-    this.parkingSpaces = Array.from({ length: totalSpaces }, (_, i) => new ParkingSpace(i + 1));
-    this.ticketCounter = 1;
+  car: number;
+  motorcycle: number;
+  constructor(car:number, motorcycle:number) {
+    this.car = car;
+    this.motorcycle = motorcycle;
   }
 
-  issueParkingTicket(vehicleType: VehicleType): ParkingTicket | null {
-    const availableSpace = this.findAvailableSpace(vehicleType);
-    if (availableSpace) {
-      const ticket = new ParkingTicket(this.generateTicketNumber(), new Date(), vehicleType);
-      availableSpace.occupySpace(vehicleType);
-      return ticket;
-    }
-    return null;
+  getParkingSpace():string {
+    return "Remaining parking space for Car: "+ this.car + ", Motorcycle : "+this.motorcycle
   }
 
-  returnParkingTicket(ticket: ParkingTicket): void {
-    const spaceNumber = parseInt(ticket.getTicketNumber().substring(1));
-    const parkingSpace = this.parkingSpaces[spaceNumber - 1];
-    parkingSpace.vacateSpace();
-  }
-
-  getAvailableSpaces(): number {
-    return this.parkingSpaces.filter(space => !space.isSpaceOccupied()).length;
-  }
-
-  private findAvailableSpace(vehicleType: VehicleType): ParkingSpace | null {
-    for (const space of this.parkingSpaces) {
-      if (!space.isSpaceOccupied() && (space.getVehicleType() === null || space.getVehicleType() === vehicleType)) {
-        return space;
+  findAvailableSpaceAndAllocate(vehicalType: string) {
+      if(vehicalType == VehicalType.CAR) {
+          if(this.car > 0) {
+            this.car--;
+            return true;
+          } else {
+            return false;
+          }
+      } else if(vehicalType === VehicalType.MOTORCYCLE) {
+        if(this.motorcycle > 0) {
+          this.motorcycle--;
+          return true;
+        } else {
+          return false;
+        }
+      } else {
+        return false;
       }
-    }
-    return null;
   }
 
-  private generateTicketNumber(): string {
-    const ticketNumber = `T${this.ticketCounter}`;
-    this.ticketCounter++;
-    return ticketNumber;
+  generateParkingTicket(vehicalType: string):string {
+     const parkingTicket = Math.random().toString(32).substring(2, 8);
+     return vehicalType === VehicalType.CAR ? 'C-'+parkingTicket : 'M-'+parkingTicket;
   }
 }
 
-// Example Usage
-const parkingLot = new ParkingLot(10);
+const parkingLot = new ParkingLot(1, 1);
+const allocateVehical = parkingLot.findAvailableSpaceAndAllocate(VehicalType.MOTORCYCLE);
 
-const carTicket = parkingLot.issueParkingTicket(VehicleType.CAR);
-console.log("Car Ticket:", carTicket);
+if(allocateVehical) {
+  const getTicket = parkingLot.generateParkingTicket(VehicalType.MOTORCYCLE);
 
-const motorcycleTicket = parkingLot.issueParkingTicket(VehicleType.MOTORCYCLE);
-console.log("Motorcycle Ticket:", motorcycleTicket);
-
-if (carTicket) {
-  parkingLot.returnParkingTicket(carTicket);
-  console.log("Car returned. Available spaces:", parkingLot.getAvailableSpaces());
-}
-
-if (motorcycleTicket) {
-  parkingLot.returnParkingTicket(motorcycleTicket);
-  console.log("Motorcycle returned. Available spaces:", parkingLot.getAvailableSpaces());
+  const parkingSpace = new ParkingTicket(getTicket, new Date(), VehicalType.MOTORCYCLE);
+  
+  console.log("Ticket Number:", parkingSpace.getTicketNumber());
+  console.log("Entry time:", parkingSpace.getEntryTime());
+  console.log("Vehical Type:", parkingSpace.getVehicalType());
+  console.log("Remaining parking space:", parkingLot.getParkingSpace())
+} else {
+  console.log("Parking full.");
 }

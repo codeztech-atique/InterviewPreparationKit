@@ -5,18 +5,18 @@ var VehicalType;
     VehicalType["MOTORCYCLE"] = "motorcycle";
 })(VehicalType || (VehicalType = {}));
 class ParkingTicket {
-    constructor(ticketNumber, entryTime, vehicalType) {
-        this.ticketNumber = ticketNumber;
+    constructor(entryTime, ticketNumber, vehicalType) {
         this.entryTime = entryTime;
+        this.ticketNumber = ticketNumber;
         this.vehicalType = vehicalType;
-    }
-    getTicketNumber() {
-        return this.ticketNumber;
     }
     getEntryTime() {
         return this.entryTime;
     }
-    getVehicalType() {
+    getTicketNumber() {
+        return this.ticketNumber;
+    }
+    getVehicleType() {
         return this.vehicalType;
     }
 }
@@ -25,11 +25,11 @@ class ParkingLot {
         this.car = car;
         this.motorcycle = motorcycle;
     }
-    getParkingSpace() {
-        return "Remaining parking space for Car: " + this.car + ", Motorcycle : " + this.motorcycle;
+    getAvailableSpace() {
+        return "Available space for - " + VehicalType.CAR + " " + this.car + " \nAvailable space for - " + VehicalType.MOTORCYCLE + " " + this.motorcycle;
     }
-    findAvailableSpaceAndAllocate(vehicalType) {
-        if (vehicalType == VehicalType.CAR) {
+    allocateVehicles(vehicleType) {
+        if (vehicleType === VehicalType.CAR) {
             if (this.car > 0) {
                 this.car--;
                 return true;
@@ -38,7 +38,7 @@ class ParkingLot {
                 return false;
             }
         }
-        else if (vehicalType === VehicalType.MOTORCYCLE) {
+        else if (vehicleType === VehicalType.MOTORCYCLE) {
             if (this.motorcycle > 0) {
                 this.motorcycle--;
                 return true;
@@ -47,25 +47,37 @@ class ParkingLot {
                 return false;
             }
         }
-        else {
-            return false;
-        }
+        return false;
     }
-    generateParkingTicket(vehicalType) {
-        const parkingTicket = Math.random().toString(32).substring(2, 8);
-        return vehicalType === VehicalType.CAR ? 'C-' + parkingTicket : 'M-' + parkingTicket;
+    getParkingTicket(vehicleType) {
+        return vehicleType === VehicalType.CAR ? 'CAR-' + Math.random().toString(32).substring(2, 8) : 'MOTORCYCLE-' + Math.random().toString(32).substring(2, 8);
     }
 }
-const parkingLot = new ParkingLot(1, 1);
-const allocateVehical = parkingLot.findAvailableSpaceAndAllocate(VehicalType.MOTORCYCLE);
-if (allocateVehical) {
-    const getTicket = parkingLot.generateParkingTicket(VehicalType.MOTORCYCLE);
-    const parkingSpace = new ParkingTicket(getTicket, new Date(), VehicalType.MOTORCYCLE);
-    console.log("Ticket Number:", parkingSpace.getTicketNumber());
-    console.log("Entry time:", parkingSpace.getEntryTime());
-    console.log("Vehical Type:", parkingSpace.getVehicalType());
-    console.log("Remaining parking space:", parkingLot.getParkingSpace());
+const parkingLot = new ParkingLot(1, 0);
+const allocateCar = parkingLot.allocateVehicles(VehicalType.CAR);
+const allocateMotorCycle = parkingLot.allocateVehicles(VehicalType.MOTORCYCLE);
+if (allocateCar) {
+    const getTicketNumber = parkingLot.getParkingTicket(VehicalType.CAR);
+    const parkingTicket = new ParkingTicket(new Date(), getTicketNumber, VehicalType.CAR);
+    console.log("Parking time for " + VehicalType.CAR, parkingTicket.getEntryTime());
+    console.log("Parking ticket for " + VehicalType.CAR, " - ", parkingTicket.getTicketNumber());
+    console.log("Vehicle Type - " + parkingTicket.getVehicleType());
+    console.log(parkingLot.getAvailableSpace());
 }
 else {
-    console.log("Parking full.");
+    console.log("Parking full - ", parkingLot.getAvailableSpace());
+}
+console.log();
+console.log('==================================');
+console.log();
+if (allocateMotorCycle) {
+    const getTicketNumber = parkingLot.getParkingTicket(VehicalType.MOTORCYCLE);
+    const parkingTicket = new ParkingTicket(new Date(), getTicketNumber, VehicalType.MOTORCYCLE);
+    console.log("Parking time for " + VehicalType.MOTORCYCLE, " - ", parkingTicket.getEntryTime());
+    console.log("Parking ticket for " + VehicalType.MOTORCYCLE, parkingTicket.getTicketNumber());
+    console.log("Vehicle Type - " + parkingTicket.getVehicleType());
+    console.log(parkingLot.getAvailableSpace());
+}
+else {
+    console.log("Parking full - ", parkingLot.getAvailableSpace());
 }
