@@ -1,28 +1,31 @@
-
-
-const merge = (left, right) => {
-   let arr = [];
-   while(left.length && right.length) {
-    if(left[0] < right[0]) {
-        arr.push(left.shift());
+const arraysEqual = (arr1, arr2) => {
+    if(arr1.length != arr2.length) {
+        return false;
     } else {
-        arr.push(right.shift());
+        let count = 0;
+        for(let i = 0; i < arr1.length; i++) {
+            if(arr1[i] === arr2[i]) {
+                count++;
+            }
+        }
+        if(count === arr1.length) {
+            return true;
+        } else {
+            return false;
+        }
     }
-   }
-   return [...arr, ...left, ...right];
-}
-
-const mergeSort = (arr) => {
-    let half = arr.length / 2;
-    
-    if(arr.length < 2) {
-        return arr;
-    }
-    
-    let left = arr.splice(0, half);
-    return merge(mergeSort(left), mergeSort(arr));
-
 }
 
 
-console.log(mergeSort([2, 5, 10, 57, 9, 12, 13]));
+const array1 = [1, 2, 3];
+const array2 = [1, 2, 3];
+
+const array3 = [1,2];
+const array4 = [1,null,2]; 
+
+const array5 = [1,2,1]
+const array6 = [1,1,2]
+
+console.log(arraysEqual(array1, array2)); // Output: true
+console.log(arraysEqual(array3, array4)); // Output: true
+console.log(arraysEqual(array5, array6)); // Output: false

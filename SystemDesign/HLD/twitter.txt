@@ -1,0 +1,25 @@
+// Twitter / Thread
+
+Features - 
+
+Tweet
+Retweet
+Timeline
+Treanding
+
+
+Functional Requirements - 
+
+Tweet
+Retweet
+Timeline
+Treanding
+
+Non Functional Requirements - 
+
+1. Scalable
+2. Resitients
+3. Highly Available
+4. Security ( Authentication and Authorization )
+5. Cost effective
+6. Consistent

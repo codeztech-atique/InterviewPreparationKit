@@ -1,0 +1,29 @@
+// On demand video platform - Youtube / Amazon prime / Netflix
+
+Features - 
+
+Upload video
+Search video
+View video
+Adult content
+
+
+Functional Requirements - 
+
+Upload video
+Search video
+View video
+Adult content
+
+Non Functional Requirements - 
+
+1. Scalable
+2. Resitients
+3. Highly Available
+4. Security ( Authentication and Authorization )
+5. Cost effective
+6. Consistent
+
+
+
+Element Media Convert ( Used to convert diff diff pixel )

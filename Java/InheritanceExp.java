@@ -1,6 +1,6 @@
 package Java;
 
-public class InheritanceExp extends Employee{
+public class InheritanceExp extends Employee {
     int bonus=10000;  
     public static void main(String args[]){  
         InheritanceExp p = new InheritanceExp();  

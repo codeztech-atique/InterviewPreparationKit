@@ -1,0 +1,8 @@
+For system design interview 5 must known - 
+
+- Microservices
+- Know the difference between Sync and Aync pattern
+- Database selection ( SQL or NoSQL )
+- Cache - ( In memory caching, Outside caching, Cloudfront, API Gateway with out using interal cache )
+- Security ( Authentication and Authorization )
+- How to make system design scalable and highly available

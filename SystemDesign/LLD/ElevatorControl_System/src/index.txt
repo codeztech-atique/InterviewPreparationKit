@@ -1,0 +1,84 @@
+enum Direction {
+    UP = "up",
+    DOWN = "down",
+    STOPPED = "stopped"
+}
+
+class Elevator {
+    currentFloor: number;
+    direction: Direction;
+
+    constructor(totalFloor: number) {
+        this.currentFloor = 1; // Assuming the elevator starts at the first floor
+        this.direction = Direction.STOPPED;
+        this.totalFloor = totalFloor;
+    }
+
+    movingUp() {
+        this.direction = Direction.UP;
+        this.currentFloor++;
+    }
+
+    movingDown() {
+        this.direction = Direction.DOWN;
+        this.currentFloor--;
+    }
+    
+    isStopped() {
+        return this.direction === Direction.STOPPED;
+    }
+
+    getStatus() {
+        return {
+            currentFloor: this.currentFloor,
+            direction: this.direction
+        };
+    }
+}
+
+class ElevatorControlSystem {
+    elevators: Elevator[];
+
+    constructor(numElevators: number, totalFloors: number) {
+        this.elevators = Array.from({ length: numElevators }, () => new Elevator(totalFloors));
+    }
+
+    requestedFloor(floorNumber: number) {
+        // Find the nearest available elevator
+        const nearestElevator = this.findNearestElevator(floorNumber);
+
+        // Move the elevator to the requested floor
+        this.moveElevator(nearestElevator, floorNumber);
+
+        // Open the door or perform other actions as needed
+        console.log(`Elevator ${nearestElevator} has arrived at floor ${floorNumber}`);
+    }
+
+    private findNearestElevator(floorNumber: number): Elevator {
+        // Logic to find the nearest available elevator based on distance, current floor, etc.
+        // For simplicity, just return the first elevator for now
+        return this.elevators[0];
+    }
+
+    private moveElevator(elevator: Elevator, floorNumber: number) {
+        // Logic to move the elevator to the requested floor
+        // For simplicity, just move the elevator directly to the requested floor
+        while (elevator.currentFloor !== floorNumber) {
+            if (elevator.currentFloor < floorNumber) {
+                elevator.movingUp();
+            } else {
+                elevator.movingDown();
+            }
+        }
+        elevator.direction = Direction.STOPPED;
+    }
+}
+
+// Example usage:
+const elevatorSystem = new ElevatorControlSystem(3, 10);
+
+// Request an elevator to floor 5
+elevatorSystem.requestedFloor(5);
+
+// Check the status of the first elevator
+console.log(elevatorSystem.elevators[0].getStatus());
