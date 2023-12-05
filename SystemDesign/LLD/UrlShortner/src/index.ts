@@ -1,31 +1,34 @@
-class URLShorteningService {
-    generateRandomIdentifier(): string {
+class URLShortner_Service {
+    generateRandom_String() {
         return Math.random().toString(32).substring(2, 8);
     }
 
-    shortUrl(): string {
-        const generateRandomIdentifier = this.generateRandomIdentifier();
-        return 'https://tinyurl.com/'+generateRandomIdentifier;
+    genratedShortUrl() {
+        const getRandom = this.generateRandom_String();
+        return "https://tinyurl.com/"+getRandom;
     }
 }
 
 class DatabaseService {
-    urlMapping: Map<String, String>;
+    mapUrl: Map<string, string>;
     constructor() {
-        this.urlMapping = new Map();
+        this.mapUrl = new Map();
     }
-    setMapping(originalUrl: string, shortner: string) {
-        this.urlMapping.set(originalUrl, shortner);
+
+    setUrl(originalUrl: string, tinyUrl: string) {
+        this.mapUrl.set(originalUrl, tinyUrl);
     }
-    getShortner(url: string) {
-        return this.urlMapping.get(url);
-    }
+
+    getUrl(originalUrl: string) {
+        return this.mapUrl.get(originalUrl);
+    } 
 }
 
-const urlShortingService = new URLShorteningService();
-const getShortURL = urlShortingService.shortUrl();
+const url = "https://atiqueahmed.com"
+const urlShortner = new URLShortner_Service();
 
-const dataBaseService = new DatabaseService();
-dataBaseService.setMapping('https://atiqueahmed.com', getShortURL);
+const databaseService = new DatabaseService();
+databaseService.setUrl(url, urlShortner.genratedShortUrl());
 
-console.log(dataBaseService.getShortner('https://atiqueahmed.com'))
+console.log(databaseService.getUrl(url));
+console.log(databaseService.mapUrl)

@@ -1,95 +1,87 @@
 enum VehicalType {
-  CAR = 'car',
-  MOTORCYCLE = 'motorcycle'
+  CAR = "car",
+  BIKE = "bike"
 }
 
 class ParkingTicket {
+  ticketNo: string;
   entryTime: Date;
-  ticketNumber: string;
-  vehicalType: string;
-  constructor(entryTime: Date, ticketNumber: string, vehicalType: string) {
-    this.entryTime = entryTime;
-    this.ticketNumber = ticketNumber;
+  vehicalType: VehicalType;
+  constructor(ticketNo: string, vehicalType: VehicalType) {
+    this.ticketNo = ticketNo;
+    this.entryTime = new Date();
     this.vehicalType = vehicalType;
+  }
+
+  getTicketNo() {
+    return this.ticketNo;
   }
 
   getEntryTime() {
     return this.entryTime;
   }
 
-  getTicketNumber() {
-    return this.ticketNumber;
-  }
-
-  getVehicleType() {
+  getVehicalType() {
     return this.vehicalType;
   }
 }
 
 class ParkingLot {
     car: number;
-    motorcycle: number; 
-    constructor(car: number, motorcycle: number) {
+    bike: number;
+    constructor(car: number, bike: number) {
       this.car = car;
-      this.motorcycle = motorcycle;
+      this.bike = bike;
     }
 
-    getAvailableSpace(): string {
-       return "Available space for - "+VehicalType.CAR+" "+this.car+" \nAvailable space for - "+VehicalType.MOTORCYCLE+" "+this.motorcycle;
-    }
-
-    allocateVehicles(vehicleType:string) : boolean {
-       if(vehicleType === VehicalType.CAR) {
+    allocatedParking(vehicalType: string) {
+       if(vehicalType === VehicalType.CAR) {
           if(this.car > 0) {
-            this.car--;
-            return true;
+             this.car--;
+             return true;
           } else {
             return false;
           }
-       } else if(vehicleType === VehicalType.MOTORCYCLE) {
-          if(this.motorcycle > 0) {
-            this.motorcycle--;
+       } else if(vehicalType === VehicalType.BIKE) {
+          if(this.bike > 0) {
+            this.bike--;
             return true;
           } else {
             return false;
           }
        }
-       return false;
     }
 
-    getParkingTicket(vehicleType: string): string {
-       return vehicleType === VehicalType.CAR ? 'CAR-'+Math.random().toString(32).substring(2, 8) : 'MOTORCYCLE-'+Math.random().toString(32).substring(2, 8);
+    generateParkingTicket(vehicalType: string) {
+       const parkingTicket = Math.random().toString(32).substring(2, 8);
+       return vehicalType === VehicalType.CAR ? 'C-'+parkingTicket : 'B-'+parkingTicket;
+    }
+
+    getStatus() {
+      return "Car have space left:"+this.car+" and bike has space left:"+this.bike;
     }
 }
 
-const parkingLot = new ParkingLot(1, 0);
-const allocateCar = parkingLot.allocateVehicles(VehicalType.CAR);
-const allocateMotorCycle = parkingLot.allocateVehicles(VehicalType.MOTORCYCLE);
+const parkingLot = new ParkingLot(0,1);
+const parkingAllocatedCar = parkingLot.allocatedParking(VehicalType.CAR);
+const parkingAllocateBike = parkingLot.allocatedParking(VehicalType.BIKE);
 
-if(allocateCar) {
-   const getTicketNumber = parkingLot.getParkingTicket(VehicalType.CAR);
-   const parkingTicket = new ParkingTicket(new Date(), getTicketNumber, VehicalType.CAR);
-
-   console.log("Parking time for "+VehicalType.CAR, parkingTicket.getEntryTime());
-   console.log("Parking ticket for "+VehicalType.CAR, " - ", parkingTicket.getTicketNumber());
-   console.log("Vehicle Type - "+ parkingTicket.getVehicleType());
-   console.log(parkingLot.getAvailableSpace());
+if(parkingAllocatedCar) {
+  const getTicketNo = parkingLot.generateParkingTicket(VehicalType.CAR);
+  const parkingTicket = new ParkingTicket(getTicketNo, VehicalType.CAR);
+  console.log("Parking ticket:", parkingTicket.getTicketNo());
+  console.log("Parking time:", parkingTicket.getEntryTime());
+  console.log("Vehical Type:", parkingTicket.getVehicalType());
 } else {
-  console.log("Parking full - ",parkingLot.getAvailableSpace());
+  console.log("No parking avaiable for CAR.")
 }
 
-console.log();
-console.log('==================================')
-console.log();
-
-if(allocateMotorCycle) {
-  const getTicketNumber = parkingLot.getParkingTicket(VehicalType.MOTORCYCLE);
-  const parkingTicket = new ParkingTicket(new Date(), getTicketNumber, VehicalType.MOTORCYCLE);
-
-  console.log("Parking time for "+VehicalType.MOTORCYCLE, " - ",parkingTicket.getEntryTime());
-  console.log("Parking ticket for "+VehicalType.MOTORCYCLE, parkingTicket.getTicketNumber());
-  console.log("Vehicle Type - "+parkingTicket.getVehicleType());
-  console.log(parkingLot.getAvailableSpace());
+if(parkingAllocateBike) {
+  const getTicketNo = parkingLot.generateParkingTicket(VehicalType.BIKE);
+  const parkingTicket = new ParkingTicket(getTicketNo, VehicalType.BIKE);
+  console.log("Parking ticket:", parkingTicket.getTicketNo());
+  console.log("Parking time:", parkingTicket.getEntryTime());
+  console.log("Vehical Type:", parkingTicket.getVehicalType());
 } else {
- console.log("Parking full - ",parkingLot.getAvailableSpace());
+  console.log("No parking avaiable for Bike.")
 }

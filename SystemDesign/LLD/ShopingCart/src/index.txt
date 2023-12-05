@@ -1,0 +1,63 @@
+class CartItem {
+    productId: string;
+    quatity: number;
+    price: number;
+    constructor(productId: string, quatity: number, price: number) {
+        this.productId = productId;
+        this.quatity = quatity;
+        this.price = price;
+    }
+}
+
+class Cart_Service {
+    private cart: Map<string, CartItem[]> = new Map();
+    
+    addToCart(userId: string, productId: string, quantity: number, price: number) {
+       if(this.cart.get(userId)) {
+          const userCart = this.cart.get(userId) || [];
+          const existingProduct = userCart.find((e) => e.productId == productId);
+          if(existingProduct) {
+             existingProduct.quatity += quantity;
+             existingProduct.price *= quantity;
+          } else {
+            userCart.push(new CartItem(productId, quantity, price));
+          }
+          this.cart.set(userId, userCart);
+       } else {
+         this.cart.set(userId, [new CartItem(productId, quantity, price)]);
+       }
+    }
+
+    removeFromCart(userId: string, product_id: string) {
+       const userCart = this.cart.get(userId) || [];
+       const updateCart = userCart.filter((item => item.productId != product_id));
+       this.cart.set(userId, updateCart);
+    }
+
+    updateQuantity(userId: string, product_id: string, quantity: number) {
+      const userCart = this.cart.get(userId);
+      if(userCart) {
+        const updateCart = userCart.map((item) => {
+            if(item.productId == product_id) {
+                item.quatity = quantity;
+            }
+            return item;
+        });
+        this.cart.set(userId, updateCart);
+      }
+    }
+
+
+    getCart(userId: string) {
+        return this.cart.get(userId) || [];
+    }
+}
+// Example Usage
+const cartService = new CartService();
+cartService.addToCart("user123", "product1", 2, 10.99);
+cartService.addToCart("user123", "product2", 1, 5.99);
+console.log(cartService.getCart("user123"));
+cartService.updateQuantity("user123", "product1", 5);
+console.log(cartService.getCart("user123"));
+cartService.removeFromCart("user123", "product2");
+console.log(cartService.getCart("user123"));

@@ -1,26 +1,27 @@
 "use strict";
-class URLShorteningService {
-    generateRandomIdentifier() {
+class URLShortner_Service {
+    generateRandom_String() {
         return Math.random().toString(32).substring(2, 8);
     }
-    shortUrl() {
-        const generateRandomIdentifier = this.generateRandomIdentifier();
-        return 'https://tinyurl.com/' + generateRandomIdentifier;
+    genratedShortUrl() {
+        const getRandom = this.generateRandom_String();
+        return "https://tinyurl.com/" + getRandom;
     }
 }
 class DatabaseService {
     constructor() {
-        this.urlMapping = new Map();
+        this.mapUrl = new Map();
     }
-    setMapping(originalUrl, shortner) {
-        this.urlMapping.set(originalUrl, shortner);
+    setUrl(originalUrl, tinyUrl) {
+        this.mapUrl.set(originalUrl, tinyUrl);
     }
-    getShortner(url) {
-        return this.urlMapping.get(url);
+    getUrl(originalUrl) {
+        return this.mapUrl.get(originalUrl);
     }
 }
-const urlShortingService = new URLShorteningService();
-const getShortURL = urlShortingService.shortUrl();
-const dataBaseService = new DatabaseService();
-dataBaseService.setMapping('https://atiqueahmed.com', getShortURL);
-console.log(dataBaseService.getShortner('https://atiqueahmed.com'));
+const url = "https://atiqueahmed.com";
+const urlShortner = new URLShortner_Service();
+const databaseService = new DatabaseService();
+databaseService.setUrl(url, urlShortner.genratedShortUrl());
+console.log(databaseService.getUrl(url));
+console.log(databaseService.mapUrl);
