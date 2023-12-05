@@ -5,7 +5,7 @@ enum Direction {
 }
 
 class Elevator {
-    currentFloor: number;
+    totalFloor: number;
     direction: Direction;
 
     constructor(totalFloor: number) {
