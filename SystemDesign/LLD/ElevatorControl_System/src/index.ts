@@ -1,25 +1,25 @@
 enum Direction {
     UP = "up",
     DOWN = "down",
-    STOPPED ="stopped"
+    STOPPED = "stopped"
 }
 
 class Elevator {
     currentFloor: number;
-    noOfFloor: number;
+    totalFloor: number;
     direction: Direction;
-    constructor(noOfFloor: number) {
+    constructor(totalFloor: number) {
         this.currentFloor = 0;
-        this.noOfFloor = noOfFloor;
+        this.totalFloor = totalFloor;
         this.direction = Direction.STOPPED;
     }
 
-    movingUp() {
+    goingUp() {
         this.currentFloor++;
         this.direction = Direction.UP;
     }
 
-    movingDown() {
+    goingDown() {
         this.currentFloor--;
         this.direction = Direction.DOWN;
     }
@@ -36,35 +36,37 @@ class Elevator {
     }
 }
 
-class Elevator_ControlSystem {
+class Elevator_Control_System {
     elevator: Elevator[];
-    constructor(noOfElevator: number, noOfFloor: number) {
-        this.elevator = Array.from({ length: noOfElevator}, () => new Elevator(noOfFloor));
+    constructor(totalElevator: number, noOfFloor: number) {
+       this.elevator = Array.from({length: totalElevator}, () => new Elevator(noOfFloor));
     }
 
     requestedFloor(floor: number) {
-        const nearestElevator = this.nearestElevator();
-        const mvElevator = this.moveElevator(nearestElevator, floor);
-        console.log(nearestElevator, "Current floor is:", floor)
+        const nearElevator = this.nearestElevator();
+        const mvElevator = this.moveElevator(nearElevator, floor);
+        console.log("Elevator now:", mvElevator);
     }
 
     nearestElevator() {
         return this.elevator[0];
     }
 
-    moveElevator(nearestElevator: Elevator, floor: number) {
-        while(nearestElevator.currentFloor != floor) {
-            if(nearestElevator.currentFloor < floor) {
-                nearestElevator.movingUp();
+    moveElevator(nearElevator: Elevator, requestedFloor: number) {
+        while(nearElevator.currentFloor != requestedFloor) {
+            if(nearElevator.currentFloor < requestedFloor) {
+                nearElevator.goingUp();
             } else {
-                nearestElevator.movingDown();
+                nearElevator.goingDown();
             }
         }
-        nearestElevator.direction = Direction.STOPPED;
+        nearElevator.direction = Direction.STOPPED;
+        return nearElevator;
     }
 }
 
-const elevatorControll = new Elevator_ControlSystem(4, 10);
-elevatorControll.requestedFloor(7);
+const elevatorControlSystem = new Elevator_Control_System(4, 10);
+const requestedFloor = elevatorControlSystem.requestedFloor(6);
 
-console.log("Status:", elevatorControll.elevator[0]);
+console.log("Status:", elevatorControlSystem.elevator[0].getStatus())
+

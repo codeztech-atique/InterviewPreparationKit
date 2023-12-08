@@ -11,43 +11,43 @@ class Trie {
 
     insert(word) {
         let curr = this.root;
-        for(let i = 0; i < word.length; i++) {
-            let chatToInsert = word[i];
-            if(!(curr.children.has(chatToInsert))) {
-                curr.children.set(chatToInsert, new Node());
+        for(let i = 0; i < word.length; i++)  {
+            let charToInsert = word[i];
+            if(!(curr.children.has(charToInsert))) {
+                curr.children.set(charToInsert, new Node());
             }
-            curr = curr.children.get(chatToInsert);
+            curr = curr.children.get(charToInsert);
         }
         curr.isWordEnd = true;
     }
 
     contains(word) {
         let curr = this.root;
-        for(let i = 0; i < word.length; i++) {
-            let chatToInsert = word[i];
-            if(!(curr.children.has(chatToInsert))) {
+        for(let i = 0; i < word.length; i++)  {
+            let charToInsert = word[i];
+            if(!(curr.children.has(charToInsert))) {
                 return false;
             }
-            curr = curr.children.get(chatToInsert);
+            curr = curr.children.get(charToInsert);
         }
         return curr.isWordEnd;
     }
 
     startWithPrefix(word) {
         let curr = this.root;
-        for(let i = 0; i < word.length; i++) {
-            let chatToInsert = word[i];
-            if(!(curr.children.has(chatToInsert))) {
+        for(let i = 0; i < word.length; i++)  {
+            let charToInsert = word[i];
+            if(!(curr.children.has(charToInsert))) {
                 return false;
             }
-            curr = curr.children.get(chatToInsert);
+            curr = curr.children.get(charToInsert);
         }
         return true;
     }
 
     remove(word) {
         let curr = this.root;
-        for(let i = 0; i < word.length; i++) {
+        for(let i = 0; i < word.length; i++)  {
             let charToInsert = word[i];
             if(curr.children.has(charToInsert)) {
                 curr = curr.children.get(charToInsert);
@@ -55,28 +55,20 @@ class Trie {
                 return false;
             }
         }
-        curr.isWordEnd = false
-
-
-        
-        return true;
+        curr.isWordEnd = false;
     }
 
     printAllTheWords() {
-        const words = [];
-
-        const traverse = (node, currentWord = '') => {
-            if (node.isWordEnd) {
+        let words = [];
+        let searchTree = (node, currentWord = '') => {
+            if(node.isWordEnd) {
                 words.push(currentWord);
             }
-
-            for (const [char, childNode] of node.children.entries()) {
-                traverse(childNode, currentWord + char);
+            for(const [char, currNode] of node.children.entries()) {
+                searchTree(currNode, currentWord + char);
             }
-        };
-
-        traverse(this.root);
-
+        }
+        searchTree(this.root);
         return words;
     }
 }

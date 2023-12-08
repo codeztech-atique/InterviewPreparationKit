@@ -1,48 +1,65 @@
-class CartItem {
+class Cart_Item {
     productId: string;
-    quantity: number;
+    quatity: number;
     price: number;
-    constructor(productId: string, quantity: number, price: number) {
+    constructor(productId: string, quatity: number, price: number) {
         this.productId = productId;
-        this.quantity = quantity;
+        this.quatity = quatity;
         this.price = price;
     }
 }
 
 class Cart_Service {
-    private cart: Map<string, CartItem[]> = new Map();
+    private cart : Map<String, Cart_Item[]> = new Map();
 
-    addToCart(userId: string, productId: string, quantity: number, price:number) {
+    addToCart(userId: string, productId: string, quatity: number, price: number) {
         let userCart = this.cart.get(userId) || [];
         if(userCart) {
-            let existingProduct = userCart.find((item) => item.productId === productId);
+            let existingProduct = userCart.find((item) => item.productId == productId);
             if(existingProduct) {
-                existingProduct.quantity += quantity;
+                existingProduct.quatity += quatity;
             } else {
-                userCart.push(new CartItem(productId, quantity, price));
+                userCart.push(new Cart_Item(productId, quatity, price));
             }
             this.cart.set(userId, userCart);
         } else {
-            this.cart.set(userId, [new CartItem(productId, quantity, price)]);
+            this.cart.set(userId, [new Cart_Item(productId, quatity,price)]);
         }
     }
 
-    removeFromCart(userId: string, productId: string, quantity: number) {
+    removeFromCart(userId: string, productId: string, quatity: number) {
         let userCart = this.cart.get(userId) || [];
-        let updateCart = userCart?.filter((item) => item.productId != productId);
-        this.cart.set(userId, updateCart);
+        if(userCart) {
+            let index = userCart.findIndex((item) => item.productId == productId);
+            if(index != -1) {
+                const data = userCart[index];
+                if(data.quatity > 0) {
+                    userCart[index].quatity -= quatity;
+
+                    if(userCart[index].quatity === 0) {
+                        userCart.splice(index, 1);   
+                    }
+                } else {
+                    userCart.splice(index, 1);   
+                }
+            }
+            this.cart.set(userId, userCart)
+        }
     }
 
     getCart(userId: string) {
-        return this.cart.get(userId);
+        return this.cart.get(userId) || [];
     }
 }
 
 const cartService = new Cart_Service();
-cartService.addToCart("user123", "product1", 2, 10.99);
-cartService.addToCart("user123", "product2", 1, 5.99);
-console.log(cartService.getCart("user123"));
+cartService.addToCart("atique1201", "PODM-1939", 2, 12);
+cartService.addToCart("atique1201", "PODM-1929", 2, 11);
+cartService.addToCart("atique1201", "PODM-1919", 2, 19);
 
-console.log(cartService.getCart("user123"));
-cartService.removeFromCart("user123", "product2", 2);
-console.log(cartService.getCart("user123"));
+const getCart = cartService.getCart("atique1201");
+console.log("Your cart:", getCart);
+
+const removeFromCart = cartService.removeFromCart("atique1201", "PODM-1919", 1);
+console.log("After remove your cart:", getCart);
+

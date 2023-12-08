@@ -25,74 +25,64 @@ class Scheduler {
         this.rooms = rooms;
         this.meetings = [];
     }
-    
+
     bookMeeting(start: Date, end: Date) {
-        const availableRoom = this.findAvailableRoom(start, end);
+        let availableRoom = this.findAvailableRoom(start, end);
         if(availableRoom) {
             let newMeeting = new Meeting(start, end, availableRoom);
             this.meetings.push(newMeeting);
             availableRoom.booked = true;
-            return availableRoom.name;
         }
+        return availableRoom?.name;
     }
 
-    findAvailableRoom(start: Date, end: Date) : Room | null {
+    findAvailableRoom(start: Date, end: Date) {
         for(const room of this.rooms) {
-            if(!room.booked && this.findSlot(room, start, end)) {
+            if(!room.booked && this.isSlotAvailable(room, start, end)) {
                 return room;
             }
         }
         return null;
     }
 
-    findSlot(room: Room, start: Date, end: Date):boolean {
-       for(const meeting of this.meetings) {
-          if(meeting.room.name === room.name) {
-              if(
-                (start >= meeting.start && start < meeting.end) ||
-                (end >= meeting.start && end <= meeting.end) ||
-                (start <= meeting.start && end >= meeting.end)
-              ) {
-                return false;
-              }
-          }
-       } 
-       return true;
+    isSlotAvailable(room: Room, start: Date, end: Date) : boolean {
+        for(let meeting of this.meetings) {
+            if(meeting.room.name === room.name) {
+                if(
+                    (start >= meeting.start && start < meeting.end) ||
+                    (end > meeting.start && end <= meeting.end) ||
+                    (start <= meeting.start && end >= meeting.end)
+                ) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }
 
 const roomA = new Room("A");
 const roomB = new Room("B");
-const roomC = new Room("C");
+const schduler = new Scheduler([roomA, roomB]);
 
-const scheduler = new Scheduler([roomA, roomB, roomC]);
-const bookedMeetingA = scheduler.bookMeeting(new Date('2023-12-06T09:00:00'), new Date('2023-12-06T10:00:00'));
-const bookedMeetingB = scheduler.bookMeeting(new Date('2023-12-06T09:00:00'), new Date('2023-12-06T10:00:00'));
-const bookedMeetingC = scheduler.bookMeeting(new Date('2023-12-06T09:00:00'), new Date('2023-12-06T10:00:00'));
-const bookedMeetingD = scheduler.bookMeeting(new Date('2023-12-06T09:00:00'), new Date('2023-12-06T10:00:00'));
+const bookedRoomA = schduler.bookMeeting(new Date("2023-12-08T09:00:10"),new Date("2023-12-08T10:00:10"));
+const bookedRoomB = schduler.bookMeeting(new Date("2023-12-08T09:00:10"),new Date("2023-12-08T10:00:10"));
+const bookedRoomC = schduler.bookMeeting(new Date("2023-12-08T09:00:10"),new Date("2023-12-08T10:00:10"));
 
-
-
-if(bookedMeetingA) {
-    console.log("Meeting room booked for - ", bookedMeetingA);
+if(bookedRoomA) {
+    console.log("Room booked for - ", bookedRoomA);
 } else {
-    console.log("No slot avalaible.")
+    console.log("No Room Avaliable.")
 }
 
-if(bookedMeetingB) {
-    console.log("Meeting room booked for - ", bookedMeetingB);
+if(bookedRoomB) {
+    console.log("Room booked for - ", bookedRoomB);
 } else {
-    console.log("No slot avalaible.")
+    console.log("No Room Avaliable.")
 }
 
-if(bookedMeetingC) {
-    console.log("Meeting room booked for - ", bookedMeetingC);
+if(bookedRoomC) {
+    console.log("Room booked for - ", bookedRoomC);
 } else {
-    console.log("No slot avalaible.")
-}
-
-if(bookedMeetingD) {
-    console.log("Meeting room booked for - ", bookedMeetingD);
-} else {
-    console.log("No slot avalaible.")
+    console.log("No Room Avaliable.")
 }
