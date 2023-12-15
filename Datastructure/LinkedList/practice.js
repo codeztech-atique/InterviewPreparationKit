@@ -70,6 +70,7 @@ class SinglyLinkedList {
       newNode.next = nextNode;
       return this.printList();
    }
+
    remove(index) {
       if(index > this.length) {
          return "Invalid Input !!!"
@@ -80,6 +81,38 @@ class SinglyLinkedList {
       this.length--;
       return this.printList();
    }
+
+   removeFromFirst() {
+      let currentNode = this.head;
+      this.head = currentNode.next;
+      return this.printList();
+   }
+
+   removeFromLast() {
+      if (this.length === 0) {
+         return "List is empty!";
+     }
+ 
+     if (this.length === 1) {
+         this.head = null;
+         this.tail = null;
+         this.length = 0;
+         return "List is empty after removing the last node!";
+     }
+ 
+     let currentNode = this.head;
+     let newTail = this.head;
+ 
+     while (currentNode.next) {
+         newTail = currentNode;
+         currentNode = currentNode.next;
+     }
+ 
+     newTail.next = null;
+     this.tail = newTail;
+     this.length--;
+   }
+
    reverse() {
       if(!this.head.next) {
          return this.head;

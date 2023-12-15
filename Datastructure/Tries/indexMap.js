@@ -82,6 +82,18 @@ class Trie {
         return true;
     }
 
+    getCommonPrefix() {
+        let str = "", char = "";
+        let node = this.root;
+        while(node.children.size == 1 && !node.isWordEnd) {
+           char = Array.from(node.children.keys())[0];
+           str += char;
+           node = node.children.get(char)
+        }
+        return str;
+    }
+
+
     printAllTheWords() {
         let words = [];
         let curr = this.root;
