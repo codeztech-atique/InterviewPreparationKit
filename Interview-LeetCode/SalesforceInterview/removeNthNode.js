@@ -45,8 +45,20 @@ class LinkedList {
         this.length++;
     }
 
+    getTail() {
+        let counter = 1;
+        let currentNode = this.head;
+        while(currentNode) {
+            counter++;
+            currentNode = currentNode.next;
+        }
+        console.log("Tail:", this.tail);
+        console.log("Length:", counter);
+        this.tail = currentNode;
+        this.length = counter;
+    }
+
     remove(index) {
-        let leaderNode;
         if(index == 0) {
             index = 1;
         }
@@ -58,9 +70,10 @@ class LinkedList {
             this.removeFromFirst();
         } else if(removeNode === this.length && index === 1) {
             console.log("Remove from the last:", index);
-            let lastNode = this.removeFromLast();
+            this.removeFromLast();
         } else {
             console.log("Remove from the middle:", index);
+            this.removeFromMiddle(removeNode - 1);
         }
         
         // leaderNode = this.traverse(index - 1);
@@ -71,38 +84,56 @@ class LinkedList {
     }
 
     removeFromFirst() {
-       let currentNode = this.head;
-       this.head = currentNode.next;
-       this.length--;
-    }
-
-    removeFromLast() {
-        if (this.length === 0) {
-            return "List is empty!";
+        if(this.length == 0) {
+            return "List is empty!"
         }
-    
-        if (this.length === 1) {
+
+        if(this.length == 1) {
             this.head = null;
             this.tail = null;
             this.length = 0;
-            return "List is empty after removing the last node!";
+            return "List is empty after remove from first and last !!!"
         }
-    
+
+        let currentNode = this.head;
+        this.head = currentNode.next;
+        this.length--;
+    }
+
+    removeFromLast() {
+        if(this.length == 0) {
+            return "List is empty!"
+        }
+
+        if(this.length == 1) {
+            this.head = null;
+            this.tail = null;
+            this.length = 0;
+            return "List is empty after remove from first and last !!!"
+        }
+
         let currentNode = this.head;
         let newTail = this.head;
-    
-        while (currentNode.next) {
+
+        while(currentNode.next) {
             newTail = currentNode;
             currentNode = currentNode.next;
         }
-    
+
         newTail.next = null;
         this.tail = newTail;
         this.length--;
     }
 
+    removeFromMiddle(index) {
+       let leaderNode = this.traverse(index - 1);
+       let unwantedNode = leaderNode.next;
+       leaderNode.next = unwantedNode.next;
+       this.length--;
+    }
+
     traverse(index) {
-        let counter = 0;
+        let counter = 1;
         let currentNode = this.head;
         while(counter != index) {
             counter++;
@@ -133,6 +164,10 @@ for(let i = 1; i < arr.length; i++) {
 
 console.log("Linked list:", JSON.stringify(linkedList.head));
 console.log("Actual LinkedList:", linkedList.printList());
-console.log(linkedList.remove(1));
+console.log(linkedList.remove(2));
 console.log("Length:", linkedList.length)
 console.log("After remove:", JSON.stringify(linkedList.head));
+
+
+console.log();
+console.log("Tail:", linkedList.getTail());

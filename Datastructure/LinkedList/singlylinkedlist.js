@@ -77,6 +77,17 @@ class LinkedList {
       this.printList();
   }
   removeFromFirst() {
+    if(this.length == 0) {
+        return "List is empty!"
+    }
+
+    if(this.length == 1) {
+        this.head = null;
+        this.tail = null;
+        this.length = 0;
+        return "List is empty after remove from first and last !!!"
+    }
+    
     let currentNode = this.head;
     this.head = currentNode.next;
     return this.printList();
@@ -127,7 +138,7 @@ class LinkedList {
         return this.printList();
   }
   traverSe(index) { //we need to take the last element where we need to index it
-      let counter = 0;
+      let counter = 1;
       let currentNode = this.head;
       while(index !== counter) {
           counter++;
