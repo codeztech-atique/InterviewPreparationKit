@@ -59,6 +59,17 @@ class Trie {
         curr.isWordEnd = false;
         return true;
     }
+    getCommonPrefix() {
+        let ss = [...this.root.children.entries()];
+        let char = "";
+        console.log(ss);
+        for(let i = 0; i < ss.length; i++) {
+            if(!ss[i].isWordEnd) {
+                char += ss[i][0]
+            }
+        }
+        return char;
+    }
     printAllTheWords() {
         let word = [];
         let searchTree = (node, currentWord = '') => {

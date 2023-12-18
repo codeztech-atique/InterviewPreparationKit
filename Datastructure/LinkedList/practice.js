@@ -36,157 +36,121 @@ class Node {
    constructor(value) {
       this.value = value;
       this.next = null;
+      this.random = null;
    }
 }
 
 class SinglyLinkedList {
-   constructor(value) {
+   constructor() {
+      this.head = null;
+      this.tail = null;
+      this.random = {};
+      this.length = 0;
+   }
+
+   assignValue(value) {
       this.head = new Node(value);
       this.tail = this.head;
       this.length = 1;
    }
-   append(value) {
-      let newNode = new Node(value);
-      newNode.next = this.head;
-      this.head = newNode;
-      this.length++;
-      return this;
-   }
-   prepand(value) {
-      let newNode = new Node(value);
-      this.tail.next = newNode;
-      this.tail = newNode;
-      this.length++;
-      return this;
-   }
-   insert(index, value) {
-      if(index >= this.length) {
-         return this.append(value);
-      }
-      let newNode = new Node(value);
-      let leaderNode = this.travese(index - 1);
-      let nextNode = leaderNode.next;
-      leaderNode.next = newNode;
-      newNode.next = nextNode;
-      return this.printList();
-   }
 
-   remove(index) {
-      if(index > this.length) {
-         return "Invalid Input !!!"
-      } 
-      let leaderNode = this.travese(index - 1);
-      let unwantedNode = leaderNode.next;
-      leaderNode.next = unwantedNode.next;
-      this.length--;
-      return this.printList();
-   }
-
-   removeFromFirst() {
-      if(this.length == 0) {
-         return "List is empty!"
-      }
-
-      if(this.length == 1) {
-            this.head = null;
-            this.tail = null;
-            this.length = 0;
-            return "List is empty after remove from first and last !!!"
-      }
-      let currentNode = this.head;
-      this.head = currentNode.next;
-      return this.printList();
-   }
-
-   removeFromLast() {
-      if (this.length === 0) {
-         return "List is empty!";
-     }
- 
-     if (this.length === 1) {
-         this.head = null;
-         this.tail = null;
-         this.length = 0;
-         return "List is empty after removing the last node!";
-     }
- 
-     let currentNode = this.head;
-     let newTail = this.head;
- 
-     while (currentNode.next) {
-         newTail = currentNode;
-         currentNode = currentNode.next;
-     }
- 
-     newTail.next = null;
-     this.tail = newTail;
-     this.length--;
-   }
-
-   reverse() {
-      if(!this.head.next) {
-         return this.head;
-      }
-      this.tail = this.head;
-      let first = this.head;
-      let second = first.next;
-      while(second) {
-         let temp = second.next;
-         second.next = first;
-         first = second;
-         second = temp;
-      }
-      this.head.next = null;
-      this.head = first;
-      return this.printList();
-   }
-   travese(index) {
-      let counter = 1;
-      let currentNode = this.head;
-      while(index != counter) {
-         counter++;
-         currentNode = currentNode.next;
-      }
-      return currentNode;
-   }
-   printList() {
+  
+   // Step 1 - Find the Nodes and push to array in order to from a linkedlist
+   printList(linkedList) {
       let result = [];
-      let currentNode = this.head;
+      let currentNode = linkedList;
       while(currentNode != null) {
          result.push(currentNode.value);
          currentNode = currentNode.next;
       }
       return result;
    }
+
+   // Step 2 - Get the value from Array and push to linkedList
+   append(value) {
+      let newNode = new Node(value);
+      this.tail.next = newNode;
+      this.tail = newNode;
+      this.length++;
+      return this;
+   }
+
+   // Step 3 - Get the random pointer node - and Store in a map
+   assignRandomPointer(linkedList) {
+      let currentNode = linkedList;
+      while (currentNode != null) {
+         if (currentNode.random) {
+            if (!this.random[currentNode.value]) {
+               this.random[currentNode.value] = [];
+            }
+            this.random[currentNode.value].push(currentNode.random.value);
+         }
+         currentNode = currentNode.next;
+      }
+      return this.random;
+      return this.random;
+   }
 }
 
+const a = new Node(1);
+const b = new Node(2);
+const c = new Node(3);
+const d = new Node(4);
+const e = new Node(5);
+
+// My linkedList - 
+a.next = b;
+a.next.next = c;
+a.next.next.next = d;
+a.next.next.next.next = e;
+
+// My Random pointer - 
+// 1 -- 2
+// 1 -- 3
+
+// 2 -- 3 
+// 2 -- 4
+
+a.random = b;
+a.random = c;
+a.random = d;
+b.random = c;
+c.random = e;
+d.random = b;
+e.random = d;
+
+
+console.log("Your linkedlist:", a);
+
 // Singly LinkedList
-const ll = new SinglyLinkedList(85);
-ll.prepand(18);
-ll.prepand(24);
-ll.append(30);
-ll.append(35);
-ll.insert(2, 20);
-ll.insert(200, 22);
+
 console.log();
 console.log("Your LinkedList Are ========>");
 console.log();
-console.log(ll.printList())
+
+const ll = new SinglyLinkedList();
+console.log(ll.printList(a))
 console.log();
-console.log("After Remove from LinkedList ========>");
+
+let linkedListElements = ll.printList(a);
+
+
+// ll.head = linkedListElements[0];
+// ll.tail = ll.head;
+
+ll.assignValue(linkedListElements[0]);
+
+// Create Linked list 
+for(let i = 1; i < linkedListElements.length; i++) {
+   ll.append(linkedListElements[i]);
+}
+
+console.log("Your Copy LinkedList Are ========>");
 console.log();
-ll.remove(2);
-console.log(ll.printList())
+console.log(JSON.stringify(ll.head));
+
 console.log();
-console.log("After Reverse LinkedList ========>");
-console.log();
-ll.reverse();
-console.log(ll.printList())
-console.log();
-console.log("Full LinkedList ========>");
-console.log();
-console.log(JSON.stringify(ll));
-console.log();
+console.log(ll.assignRandomPointer(a));
 
 // Doubly LinkedList
 // const ll = new SinglyLinkedList(10);

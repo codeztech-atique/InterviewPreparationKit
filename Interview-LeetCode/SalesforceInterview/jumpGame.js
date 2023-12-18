@@ -10,7 +10,7 @@ class JumpGame_II {
         let first = this.nums[0];
         if (first == this.nums.length - 1) {
             if(first == 0) {
-                this.jump = 0;
+                this.jumps = 0;
             } else {
                 this.jumps = 1;    // Corrected variable name
             }

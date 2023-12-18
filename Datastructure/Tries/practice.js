@@ -4,6 +4,7 @@ class Node {
         this.isWordEnd = false;
     }
 }
+
 class Trie {
     constructor() {
         this.root = new Node();
@@ -11,10 +12,10 @@ class Trie {
 
     insert(word) {
         let curr = this.root;
-        for(let i = 0; i < word.length; i++)  {
+        for(let i = 0; i < word.length; i++) {
             let charToInsert = word[i];
             if(!(curr.children.has(charToInsert))) {
-                curr.children.set(charToInsert, new Node());
+                curr.children.set(charToInsert, new Node())
             }
             curr = curr.children.get(charToInsert);
         }
@@ -23,7 +24,7 @@ class Trie {
 
     contains(word) {
         let curr = this.root;
-        for(let i = 0; i < word.length; i++)  {
+        for(let i = 0; i < word.length; i++) {
             let charToInsert = word[i];
             if(!(curr.children.has(charToInsert))) {
                 return false;
@@ -35,7 +36,7 @@ class Trie {
 
     startWithPrefix(word) {
         let curr = this.root;
-        for(let i = 0; i < word.length; i++)  {
+        for(let i = 0; i < word.length; i++) {
             let charToInsert = word[i];
             if(!(curr.children.has(charToInsert))) {
                 return false;
@@ -47,32 +48,42 @@ class Trie {
 
     remove(word) {
         let curr = this.root;
-        for(let i = 0; i < word.length; i++)  {
+        for(let i = 0; i < word.length; i++) {
             let charToInsert = word[i];
-            if(curr.children.has(charToInsert)) {
-                curr = curr.children.get(charToInsert);
-            } else {
+            if(!(curr.children.has(charToInsert))) {
                 return false;
             }
+            curr = curr.children.get(charToInsert);
         }
         curr.isWordEnd = false;
+        return true;
+    }
+
+    getCommonPrefix() {
+        let ss = [...this.root.children.entries()];
+        let char = "";
+        for(let i = 0; i < ss.length; i++) {
+            if(!ss[i].isWordEnd) {
+                char += ss[i][0]
+            }
+        }
+        return char;
     }
 
     printAllTheWords() {
         let words = [];
-        let searchTree = (node, currentWord = '') => {
+        let searchTree = (node, currentWord =  '') => {
             if(node.isWordEnd) {
                 words.push(currentWord);
             }
             for(const [char, currNode] of node.children.entries()) {
-                searchTree(currNode, currentWord + char);
+                searchTree(currNode, currentWord + char); 
             }
         }
         searchTree(this.root);
         return words;
     }
 }
-
 
 const root = new Node();
 const trie = new Trie(); 
@@ -107,3 +118,6 @@ console.log("Trie Contains after remove Atique:", trie.contains("Atique"));
 
 console.log()
 console.log(trie.printAllTheWords())
+
+console.log() 
+console.log("Get common prefix:", trie.getCommonPrefix());

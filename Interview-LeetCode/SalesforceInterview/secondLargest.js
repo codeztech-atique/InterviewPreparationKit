@@ -1,6 +1,3 @@
-
-
-
 const secondLagest = (arr) => {
     let largest = arr[0];
     let secondLargest = arr[0];

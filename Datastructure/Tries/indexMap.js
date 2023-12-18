@@ -93,24 +93,31 @@ class Trie {
         return str;
     }
 
-
-    printAllTheWords() {
-        let words = [];
-        let curr = this.root;
-
-        let searchTree = (node, str) => {
-            for(const entry of node.children.entries()) {
-                let char = entry[0];
-                node = entry[1];
-               
-                if (node.isWordEnd) {
-                  words.push(str.concat(char));
-                }
-                searchTree(node, str.concat(char));
+    getCommonPrefix() { // Easy
+        let ss = [...this.root.children.entries()];
+        let char = "";
+        console.log(ss);
+        for(let i = 0; i < ss.length; i++) {
+            if(!ss[i].isWordEnd) {
+                char += ss[i][0]
             }
         }
-        searchTree(curr, ""); // initial search calling
-        return words;
+        return char;
+    }
+
+
+    printAllTheWords() {
+        let word = [];
+        let searchTree = (node, currentWord = '') => {
+            if(node.isWordEnd) {
+                word.push(currentWord);
+            }
+            for(const [char, currNode] of node.children.entries()) {
+                searchTree(currNode, currentWord + char);
+            }
+        }
+        searchTree(this.root);
+        return word;
     }
 }
 
