@@ -1,19 +1,26 @@
-
-
-
-const secondLagest = (arr) => {
-    let largest = arr[0];
-    let secondLargest = arr[0];
-    for(let i = 0; i < arr.length; i++) {
-        if(arr[i] > largest) {
-            secondLargest = largest;
-            largest = arr[i];
-        }
-        else if(arr[i] < largest && arr[i] > secondLargest) {
-            secondLargest = arr[i];
-        }
+class Basic_Calculator {
+    constructor(str) {
+        this.str = str;
+        this.stackNumber = [];
+        this.stackOperator = [];
     }
-    console.log(largest, secondLargest)
+
+    calculation() {
+        for(let i = 0; i < this.str.length; i++) {
+            let elements = this.str[i];
+            if(elements == '+' || elements == '-' || elements == '*' || elements == '/') {
+                this.stackOperator.push(this.str[i]);
+            } else {
+                this.stackNumber.push(this.str[i]);
+            }
+        }
+        console.log(this.stackNumber, this.stackOperator)
+    }
 }
 
-secondLagest([6,8,2,1,3,9]);
+const basicCalulation = (str) => {
+    const calculator = new Basic_Calculator(str);
+    calculator.calculation();
+}
+
+console.log(basicCalulation("2-1+2"))

@@ -88,7 +88,6 @@ class SinglyLinkedList {
          currentNode = currentNode.next;
       }
       return this.random;
-      return this.random;
    }
 }
 

@@ -41,7 +41,6 @@ class BinarySearchTree {
    }
 
    insert(value) {
-      this.count++;
       let newNode = new Node(value);
       let searchTree = node => {
          if(value < node.value) {
@@ -56,13 +55,9 @@ class BinarySearchTree {
             } else {
                searchTree(node.right);
             }
-         }
+         } 
       }
       searchTree(this.root);
-   }
-
-   size() {
-      return this.count;
    }
 
    min() {
@@ -84,7 +79,7 @@ class BinarySearchTree {
    lookup(value) {
       let currentNode = this.root;
       while(currentNode) {
-         if(value === currentNode.value) {
+         if(value == currentNode.value) {
             return true;
          }
          if(value < currentNode.value) {
@@ -241,25 +236,25 @@ console.log("BFS:",bst.bfs());
 function getLeafCountOfBinaryTree(node) {
    if(node == null) {
       return 0;
-   } if(node.left == null && node.right == null) {
-      leafNode.push(node.value);
+   } else if(node.left == null && node.right == null) {
+      leafNode.push(node.value)
       return 1;
-   } return getLeafCountOfBinaryTree(node.left) + getLeafCountOfBinaryTree(node.right);
+   } return getLeafCountOfBinaryTree(node.left) + getLeafCountOfBinaryTree(node.right)
 } 
 
 console.log("COUNT LEAF NODE: ", getLeafCountOfBinaryTree(bst.root));
 console.log("Leaf Nodes Are: ", leafNode);
 
 function hightOfBinaryTree(node) {
-   if(node === null) {
+   if(node == null) {
       return 0;
    } else {
       let lTree = hightOfBinaryTree(node.left);
       let rTree = hightOfBinaryTree(node.right);
       if(lTree < rTree) {
-         return lTree + 1;
-      } else {
          return rTree + 1;
+      } else {
+         return lTree + 1;
       }
    }
 }
