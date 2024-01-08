@@ -42,8 +42,8 @@ var jump = function(nums) {
 };
 
 // Test cases
-// jump([0]) // 0
-// jump([2,3,1,1,4]);
+jump([0]) // 0
+jump([2,3,1,1,4]);
 jump([1,0,1,0])
-// jump([1,1,1,1]);
+jump([1,1,1,1]);
 // Add more test cases as needed

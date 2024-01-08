@@ -24,7 +24,7 @@
 //    /  \   /  \
 //   1    6 17  21
 
-const leafNode = [];
+let leafNode = [];
 
 class Node {
    constructor(value) {
@@ -55,7 +55,7 @@ class BinarySearchTree {
             } else {
                searchTree(node.right);
             }
-         } 
+         }
       }
       searchTree(this.root);
    }
@@ -103,12 +103,12 @@ class BinarySearchTree {
 
       // Output = 
       let result = [];
-      let searchTree = node => {
-         if(node.left) searchTree(node.left);
+      let traverse = node => {
+         if(node.left) traverse(node.left);
          result.push(node.value);
-         if(node.right) searchTree(node.right);
+         if(node.right) traverse(node.right);
       }
-      searchTree(this.root);
+      traverse(this.root);
       return result;
    }
    
@@ -122,12 +122,12 @@ class BinarySearchTree {
       
       // Output = 
       let result = [];
-      let searchTree = node => {
+      let traverse = node => {
          result.push(node.value);
-         if(node.left) searchTree(node.left);
-         if(node.right) searchTree(node.right);
+         if(node.left) traverse(node.left);
+         if(node.right) traverse(node.right);
       }
-      searchTree(this.root);
+      traverse(this.root);
       return result;
    }
 
@@ -141,12 +141,12 @@ class BinarySearchTree {
 
       // Output = 
       let result = [];
-      let searchTree = node => {
-         if(node.left) searchTree(node.left);
-         if(node.right) searchTree(node.right);
+      let traverse = node => {
+         if(node.left) traverse(node.left);
+         if(node.right) traverse(node.right);
          result.push(node.value);
       }
-      searchTree(this.root);
+      traverse(this.root);
       return result;
    }
 
@@ -237,9 +237,10 @@ function getLeafCountOfBinaryTree(node) {
    if(node == null) {
       return 0;
    } else if(node.left == null && node.right == null) {
-      leafNode.push(node.value)
+      leafNode.push(node.value);
       return 1;
-   } return getLeafCountOfBinaryTree(node.left) + getLeafCountOfBinaryTree(node.right)
+   }
+   return getLeafCountOfBinaryTree(node.left) + getLeafCountOfBinaryTree(node.right);
 } 
 
 console.log("COUNT LEAF NODE: ", getLeafCountOfBinaryTree(bst.root));

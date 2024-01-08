@@ -1,26 +1,21 @@
-class Basic_Calculator {
-    constructor(str) {
-        this.str = str;
-        this.stackNumber = [];
-        this.stackOperator = [];
-    }
-
-    calculation() {
-        for(let i = 0; i < this.str.length; i++) {
-            let elements = this.str[i];
-            if(elements == '+' || elements == '-' || elements == '*' || elements == '/') {
-                this.stackOperator.push(this.str[i]);
-            } else {
-                this.stackNumber.push(this.str[i]);
-            }
-        }
-        console.log(this.stackNumber, this.stackOperator)
-    }
+const mergeSort = (left, right) => {
+   let arr = [];
+   while(left.length && right.length) {
+      if(left[0] < right[0]) {
+        arr.push(left.shift())
+      } else {
+        arr.push(right.shift());
+      }
+   }
+   return [...arr, ...left, ...right];
 }
 
-const basicCalulation = (str) => {
-    const calculator = new Basic_Calculator(str);
-    calculator.calculation();
+const merge = (arr) => {
+    if(arr.length < 2) {
+        return arr;
+    }
+    let half = arr.length / 2;
+    let left = arr.splice(0, half);
+    return mergeSort(merge(left), merge(arr))
 }
-
-console.log(basicCalulation("2-1+2"))
+console.log(merge([6,8,2,1,3,9]));

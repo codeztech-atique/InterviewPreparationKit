@@ -5,7 +5,6 @@ class Node {
     }
 }
 
-
 class LinkedList {
     constructor(value) {
         this.head = new Node(value);
@@ -30,7 +29,7 @@ class LinkedList {
     }
 
     insert(index, value) {
-        if(index > this.length) {
+        if(index >= this.length) {
             return this.append(value);
         }
         let newNode = new Node(value);
@@ -40,6 +39,17 @@ class LinkedList {
         newNode.next = nextNode;
         this.length++;
         return this;
+    }
+
+    remove(index) {
+        if(index > this.length) {
+            return "Invalid input !!!"
+        }
+        let leaderNode = this.traverse(index - 1);
+        let unwantedNode = leaderNode.next;
+        leaderNode.next = unwantedNode.next;
+        this.length--;
+        return this.printList()
     }
 
     reverse() {
@@ -54,37 +64,26 @@ class LinkedList {
         }
         this.head.next = null;
         this.head = first;
-        return this.printList();
-    }
-
-    remove(index) {
-        if(index > this.length) {
-            return "Invalid Input !!!"
-        }
-        let leaderNode = this.traverse(index - 1);
-        let unwantedNode = leaderNode.next;
-        leaderNode.next = unwantedNode.next;
-        this.length--;
-        return this.printList();
+        return this.printList()
     }
 
     removeFromFirst() {
-       let currentNode = this.head;
-       this.head = currentNode.next;
-       this.length--;
-       return this.printList();
+        let currentNode = this.head;
+        this.head = currentNode.next;
+        this.length--;
+        return this.printList();
     }
 
     removeFromLast() {
         let currentNode = this.head;
         let newTail = this.head;
-        while(currentNode.next != null) {
+        while(currentNode.next) {
             newTail = currentNode;
             currentNode = currentNode.next;
         }
         newTail.next = null;
         this.tail = newTail;
-        this.length --;
+        this.length--;
         return this.printList();
     }
 
@@ -92,8 +91,8 @@ class LinkedList {
         let counter = 0;
         let currentNode = this.head;
         while(index != counter) {
-           counter++;
-           currentNode = currentNode.next;
+            counter++;
+            currentNode = currentNode.next;
         }
         return currentNode;
     }
@@ -102,8 +101,8 @@ class LinkedList {
         let result = [];
         let currentNode = this.head;
         while(currentNode != null) {
-           result.push(currentNode.value);
-           currentNode = currentNode.next;
+            result.push(currentNode.value);
+            currentNode = currentNode.next;
         }
         return result;
     }
@@ -118,7 +117,8 @@ linkedListLL.prepand('f');
 linkedListLL.insert(2, 'g')
 
 console.log("LinkedList are:", linkedListLL.printList())
-console.log("Reverse Linkedlist:", linkedListLL.reverse())
+
 console.log("Remove from the index:", linkedListLL.remove(2));
+console.log("Reverse Linkedlist:", linkedListLL.reverse());
 console.log("Remove from the first:", linkedListLL.removeFromFirst());
 console.log("Remove from the last:", linkedListLL.removeFromLast());

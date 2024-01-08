@@ -23,62 +23,52 @@ Output: "bb"
 
 */
 
-class LongestSubString {
-    constructor(value) {
-        this.arr = [];
-        this.str = value;
+const longestSubstring = (s) => {
+    const n = s.length;
+    let start = 0;
+    let maxLength = 1;
+
+    // Initialize a 2D array to track palindromic substrings
+    // const dp = Array.from({ length: n }, () => Array(n).fill(false));
+    const dp = [];
+    for (let i = 0; i < n; i++) {
+        dp.push(Array(n).fill(false));
     }
-    
-    findCombination() {
-        for(let i = 0; i < this.str.length; i++) {
-            for(let j = i + 1; j < this.str.length + 1; j++) {
-                this.arr.push(str.slice(i, j));
+
+    // All substrings of length 1 are palindromic
+    for (let i = 0; i < n; i++) {
+        dp[i][i] = true;
+    }
+
+    // Check substrings of length 2
+    for (let i = 0; i < n - 1; i++) {
+        if (s[i] === s[i + 1]) {
+            dp[i][i + 1] = true;
+            start = i;
+            maxLength = 2;
+        }
+    }
+
+    // Check substrings of length 3 or more
+    for (let len = 3; len <= n; len++) {
+        for (let i = 0; i <= n - len; i++) {
+            const j = i + len - 1;
+
+            // Check if the current substring is a palindrome
+            if (dp[i + 1][j - 1] && s[i] === s[j]) {
+                dp[i][j] = true;
+
+                // Update the start and maxLength if a longer palindrome is found
+                if (len > maxLength) {
+                    start = i;
+                    maxLength = len;
+                }
             }
         }
-        return this.arr;
     }
 
-    findPlanidrom(str) {
-        let ss = "";
-        for(let i = str.length - 1; i >= 0; i--) {
-           ss += str[i];
-        }
-        if(ss.length > 1 && ss == str) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    findLongestPalindrom(arr) {
-       let index = 0, len = 0;
-       for(let i = 0; i < arr.length; i++) {
-            if(arr[i].length > len) {
-                len = arr[i].length;
-                index = i;
-            }
-       }
-       return arr[index];
-    }
-
-}
-
-const longestSubstring = (str) => {
-    let longestSubstring = new LongestSubString(str);
-    let getCombination = longestSubstring.findCombination();
-    let palindromString = [];
-    console.log("Combination:", getCombination)
-    for(let i = 0; i < getCombination.length; i++) {
-        if(longestSubstring.findPlanidrom(getCombination[i])) {
-            palindromString.push(getCombination[i]);
-        }
-    }
-    console.log(palindromString);
-
-    // Find the longest palindrom 
-    let longestStr = longestSubstring.findLongestPalindrom(palindromString);
-    console.log("Result:", longestStr)
-    return longestStr;
+    // Return the longest palindromic substring
+    return s.slice(start, start + maxLength);
 }
 
 let str = "zudfweormatjycujjirzjpyrmaxurectxrtqedmmgergwdvjmjtstdhcihacqnothgttgqfywcpgnuvwglvfiuxteopoyizgehkwuvvkqxbnufkcbodlhdmbqyghkojrgokpwdhtdrwmvdegwycecrgjvuexlguayzcammupgeskrvpthrmwqaqsdcgycdupykppiyhwzwcplivjnnvwhqkkxildtyjltklcokcrgqnnwzzeuqioyahqpuskkpbxhvzvqyhlegmoviogzwuiqahiouhnecjwysmtarjjdjqdrkljawzasriouuiqkcwwqsxifbndjmyprdozhwaoibpqrthpcjphgsfbeqrqqoqiqqdicvybzxhklehzzapbvcyleljawowluqgxxwlrymzojshlwkmzwpixgfjljkmwdtjeabgyrpbqyyykmoaqdambpkyyvukalbrzoyoufjqeftniddsfqnilxlplselqatdgjziphvrbokofvuerpsvqmzakbyzxtxvyanvjpfyvyiivqusfrsufjanmfibgrkwtiuoykiavpbqeyfsuteuxxjiyxvlvgmehycdvxdorpepmsinvmyzeqeiikajopqedyopirmhymozernxzaueljjrhcsofwyddkpnvcvzixdjknikyhzmstvbducjcoyoeoaqruuewclzqqqxzpgykrkygxnmlsrjudoaejxkipkgmcoqtxhelvsizgdwdyjwuumazxfstoaxeqqxoqezakdqjwpkrbldpcbbxexquqrznavcrprnydufsidakvrpuzgfisdxreldbqfizngtrilnbqboxwmwienlkmmiuifrvytukcqcpeqdwwucymgvyrektsnfijdcdoawbcwkkjkqwzffnuqituihjaklvthulmcjrhqcyzvekzqlxgddjoir";
