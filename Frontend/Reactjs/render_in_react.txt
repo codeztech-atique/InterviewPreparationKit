@@ -1,0 +1,9 @@
+What is the significance of the render() method in React components?
+
+Significance of render() Method in React:
+
+Purpose: The render() method defines what will be displayed in a React component.
+Return Value: It returns a React element, describing what the UI should look like at a given point.
+Update Trigger: Any change in state or props triggers a re-render, invoking the render() method.
+Immutability: React components follow immutability, and render() helps maintain a consistent UI state.
+Virtual DOM: The result from render() contributes to the Virtual DOM diffing process, optimizing updates in the real DOM.

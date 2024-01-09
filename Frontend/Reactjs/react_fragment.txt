@@ -1,0 +1,18 @@
+What is React.Fragment, and why is it useful?
+
+React.Fragment is a component in React that allows you to group multiple children elements without introducing an additional DOM element. 
+It is particularly useful in situations where you want to return multiple elements from a component, 
+but you don't want to create an unnecessary wrapper element in the DOM.
+
+import React from 'react';
+
+const ElementWrapper = () => {
+  return (
+    <React.Fragment>
+      <p>Child Element 1</p>
+      <p>Child Element 2</p>
+    </React.Fragment>
+  );
+};
+
+export default ElementWrapper;

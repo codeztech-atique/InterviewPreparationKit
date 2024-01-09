@@ -1,0 +1,8 @@
+React Router - 
+
+React Router is a popular routing library for React applications that enables navigation and routing in a React application. 
+It allows developers to create a single-page application (SPA) with multiple views and navigate between them while
+maintaining a consistent user experience. React Router provides a declarative way to define the structure of the 
+application and handle routing transitions.
+
+

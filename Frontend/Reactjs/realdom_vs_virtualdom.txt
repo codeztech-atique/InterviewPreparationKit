@@ -1,0 +1,18 @@
+Real DOM:
+
+Physical representation of the document in the browser.
+Slower manipulation, triggers reflows and repaints.
+Directly updates the browser's view.
+Performance impact due to frequent updates.
+
+Virtual DOM:
+
+Lightweight, in-memory representation by React.
+Faster manipulation, no immediate impact on the browser.
+Used to determine minimal changes needed in the Real DOM.
+Optimizes performance by batching updates.
+
+
+
+
+

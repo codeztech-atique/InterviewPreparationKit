@@ -1,0 +1,7 @@
+Flux vs. Redux:
+
+Flux is a design pattern, while Redux is a library that implements the Flux architecture.
+Redux introduces a single, immutable state tree, while Flux allows multiple stores, each managing its state.
+Redux uses pure functions (reducers) to handle state changes, while Flux stores can have more complex logic.
+React-Redux simplifies integration with React components in Redux, while Flux doesn't have a standardized 
+integration with a specific library.

@@ -1,0 +1,31 @@
+Explain the concept of defaultProps.
+
+In React, defaultProps is a mechanism that allows you to specify default values for the props of a React component. 
+It provides a way to ensure that a component receives certain props, even if the parent component doesn't explicitly pass them.
+
+Here's how you can use defaultProps in a React component:
+
+import React, { Component } from 'react';
+
+class MyComponent extends Component {
+  // Define defaultProps as a static property of the class
+  static defaultProps = {
+    // Specify default values for props
+    prop1: 'Default Value 1',
+    prop2: 'Default Value 2',
+  };
+
+  render() {
+    // Access props using this.props
+    const { prop1, prop2 } = this.props;
+
+    return (
+      <div>
+        <p>Prop 1: {prop1}</p>
+        <p>Prop 2: {prop2}</p>
+      </div>
+    );
+  }
+}
+
+export default MyComponent;

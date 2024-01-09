@@ -1,0 +1,33 @@
+Flux - 
+
+Flux is an application architecture introduced by Facebook that provides a unidirectional data flow pattern for building 
+scalable and maintainable web applications. It is not a library or a framework but rather a design pattern that helps 
+manage the flow of data in an application.
+
+Key Concepts of Flux:
+
+1. Unidirectional Data Flow:
+
+Flux enforces a unidirectional data flow, where data flows in a single direction through the application, 
+making it easier to understand and debug.
+
+2. Action:
+
+Actions are payloads of information that describe changes in the application state. They are created by components and sent to the 
+Dispatcher.
+
+3. Dispatcher:
+
+The Dispatcher is a central hub that receives actions and dispatches them to registered callbacks. 
+It ensures that actions are processed in the correct order.
+
+4. Store:
+
+Stores contain the application state and logic for handling actions. They register with the Dispatcher to receive updates 
+and emit change events.
+
+5. View (React Components):
+
+React components, or views, trigger actions based on user interactions. They listen for changes in the stores and update their 
+presentation accordingly.Flux provides a clear separation of concerns and makes it easier to reason about how data changes 
+in an application.

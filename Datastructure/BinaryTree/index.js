@@ -168,14 +168,13 @@ class BinarySearchTree {
 }
 
 
-const bst = new BinarySearchTree(77)
-bst.insert(74)
-bst.insert(58)
-bst.insert(75)
-bst.insert(89)
-bst.insert(81)
-bst.insert(92)
-bst.insert(100)
+const bst = new BinarySearchTree(4)
+bst.insert(2)
+bst.insert(7)
+bst.insert(1)
+bst.insert(3)
+bst.insert(6)
+bst.insert(9)
 
 
 // const bst = new BinarySearchTree(1)

@@ -1,0 +1,46 @@
+Hight Order Component 
+
+Higher-Order Components (HOCs) are a design pattern in React that involves wrapping a component with 
+another function to enhance its behavior or functionality.
+
+Key Concepts and Characteristics of Higher-Order Components:
+
+1. Function that Returns a Component:
+
+const withEnhancement = (WrappedComponent) => {
+  // Logic or enhancements go here
+  const EnhancedComponent = (props) => {
+    // Additional logic or props
+    return <WrappedComponent {...props} />;
+  };
+
+  return EnhancedComponent;
+};
+
+
+2. Reusable Logic:
+
+HOCs allow developers to encapsulate and reuse logic across multiple components. This is particularly useful for cross-cutting 
+concerns that are not specific to a single component.
+
+const withLogger = (WrappedComponent) => {
+  const EnhancedComponent = (props) => {
+    console.log(`Rendering: ${WrappedComponent.name}`);
+    return <WrappedComponent {...props} />;
+  };
+
+  return EnhancedComponent;
+};
+
+
+3. Props Manupulation -
+
+const withAuthentication = (WrappedComponent) => {
+  const EnhancedComponent = (props) => {
+    const isAuthenticated = checkAuthentication(); // Assume this checks authentication status
+    return isAuthenticated ? <WrappedComponent {...props} /> : <LoginPrompt />;
+  };
+
+  return EnhancedComponent;
+};
+

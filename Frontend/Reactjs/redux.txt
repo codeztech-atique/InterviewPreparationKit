@@ -1,0 +1,143 @@
+Redux - 
+
+Redux is a predictable state container for JavaScript applications. 
+It was inspired by Flux but simplifies the Flux architecture and introduces a single, 
+immutable state tree for the entire application. Redux is commonly used with React,
+but it can be used with any JavaScript framework or library.
+
+Key Concepts of Redux:
+
+1. Single Immutable State Tree:
+
+Redux stores the entire application state in a single, immutable object known as the state tree.
+
+2. Actions:
+Actions are plain JavaScript objects that describe changes to the state. They must have a type property indicating the type of action.
+
+3. Reducers:
+
+Reducers are pure functions that specify how the state changes in response to an action. 
+hey take the current state and an action as input and return a new state.
+
+4. Store:
+The store holds the application state and provides methods to dispatch actions, subscribe to changes, and access the state.
+
+5. Middleware:
+
+Middleware is a way to extend Redux with custom functionality. 
+It sits between the action dispatch and the reducer and can intercept, modify, or log actions.
+
+6. React-Redux:
+
+React-Redux is a library that integrates Redux with React. It provides bindings to connect React components to the Redux store,
+making it easy to access and update the state. Redux simplifies state management by enforcing a predictable and consistent 
+pattern for handling data flow. The use of a single, immutable state tree and the strict separation of concerns make 
+it easier to debug and test applications.
+
+
+
+React Redux is a state management library that allows you to manage the state of your application in a global store. 
+It can be especially useful for sharing state between components that are not directly connected in the component tree.
+
+
+
+   i) Install Redux Packages: npm install redux react-redux
+
+  ii) Setup redux store - 
+
+        // store.js
+        import { createStore } from 'redux';
+
+        // Define an initial state and a reducer function
+        const initialState = {
+           parentData: '',
+        };
+
+        const rootReducer = (state = initialState, action) => {
+            switch (action.type) {
+                case 'SET_PARENT_DATA':
+                return { ...state, parentData: action.payload };
+                default:
+                return state;
+            }
+        };
+
+        // Create the Redux store
+        const store = createStore(rootReducer);
+
+        export default store;
+
+    iii) Create action - 
+
+        // actions.js
+        export const setParentData = (data) => ({
+            type: 'SET_PARENT_DATA',
+            payload: data,
+        });
+    
+    iv)  Create a Parent Component:
+
+        // ParentComponent.js
+        import React from 'react';
+        import { useDispatch } from 'react-redux';
+        import { setParentData } from './actions';
+
+        const ParentComponent = () => {
+        const dispatch = useDispatch();
+
+        const handleDataChange = () => {
+            const parentData = 'Data from Parent';
+            dispatch(setParentData(parentData));
+        };
+
+            return (
+                <div>
+                <button onClick={handleDataChange}>Change Data</button>
+                </div>
+            );
+        };
+
+        export default ParentComponent;
+
+    v) Create a Child Component: - 
+
+        // ChildComponent.js
+        import React from 'react';
+        import { useSelector } from 'react-redux';
+
+        const ChildComponent = () => {
+        const parentData = useSelector((state) => state.parentData);
+
+        return (
+            <div>
+            <p>Data in Child: {parentData}</p>
+            </div>
+        );
+        };
+
+        export default ChildComponent;
+
+    vi) Integrate with App:
+      
+        // App.js
+        import React from 'react';
+        import { Provider } from 'react-redux';
+        import store from './store';
+        import ParentComponent from './ParentComponent';
+        import ChildComponent from './ChildComponent';
+
+        const App = () => {
+        return (
+            <Provider store={store}>
+            <div>
+                <h1>Redux Parent-Child Data Passing</h1>
+                <ParentComponent />
+                <ChildComponent />
+            </div>
+            </Provider>
+        );
+        };
+
+        export default App;
+
+

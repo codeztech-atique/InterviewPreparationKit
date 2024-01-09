@@ -1,0 +1,56 @@
+What are the main lifecycle methods in a class component?
+
+
+In a class component, there are several main lifecycle methods that are used to handle different stages of a component's lifecycle. These methods are categorized into three phases: Mounting, Updating, and Unmounting. Here are the main lifecycle methods:
+
+1. Mounting Phase:
+
+constructor(props):
+
+The constructor is called when an instance of the component is being created.
+It is the first method called during the component's lifecycle.
+Used for initializing state, binding event handlers, and other setup tasks.
+
+static getDerivedStateFromProps(props, state):
+
+Invoked before every render.
+Returns an object to update the state or null to indicate that no state update is necessary.
+Rarely used in favor of other methods.
+render():
+
+Responsible for rendering the component.
+Should be a pure function, meaning it should not modify component state.
+componentDidMount():
+
+Invoked after the component has been rendered to the DOM.
+Ideal for side effects such as network requests, subscriptions, or manually changing the DOM.
+
+2. Updating Phase:
+
+static getDerivedStateFromProps(nextProps, nextState): Similar to the mounting phase, but also called on updates. Rarely used.
+
+shouldComponentUpdate(nextProps, nextState): Allows the developer to control whether the component should re-render or not.
+Helps optimize performance by preventing unnecessary renders.
+
+render(): Re-renders the component based on updated state or props.
+
+getSnapshotBeforeUpdate(prevProps, prevState): Called right before the most recently rendered output is committed to the DOM.
+Captures some information from the DOM, which can be used in componentDidUpdate.
+
+componentDidUpdate(prevProps, prevState, snapshot): Invoked after the component's updates are flushed to the DOM.
+Ideal for performing side effects, such as network requests based on prop changes.
+
+3. Unmounting Phase:
+
+componentWillUnmount(): Invoked immediately before a component is unmounted and destroyed.
+Ideal for cleanup tasks, such as canceling network requests or cleaning up subscriptions.
+
+Additional Methods (Rarely Used):
+static getDerivedStateFromError(error): Invoked after an error has been thrown by a descendant component.
+Used to update state in response to an error during rendering.
+
+componentDidCatch(error, info): Invoked after an error has been thrown by a descendant component.
+Used for logging errors or performing other actions in response to errors.
+These methods provide developers with hooks into the lifecycle of a React class component, allowing them to perform various 
+tasks at different stages of the component's existence. It's important to note that with the introduction of React Hooks, 
+functional components can now achieve similar effects with the useEffect and useState hooks.

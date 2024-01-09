@@ -1,0 +1,8 @@
+How does React handle components?
+
+Representation: Components represent UI elements in React.
+Composition: Components are composed to create complex UI structures.
+State and Props: React manages component data through state and props.
+Reusability: Components are reusable, promoting modular and maintainable code.
+Lifecycle Methods: React provides lifecycle methods for managing component behavior.
+Virtual DOM: React uses a Virtual DOM for efficient updates, minimizing direct manipulation of the actual DOM.

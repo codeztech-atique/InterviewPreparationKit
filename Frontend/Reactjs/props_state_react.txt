@@ -1,0 +1,3 @@
+Props - Are used in child components
+State - Are used in the parent components
+

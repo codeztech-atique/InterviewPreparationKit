@@ -1,0 +1,206 @@
+How do you pass data from parent to child components in React?
+
+1. Using props
+2. Using Redux
+3. Context API
+
+
+
+In addition to passing data through props, there are a few other ways to share data between parent and child components in React:
+
+1. Context API:
+
+The Context API is a way to share values, like a theme or user authentication state, between components 
+without explicitly passing props through every level of the component tree.
+
+  i) Create Context API - 
+
+    // DataContext.js
+    import { createContext } from 'react';
+    const DataContext = createContext();
+    export default DataContext;
+
+  ii) Wrap the parent component with a Context.Provider:
+
+    // ParentComponent.js
+    import React from 'react';
+    import DataContext from './DataContext';
+    import ChildComponent from './ChildComponent';
+
+    const ParentComponent = () => {
+    const parentData = 'Data from Parent';
+
+    return (
+        <DataContext.Provider value={parentData}>
+        <ChildComponent />
+        </DataContext.Provider>
+    );
+    };
+
+    export default ParentComponent;
+
+  iii) Access the context in the child component:
+    
+     // ChildComponent.js
+    import React, { useContext } from 'react';
+    import DataContext from './DataContext';
+
+    const ChildComponent = () => {
+    const dataFromParent = useContext(DataContext);
+
+    return (
+        <div>
+        <p>Data in Child: {dataFromParent}</p>
+        </div>
+    );
+    };
+
+    export default ChildComponent;
+
+
+
+2. Redux 
+
+React Redux is a state management library that allows you to manage the state of your application in a global store. 
+It can be especially useful for sharing state between components that are not directly connected in the component tree.
+
+
+
+   i) Install Redux Packages: npm install redux react-redux
+
+  ii) Setup redux store - 
+
+        // store.js
+        import { createStore } from 'redux';
+
+        // Define an initial state and a reducer function
+        const initialState = {
+           parentData: '',
+        };
+
+        const rootReducer = (state = initialState, action) => {
+            switch (action.type) {
+                case 'SET_PARENT_DATA':
+                return { ...state, parentData: action.payload };
+                default:
+                return state;
+            }
+        };
+
+        // Create the Redux store
+        const store = createStore(rootReducer);
+
+        export default store;
+
+    iii) Create action - 
+
+        // actions.js
+        export const setParentData = (data) => ({
+            type: 'SET_PARENT_DATA',
+            payload: data,
+        });
+    
+    iv)  Create a Parent Component:
+
+        // ParentComponent.js
+        import React from 'react';
+        import { useDispatch } from 'react-redux';
+        import { setParentData } from './actions';
+
+        const ParentComponent = () => {
+        const dispatch = useDispatch();
+
+        const handleDataChange = () => {
+            const parentData = 'Data from Parent';
+            dispatch(setParentData(parentData));
+        };
+
+            return (
+                <div>
+                <button onClick={handleDataChange}>Change Data</button>
+                </div>
+            );
+        };
+
+        export default ParentComponent;
+
+    v) Create a Child Component: - 
+
+        // ChildComponent.js
+        import React from 'react';
+        import { useSelector } from 'react-redux';
+
+        const ChildComponent = () => {
+        const parentData = useSelector((state) => state.parentData);
+
+        return (
+            <div>
+            <p>Data in Child: {parentData}</p>
+            </div>
+        );
+        };
+
+        export default ChildComponent;
+
+    vi) Integrate with App:
+      
+        // App.js
+        import React from 'react';
+        import { Provider } from 'react-redux';
+        import store from './store';
+        import ParentComponent from './ParentComponent';
+        import ChildComponent from './ChildComponent';
+
+        const App = () => {
+        return (
+            <Provider store={store}>
+            <div>
+                <h1>Redux Parent-Child Data Passing</h1>
+                <ParentComponent />
+                <ChildComponent />
+            </div>
+            </Provider>
+        );
+        };
+
+        export default App;
+
+
+
+Using call back - 
+
+Passing callback functions from the parent to the child component allows the child to communicate with the parent. 
+The child can call the function with any necessary data.
+
+Usage:
+
+Parent Component:
+
+// ParentComponent.js
+import React from 'react';
+import ChildComponent from './ChildComponent';
+
+const ParentComponent = () => {
+  const handleChildData = (data) => {
+    console.log('Data from Child:', data);
+  };
+
+  return <ChildComponent sendDataToParent={handleChildData} />;
+};
+
+export default ParentComponent;
+
+
+Child Component:
+
+// ChildComponent.js
+import React from 'react';
+
+const ChildComponent = ({ sendDataToParent }) => {
+  const dataToParent = 'Data from Child';
+  sendDataToParent(dataToParent);
+
+  return <div>Child Component</div>;
+};
+
+export default ChildComponent;

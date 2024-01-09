@@ -1,0 +1,17 @@
+What is react ?
+
+React is a JavaScript library for building user interfaces, particularly single-page applications where UI updates are frequent. It was developed and is maintained by Facebook. React allows developers to build reusable UI components, which can then be composed to create complex user interfaces.
+
+Key features and concepts of React include:
+
+1. Declarative Syntax: React uses a declarative syntax, making it easier to understand and debug code. Developers describe how the UI should look at any point in time, and React takes care of updating and rendering the components efficiently.
+
+2. Component-Based Architecture: React applications are built using components, which are self-contained, reusable pieces of code that represent a part of the user interface. Components can be nested and composed to create complex UI structures.
+
+3. Virtual DOM: React uses a virtual DOM to optimize the updating of the actual DOM. Instead of directly manipulating the DOM for every change, React creates a virtual representation of the DOM in memory. When changes occur, React compares the virtual DOM with the real DOM and updates only the necessary parts, reducing the amount of manipulation needed.
+
+4. JSX (JavaScript XML): React uses JSX, a syntax extension for JavaScript that looks similar to XML or HTML. JSX allows developers to write HTML-like code in their JavaScript files, making it easier to describe the structure of components.
+
+5. Unidirectional Data Flow: React follows a unidirectional data flow, where data flows in a single direction, from parent components to child components. This helps in maintaining a clear and predictable data flow in the application.
+
+6. Reactive Updates: React efficiently updates and re-renders components when the underlying data changes. This is achieved through the use of the virtual DOM and a process known as reconciliation.
