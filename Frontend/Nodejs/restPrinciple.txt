@@ -1,0 +1,43 @@
+REST - 
+
+
+REST (Representational State Transfer) is an architectural style for designing networked applications. It defines a set of principles 
+that guide the design and behavior of web services. Below are the key principles of RESTful APIs:
+
+1. Stateless Communication:
+
+Each request from a client to a server must contain all the information needed to understand and process the request. 
+The server should not store any information about the client's state between requests. Each request should be independent.
+
+
+2. Client-Server Architecture:
+
+The system is divided into two separate entities: the client and the server. The client is responsible for the user interface and 
+user experience, while the server is responsible for processing requests, managing resources, and handling business logic.
+This separation allows for independent development and scalability. 
+
+3. Uniform Interface:
+
+The interface between clients and servers should be uniform to promote simplicity and consistency. This principle is further broken down 
+into several constraints:
+
+   i) Resource Identification: Resources (entities or objects) are identified by unique URIs (Uniform Resource Identifiers).
+
+  ii) Resource Manipulation through Representations: Resources can have multiple representations (e.g., JSON, XML). 
+  Clients interact with resources by exchanging representations.
+
+ iii) Self-Descriptive Messages: Each message from the server to the client should include information on 
+ how to process the message (e.g., using media types). Hypermedia as the Engine of Application State (HATEOAS): The client interacts with the application entirely through hypermedia provided dynamically by server applications. The server provides links (hypermedia) along with data to guide the client's next actions.
+
+4. Stateless Communication: Each request from a client to a server must contain all the information needed to understand and process the request. 
+  The server should not store any information about the client's state between requests. Each request should be independent.
+
+5.Cacheability: Responses from the server can be explicitly marked as cacheable or non-cacheable. This helps improve performance and 
+reduce server load by allowing clients to cache responses when appropriate.
+
+6. Layered System: A system can be composed of multiple layers, each providing a specific set of functionality. 
+Each layer should only be aware of the layer directly beneath it and interact with it. This separation of concerns enables 
+modularity and flexibility in system design.
+
+7. Code on Demand (Optional): Servers can optionally provide executable code (e.g., JavaScript) to be executed by clients. 
+This feature is rarely used in practice and is considered optional for RESTful APIs.

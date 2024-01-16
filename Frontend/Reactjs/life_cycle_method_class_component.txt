@@ -1,7 +1,8 @@
 What are the main lifecycle methods in a class component?
 
 
-In a class component, there are several main lifecycle methods that are used to handle different stages of a component's lifecycle. These methods are categorized into three phases: Mounting, Updating, and Unmounting. Here are the main lifecycle methods:
+In a class component, there are several main lifecycle methods that are used to handle different stages of a component's lifecycle. 
+These methods are categorized into three phases: Mounting, Updating, and Unmounting. Here are the main lifecycle methods:
 
 1. Mounting Phase:
 
@@ -20,6 +21,7 @@ render():
 
 Responsible for rendering the component.
 Should be a pure function, meaning it should not modify component state.
+
 componentDidMount():
 
 Invoked after the component has been rendered to the DOM.

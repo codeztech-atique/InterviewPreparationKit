@@ -1,22 +1,39 @@
-const mergeSort = (left, right) => {
-    let arr = [];
-    while(left.length && right.length) {
-        if(left[0] < right[0]) {
-            arr.push(left.shift());
+function encodeString(inputStr) {
+    // Validate input
+    if (!/^[A-Z]+$/.test(inputStr)) {
+        return "Invalid String";
+    }
+
+    let result = "";
+    let charCount = {};
+
+    for (let i = 0; i < inputStr.length; i++) {
+        const currentChar = inputStr[i];
+
+        // Count consecutive occurrences of the current character
+        let count = 1;
+        while (i + 1 < inputStr.length && currentChar === inputStr[i + 1]) {
+            i++;
+            count++;
+        }
+
+        // Encode the character and its count
+        if (!charCount[currentChar]) {
+            charCount[currentChar] = 1;
         } else {
-            arr.push(right.shift());
+            charCount[currentChar]++;
+        }
+
+        result += currentChar;
+        if (count > 1) {
+            result += charCount[currentChar].toString();
         }
     }
-    return [...arr, ...left, ...right];
+
+    return result;
 }
 
-const merge = (arr) => {
-    if(arr.length < 2) {
-        return arr;
-    } 
-    let half = arr.length / 2;
-    let left = arr.splice(0, half);
-    return mergeSort(merge(left), merge(arr));
-}
-
-console.log(merge([2, 5, 10, 57 ,9, 12, 13]));
+// Example usage:
+const inputStr = "WIINNNGGIIFFFFFFFYYYY";
+const outputStr = encodeString(inputStr);
+console.log(outputStr);

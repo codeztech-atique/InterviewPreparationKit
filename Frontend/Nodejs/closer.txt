@@ -1,0 +1,28 @@
+Closer - 
+
+In JavaScript, a closure is a function that has access to variables from its outer (enclosing) lexical scope even after the 
+outer function has finished execution. Closures allow functions to "remember" the scope in which they were created and 
+access variables from that scope, even if the outer function is no longer active. This behavior is a fundamental aspect 
+of JavaScript's lexical scoping.
+
+Here's a simple example to illustrate closures:
+
+function outerFunction() {
+  // Variable declared in the outer function's scope
+  const outerVariable = 'I am from the outer function';
+
+  // Inner function (closure) defined inside the outer function
+  function innerFunction() {
+    // Accessing the outer variable even after outerFunction has finished execution
+    console.log(outerVariable);
+  }
+
+  // Returning the inner function, creating a closure
+  return innerFunction;
+}
+
+// Creating a closure by calling outerFunction and storing the returned inner function
+const closure = outerFunction();
+
+// Invoking the closure, which still has access to outerVariable
+closure(); // Output: I am from the outer function

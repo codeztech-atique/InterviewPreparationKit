@@ -1,4 +1,5 @@
-In React, "props" is a shorthand for "properties," and it refers to the mechanism for passing data from a parent component to a child component. Props allow you to send information down the component tree, enabling communication between components.
+In React, "props" is a shorthand for "properties," and it refers to the mechanism for passing data from a parent component 
+to a child component. Props allow you to send information down the component tree, enabling communication between components.
 
 Key points about props in React:
 
