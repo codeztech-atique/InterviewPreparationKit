@@ -3,7 +3,6 @@ function encodeString(inputStr) {
     if (!/^[A-Z]+$/.test(inputStr)) {
         return "Invalid String";
     }
-
     let result = "";
     let charCount = {};
 
