@@ -43,7 +43,6 @@ const findDistinct = (arr) => {
     console.log(result.length)
 }
 
-
 // Input here
 main("2\n\
 7\n\
