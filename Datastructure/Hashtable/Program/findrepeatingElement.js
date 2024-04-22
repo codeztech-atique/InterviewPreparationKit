@@ -21,8 +21,6 @@ function firtRepeatingElement1(arr) {
    return result;
 }
 
-console.log(firtRepeatingElement1(arr1));
-
 // Second Approach using Hash table
 var arr2 = [2,5,1,90,3,44,6,0];
 
@@ -41,4 +39,6 @@ function firtRepeatingElement2(arr) {
    return rep;
 }
 
+
+console.log(firtRepeatingElement1(arr1));
 console.log(firtRepeatingElement2(arr2));

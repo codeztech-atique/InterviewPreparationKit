@@ -46,5 +46,6 @@ const bubbleSortNestedLoop = (arr) => {
 const arr = [99, 44, 6, 2, 1, 5, 63, 87, 283, 4, 0];
 
 console.log(bubbleSort(arr));
+console.log(bubbleSortNestedLoop(arr));
 
 
