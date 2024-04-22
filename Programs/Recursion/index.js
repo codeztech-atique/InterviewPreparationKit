@@ -11,12 +11,11 @@ let sum = a => b => b ? sum(a+b) : a ;
 
 // let sum = a => b => b ? sum(a + b) : a;
 
-
-// console.log(sum(1, 2)(32)());
-// console.log(sum(1)(2)(32)());
-// console.log(sum(1)(2)(32)());
-// console.log(sum(1)(2)());
-// console.log(sum(1)(2)(3,4)());
+console.log(sum(1, 2)(32)());
+console.log(sum(1)(2)(32)());
+console.log(sum(1)(2)(32)());
+console.log(sum(1)(2)());
+console.log(sum(1)(2)(3,4)());
 
 
 const infiniteCurry = (fn, seed) => {
