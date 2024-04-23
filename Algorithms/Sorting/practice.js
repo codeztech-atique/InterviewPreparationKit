@@ -1,3 +1,7 @@
+const url = "https://atiqueahmed.com";
+const accessKey = "Annsdik323sdfsdf23";
+const secreatKey = "2msdfsd+@3423dsfsa3242342134edfsdf32432423";
+
 const quickSort = (arr) => {
     for(let i = 0; i < arr.length; i++) {
         for(let j = i + 1; j < arr.length + 1; j++) {
