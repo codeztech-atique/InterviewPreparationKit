@@ -1,5 +1,3 @@
-// Practice Merge Sort
-
 const merge = (left, right) => {
     let arr = [];
     while(left.length && right.length) {
@@ -11,7 +9,6 @@ const merge = (left, right) => {
     }
     return [...arr, ...left, ...right];
 }
-
 const mergeSort = (arr) => {
     let half = arr.length / 2;
     if(arr.length < 2) {
