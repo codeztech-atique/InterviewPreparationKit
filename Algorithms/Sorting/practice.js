@@ -1,21 +1,34 @@
-const merge = (left, right) => {
-    let arr = [];
-    while(left.length && right.length) {
-        if(left[0] > right[0]) {
-            arr.push(left.shift());
-        } else {
-            arr.push(right.shift());
-        }
+const quickSort = (arr, left = 0, right = arr.length - 1) => {
+    if (left >= right) {
+        return;
     }
-    return [...arr, ...left, ...right];
-}
-const mergeSort = (arr) => {
-    let half = arr.length / 2;
-    if(arr.length < 2) {
-        return arr;
-    }
-    let left = arr.splice(0, half);
-    return merge(left, arr);
+
+    const pivot = partition(arr, left, right);
+    quickSort(arr, left, pivot - 1);
+    quickSort(arr, pivot + 1, right);
+
+    return arr;
 }
 
-console.log(mergeSort([2, 5, 3, 0, 57, 9, 12, 13]));
+const partition = (arr, left, right) => {
+    const pivotElement = arr[right];
+    let partitionIndex = left; 
+
+    for (let j = left; j < right; j++) {
+        if (arr[j] <= pivotElement) {
+            swap(arr, partitionIndex, j);
+            partitionIndex++;
+        }
+    }
+    swap(arr, partitionIndex, right); // Moving the pivot to the correct place
+    return partitionIndex;
+}
+
+const swap = (arr, i, j) => {
+    let temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+}
+
+// Example usage:
+console.log(quickSort([2, 5, 3, 0, 57, 9, 12, 13]));
