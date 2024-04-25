@@ -34,8 +34,4 @@ const swap = (arr, i, j) => {
     arr[j] = temp;
 }
 
-// Example usage:
-console.log(quickSort([2, 5, 3, 0, 57, 9, 12, 13]));
-
-
 console.log(quickSort([2, 5, 3, 0, 57, 9, 12, 13]));
