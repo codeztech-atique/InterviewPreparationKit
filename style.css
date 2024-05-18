@@ -1799,158 +1799,153 @@ h6{
 	padding: 20px 0;
 	text-align: right;
 }
+@media only screen and (max-width: 768px) {
+	.hiw-titles {
+	  overflow-x: auto; /* Allow horizontal scrolling */
+	  white-space: nowrap; /* Prevent titles from wrapping */
+	}
+  
+	.hiw-titles__slide {
+	  width: auto; /* Let the width adjust based on content */
+	  display: inline-block; /* Display slides in a row */
+	  margin: 0 10px; /* Add some spacing between slides */
+	  vertical-align: top; /* Align slides to the top */
+	}
+  }
+  
 
 /*===============================================*/
 /*  7.8 CUSTOM SECTION - SERVICES	 			 */
 /*===============================================*/
 
-.section--features1 {
-    padding: 120px 0;
+/* CSS */
+.section--features1 .grid__item {
+    width: calc((100% - 40px * 4) / 3); /* Adjust width for three columns */
+    margin-bottom: 20px; /* Add margin between items */
+    text-align: center; /* Center align text */
+    display: inline-block; /* Ensure boxes are displayed inline */
+    vertical-align: top; /* Align boxes to the top */
+    box-sizing: border-box; /* Include padding and border in width calculation */
+    background-color: #fff; /* Set default background color */
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.05); /* Add box shadow */
+    border-radius: 15px; /* Add border radius */
+    transition: all .3s ease-out; /* Add transition effect */
+	padding: 20px;
+	height: 450px;
 }
 
-.section--more-features1 {
-    padding: 80px 0;
+.section--features1 .grid__item--featured {
+    background: linear-gradient(60deg, #000761, #1237d0); /* Set background gradient for featured items */
+    color: #fff; /* Set text color for featured items */
 }
 
-.grid--features1 .grid__item {
-    margin-right: 80px;
-    margin-bottom: 0px;
-    width: calc((100% - 80px * 2 - 30px * 6) / 3);
-    padding: 40px 30px;
-    text-align: left;
-    background-color: #fff;
-    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.05);
-    border-radius: 15px;
-    transition: all .3s ease-out;
+.section--features1 .grid__item:hover {
+    transform: translate(0, -10px); /* Add hover effect */
+}
+.section--features1 .grid--features1 .grid__item .grid__title {
+	font-size: 24px;
+	font-weight: 300;
+	padding: 40px 0;
+	margin: 0px;
+	color: #3386ff;
+	text-align: center;
+}
+.section--features1 .grid__item .grid__text{
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.section--features1 .grid--more-features1 .grid__item .grid__title {
+	font-size: 20px;
+	font-weight: 300;
+	padding: 20px 0 20px 0;
+	margin: 0px;
 }
 
-.grid--more-features1 .grid__item {
-    margin-right: 40px;
-    margin-bottom: 40px;
-    width: calc((100% - 40px * 4 - 20px * 10) / 5);
-    padding: 40px 20px;
-    text-align: center;
-    background-color: #fff;
-    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.05);
-    border-radius: 10px;
-    transition: all .3s ease-out;
+.section--features1 .grid--features1 .grid__item--featured .grid__title {
+	color: #fff;
 }
 
-.grid--features1 .grid__item--featured {
-    background: -webkit-linear-gradient(60deg, #000761, #1237d0);
-    background: linear-gradient(60deg, #000761, #1237d0);
-    color: #fff;
+.section--features1 .grid--features1 .grid__item .grid__title span,
+.grid--more-features .grid__item .grid__title span {
+	font-weight: 700;
+	color: #000;
 }
 
-.grid--features1 .grid__item:hover {
-    transform: translate(0, -10px);
+.section--features1 .grid--features1 .grid__item--featured .grid__title span {
+	color: #fff;
+	padding-right: 10px;
 }
 
-.grid--features1 .grid__item .grid__title {
-    font-size: 24px;
-    font-weight: 300;
-    padding: 40px 0;
-    margin: 0px;
-    color: #3386ff;
-    text-align: center;
+.section--features1 .grid--features1 .grid__icon img {
+	display: block;
+	margin: auto;
 }
 
-.grid--more-features1 .grid__item .grid__title {
-    font-size: 20px;
-    font-weight: 300;
-    padding: 20px 0;
-    margin: 0px;
+.section--features1 .grid--features1 .grid__more {
+	display: inline-block;
+	margin: 20px auto 0 auto;
+	color: #3386ff;
+	background-color: transparent;
+	border: 2px #3386ff solid;
+	padding: 10px 25px;
+	-webkit-border-radius: 25px;
+	-moz-border-radius: 25px;
+	border-radius: 25px;
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	transition: all 0.3s ease;
 }
 
-.grid--features1 .grid__item--featured .grid__title {
-    color: #fff;
+.section--features1 .grid--features1 .grid__item--featured .grid__more {
+	color: #fff;
+	border: 2px #fff solid;
 }
 
-.grid--features1 .grid__item .grid__title span {
-    font-weight: 700;
-    color: #000;
+.section--features1 .grid--features1 .grid__more:hover {
+	color: #fff;
+	background-color: #3386ff;
+	border: 2px #3386ff solid;
 }
 
-.grid--features1 .grid__item--featured .grid__title span {
-    color: #fff;
+.section--features1 .grid__more {
+    display: inline-block; /* Display button as inline-block */
+    margin-top: 20px; /* Add margin to top */
+    padding: 10px 25px; /* Set padding for button */
+    border: 2px solid #3386ff; /* Set border */
+    border-radius: 25px; /* Set border radius */
+    background-color: transparent; /* Set background color */
+    color: #3386ff; /* Set text color */
+    text-decoration: none; /* Remove default underline */
+    transition: all 0.3s ease; /* Add transition effect */
 }
 
-.grid--features1 .grid__icon img {
-    display: block;
-    margin: auto;
-}
-
-.grid--features1 .grid__more {
-    display: inline-block;
-    margin: 20px auto 0 auto;
-    color: #3386ff;
-    background-color: transparent;
-    border: 2px #3386ff solid;
-    padding: 10px 25px;
-    border-radius: 25px;
-    transition: all 0.3s ease;
-}
-
-.grid--features1 .grid__item--featured .grid__more {
-    color: #fff;
-    border: 2px #fff solid;
-}
-
-.grid--features1 .grid__more:hover {
-    color: #fff;
-    background-color: #3386ff;
-    border: 2px #3386ff solid;
-}
-
-
-.section__content--features1 {
-    padding: 40px 0 20px 0;
+.section--features1 .grid__more:hover {
+    background-color: #3386ff; /* Change background color on hover */
+    color: #fff; /* Change text color on hover */
 }
 
 
 
 /* Responsive styles */
 @media (max-width: 767px) {
-    .grid--features1 .grid__item,
-    .grid--more-features1 .grid__item {
-        margin-right: 0px !important;
-        margin-bottom: 20px; /* Adjust margin for more compact layout */
-        width: calc(100% - 40px) !important; /* Adjust width to fit full width */
-        padding: 15px; /* Further reduce padding for smaller screens */
+    .section--features1 .grid__item {
+        width: calc(100% - 40px); /* Adjust width for full width on mobile */
+        margin-right: 0; /* Remove right margin for all items on mobile */
+        padding: 20px 0; /* Adjust padding for mobile */
     }
 
-    .grid--features1 .grid__item {
-        width: calc(100% - 40px) !important; /* Adjust width for two columns */
+    .section--features1 .grid__title {
+        font-size: 20px; /* Decrease font size for smaller screens */
+        padding: 20px 0; /* Adjust padding for titles on mobile */
     }
 
-    .grid--more-features1 .grid__item {
-        width: calc(100% - 40px) !important; /* Adjust width for three columns */
+    .section--features1 .grid__text {
+        font-size: 14px; /* Set font size for text on mobile */
     }
 
-    .grid--more-features1 .grid__item:nth-child(3n+1) {
-		width: calc(100% - 40px) !important;
-        margin-right: 0px !important; /* Add margin between each third item */
+    .section--features1 .grid__more {
+        width: 150px; /* Set button width for mobile */
     }
-
-    .grid--features1 .grid__item .grid__title,
-    .grid--more-features1 .grid__item .grid__title {
-        font-size: 16px; /* Decrease font size for smaller screens */
-    }
-
-    .grid--features1 .grid__item--featured .grid__title,
-    .grid--more-features1 .grid__item--featured .grid__title {
-        font-size: 18px; /* Increase font size for featured items */
-    }
-
-	.grid--item.grid--item--featured{
-		width: calc(100% - 40px) !important;
-        margin-right: 0px !important;	
-	
-	}
-	.grid--3col .grid__item:nth-child(3n+3){
-		width: calc(100% - 40px) !important;
-        margin-right: 0px !important;	
-	}
 }
 
 
