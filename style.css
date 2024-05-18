@@ -151,6 +151,7 @@ h6{
 	box-shadow: 0 4px 10px 0px rgba(0, 0, 0, 0.03);
 	-moz-box-shadow: 0 4px 10px 0px rgba(0, 0, 0, 0.03);
 	-webkit-box-shadow: 0 4px 10px 0px rgba(0, 0, 0, 0.03);
+	z-index: 9999;
 }
 
 /* ELEMENT - header__content */
@@ -2895,6 +2896,7 @@ svg.svg-cta-bottom {
 }
 .header__logo-title{
 	font-size:20px;
+	margin-bottom: 2% !important;
 }
 .intro__title{
 	font-size:60px;
@@ -2981,3 +2983,7 @@ svg.svg-cta-bottom {
 }
 
 }
+
+
+.section .section--hiw .section__content--padding {
+padding-top: 0px;}
