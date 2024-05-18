@@ -45,6 +45,7 @@ Template:	LATERAL | Landing page templates for SAAS companies
 html, body{
 	width: 100%; 
 	height:100%;
+	overflow: hidden;
 }
 body{
 	font-family: 'Source Sans Pro', sans-serif;
