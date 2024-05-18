@@ -7,15 +7,26 @@ var swiper = new Swiper('.testimonials', {
   slidesPerView: "auto",
   spaceBetween: 0,
   pagination: {
-	el: '.swiper-pagination',
-	dynamicBullets: true,
-	clickable : true
+    el: '.swiper-pagination',
+    dynamicBullets: true,
+    clickable: true
   },
   navigation: {
-	nextEl: '.swiper-button-next',
-	prevEl: '.swiper-button-prev',
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
   },
+  breakpoints: {
+    1024: {
+      slidesPerView: 2,
+      spaceBetween: 20,
+    },
+    768: {
+      slidesPerView: 1,
+      spaceBetween: 20,
+    }
+  }
 });
+
 var swipert = new Swiper ('.hiw-titles', {
 spaceBetween: 1,
 centeredSlides: true,
