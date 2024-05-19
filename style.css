@@ -152,6 +152,7 @@ h6{
 	-moz-box-shadow: 0 4px 10px 0px rgba(0, 0, 0, 0.03);
 	-webkit-box-shadow: 0 4px 10px 0px rgba(0, 0, 0, 0.03);
 	z-index: 9999;
+	
 }
 
 /* ELEMENT - header__content */
@@ -188,6 +189,7 @@ h6{
 .header--page .header__logo-title,
 .menu-open .header__logo-title {
 	color: #000;
+	padding-bottom: 10px ;
 }
 
 .header__logo-title img {
