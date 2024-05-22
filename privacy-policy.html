@@ -1326,8 +1326,26 @@
             </div>
           </div>
         </div>
+       
       </div>
-    
+	<!-- Section -- cta -->
+	<section class="section section--cta" style="overflow: hidden;" id="cta">
+		<div class="section__content section__content--fluid-width section__content--padding">
+			<div class="grid grid--2col grid--cta">
+				
+			</div>
+			<div class="clear"></div>
+		</div>
+		<svg class="svg-cta-bottom" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+			<defs>
+				<linearGradient id="linear" x1="0%" y1="0%" x2="0%" y2="100%" spreadMethod="pad">
+					<stop offset="0%" stop-color="#030c2c" />
+					<stop offset="100%" stop-color="#182964" />
+				</linearGradient>
+			</defs>
+			<path d="M0,80 L10,90 Q21,101 30,90 L100,0 100,100 0,100 Z" fill="url(#linear)" />
+		</svg>
+	</section>
     <footer class="footer" style="overflow-x: hidden" id="footer">
       <div
         class="footer__content footer__content--fluid-width footer__content--svg"
@@ -1418,6 +1436,17 @@
 	<script src="js/swiper.min.js"></script>
 	<script src="js/swiper.custom.js"></script>
 	<script src="js/menu.js"></script>
-    
+    <script>
+		document.addEventListener('contextmenu', function (e) {
+			e.preventDefault();
+		});
+	</script>
+	<script>
+		document.addEventListener('keydown', function (e) {
+			if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I') || (e.ctrlKey && e.shiftKey && e.key === 'J') || (e.ctrlKey && e.key === 'U')) {
+				e.preventDefault();
+			}
+		});
+	</script>
   </body>
 </html>
