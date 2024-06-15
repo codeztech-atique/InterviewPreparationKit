@@ -25,119 +25,93 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="css/swiper.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-    <link re="stylesheet" href="privacy.css" />
+
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,700,900" rel="stylesheet">
 
 
 </head>
 
-<body style="overflow-x: hidden !important">
-    <div class="main-wrapper">
-        <!--
-    navigation - start
-    -->
-        <header class="header">
-            <div class="header__content header__content--fluid-width">
-                <div class="header__logo-title">
-                    <img src="https://static.analysts24x7.com/logo.png" alt="" title="logo" style="width: 3rem;">
-                    <span>Analysts 24x7</span>
-                </div>
-                <nav class="header__menu">
-                    <ul>
-                        <li><a class="selected header-link" href="#intro">HOME</a></li>
-                        <li class="menu-item-has-children"><a href="#features" class="header-link">FEATURES</a>
-                            <ul class="sub-menu">
-                                <li><a href="#how-it-works" class="header-link">HOW IT WORKS</a></li>
-                                <!-- <li><a href="#clients" class="header-link">OUR CLIENTS</a></li> -->
-                                <li><a href="#faq" class="header-link">FAQ</a></li>
-                                <li><a href="#testimonials" class="header-link">TESTIMONIALS</a></li>
-                                <li><a href="#support" class="header-link">SUPPORT</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#services" class="header-link">SERVICES</a></li>
-                        <li><a href="#pricing" class="header-link">PRICING</a></li>
-                        <li><a href="#solutions" class="header-link">SOLUTIONS </a></li>
-                        <li class="header__btn header__btn--login "><a href="https://dashboard.analysts24x7.com/"
-                                target="_blank">LOGIN</a></li>
-                        <li class="header__btn header__btn--signup "><a
-                                href="https://dashboard.analysts24x7.com/register" target="_blank">SIGN UP</a></li>
-                        <!-- data-openpopup="signuplogin" data-popup="signup" -->
-                    </ul>
-                </nav>
-            </div>
-        </header>
-        <!--
-    navigation - end
-    -->
+<body>
 
-
-
+	<header class="header" >
+		<div class="header__content header__content--fluid-width">
+			<div class="header__logo-title">
+				<img src="https://static.analysts24x7.com/logo.png" alt="" title="logo" style="width: 3rem;">
+				<span>Analysts 24x7</span>
+			</div>
+			<nav class="header__menu">
+				<ul>
+					<li><a class="selected header-link" href="#intro">HOME</a></li>
+					<li class="menu-item-has-children"><a href="#features" class="header-link">FEATURES</a>
+						<ul class="sub-menu">
+							<li><a href="#how-it-works" class="header-link">HOW IT WORKS</a></li>
+							<!-- <li><a href="#clients" class="header-link">OUR CLIENTS</a></li> -->
+							<li><a href="#faq" class="header-link">FAQ</a></li>
+							<li><a href="#testimonials" class="header-link">TESTIMONIALS</a></li>
+							<li><a href="#support" class="header-link">SUPPORT</a></li>
+						</ul>
+					</li>
+					<li><a href="#services" class="header-link">SERVICES</a></li>
+					<li><a href="#pricing" class="header-link">PRICING</a></li>
+					<li><a href="#solutions" class="header-link">SOLUTIONS </a></li>
+					<li class="header__btn header__btn--login "><a href="https://dashboard.analysts24x7.com/"
+							target="_blank">LOGIN</a></li>
+					<li class="header__btn header__btn--signup "><a href="https://dashboard.analysts24x7.com/register"
+							target="_blank">SIGN UP</a></li>
+					<!-- data-openpopup="signuplogin" data-popup="signup" -->
+				</ul>
+			</nav>
+		</div>
+	</header>
 
         <!--
     tabs section - start
     -->
+   
         <div class="tab-section tab-section-1">
             <div class="tab-section-wrapper" style="padding-top: 200px;padding-bottom: 100px;">
                 <div class="container">
                     <div class="row gx-5">
-                        <div class="col-lg-4 offset-lg-0 col-md-8 offset-md-2 col-10 offset-1">
-                            <!-- <div class="sub-heading c-blue upper ls-1" style="display: flex;">
-                  <i class="las la-cog"></i>
-                  <h5 style="padding:0px !important;">explore</h5>
-                </div> -->
-                            <div class="nav tab-nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist"
-                                aria-orientation="vertical">
+                        <div class="col-lg-4 offset-lg-0 col-md-8 offset-md-2 col-10 offset-1 d-none d-lg-block">
+                            <div class="nav tab-nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                                 <a class="nav-link active" id="tab-button-1" href="terms-of-service.html" role="tab"
                                     aria-controls="tab-pane-1" aria-selected="true">
                                     <span>
-                                        <i class="las la-file-invoice"
-                                            style="font-size: 50px !important;vertical-align: middle !important;"></i>
-                                        <span class="text"
-                                            style="font-size: 24px !important;vertical-align: middle;">Terms of
-                                            Service</span>
+                                        <i class="las la-file-invoice" style="font-size: 50px !important;vertical-align: middle !important;"></i>
+                                        <span class="text" style="font-size: 24px !important;vertical-align: middle;">Terms of Service</span>
                                     </span>
                                 </a>
-                                <a class="nav-link" id="tab-button-2" href="privacy-policy.html" role="tab"
-                                    aria-controls="tab-pane-2" aria-selected="false">
+                                <a class="nav-link" id="tab-button-2" href="privacy-policy.html" role="tab" aria-controls="tab-pane-2"
+                                    aria-selected="false">
                                     <span>
-                                        <i class="las la-question-circle"
-                                            style="font-size: 50px !important;vertical-align: middle !important;"></i>
-                                        <span class="text"
-                                            style="font-size: 24px !important;vertical-align: middle;">Privacy
-                                            Policy</span>
+                                        <i class="las la-question-circle" style="font-size: 50px !important;vertical-align: middle !important;"></i>
+                                        <span class="text" style="font-size: 24px !important;vertical-align: middle;">Privacy Policy</span>
                                     </span>
                                 </a>
-                                <a class="nav-link" id="tab-button-3" href="get-help.html" role="tab"
-                                    aria-controls="tab-pane-3" aria-selected="false">
+                                <a class="nav-link" id="tab-button-3" href="get-help.html" role="tab" aria-controls="tab-pane-3"
+                                    aria-selected="false">
                                     <span>
-                                        <i class="las la-headset"
-                                            style="font-size: 50px !important;vertical-align: middle !important;"></i>
-                                        <span class="text"
-                                            style="font-size: 24px !important;vertical-align: middle;">Get Help</span>
+                                        <i class="las la-headset" style="font-size: 50px !important;vertical-align: middle !important;"></i>
+                                        <span class="text" style="font-size: 24px !important;vertical-align: middle;">Get Help</span>
                                     </span>
                                 </a>
-                                <a class="nav-link" id="tab-button-4" href="report-bug.html" role="tab"
-                                    aria-controls="tab-pane-4" aria-selected="false">
+                                <a class="nav-link" id="tab-button-4" href="report-bug.html" role="tab" aria-controls="tab-pane-4"
+                                    aria-selected="false">
                                     <span>
-                                        <i class="las la-bug"
-                                            style="font-size: 50px !important;vertical-align: middle !important;"></i>
-                                        <span class="text"
-                                            style="font-size: 24px !important;vertical-align: middle;">Report a
-                                            Bug</span>
+                                        <i class="las la-bug" style="font-size: 50px !important;vertical-align: middle !important;"></i>
+                                        <span class="text" style="font-size: 24px !important;vertical-align: middle;">Report a Bug</span>
                                     </span>
                                 </a>
-                                <a class="nav-link" id="tab-button-5" href="data-protection.html" role="tab"
-                                    aria-controls="tab-pane-5" aria-selected="false">
+                                <a class="nav-link" id="tab-button-5" href="data-protection.html" role="tab" aria-controls="tab-pane-5"
+                                    aria-selected="false">
                                     <span>
-                                        <i class="las la-user-lock"
-                                            style="font-size: 50px !important;vertical-align: middle !important;"></i>
-                                        <span class="text"
-                                            style="font-size: 24px !important;vertical-align: middle;">Data
-                                            Protection</span>
+                                        <i class="las la-user-lock" style="font-size: 50px !important;vertical-align: middle !important;"></i>
+                                        <span class="text" style="font-size: 24px !important;vertical-align: middle;">Data Protection</span>
                                     </span>
                                 </a>
                             </div>
                         </div>
+                        
                         <div class="col-lg-8 offset-lg-0 col-md-8 offset-md-2 col-10 offset-1">
                             <div class="tab-content" id="v-pills-tabContent">
                                 <!--
@@ -987,28 +961,24 @@
             </div>
         </div>
 
-        <footer class="footer" style="overflow-x: hidden" id="footer">
+        <footer class="footer" style="overflow-x: hidden;" id="footer">
             <div class="footer__content footer__content--fluid-width footer__content--svg">
+    
                 <div class="grid grid--5col">
+    
                     <div class="grid__item grid__item--x2">
+    
                         <!-- <img src="https://static.analysts24x7.com/logo.png" style="width: 3rem;"> -->
                         <h3 class="grid__title grid__title--footer-logo">Analysts 24x7</h3>
-                        <p class="grid__text grid__text--copyright">
-                            Copyright &copy; 2024 Analysts 24x7. <br />All Rights Reserved.
-                        </p>
+                        <p class="grid__text grid__text--copyright">Copyright &copy; 2024 Analysts 24x7. <br />All Rights
+                            Reserved. </p>
                         <ul class="grid__list grid__list--sicons">
-                            <li>
-                                <a href="https://x.com/analysts24x7" target="_blank"><img
-                                        src="images/social/white/twitter.png" alt="" title="" /></a>
-                            </li>
-                            <li>
-                                <a href="https://www.facebook.com/analysts24x7?mibextid=LQQJ4d" target="_blank"><img
-                                        src="images/social/white/facebook.png" alt="" title="" /></a>
-                            </li>
-                            <li>
-                                <a href="https://www.linkedin.com/company/analysts24x7/" target="_blank"><img
-                                        src="images/social/white/linkedin.png" alt="" title="" /></a>
-                            </li>
+                            <li><a href="https://x.com/analysts24x7" target="_blank"><img
+                                        src="images/social/white/twitter.png" alt="" title="" /></a></li>
+                            <li><a href="https://www.facebook.com/analysts24x7?mibextid=LQQJ4d" target="_blank"><img
+                                        src="images/social/white/facebook.png" alt="" title="" /></a></li>
+                            <li><a href="https://www.linkedin.com/company/analysts24x7/" target="_blank"><img
+                                        src="images/social/white/linkedin.png" alt="" title="" /></a></li>
                         </ul>
                     </div>
                     <div class="grid__item">
@@ -1017,39 +987,37 @@
                             <li><a href="#">About Us</a></li>
                             <li><a href="#">Contact Us</a></li>
                             <li><a href="#">Blog/News</a></li>
-                            <li><a href="#">Events</a></li>
                         </ul>
                     </div>
                     <div class="grid__item">
                         <h3 class="grid__title grid__title--footer">Products</h3>
                         <ul class="grid__list grid__list--fmenu">
-                            <li>
-                                <a href="https://analysts24x7.com/#services" target="_blank">Services</a>
-                            </li>
-                            <li>
-                                <a href="https://analysts24x7.com/#pricing" target="_blank">Pricing</a>
-                            </li>
-                            <li>
-                                <a href="https://analysts24x7.com/#solutions" target="_blank">Industry Solutions</a>
-                            </li>
-                            <li>
-                                <a href="https://analysts24x7.com/#faq" target="_blank">FAQ</a>
-                            </li>
+    
+                            <li><a href="#services">Services</a></li>
+                            <li><a href="#pricing">Pricing</a></li>
+                            <li><a href="#industry-solutions">Industry Solutions</a></li>
+                            <li><a href="#faq">FAQ</a></li>
                         </ul>
                     </div>
                     <div class="grid__item">
                         <h3 class="grid__title grid__title--footer">Support</h3>
                         <ul class="grid__list grid__list--fmenu">
-                            <li>
-                                <a href="https://analysts24x7.com/#support" target="_blank">Help & Support</a>
-                            </li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#" target="_blank">Terms Of Service</a></li>
-                            <li><a href="#" target="_blank">Accessibility</a></li>
+                            <li><a href="#support">Help & Support</a></li>
+                            <li><a href="https://analysts24x7.com/privacy-policy.html">Privacy Policy</a></li>
+                            <li><a href="https://analysts24x7.com/terms-of-service.html">Terms Of Service</a></li>
+                            <li><a href="https://analysts24x7.com/get-help.html">Get Help</a></li>
+                            <li><a href="https://analysts24x7.com/report-bug.html">Report A Bug</a></li>
+                            <li><a href="https://analysts24x7.com/data-protection.html">Data Protection</a></li>
+    
                         </ul>
                     </div>
+    
                 </div>
+    
+    
             </div>
+    
+    
         </footer>
         <!--
     scripts
@@ -1060,6 +1028,7 @@
         <script src="js/swiper.min.js"></script>
         <script src="js/swiper.custom.js"></script>
         <script src="js/menu.js"></script>
+        
 
 </body>
 
