@@ -14,6 +14,14 @@
 	<link rel="stylesheet" href="css/swiper.css">
 	<link rel="stylesheet" href="style.css">
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,700,900" rel="stylesheet">
+<style>
+	@media screen and (max-width: 800px) {
+
+  .header {
+    height: 50px !important;
+    padding-top: 10px;
+  }}
+</style>
 </head>
 
 <body >
@@ -352,112 +360,107 @@
 		</div>
 	</section>
 	<!-- Section -- pricing -->
-	<section class="section " style="overflow-x: hidden;" id="pricing">
-
+	<section class="section" style="overflow-x: hidden;" id="pricing">
 		<div class="section__content section__content--fix-width section__content--padding">
-			<h2 class="section__title section__title--centered">Flexible Pricing</h2>
-			<div class="section__description section__description--centered">
-				We believe we have created the most efficient SaaS landing page for your users. Landing page with
-				features that will convince you to use it for your SaaS business.
+		  <h2 class="section__title section__title--centered">Flexible Pricing</h2>
+		  <div class="section__description section__description--centered">
+			We believe we have created the most efficient SaaS landing page for your users. Landing page with
+			features that will convince you to use it for your SaaS business.
+		  </div>
+	  
+		  <div class="pricing">
+			<div class="pricing__switcher switcher">
+			  <div class="switcher__buttons">
+				<div class="switcher__button switcher__button--enabled">Monthly</div>
+				<!-- <div class="switcher__button">Yearly</div> -->
+				<div class="switcher__border"></div>
+			  </div>
 			</div>
-
-
-			<div class="pricing">
-				<div class="pricing__switcher switcher">
-					<div class="switcher__buttons">
-						<div class="switcher__button switcher__button--enabled">Monthly</div>
-						<!-- <div class="switcher__button">Yearly</div> -->
-						<div class="switcher__border"></div>
-					</div>
-
+	  
+			<div class="pricing__plans">
+	  
+			  <div class="pricing__plan">
+				<h3 class="pricing__title">Freemium Plan</h3>
+				<div class="pricing__values">
+				  <div class="pricing__value pricing__value--show"><span>$</span>0 <b>/ month</b></div>
+				  <div class="pricing__value pricing__value--hide pricing__value--hidden"><span>$</span>0 <b>/ yearly</b></div>
 				</div>
-
-
-				<div class="pricing__plan">
-					<h3 class="pricing__title">Freemium Plan</h3>
-					<div class="pricing__values">
-						<div class="pricing__value pricing__value--show"><span>$</span>0 <b>/ month</b></div>
-						<div class="pricing__value pricing__value--hide pricing__value--hidden"><span>$</span>0 <b>/
-								yearly</b></div>
-					</div>
-					<ul class="pricing__list">
-						<li><b>Support:</b> Access to 5 hours of support over 7 days.</li>
-						<li><b>Requests:</b> Submit up to 5 quick requests.</li>
-						<li><b>Real-Time Monitoring:</b> Monitor the work of business analysts as they progress.</li>
-						<li><b>Review & Feedback:</b> Post-completion work review & provide feedback.</li>
-						<li><b>Chat Support:</b> Real-time chat support with Analysts 24x7 AI & Business Analysts.
-						</li>
-						<li><b>Work Rejection:</b> Option to reject work if it doesn’t meet your standards.</li>
-						<li><b>Unlimited Revisions:</b> Request as many revisions as needed to ensure satisfaction.</li>
-
-					</ul>
-					<a class="pricing__signup" href="https://dashboard.analysts24x7.com/register">Sign up</a>
+				<ul class="pricing__list">
+				  <li><b>Support:</b> Access to 5 hours of support over 7 days.</li>
+				  <li><b>Requests:</b> Submit up to 5 quick requests.</li>
+				  <li class="unavailable"><b>Real-Time Monitoring:</b> Monitor the work of business analysts as they progress.</li>
+				  <li class="unavailable"><b>Review & Feedback:</b> Post-completion work review & provide feedback.</li>
+				  <li><b>Chat Support:</b> Real-time chat support with Analysts 24x7 AI & Business Analysts.</li>
+				  <li><b>Work Rejection:</b> Option to reject work if it doesn’t meet your standards.</li>
+				  <li><b>Unlimited Revisions:</b> Request as many revisions as needed to ensure satisfaction.</li>
+				</ul>
+				<a class="pricing__signup" href="https://dashboard.analysts24x7.com/register">Sign up</a>
+			  </div>
+	  
+			  <div class="pricing__plan">
+				<h3 class="pricing__title">Base Plan</h3>
+				<div class="pricing__values">
+				  <div class="pricing__value pricing__value--show"><span>$</span>100 <b>/ month</b></div>
+				  <div class="pricing__value pricing__value--hide pricing__value--hidden"><span>$</span>320 <b>/ yearly</b></div>
 				</div>
-				<div class="pricing__plan">
-					<h3 class="pricing__title">Base Plan</h3>
-					<div class="pricing__values">
-						<div class="pricing__value pricing__value--show"><span>$</span>100 <b>/ month</b></div>
-						<div class="pricing__value pricing__value--hide pricing__value--hidden"><span>$</span>320 <b>/
-								yearly</b></div>
-					</div>
-					<ul class="pricing__list">
-						<li><b>Support:</b> Access to 10 hours of support over 30 days.</li>
-						<li><b>Requests:</b> Unlimited quick requests.</li>
-						<li><b>Real-Time Monitoring:</b> Continuous monitoring of business analysts' work.</li>
-						<li><b>Review & Feedback:</b> Post-completion work review & feedback options.</li>
-						<li><b>Chat Support:</b> Real-time interaction with AI & Business Analysts.</li>
-						<li><b>Work Rejection:</b> Freedom to reject unsatisfactory <br>work.</li>
-						<li><b>Unlimited Revisions:</b> Unlimited revisions for perfection.</li>
-
-					</ul>
-					<a class="pricing__signup" href="https://dashboard.analysts24x7.com/register">Sign up</a>
+				<ul class="pricing__list">
+				  <li><b>Support:</b> Access to 10 hours of support over 30 days.</li>
+				  <li><b>Requests:</b> Unlimited quick requests.</li>
+				  <li><b>Real-Time Monitoring:</b> Continuous monitoring of business analysts' work.</li>
+				  <li><b>Review & Feedback:</b> Post-completion work review & feedback options.</li>
+				  <li><b>Chat Support:</b> Real-time interaction with AI & Business Analysts.</li>
+				  <li><b>Work Rejection:</b> Freedom to reject unsatisfactory<br> work.</li>
+				  <li><b>Unlimited Revisions:</b> Unlimited revisions for perfection.</li>
+				</ul>
+				<a class="pricing__signup" href="https://dashboard.analysts24x7.com/register">Sign up</a>
+			  </div>
+	  
+			  <div class="pricing__plan pricing__plan--popular">
+				<div class="pricing__badge-bg"></div>
+				<div class="pricing__badge-text">POPULAR</div>
+				<h3 class="pricing__title">Pro Plan</h3>
+				<div class="pricing__values">
+				  <div class="pricing__value pricing__value--show"><span>$</span>200 <b>/ month</b></div>
+				  <div class="pricing__value pricing__value--hide pricing__value--hidden"><span>$</span>529 <b>/ yearly</b></div>
 				</div>
-				<div class="pricing__plan pricing__plan--popular">
-					<div class="pricing__badge-bg"></div>
-					<div class="pricing__badge-text">POPULAR</div>
-					<h3 class="pricing__title">Pro Plan</h3>
-					<div class="pricing__values">
-						<div class="pricing__value pricing__value--show"><span>$</span>200 <b>/ month</b></div>
-						<div class="pricing__value pricing__value--hide pricing__value--hidden"><span>$</span>529 <b>/
-								yearly</b></div>
-					</div>
-					<ul class="pricing__list">
-						<li><b>Support:</b> Extended support of 20 hours over 30 days.</li>
-						<li> <b>Requests:</b> No limits on quick request submissions.</li>
-						<li> <b>Real-Time Monitoring:</b> Full transparency with real-time work monitoring.</li>
-						<li> <b>Review & Feedback:</b> Detailed review options post work completion.</li>
-						<li> <b>Chat Support:</b> Continuous real-time support from AI & analysts.</li>
-						<li> <b>Work Rejection:</b> Reject work that does not meet expectations.</li>
-						<li> <b>Unlimited Revisions:</b> Enhance quality through unlimited revisions.</li>
-					</ul>
-					<a class="pricing__signup" href="https://dashboard.analysts24x7.com/register">Sign up</a>
+				<ul class="pricing__list">
+				  <li><b>Support:</b> Extended support of 20 hours over 30 days.</li>
+				  <li><b>Requests:</b> No limits on quick request submissions.</li>
+				  <li><b>Real-Time Monitoring:</b> Full transparency with real-time work monitoring.</li>
+				  <li><b>Review & Feedback:</b> Detailed review options post work completion.</li>
+				  <li><b>Chat Support:</b> Continuous real-time support from AI & analysts.</li>
+				  <li><b>Work Rejection:</b> Reject work that does not meet expectations.</li>
+				  <li><b>Unlimited Revisions:</b> Enhance quality through unlimited revisions.</li>
+				</ul>
+				<a class="pricing__signup" href="https://dashboard.analysts24x7.com/register">Sign up</a>
+			  </div>
+	  
+			  <div class="pricing__plan">
+				<h3 class="pricing__title">Enterprise Plan</h3>
+				<div class="pricing__values">
+				  <div class="pricing__value pricing__value--show"><span>$</span>4999 <b>/ month</b></div>
+				  <div class="pricing__value pricing__value--hide pricing__value--hidden"><span>$</span>900 <b>/ yearly</b></div>
 				</div>
-				<div class="pricing__plan">
-					<h3 class="pricing__title">Enterprise Plan</h3>
-					<div class="pricing__values">
-						<div class="pricing__value pricing__value--show"><span>$</span>4999<b>/ month</b></div>
-						<div class="pricing__value pricing__value--hide pricing__value--hidden"><span>$</span>900 <b>/
-								yearly</b></div>
-					</div>
-					<ul class="pricing__list">
-						<li><b>Support:</b> Comprehensive unlimited support for 30 days.</li>
-						<li><b> Requests:</b> Unlimited submissions for both quick & project requests.</li>
-						<li> <b>Enhanced Monitoring:</b> Monitor both business & data analysts in real-time.</li>
-						<li> <b>Review & Feedback:</b> Thorough review & immediate feedback capabilities.</li>
-						<li> <b>Dedicated Chat Support:</b> Direct real-time chat with AI & Business Analysts.</li>
-						<li> <b>Work Rejection:</b> Full authority to reject any unsatisfactory outputs.</li>
-						<li> <b>Unlimited Revisions:</b> Perfect your projects with unlimited revisions.</li>
-
-
-					</ul>
-					<a class="pricing__signup" href="https://dashboard.analysts24x7.com/register">Sign up</a>
-				</div>
+				<ul class="pricing__list">
+				  <li><b>Support:</b> Comprehensive unlimited support for 30 days.</li>
+				  <li><b>Requests:</b> Unlimited submissions for project.</li>
+				  <li><b>Enhanced Monitoring:</b> Monitor both business & data analysts in real-time.</li>
+				  <li><b>Review & Feedback:</b> Thorough review & immediate feedback capabilities.</li>
+				  <li><b>Dedicated Chat Support:</b> Direct real-time chat with AI & Business Analysts.</li>
+				  <li><b>Work Rejection:</b> Full authority to reject any unsatisfactory outputs.</li>
+				  <li><b>Unlimited Revisions:</b> Perfect your projects with unlimited revisions.</li>
+				</ul>
+				<a class="pricing__signup" href="https://dashboard.analysts24x7.com/register">Sign up</a>
+			  </div>
+			  
 			</div>
-
-			<div class="clear"></div>
+		  </div>
+	  
+		  <div class="clear"></div>
 		</div>
-
-	</section>
+	  </section>
+	  
+	  
 	<!-- Section services -->
 	<section class="section section--features1" style="overflow-x: hidden;" id="services">
 
