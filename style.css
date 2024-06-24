@@ -2359,7 +2359,7 @@ ul.grid__list--fmenu li a::after {
   display: block;
   width: 0;
   height: 1px;
-  background: #3059e7;
+  background: white;
   transition: width 0.3s;
 }
 
@@ -2367,7 +2367,7 @@ ul.grid__list--fmenu li a:hover::after {
   width: 100%;
 }
 ul.grid__list--fmenu li a:hover {
-  color: #3059e7;
+  color: white;
 }
 /*===============================================*/
 /* 9. MEDIA QUERIES   			 */

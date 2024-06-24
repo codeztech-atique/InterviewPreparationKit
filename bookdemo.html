@@ -35,14 +35,14 @@
         }
 
         .content h1 {
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-family: "Source Sans Pro", sans-serif;
             font-size: 56px;
             color: white;
             padding-bottom: 10px;
         }
 
         .content p {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-family: "Source Sans Pro", sans-serif;
             font-size: 22px;
             color: white;
         }
@@ -68,7 +68,7 @@
         }
 
         .form-container {
-            background-color: #3059e7;
+            background-color: #182964;
             padding: 30px;
             border-radius: 8px;
             max-width: 40%;
@@ -76,7 +76,7 @@
         }
 
         .form-container h2 {
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-family: "Source Sans Pro", sans-serif;
             font-size: 38px;
             margin-bottom: 20px;
             text-align: center;
@@ -144,36 +144,38 @@
 
 <body>
 
-    <header class="header">
-        <div class="header__content header__content--fluid-width">
-            <div class="header__logo-title">
-                <img src="https://static.analysts24x7.com/logo.png" alt="" title="logo" style="width: 3rem;">
-                <span>Analysts 24x7</span>
-            </div>
-            <nav class="header__menu">
-                <ul>
-                    <li><a class="selected header-link" href="#intro">HOME</a></li>
-                    <li class="menu-item-has-children"><a href="#features" class="header-link">FEATURES</a>
-                        <ul class="sub-menu">
-                            <li><a href="#how-it-works" class="header-link">HOW IT WORKS</a></li>
-                            <!-- <li><a href="#clients" class="header-link">OUR CLIENTS</a></li> -->
-                            <li><a href="#faq" class="header-link">FAQ</a></li>
-                            <!-- <li><a href="#testimonials" class="header-link">TESTIMONIALS</a></li> -->
-                            <li><a href="#support" class="header-link">SUPPORT</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#services" class="header-link">SERVICES</a></li>
-                    <li><a href="#pricing" class="header-link">PRICING</a></li>
-                    <li><a href="#industry-solutions" class="header-link">SOLUTIONS </a></li>
-                    <li class="header__btn header__btn--login "><a href="https://dashboard.analysts24x7.com/"
-                            target="_blank">LOGIN</a></li>
-                    <li class="header__btn header__btn--signup "><a href="https://dashboard.analysts24x7.com/register"
-                            target="_blank">SIGN UP</a></li>
-                    <!-- data-openpopup="signuplogin" data-popup="signup" -->
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <header class="header" >
+		<div class="header__content header__content--fluid-width">
+			<div class="header__logo-title">
+				<a href="https://analysts24x7.com/" style="text-decoration: none; color: inherit;">
+                    <img src="https://static.analysts24x7.com/logo.png" alt="Analysts 24x7 logo" title="logo" style="width: 3rem; vertical-align: middle;">
+                    <span style="vertical-align: middle;">Analysts 24x7</span>
+                  </a>
+                  
+			</div>
+			<nav class="header__menu">
+				<ul>
+					<li><a class="selected header-link" href="https://analysts24x7.com/">HOME</a></li>
+					<li class="menu-item-has-children"><a href="https://analysts24x7.com/#features" class="header-link">FEATURES</a>
+						<ul class="sub-menu">
+							<li><a href="https://analysts24x7.com/#how-it-works" class="header-link">HOW IT WORKS</a></li>
+							<!-- <li><a href="#clients" class="header-link">OUR CLIENTS</a></li> -->
+							<li><a href="https://analysts24x7.com/#faq" class="header-link">FAQ</a></li>
+							<li><a href="https://analysts24x7.com/#support" class="header-link">SUPPORT</a></li>
+						</ul>
+					</li>
+					<li><a href="https://analysts24x7.com/#services" class="header-link">SERVICES</a></li>
+					<li><a href="https://analysts24x7.com/#pricing" class="header-link">PRICING</a></li>
+					<li><a href="https://analysts24x7.com/#industry-solutions" class="header-link">SOLUTIONS </a></li>
+					<li class="header__btn header__btn--login "><a href="https://dashboard.analysts24x7.com/"
+							target="_blank">LOGIN</a></li>
+					<li class="header__btn header__btn--signup "><a href="https://dashboard.analysts24x7.com/register"
+							target="_blank">SIGN UP</a></li>
+					<!-- data-openpopup="signuplogin" data-popup="signup" -->
+				</ul>
+			</nav>
+		</div>
+	</header>
 
     <div class="container">
         <div class="content">
@@ -208,15 +210,13 @@
                 <input type="text" name="last_name" placeholder="Last name" required>
                 <input type="email" name="work_email" placeholder="Work email" required>
                 <input type="text" name="company_name" placeholder="Company name" required>
-                <input type="tel" name="phone_number" placeholder="Phone number" required>
-                <select name="country" required>
-                    <option value="India" selected>India</option>
-                    <option value="Pakistan"  >Pakistan</option>
-                    <option value="USA" >USA</option>
-                    <option value="UK" >UK</option>
-                    <option value="Australia" >Australia</option>
-                    <!-- Add country options here -->
+                <select name="country" id="country" required>
+                  <!-- Options will be added here dynamically -->
                 </select>
+                <div id="other-country" style="display: none;">
+                  <label for="other">Please specify:</label>
+                  <input type="text" id="other" name="other">
+                </div>
                 <textarea name="referral" placeholder="How did you hear about Analysts24x7?" rows="4"></textarea>
                 <button type="submit">Get started</button>
             </form>
@@ -226,13 +226,13 @@
 
     <footer class="footer" style="overflow-x: hidden;" id="footer">
         <div class="footer__content footer__content--fluid-width footer__content--svg">
-
+  
             <div class="grid grid--5col">
-
+  
                 <div class="grid__item grid__item--x2">
-
+  
                     <!-- <img src="https://static.analysts24x7.com/logo.png" style="width: 3rem;"> -->
-                    <h3 class="grid__title grid__title--footer-logo">Analysts 24x7</h3>
+                    <h3 class="grid__title grid__title--footer-logo" href="https://analysts24x7.com/">Analysts 24x7</h3>
                     <p class="grid__text grid__text--copyright">Copyright &copy; 2024 Analysts 24x7. <br />All Rights
                         Reserved. </p>
                     <ul class="grid__list grid__list--sicons">
@@ -255,32 +255,32 @@
                 <div class="grid__item">
                     <h3 class="grid__title grid__title--footer">Products</h3>
                     <ul class="grid__list grid__list--fmenu">
-
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#pricing">Pricing</a></li>
-                        <li><a href="#industry-solutions">Industry Solutions</a></li>
-                        <li><a href="#faq">FAQ</a></li>
+  
+                        <li><a href="https://analysts24x7.com/#services">Services</a></li>
+                        <li><a href="https://analysts24x7.com/#pricing">Pricing</a></li>
+                        <li><a href="https://analysts24x7.com/#industry-solutions">Industry Solutions</a></li>
+                        <li><a href="https://analysts24x7.com/#faq">FAQ</a></li>
                     </ul>
                 </div>
                 <div class="grid__item">
                     <h3 class="grid__title grid__title--footer">Support</h3>
                     <ul class="grid__list grid__list--fmenu">
-                        <li><a href="#support">Help & Support</a></li>
+                        <li><a href="https://analysts24x7.com/#support">Help & Support</a></li>
                         <li><a href="https://analysts24x7.com/privacy-policy.html">Privacy Policy</a></li>
                         <li><a href="https://analysts24x7.com/terms-of-service.html">Terms Of Service</a></li>
                         <li><a href="https://analysts24x7.com/get-help.html">Get Help</a></li>
                         <li><a href="https://analysts24x7.com/report-bug.html">Report A Bug</a></li>
                         <li><a href="https://analysts24x7.com/data-protection.html">Data Protection</a></li>
-
+  
                     </ul>
                 </div>
-
+  
             </div>
-
-
+  
+  
         </div>
-
-
+  
+  
     </footer>
 
 
@@ -302,6 +302,33 @@
             }
         });
     </script>
+    <script>
+        // Load country options from JSON
+        fetch('countries.json')
+          .then(response => response.json())
+          .then(data => {
+            const select = document.getElementById('country');
+            data.forEach(country => {
+              const option = document.createElement('option');
+              option.value = country.countryCode;
+              option.textContent = country.name;
+              if (country.name === "India") {
+                option.selected = true;
+              }
+              select.appendChild(option);
+            });
+          });
+    
+        // Show text box when "Other" is selected
+        document.getElementById('country').addEventListener('change', function() {
+          const otherCountryDiv = document.getElementById('other-country');
+          if (this.value === 'OT') {
+            otherCountryDiv.style.display = 'block';
+          } else {
+            otherCountryDiv.style.display = 'none';
+          }
+        });
+      </script>
 
 </body>
 

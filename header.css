@@ -1,0 +1,305 @@
+/* 3. HEADER 	 						 */
+/*===============================================*/
+/* BLOCK - header */
+.header {
+  width: 100%;
+  height: 70px;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 999;
+  padding-top: 10px;
+}
+
+/* MODIFIER - header */
+.header--sticky {
+  background-color: #fff !important;
+  box-shadow: 0 4px 10px 0px rgba(0, 0, 0, 0.03);
+  -moz-box-shadow: 0 4px 10px 0px rgba(0, 0, 0, 0.03);
+  -webkit-box-shadow: 0 4px 10px 0px rgba(0, 0, 0, 0.03);
+  z-index: 9999;
+}
+
+/* ELEMENT - header__content */
+.header__content {
+  height: 70px;
+}
+
+/* ELEMENT MODIFIER - header__content */
+.header__content--fix-width {
+  width: 1240px;
+  margin: auto;
+  clear: both;
+}
+
+.header__content--fluid-width {
+  width: 80%;
+  margin: auto;
+  clear: both;
+}
+
+.header__logo-title {
+  color: #fff;
+  font-size: 26px;
+  letter-spacing: -1px;
+  position: relative;
+  float: left;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  z-index: 999;
+}
+
+.header--sticky .header__logo-title,
+.header--page .header__logo-title,
+.menu-open .header__logo-title {
+  color: #000;
+  padding-bottom: 10px;
+}
+
+.header__logo-title img {
+  width: 3rem;
+  vertical-align: middle;
+}
+
+.header__logo-title span {
+  font-weight: 700;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 0.5rem;
+}
+
+/* ELEMENT - header__menu */
+.header__menu {
+  float: right;
+}
+
+.header__menu ul,
+.header__menu ul li,
+.header__menu ul li a {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  list-style: none;
+  line-height: 1;
+  display: block;
+  float: left;
+  position: relative;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.header__menu:after,
+.header__menu > ul:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+
+.menu-button {
+  width: 28px;
+  height: 20px;
+  position: absolute;
+  padding: 0px;
+  font-size: 20px;
+  top: 12px;
+  right: 6%;
+  z-index: 99999;
+  display: none;
+  cursor: pointer;
+  border-bottom: 1px solid #fff;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.menu-button:before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 0;
+  width: 28px;
+  height: 6px;
+  z-index: 999;
+  border-top: 1px double #fff;
+  border-bottom: 1px solid #fff;
+}
+
+.header__menu > ul > li {
+  display: inline-block;
+  padding: 0;
+}
+
+.header__menu > ul > li > a {
+  height: 70px;
+  line-height: 70px;
+  color: #fff;
+  font-size: 14px;
+  display: inline-block;
+  letter-spacing: 0.5px;
+  padding: 0 25px;
+  margin: 0;
+  font-weight: 400;
+  overflow: hidden;
+}
+
+.header--sticky .header__menu > ul > li > a,
+.header--page .header__menu > ul > li > a {
+  color: #000;
+}
+
+.header--sticky .menu-button,
+.menu-open .menu-button {
+  border-bottom: 1px solid #000;
+}
+
+.header--sticky .menu-button:before,
+.menu-open .menu-button:before {
+  border-bottom: 1px solid #000;
+  border-top: 1px double #000;
+}
+
+.header__menu > ul > li.header__btn > a {
+  height: 32px;
+  line-height: 30px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
+  -webkit-transition: background-color 0.3s ease;
+  -moz-transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease;
+}
+
+.header__menu > ul > li.header__btn--signup > a {
+  color: #fff;
+  background-color: #27c480;
+  padding: 0 22px;
+  margin: 19px 0 0 25px;
+  border: 1px #27c480 solid;
+}
+
+.header__menu > ul > li.header__btn--login > a {
+  color: #fff;
+  padding: 0 22px;
+  margin: 19px 0 0 25px;
+  border: 1px #fff solid;
+}
+
+.header__menu ul li.header__btn--signup > a:hover {
+  background-color: transparent;
+  border: 1px #27c480 solid;
+  color: #27c480;
+}
+
+.header__menu ul li.header__btn--login > a:hover {
+  background-color: #3386ff;
+  border: 1px #3386ff solid;
+  color: #fff;
+}
+
+.header__menu ul li a:hover,
+.header__menu ul li a.selected,
+.header__menu ul li a.active {
+  color: #3386ff;
+}
+
+.header__menu ul li.header__btn--signup a.active {
+  color: #fff;
+}
+
+.header__menu ul li.header__btn--login a.active {
+  color: #fff;
+}
+
+.header--sticky .header__menu ul li.header__btn--login a.active {
+  color: #fff;
+}
+
+.header--sticky .header__menu > ul > li.header__btn--login > a {
+  color: #3386ff;
+  border: 1px #3386ff solid;
+}
+
+.header--sticky .header__menu ul li.header__btn--login > a:hover {
+  color: #fff;
+}
+
+.header__menu ul li:hover {
+  cursor: pointer;
+}
+
+.header__menu > ul > li.menu-item-has-children > a {
+  background: url(images/drop-down.png) no-repeat 90% 50%;
+}
+
+.header__menu ul ul {
+  position: absolute;
+  left: 0px;
+  top: 55px;
+  z-index: 9999;
+  visibility: hidden;
+  text-align: left;
+  padding: 5px 0;
+  background-color: #fff;
+  -webkit-box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.1);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  opacity: 0;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.header__menu ul ul.submenu-header-sticky {
+  box-shadow: 0 4px 10px 0px rgba(0, 0, 0, 0.03);
+  -moz-box-shadow: 0 4px 10px 0px rgba(0, 0, 0, 0.03);
+  -webkit-box-shadow: 0 4px 10px 0px rgba(0, 0, 0, 0.03);
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  -webkit-border-top-left-radius: 0px;
+  -webkit-border-top-right-radius: 0px;
+}
+
+.header__menu li:hover > ul {
+  visibility: visible;
+  opacity: 1;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+  top: 70px;
+}
+
+.header__menu ul ul ul {
+  margin-left: 100%;
+  top: 0;
+}
+
+.header__menu ul ul li a {
+  width: 200px;
+  padding: 0 15px;
+  color: #231f20;
+  border-bottom: 1px #f7f8f9 solid;
+  margin: 0 10px;
+  font-size: 14px;
+  line-height: 45px;
+  height: 45px;
+}
+
+.header__menu ul ul li a:hover {
+  color: #3386ff;
+}
+
+.header__menu ul ul li:last-child a {
+  border-bottom: none;
+}
