@@ -14401,5 +14401,15 @@
     "flag": "http://img.geonames.org/flags/x/an.gif",
     "symbol": "\u0192",
     "stateProvinces": []
+  },
+  {
+    "name": "Other",
+    "countryCode": "OT",
+    "countryCodeAlpha3": "ANT",
+    "phone": "599",
+    "currency": "ANG",
+    "flag": "http://img.geonames.org/flags/x/an.gif",
+    "symbol": "\u0192",
+    "stateProvinces": []
   }
 ]

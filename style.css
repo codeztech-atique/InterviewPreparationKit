@@ -2356,18 +2356,19 @@ ul.grid__list--fmenu li a {
 
 ul.grid__list--fmenu li a::after {
   content: "";
-  display: block;
   width: 0;
   height: 1px;
   background: white;
   transition: width 0.3s;
 }
-
 ul.grid__list--fmenu li a:hover::after {
   width: 100%;
+  text-decoration: none !important;
 }
 ul.grid__list--fmenu li a:hover {
   color: white;
+  font-weight: bold;
+text-decoration: none !important;
 }
 /*===============================================*/
 /* 9. MEDIA QUERIES   			 */
@@ -2731,7 +2732,10 @@ ul.grid__list--fmenu li a:hover {
     font-size: 16px;
     line-height: 24px;
   }
-
+  .tab-section-wrapper{
+    padding-top: 200px !important;
+    padding-bottom: 100px;
+  }
   /*  FEATURES 	 */
   /*---------------*/
   .section__content--features {
@@ -2908,6 +2912,12 @@ ul.grid__list--fmenu li a:hover {
 /* Mobile  800	  					 */
 /*===============================================*/
 @media screen and (max-width: 800px) {
+
+  .tab-section-wrapper{
+    padding-top: 100px !important;
+    padding-bottom: 100px;
+  }
+
   .header__content--fix-width,
   .section__content--fix-width,
   .footer__content--fix-width,
