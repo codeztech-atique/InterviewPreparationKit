@@ -42,6 +42,7 @@ const mainFunction = async() => {
     // })
 
     // Using Async Await
+
     try {
         const appleStatus = await isAppleAvailable();
         const breadStatus = await isBreadAvailable();
@@ -50,10 +51,10 @@ const mainFunction = async() => {
     } catch(err) {
         console.log(err);
     }
-
 }
 
 mainFunction();
+
 
 // Promise you can do in home task
 // const arr = [1, 4, 2, 3, 4, 'a', 'b'];
