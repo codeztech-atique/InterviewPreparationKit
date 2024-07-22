@@ -1,22 +1,122 @@
-const slidingWindow = (arr, k) => {
-    let chArr = [], finalArr = [];
-    for(let i = 0; i < arr.length; i++) {
-        if(chArr.length == k) {
-            finalArr.push(Math.max(...chArr));
-            chArr.shift();
+class Node {
+    constructor() {
+        this.children = new Map();
+        this.isWordEnd = false;
+    }
+}
+
+class Trie {
+    constructor() {
+        this.root = new Node();
+    }
+
+    insert(word) {
+        let curr = this.root;
+        for(let  i = 0; i < word.length; i++) {
+            let charToInsert = word[i];
+            if(!curr.children.has(charToInsert)) {
+                curr.children.set(charToInsert, new Node());
+            }
+            curr = curr.children.get(charToInsert);
         }
-        chArr.push(arr[i])
+        curr.isWordEnd = true;
     }
-    if(chArr.length == k) {
-        finalArr.push(Math.max(...chArr));
+
+    contains(word) {
+        let curr = this.root;
+        for(let  i = 0; i < word.length; i++) {
+            let charToInsert = word[i];
+            if(!curr.children.has(charToInsert)) {
+                return false;
+            }
+            curr = curr.children.get(charToInsert);
+        }
+        return curr.isWordEnd;
     }
-    return finalArr;
+
+    startWithPrefix(word) {
+        let curr = this.root;
+        for(let  i = 0; i < word.length; i++) {
+            let charToInsert = word[i];
+            if(!curr.children.has(charToInsert)) {
+                return false;
+            }
+            curr = curr.children.get(charToInsert);
+        }
+        return true;
+    }
+
+    remove(word) {
+        let curr = this.root;
+        for(let  i = 0; i < word.length; i++) {
+            let charToInsert = word[i];
+            if(!curr.children.has(charToInsert)) {
+                return false;
+            }
+            curr = curr.children.get(charToInsert);
+        }
+        curr.isWordEnd = false;
+        return true;
+    }
+
+    getCommonPrefix() {
+        let ss = [...this.root.children];
+        let char = "";
+        for(let i = 0; i < ss.length; i++) {
+           if(!ss[i].isWordEnd) {
+              char += ss[i][0]
+           }
+        }
+        return char;
+    }
+
+    printAllTheWords() {
+        let words = [];
+        let searchTree = (node, currentWord = '') => {
+            if(node.isWordEnd) {
+                words.push(currentWord);
+            }
+            for(const [char, currNode] of node.children.entries()) {
+                searchTree(currNode, currentWord + char);
+            }
+        }
+        searchTree(this.root);
+        return words;
+    }
 }
 
+const trie = new Trie(); 
 
-const mainFunction = (arr, k) => {
-    const result = slidingWindow(arr, k);
-    console.log("Results:", result);
-}
+trie.insert("Atique");
+trie.insert("Ahmed");
+trie.insert("Hanufa");
+trie.insert("Hanuman");
 
-mainFunction([1,3,-1,-3,5,3,6,7], 3);
+console.log("Trie Contains Atique:", trie.contains("Atique"));
+console.log("Trie Contains Ahmed:", trie.contains("Ahmed"));
+console.log("Trie Contains Ati:", trie.contains("Ati"));
+console.log("Trie Contains Atiq:",trie.contains("Atiq"));
+console.log("Trie Contains Hanufa:", trie.contains("Hanufa"));
+console.log("Trie Contains GHY:", trie.contains("GHY"));
+
+console.log();
+
+console.log("Starts with Atique:", trie.startWithPrefix("Atique"));
+console.log("Starts with Ahmed:", trie.startWithPrefix("Ahmed"));
+console.log("Starts with Ati:", trie.startWithPrefix("Ati"));
+console.log("Starts with Ahm:", trie.startWithPrefix("Ahm"));
+console.log("Starts with Atiq:", trie.startWithPrefix("Atiq"));
+console.log("Starts with Hanu:", trie.startWithPrefix("Hanu"));
+console.log("Starts with GHY:", trie.contains("GHY"));
+
+trie.remove("Atique");
+
+console.log();
+
+console.log("Trie Contains after remove Atique:", trie.contains("Atique"));
+
+console.log()
+console.log(trie.printAllTheWords())
+
+console.log() 
+console.log("Get common prefix:", trie.getCommonPrefix());
