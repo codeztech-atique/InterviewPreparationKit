@@ -15,12 +15,15 @@ class Queue {
     constructor() {
         this.arr = [];
     }
-    enqueue(data) {
-        this.arr.unshift(data);
+
+    enqueue(value) {
+        this.arr.unshift(value);
     }
+
     dequeue() {
         this.arr.shift();
     }
+
     printList() {
         return this.arr;
     }

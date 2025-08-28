@@ -13,10 +13,10 @@ class Stack {
    constructor() {
       this.arr = [];
    }
-   push(data) {
-      this.arr.push(data);
+   push(value) {
+      this.arr.push(value);
    }
-   pop() {
+   pop(value) {
       this.arr.pop();
    }
    peek() {

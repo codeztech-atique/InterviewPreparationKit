@@ -93,31 +93,42 @@ class Trie {
         return str;
     }
 
-    getCommonPrefix() { // Easy
-        let ss = [...this.root.children.entries()];
-        let char = "";
-        console.log(ss);
-        for(let i = 0; i < ss.length; i++) {
-            if(!ss[i].isWordEnd) {
-                char += ss[i][0]
-            }
-        }
-        return char;
-    }
-
-
     printAllTheWords() {
         let word = [];
-        let searchTree = (node, currentWord = '') => {
+        let searchTreeDFS = (node, currentWord = '') => {
             if(node.isWordEnd) {
                 word.push(currentWord);
             }
             for(const [char, currNode] of node.children.entries()) {
-                searchTree(currNode, currentWord + char);
+                searchTreeDFS(currNode, currentWord + char);
             }
         }
-        searchTree(this.root);
+        searchTreeDFS(this.root);
         return word;
+    }
+
+    // autoComplete("A") → ["Atique", "Ahmed"]
+    // autoComplete("At") → ["Atique"]
+    // autoComplete("Ati") → ["Atique"]
+    // autoComplete("Ahm") → ["Ahmed"]
+    // autoComplete("Hanu") → [] (no matches)
+    // autoComplete("") → ["Atique", "Ahmed"] (empty prefix = all words)
+
+    autoComplete(prefix) {
+        let curr = this.root;
+        for (let char of prefix) {
+            if (!curr.children.has(char)) return [];
+            curr = curr.children.get(char);
+        }
+        let results = [];
+        let dfs = (node, path) => {
+            if (node.isWordEnd) results.push(path);
+            for (let [ch, next] of node.children) {
+                dfs(next, path + ch);
+            }
+        };
+        dfs(curr, prefix);
+        return results;
     }
 }
 

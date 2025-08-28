@@ -1,122 +1,306 @@
-https://neetcode.io/practice
+# 📘 FAANG Staff / Engineering Manager Preparation Kit  
 
-Datastructure Needs to Complete ---
+This kit is designed for **FAANG-level Staff Software Engineer & Engineering Manager roles**.  
+It covers **core DSA**, **advanced patterns**, **system design**, and **leadership prep**.  
+Solve **250–300 problems** across these patterns for maximum coverage.  
 
-1. Dynamic Programming,
-2. Recussion and Back Tracking
-3. Divide and Concure
-4. Tower of Hanio
+---
 
+## 📂 Table of Contents
+1. [Stack](#1-stack)  
+2. [Queue](#2-queue)  
+3. [Linked List](#3-linked-list)  
+4. [Tries](#4-tries)  
+5. [Binary Search Trees & Traversals](#5-binary-search-trees--traversals)  
+6. [Sliding Window](#6-sliding-window)  
+7. [Two Pointer](#7-two-pointer)  
+8. [Dynamic Programming](#8-dynamic-programming)  
+9. [Backtracking](#9-backtracking)  
+10. [Greedy](#10-greedy)  
+11. [Kadane’s Algorithm](#11-kadanes-algorithm)  
+12. [Tower of Hanoi](#12-tower-of-hanoi)  
+13. [Graphs](#13-graphs)  
+14. [Heaps & Priority Queues](#14-heaps--priority-queues)  
+15. [Hashing & HashMaps](#15-hashing--hashmaps)  
+16. [Bit Manipulation](#16-bit-manipulation)  
+17. [Math & Combinatorics](#17-math--combinatorics)  
+18. [System Design (Critical for Staff/EM)](#18-system-design-critical-for-staffem)  
+19. [Leadership & Behavioral Prep](#19-leadership--behavioral-prep)  
 
-Below is simple query to find the employee whose salary is highest. 
+---
 
-    select *from employee where salary=(select Max(salary) from employee);
+## 1. Stack
+- Valid Parentheses (Easy)  
+- Min Stack (Easy)  
+- Implement Queue using Stacks (Easy)  
+- Next Greater Element (Medium)  
+- Daily Temperatures (Medium)  
+- Largest Rectangle in Histogram (Hard)  
+- Maximal Rectangle (Hard)  
+- Evaluate Reverse Polish Notation (Medium)  
+- Simplify Path (Medium)  
+- Basic Calculator II (Hard)  
 
-We can nest the above query to find the second largest salary. 
+---
 
-    select *from employee 
-    group by salary 
-    order by  salary desc limit 1,1;
+## 2. Queue
+- Implement Stack using Queues (Easy)  
+- Design Circular Queue (Medium)  
+- Number of Islands (BFS) (Medium)  
+- Rotting Oranges (Medium)  
+- Sliding Window Maximum (Hard)  
+- Moving Average from Data Stream (Easy)  
+- Design Hit Counter (Medium)  
+- Shortest Path in Binary Matrix (Medium)  
+- Design Snake Game (Hard)  
+- Jump Game VI (Hard)  
 
+---
 
-Big O - https://www.bigocheatsheet.com/
+## 3. Linked List
+- Reverse Linked List (Easy)  
+- Merge Two Sorted Lists (Easy)  
+- Linked List Cycle (Easy)  
+- Remove Nth Node from End (Medium)  
+- Add Two Numbers (Medium)  
+- Flatten Multilevel Linked List (Medium)  
+- Reorder List (Medium)  
+- LRU Cache (Hard)  
+- Merge K Sorted Lists (Hard)  
+- Copy List with Random Pointer (Hard)  
 
+---
 
-This Repositary is all about finding TimeComplexity of a program, Javascript ES5, Javascript ES6 promises.
+## 4. Tries
+- Implement Trie (Medium)  
+- Word Search II (Hard)  
+- Add and Search Word (Medium)  
+- Design Search Autocomplete System (Hard)  
+- Replace Words (Medium)  
+- Prefix and Suffix Search (Hard)  
+- Maximum XOR of Two Numbers (Medium)  
+- Palindrome Pairs (Hard)  
+- Word Dictionary (Medium)  
+- Stream of Characters (Hard)  
 
+---
 
-ES5 - firm firste -- Easy way to Remember
-ES6 - find and findIndex | isFinite | isNaN | isInteger | isSafeInteger
+## 5. Binary Search Trees & Traversals
+- Maximum Depth of Binary Tree (Easy)  
+- Symmetric Tree (Easy)  
+- Binary Tree Level Order Traversal (Medium)  
+- Validate Binary Search Tree (Medium)  
+- Lowest Common Ancestor (Medium)  
+- Serialize and Deserialize Binary Tree (Hard)  
+- Binary Tree Maximum Path Sum (Hard)  
+- Recover Binary Search Tree (Hard)  
+- Count Complete Tree Nodes (Medium)  
+- Kth Smallest in BST (Medium)  
 
+---
 
-JavaScript ES5 - 
+## 6. Sliding Window
+- Maximum Average Subarray I (Easy)  
+- Minimum Size Subarray Sum (Medium)  
+- Longest Substring Without Repeating Characters (Medium)  
+- Permutation in String (Medium)  
+- Longest Repeating Character Replacement (Medium)  
+- Sliding Window Maximum (Hard)  
+- Minimum Window Substring (Hard)  
+- Max Consecutive Ones III (Medium)  
+- Subarray Product Less Than K (Medium)  
+- Count Occurrences of Anagrams (Medium)  
 
-F - forEach()
-I - indexOf() and lastIndexOf()
-R - reduce()
-M - map()
+---
 
-F - filter()
-I - isArray()
-R - reduceRight()
-S - some()
-T - trim()
-E - every()
+## 7. Two Pointer
+- Valid Palindrome (Easy)  
+- Two Sum II (Easy)  
+- Remove Duplicates from Sorted Array (Easy)  
+- Container With Most Water (Medium)  
+- 3Sum (Medium)  
+- Sort Colors (Medium)  
+- Trapping Rain Water (Hard)  
+- Minimum Window Subsequence (Hard)  
+- Merge Sorted Array (Easy)  
+- Longest Mountain in Array (Medium)  
 
-The interviews will have NodeJs, ExpressJs, Data Structure(Linked List, Stack, Queue and Trees) and Algorithms(Searching and Sorting).
+---
 
-1. Why NodeJS is non blocking IO ? Single Thread or Multi Thread ?
-2. What is Event Loop in Node JS ?
-3. What is the framework you have used in NodeJS & Angular? (Express, COA, Hapi e.t.c)
-4. Authentication and Authorization of the API ?
-5. What is Middleware in NodeJS ?
-6. Callback, Promise, Async Await - Using File Operation
-7. DS - Sorting, Singly LinkedList, Binary Tree, Stack, Queue
-8. AWS - EC2, Lambda - Default time slot
-9. // Recursion of Below Problem // console.log(sum(1)(2)(32)());
+## 8. Dynamic Programming
+- Climbing Stairs (Easy)  
+- House Robber (Easy)  
+- Coin Change (Medium)  
+- Unique Paths (Medium)  
+- Longest Increasing Subsequence (Medium)  
+- Edit Distance (Hard)  
+- Word Break (Medium)  
+- Palindromic Substrings (Medium)  
+- Minimum Path Sum (Medium)  
+- Regular Expression Matching (Hard)  
 
+---
 
-Design a multi-publisher - multi-consumer which can stream in and out objects. This system should be able to handle more than 1 publisher and 1 consumer. Consumers should be able to reconnect to the system and seek from where they last connected. Consumers should've the choice of consuming from different publishers. Once all connected consumers have consumed data, the system should evict any data. Describe all the necessary classes, entities & efficient strategies required to come up with this system.﻿
+## 9. Backtracking
+- Subsets (Medium)  
+- Permutations (Medium)  
+- Combination Sum (Medium)  
+- Word Search (Medium)  
+- Palindrome Partitioning (Medium)  
+- Sudoku Solver (Hard)  
+- N-Queens (Hard)  
+- Generate Parentheses (Medium)  
+- Letter Combinations of a Phone Number (Medium)  
+- Rat in a Maze (Classic)  
 
+---
 
-class UserRole {}
+## 10. Greedy
+- Assign Cookies (Easy)  
+- Jump Game (Medium)  
+- Jump Game II (Hard)  
+- Gas Station (Medium)  
+- Candy (Hard)  
+- Non-overlapping Intervals (Medium)  
+- Partition Labels (Medium)  
+- Minimum Number of Arrows to Burst Balloons (Medium)  
+- Huffman Encoding (Classic)  
+- Activity Selection Problem (Classic)  
 
+---
 
+## 11. Kadane’s Algorithm
+- Maximum Subarray (Easy)  
+- Maximum Circular Subarray (Medium)  
+- Max Sum of Subarray Size K (Easy)  
+- Maximum Sum Rectangle in 2D Matrix (Hard)  
+- Best Time to Buy and Sell Stock (Easy)  
+- Best Time to Buy and Sell Stock II (Medium)  
+- Best Time to Buy and Sell Stock III (Hard)  
+- Maximum Product Subarray (Medium)  
+- Continuous Subarray Sum (Medium)  
+- Maximum Sum Increasing Subsequence (Medium)  
 
-// role - 
+---
 
-// admin 
+## 12. Tower of Hanoi
+- Tower of Hanoi (Classic recursion)  
+- Print all steps of Tower of Hanoi (Medium)  
+- Variants: 4 Pegs (Hard)  
 
-// publisher
+---
 
-// freelancer 
+## 13. Graphs
+- BFS/DFS on Graph (Medium)  
+- Number of Connected Components (Medium)  
+- Detect Cycle in Directed Graph (Medium)  
+- Detect Cycle in Undirected Graph (Medium)  
+- Topological Sort (Course Schedule) (Medium)  
+- Alien Dictionary (Hard)  
+- Minimum Spanning Tree (Kruskal/Prim) (Hard)  
+- Shortest Path in Graph (Dijkstra) (Medium)  
+- Bellman-Ford Algorithm (Hard)  
+- Network Delay Time (Medium)  
 
+---
 
+## 14. Heaps & Priority Queues
+- Kth Largest Element in Array (Medium)  
+- Kth Smallest Element (Medium)  
+- Merge K Sorted Lists (Hard)  
+- Find Median from Data Stream (Hard)  
+- Top K Frequent Elements (Medium)  
+- Task Scheduler (Medium)  
+- Reorganize String (Medium)  
+- Sliding Window Maximum (Hard)  
+- Minimum Cost to Connect Sticks (Medium)  
+- Ugly Number II (Medium)  
 
-class Publisher {
+---
 
-     1. Create Publisher ( role, category )
+## 15. Hashing & HashMaps
+- Two Sum (Easy)  
+- Subarray Sum Equals K (Medium)  
+- Longest Consecutive Sequence (Medium)  
+- Group Anagrams (Medium)  
+- Isomorphic Strings (Easy)  
+- LRU Cache (Hard)  
+- Design HashSet / HashMap (Easy/Medium)  
+- Randomized Set (Medium)  
+- Find Duplicate Subtrees (Medium)  
+- Word Pattern (Easy)  
 
-     2. Create Bulk Publisher
+---
 
-     3. Publish Content 
+## 16. Bit Manipulation
+- Single Number I (Easy)  
+- Single Number II (Medium)  
+- Single Number III (Medium)  
+- Subsets using Bitmask (Medium)  
+- Power of Two (Easy)  
+- Counting Bits (Medium)  
+- Reverse Bits (Easy)  
+- Bitwise AND of Numbers Range (Medium)  
+- Maximum XOR of Two Numbers in Array (Medium)  
+- Bitmask DP (Hard)  
 
-}
+---
 
+## 17. Math & Combinatorics
+- Greatest Common Divisor (GCD) (Easy)  
+- Least Common Multiple (LCM) (Easy)  
+- Modular Exponentiation (Medium)  
+- nCr (Pascal’s Triangle) (Easy/Medium)  
+- Sieve of Eratosthenes (Medium)  
+- Pow(x, n) (Medium)  
+- Probability of Dice Rolls (Medium)  
+- Catalan Numbers (Hard)  
+- Count Primes (Medium)  
+- Integer Break (Medium)  
 
+---
 
-class Consumer {
+## 18. System Design (Critical for Staff/EM)
 
-    1. Create Consumer
+### High-Level Design (HLD)
+- URL Shortener  
+- Twitter/Instagram/WhatsApp  
+- Google Docs (collaborative editing)  
+- YouTube recommendation system  
+- Distributed cache  
 
-    2. Create Bulk of Consumer.
+### Low-Level Design (LLD)
+- Parking Lot System  
+- Elevator System  
+- Food Delivery App  
+- Rate Limiter  
+- Notification System  
 
-}
+### Scalability Concepts
+- Load balancing, sharding, replication  
+- CAP theorem, consistency models  
+- Message queues (Kafka, RabbitMQ, SQS)  
+- Caching strategies (LRU, LFU, write-through, write-back)  
+- CDN design (CloudFront, Akamai)  
 
+---
 
+## 19. Leadership & Behavioral Prep
+- Mentoring & growing engineers  
+- Driving cross-team initiatives  
+- Handling ambiguity and prioritization  
+- Conflict resolution & communication  
+- Delivering impact at org level  
 
-class MainCatergory {}
+**Practice STAR Method Stories:**
+- Scaling systems you built (e.g., Zoom/VMware projects)  
+- Mentorship examples (juniors → seniors)  
+- Cross-functional collaboration (PMs, designers, customers)  
+- Driving innovation (AI agents, serverless infra, etc.)  
 
-class SubCategory {}
+---
 
-
-
-
-
-class Store {
-    1. Who are the consumers 
-
-    2. Who are the publishers
-
-    3. What are the data
-}
-
-class ContentPublish {}
-
-class UpdateContent {}
-
-class Template {}
-
-class Widget {}
-
-class MainCategory {}
+# ✅ Final Note
+- Solve **250–300 problems across all categories** (Easy → Medium → Hard).  
+- Don’t just code — **recognize patterns**.  
+- Mix **DSA + System Design + Leadership stories** for Staff/EM prep.  

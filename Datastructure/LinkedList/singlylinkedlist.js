@@ -76,6 +76,7 @@ class LinkedList {
       this.length--;
       this.printList();
   }
+
   removeFromFirst() {
     if(this.length == 0) {
         return "List is empty!"
@@ -117,6 +118,7 @@ class LinkedList {
     this.tail = newTail;
     this.length--;
   }
+
   reverse() {
         // If Only 1 element in the linkedList
         if (!this.head.next) {
@@ -166,9 +168,14 @@ myLinkedList.insert(2, 19);
 console.log(JSON.stringify(myLinkedList));
 console.log("Array--------------------->");
 console.log(myLinkedList.printList());
-myLinkedList.removeData(2);
+myLinkedList.remove(2);
 console.log(myLinkedList.printList());
-console.log("Reverse LinkedList--------------------->");
-myLinkedList.reverse();
+
+myLinkedList.removeFirst();
+
+myLinkedList.removeLast();
 console.log(myLinkedList.printList());
-// console.log(JSON.stringify(myLinkedList));
+// console.log("Reverse LinkedList--------------------->");
+// myLinkedList.reverse();
+
+console.log(JSON.stringify(myLinkedList));

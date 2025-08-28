@@ -1,31 +1,39 @@
-const merge = (left, right) => {
-    let arr = [];
-    let leftIndex = 0;
-    let rightIndex = 0;
-    
-    while (leftIndex < left.length && rightIndex < right.length) {
-        if (left[leftIndex] < right[rightIndex]) {
-            arr.push(left[leftIndex]);
-            leftIndex++;
-        } else {
-            arr.push(right[rightIndex]);
-            rightIndex++;
+const arr = [2, 5, 3, 0, 57, 9, 12, 13];
+
+class Sorting {
+    constructor() {
+        this.arr = arr;
+    }
+
+    normalSort_WithThird_Variable() {
+       for(let i = 0; i < this.arr.length; i++) {
+          for(let j = i; j < this.arr.length; j++) {
+            if(this.arr[i] > this.arr[j]) {
+                let temp = this.arr[i];
+                this.arr[i] = this.arr[j];
+                this.arr[j] = temp;
+            }
+          }
+       }
+    }
+
+    normalSort_WithOutThird_Variable() {
+        for(let i = 0; i < this.arr.length; i++) {
+            for(let j = i + 1; j < this.arr.length; j++) {
+                if(this.arr[i] > this.arr[j]) {
+                    this.arr[i] = this.arr[i] + this.arr[j];
+                    this.arr[j] = this.arr[i] - this.arr[j];
+                    this.arr[i] = this.arr[i] - this.arr[j];
+                }
+            }
         }
     }
-    
-    return arr.concat(left.slice(leftIndex)).concat(right.slice(rightIndex));
-}
 
-const mergeSort = (arr) => {
-    if (arr.length < 2) {
-        return arr;
+    printSort() {
+       return this.arr;
     }
-    
-    const half = Math.floor(arr.length / 2);
-    const left = arr.slice(0, half);
-    const right = arr.slice(half);
-    
-    return merge(mergeSort(left), mergeSort(right));
 }
 
-console.log(mergeSort([2, 5, 3, 0, 57, 9, 12, 13]));
+const sortFunction = new Sorting();
+sortFunction.normalSort_WithOutThird_Variable();
+console.log(sortFunction.printSort());
