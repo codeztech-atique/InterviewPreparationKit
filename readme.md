@@ -4,6 +4,45 @@ This kit is designed for **FAANG-level Staff Software Engineer & Engineering Man
 It covers **core DSA**, **advanced patterns**, **system design**, and **leadership prep**.  
 Solve **250–300 problems** across these patterns for maximum coverage.  
 
+## 🔹 Problem Distribution (Target Breakdown)
+
+### 1. Arrays & Strings → *40–50 problems*
+- Patterns: Sliding Window, Two Pointers, Prefix Sum, Kadane’s Algorithm  
+
+### 2. Linked List → *25–30 problems*
+- Patterns: Reverse, Detect Cycle, Merge K Lists, LRU Cache  
+
+### 3. Stack & Queue → *25–30 problems*
+- Patterns: Min Stack, Valid Parentheses, Monotonic Stack, Queue via Stack  
+
+### 4. Binary Trees & BST → *40–50 problems*
+- Patterns: DFS, BFS, Diameter, LCA, Serialize/Deserialize  
+
+### 5. Graphs → *30–40 problems*
+- Patterns: BFS/DFS, Dijkstra, Union-Find, Topological Sort  
+
+### 6. Dynamic Programming (DP) → *50–60 problems*
+- Patterns: Fibonacci, Coin Change, Knapsack, Longest Subsequence, Matrix Path  
+
+### 7. Tries & Strings (Advanced) → *15–20 problems*
+- Patterns: Word Dictionary, Prefix Trees, MapSum, Word Search  
+
+### 8. Backtracking → *20 problems*
+- Patterns: N-Queens, Sudoku Solver, Subsets, Permutations  
+
+### 9. Greedy → *15 problems*
+- Patterns: Interval Scheduling, Gas Station, Jump Game  
+
+### 10. Miscellaneous → *20–30 problems*
+- Patterns: Hashmaps, Heaps/Priority Queues, Bit Manipulation  
+
+---
+
+## 🔹 Total Target
+✅ **250–300 problems** across all categories.  
+Focus on **patterns, not repetition** — solving a balanced set across these topics will make you **interview-ready for FAANG-level roles**.  
+
+
 ---
 
 ## 📂 Table of Contents
