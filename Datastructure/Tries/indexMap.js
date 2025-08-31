@@ -107,6 +107,21 @@ class Trie {
         return word;
     }
 
+    printLeafWords() {
+        let words = [];
+        let searchTreeDFS = (node) => {
+            for(const [char, curr] of node.children.entries()) {
+                words.push({
+                    key: char,
+                    value: curr.weight
+                })
+                searchTreeDFS(curr);
+            }
+        }
+        searchTreeDFS(this.root);
+        return words;
+    }
+
     // autoComplete("A") → ["Atique", "Ahmed"]
     // autoComplete("At") → ["Atique"]
     // autoComplete("Ati") → ["Atique"]
@@ -136,8 +151,8 @@ class Trie {
 const root = new Node();
 const trie = new Trie(); 
 
-trie.insert("Atique");
-trie.insert("Ahmed");
+trie.insert("Atique", 5);
+trie.insert("Ahmed", 5);
 // trie.insert("Hanufa");
 // trie.insert("Hanuman");
 
@@ -163,3 +178,4 @@ console.log("Trie Contains after remove Atique:", trie.contains("Atique"));
 
 console.log()
 console.log(trie.printAllTheWords())
+console.log("Print leaf word:", trie.printLeafWords())

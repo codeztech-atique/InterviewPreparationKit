@@ -58,10 +58,10 @@ Solve **250–300 problems** across these patterns for maximum coverage.
 ---
 
 ## 3. Linked List
-- [206. Reverse Linked List](https://leetcode.com/problems/reverse-linked-list/)  
-- [21. Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/)  
-- [141. Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/)  
-- [19. Remove Nth Node From End of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list/)  
+- [206. Reverse Linked List](https://leetcode.com/problems/reverse-linked-list/)  - Done
+- [21. Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/) - Done
+- [141. Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/)  - Done
+- [19. Remove Nth Node From End of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list/) - Done
 - [2. Add Two Numbers](https://leetcode.com/problems/add-two-numbers/)  
 - [430. Flatten a Multilevel Doubly Linked List](https://leetcode.com/problems/flatten-a-multilevel-doubly-linked-list/)  
 - [143. Reorder List](https://leetcode.com/problems/reorder-list/)  
@@ -299,3 +299,130 @@ Solve **250–300 problems** across these patterns for maximum coverage.
 - Driving innovation (AI agents, serverless infra, etc.)  
 
 ---
+
+## 20. Core Algorithms & Techniques (Missing Additions)
+
+### 🟢 Pointer Tricks
+- [141. Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/)  <!-- Floyd’s Cycle Detection (Tortoise & Hare) -->
+- [142. Linked List Cycle II](https://leetcode.com/problems/linked-list-cycle-ii/)  <!-- Floyd’s to find cycle start -->
+- [876. Middle of the Linked List](https://leetcode.com/problems/middle-of-the-linked-list/)  <!-- fast/slow pointer -->
+- [234. Palindrome Linked List](https://leetcode.com/problems/palindrome-linked-list/)  <!-- fast/slow + reverse second half -->
+- [382. Linked List Random Node](https://leetcode.com/problems/linked-list-random-node/)  <!-- Reservoir Sampling -->
+
+---
+
+### 🟢 Searching / Sorting Variants
+- [33. Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/)  <!-- pivoted binary search -->
+- [34. Find First and Last Position of Element in Sorted Array](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/)  <!-- lower/upper bound -->
+- [153. Find Minimum in Rotated Sorted Array](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/)
+- [162. Find Peak Element](https://leetcode.com/problems/find-peak-element/)  <!-- binary search on answer shape -->
+- [215. Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/)  <!-- Quickselect -->
+- [410. Split Array Largest Sum](https://leetcode.com/problems/split-array-largest-sum/)  <!-- binary search on answer -->
+- [875. Koko Eating Bananas](https://leetcode.com/problems/koko-eating-bananas/)  <!-- binary search on answer -->
+- [164. Maximum Gap](https://leetcode.com/problems/maximum-gap/)  <!-- bucket/radix idea -->
+- (Concept) Counting Sort / Radix Sort / Bucket Sort
+
+---
+
+### 🟢 Tree & Graph Traversal
+- (Concept) Morris Traversal (O(1) space inorder)
+- [199. Binary Tree Right Side View](https://leetcode.com/problems/binary-tree-right-side-view/)  <!-- BFS level order variant -->
+- [103. Binary Tree Zigzag Level Order Traversal](https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/)
+- [684. Redundant Connection](https://leetcode.com/problems/redundant-connection/)  <!-- Union-Find cycle in undirected -->
+- [261. Graph Valid Tree](https://leetcode.com/problems/graph-valid-tree/)  <!-- Union-Find or DFS -->
+- [1192. Critical Connections in a Network](https://leetcode.com/problems/critical-connections-in-a-network/)  <!-- Tarjan bridges -->
+- (Concept) Kosaraju’s Algorithm (SCCs)
+
+---
+
+### 🟢 Graph Shortest Path / MST
+- [743. Network Delay Time](https://leetcode.com/problems/network-delay-time/)  <!-- Dijkstra -->
+- [1514. Path with Maximum Probability](https://leetcode.com/problems/path-with-maximum-probability/)  <!-- Dijkstra variant -->
+- [787. Cheapest Flights Within K Stops](https://leetcode.com/problems/cheapest-flights-within-k-stops/)  <!-- Bellman-Ford style DP -->
+- [1631. Path With Minimum Effort](https://leetcode.com/problems/path-with-minimum-effort/)  <!-- Dijkstra / Union-Find -->
+- [1584. Min Cost to Connect All Points](https://leetcode.com/problems/min-cost-to-connect-all-points/)  <!-- Prim/Kruskal -->
+- (Concept) Floyd–Warshall (All-pairs shortest path)  <!-- classic DP; implement from scratch -->
+
+---
+
+### 🟢 Topological Sort & DAG DP
+- [207. Course Schedule](https://leetcode.com/problems/course-schedule/)  <!-- detect cycle in directed graph -->
+- [210. Course Schedule II](https://leetcode.com/problems/course-schedule-ii/)  <!-- topo order -->
+- [329. Longest Increasing Path in a Matrix](https://leetcode.com/problems/longest-increasing-path-in-a-matrix/)  <!-- DAG DP idea -->
+
+---
+
+### 🟢 Dynamic Programming (Classics You’ll Be Asked)
+- [1143. Longest Common Subsequence](https://leetcode.com/problems/longest-common-subsequence/)
+- [516. Longest Palindromic Subsequence](https://leetcode.com/problems/longest-palindromic-subsequence/)
+- [72. Edit Distance](https://leetcode.com/problems/edit-distance/)
+- [416. Partition Equal Subset Sum](https://leetcode.com/problems/partition-equal-subset-sum/)  <!-- 0/1 knapsack -->
+- [494. Target Sum](https://leetcode.com/problems/target-sum/)  <!-- subset/knapsack transform -->
+- [139. Word Break](https://leetcode.com/problems/word-break/)
+- [691. Stickers to Spell Word](https://leetcode.com/problems/stickers-to-spell-word/)  <!-- bitmask DP -->
+- (Concept) Matrix Chain Multiplication
+- (Concept) Digit DP (counting with digit constraints)
+
+---
+
+### 🟢 Greedy / Interval / Sweep-Line
+- [56. Merge Intervals](https://leetcode.com/problems/merge-intervals/)
+- [253. Meeting Rooms II](https://leetcode.com/problems/meeting-rooms-ii/)  <!-- sweep line / min-heap -->
+- [435. Non-overlapping Intervals](https://leetcode.com/problems/non-overlapping-intervals/)
+- [452. Minimum Number of Arrows to Burst Balloons](https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/)
+- [763. Partition Labels](https://leetcode.com/problems/partition-labels/)
+- [135. Candy](https://leetcode.com/problems/candy/)
+- [45. Jump Game II](https://leetcode.com/problems/jump-game-ii/)
+
+---
+
+### 🟢 Math / Number Theory Essentials
+- [204. Count Primes](https://leetcode.com/problems/count-primes/)  <!-- Sieve -->
+- [50. Pow(x, n)](https://leetcode.com/problems/powx-n/)  <!-- fast power -->
+- [372. Super Pow](https://leetcode.com/problems/super-pow/)  <!-- modular fast power -->
+- [365. Water and Jug Problem](https://leetcode.com/problems/water-and-jug-problem/)  <!-- Extended Euclid / Bezout -->
+- [268. Missing Number](https://leetcode.com/problems/missing-number/)  <!-- XOR / math -->
+- [233. Number of Digit One](https://leetcode.com/problems/number-of-digit-one/)  <!-- math counting -->
+
+---
+
+### 🟢 String Algorithms (Pattern Matching & Friends)
+- [28. Find the Index of the First Occurrence in a String](https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/)  <!-- KMP-capable -->
+- [686. Repeated String Match](https://leetcode.com/problems/repeated-string-match/)  <!-- Rabin–Karp workable -->
+- [5. Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/)  <!-- Manacher optimal -->
+- [214. Shortest Palindrome](https://leetcode.com/problems/shortest-palindrome/)  <!-- prefix-function / Z -->
+- [68. Text Justification](https://leetcode.com/problems/text-justification/)  <!-- string construction edge cases -->
+- [49. Group Anagrams](https://leetcode.com/problems/group-anagrams/)  <!-- hashing strings -->
+
+---
+
+### 🟢 Majority / Voting / Frequency
+- [169. Majority Element](https://leetcode.com/problems/majority-element/)  <!-- Boyer–Moore -->
+- [229. Majority Element II](https://leetcode.com/problems/majority-element-ii/)  <!-- Boyer–Moore generalized -->
+- [347. Top K Frequent Elements](https://leetcode.com/problems/top-k-frequent-elements/)  <!-- heap/bucket -->
+
+---
+
+### 🟢 Monotonic Structures
+- [496. Next Greater Element I](https://leetcode.com/problems/next-greater-element-i/)  <!-- monotonic stack -->
+- [503. Next Greater Element II](https://leetcode.com/problems/next-greater-element-ii/)  <!-- circular stack -->
+- [739. Daily Temperatures](https://leetcode.com/problems/daily-temperatures/)  <!-- monotonic stack -->
+- [84. Largest Rectangle in Histogram](https://leetcode.com/problems/largest-rectangle-in-histogram/)  <!-- monotonic stack -->
+- [239. Sliding Window Maximum](https://leetcode.com/problems/sliding-window-maximum/)  <!-- deque/monotonic queue -->
+
+---
+
+### 🟢 Advanced Data Structures
+- [307. Range Sum Query – Mutable](https://leetcode.com/problems/range-sum-query-mutable/)  <!-- Segment Tree -->
+- [315. Count of Smaller Numbers After Self](https://leetcode.com/problems/count-of-smaller-numbers-after-self/)  <!-- Fenwick / BIT or merge sort tree -->
+- [327. Count of Range Sum](https://leetcode.com/problems/count-of-range-sum/)  <!-- BIT/Segment Tree + prefix sums -->
+- [218. The Skyline Problem](https://leetcode.com/problems/the-skyline-problem/)  <!-- sweep + heap -->
+- [421. Maximum XOR of Two Numbers in an Array](https://leetcode.com/problems/maximum-xor-of-two-numbers-in-an-array/)  <!-- bitwise trie -->
+
+---
+
+### 🟢 Extras That Interviewers Love
+- [380. Insert Delete GetRandom O(1)](https://leetcode.com/problems/insert-delete-getrandom-o1/)  <!-- randomized set -->
+- [460. LFU Cache](https://leetcode.com/problems/lfu-cache/)  <!-- design + data structures -->
+- [146. LRU Cache](https://leetcode.com/problems/lru-cache/)  <!-- design + linked list + hash map -->
+- [295. Find Median from Data Stream](https://leetcode.com/problems/find-median-from-data-stream/)  <!-- two heaps -->

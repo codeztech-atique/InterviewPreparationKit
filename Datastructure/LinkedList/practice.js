@@ -13,24 +13,24 @@ class LinkedList {
    }
 
    prepend(value) {
-      let newNode = new Node(value);
-      newNode.next = this.head;
-      this.head = newNode;
+      let newElement = new Node(value);
+      newElement.next = this.head;
+      this.head = newElement;
       this.length++;
       return this;
    }
 
    append(value) {
-      let newNode = new Node(value);
-      this.tail.next = newNode;
-      this.tail = newNode;
+      let newElement = new Node(value);
+      this.tail.next = newElement;
+      this.tail = newElement;
       this.length++;
       return this;
    }
 
    insert(index, value) {
       if(index >= this.length) {
-         return this.prepend(value);
+         return this.append(value);
       }
       let newNode = new Node(value);
       let leader = this.traverse(index - 1);
@@ -43,7 +43,7 @@ class LinkedList {
 
    remove(index) {
       if(index > this.length) {
-         return "Invalid Index !!!"
+         return "Invalid Length !!!"
       }
       let leader = this.traverse(index - 1);
       let unwantedNode = leader.next;
@@ -53,19 +53,18 @@ class LinkedList {
    }
 
    removeFirst() {
-      if(this.length == 0) {
-         return "List is Empty"
+      if(this.length == 1) {
+         return this.head;
       }
       let unwantedNode = this.head;
       this.head = unwantedNode.next;
       this.length--;
-
-      return this;
+      return this.printList()
    }
 
    removeLast() {
-      if(this.length == 0) {
-         return "List Empty !!!"
+      if(this.length == 1) {
+         return this.head;
       }
       let curr = this.head;
       let newTail = this.head;
@@ -76,11 +75,28 @@ class LinkedList {
       newTail.next = null;
       this.tail = newTail;
       this.length--;
-      return this;
+   }
+
+   reverse() {
+      if(!this.head.next) {
+         return this.head;
+      }
+      this.tail = this.head;
+      let first = this.head;
+      let second = first.next;
+      while(second) {
+         let temp = second.next;
+         second.next = first;
+         first = second;
+         second = temp;
+      }
+      this.head.next = null;
+      this.head = first;
+      return this.printList();
    }
 
    traverse(index) {
-      let counter = 0;
+      let counter = 1;
       let curr = this.head;
       while(index != counter) {
          counter++;
@@ -90,14 +106,15 @@ class LinkedList {
    }
 
    printList() {
-      let result = [];
+      let arr = [];
       let curr = this.head;
       while(curr != null) {
-         result.push(curr.value);
+         arr.push(curr.value);
          curr = curr.next;
       }
-      return result;
+      return arr;
    }
+
 }
 
 
@@ -118,7 +135,7 @@ myLinkedList.removeFirst();
 myLinkedList.removeLast();
 
 console.log(myLinkedList.printList());
-// console.log("Reverse LinkedList--------------------->");
-// myLinkedList.reverse();
+console.log("Reverse LinkedList--------------------->");
+console.log(myLinkedList.reverse());
 
 console.log(JSON.stringify(myLinkedList));
