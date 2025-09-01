@@ -231,8 +231,23 @@ function hightOfBinaryTree(node) {
    }
 }
 
-console.log("HIGHT OF BINARY TREE: ", hightOfBinaryTree(bst.root));
 
+function isBalanced(node) {
+   if (!node) return 0; // height of null = 0
+
+   let lh = isBalanced(node.left);
+   if (lh === -1) return -1; // left subtree not balanced
+
+   let rh = isBalanced(node.right);
+   if (rh === -1) return -1; // right subtree not balanced
+
+   if (Math.abs(lh - rh) > 1) return -1; // this node unbalanced
+
+   return Math.max(lh, rh) + 1; // return height
+}
+
+console.log("HIGHT OF BINARY TREE: ", hightOfBinaryTree(bst.root));
+console.log("Is Balance Tree:", isBalanced(bst.root) != -1)
  
 //       1
 //     /   \ 
