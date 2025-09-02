@@ -4,7 +4,6 @@ class Node {
       this.next = null;
    }
 }
-
 class LinkedList {
    constructor(value) {
       this.head = new Node(value);
@@ -13,22 +12,23 @@ class LinkedList {
    }
 
    prepend(value) {
-      let newElement = new Node(value);
-      newElement.next = this.head;
-      this.head = newElement;
+      let newNode = new Node(value);
+      newNode.next = this.head;
+      this.head = newNode;
       this.length++;
       return this;
    }
 
    append(value) {
-      let newElement = new Node(value);
-      this.tail.next = newElement;
-      this.tail = newElement;
+      let newNode = new Node(value);
+      this.tail.next = newNode;
+      this.tail = newNode;
       this.length++;
       return this;
    }
 
    insert(index, value) {
+      this.length++;
       if(index >= this.length) {
          return this.append(value);
       }
@@ -37,44 +37,57 @@ class LinkedList {
       let nextNode = leader.next;
       leader.next = newNode;
       newNode.next = nextNode;
-      this.length++;
-      return this.printList();
+      return this;
    }
 
    remove(index) {
       if(index > this.length) {
-         return "Invalid Length !!!"
+         return "Invalid Input !!!"
       }
       let leader = this.traverse(index - 1);
       let unwantedNode = leader.next;
       leader.next = unwantedNode.next;
       this.length--;
-      return this.printList();
+      return this;
    }
 
    removeFirst() {
+      if(this.length == 0) {
+         return "List Empty !!!"
+      } 
+
       if(this.length == 1) {
-         return this.head;
+         this.head = null
+         this.tail = this.head;
+         return "List is Empty !!!"
       }
-      let unwantedNode = this.head;
-      this.head = unwantedNode.next;
+      let currentNode = this.head;
+      this.head = currentNode.next;
       this.length--;
-      return this.printList()
+      return this.printList();
    }
 
    removeLast() {
+      if(this.length == 0) {
+         return "List Empty !!!"
+      } 
+
       if(this.length == 1) {
-         return this.head;
+         this.head = null
+         this.tail = this.head;
+         return "List is Empty !!!"
       }
-      let curr = this.head;
+
       let newTail = this.head;
+      let curr = this.head;
       while(curr.next) {
          newTail = curr;
          curr = curr.next;
       }
-      newTail.next = null;
       this.tail = newTail;
+      this.tail.next = null;
       this.length--;
+      return this;
    }
 
    reverse() {
@@ -91,12 +104,12 @@ class LinkedList {
          second = temp;
       }
       this.head.next = null;
-      this.head = first;
+      this.head= first;
       return this.printList();
    }
 
    traverse(index) {
-      let counter = 1;
+      let counter = 0;
       let curr = this.head;
       while(index != counter) {
          counter++;
@@ -106,15 +119,14 @@ class LinkedList {
    }
 
    printList() {
-      let arr = [];
+      let result = [];
       let curr = this.head;
-      while(curr != null) {
-         arr.push(curr.value);
+      while(curr) {
+         result.push(curr.value);
          curr = curr.next;
       }
-      return arr;
+      return result
    }
-
 }
 
 

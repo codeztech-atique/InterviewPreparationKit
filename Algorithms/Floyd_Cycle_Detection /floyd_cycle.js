@@ -193,11 +193,12 @@ class LinkedList {
   // Floyd's Tortoise & Hare
   isCycle() {
     let slow = this.head;
-    let fast = this.head;
-    while (fast && fast.next) {
+    let first = this.head;
+    while(first && first.next) {
       slow = slow.next;
-      fast = fast.next.next;
-      if (slow === fast) return true;
+      first = first.next.next;
+
+      if(first == slow) return true;
     }
     return false;
   }
