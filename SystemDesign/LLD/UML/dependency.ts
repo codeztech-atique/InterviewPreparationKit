@@ -1,4 +1,5 @@
 // dependency.ts
+export {};
 class Printer {
   print(msg: string) { console.log("Printing:", msg); }
 }

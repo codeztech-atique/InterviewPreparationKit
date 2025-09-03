@@ -1,16 +1,17 @@
-var Company = /** @class */ (function () {
-    function Company(name) {
-        this.name = name;
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var Engine = /** @class */ (function () {
+    function Engine() {
     }
-    return Company;
+    Engine.prototype.start = function () { console.log("Engine Starts !!!"); };
+    return Engine;
 }());
-var Emp = /** @class */ (function () {
-    function Emp(name, email) {
-        this.name = name;
-        this.email = email;
+var Cars = /** @class */ (function () {
+    function Cars(engine) {
+        this.engine = engine;
     }
-    return Emp;
+    return Cars;
 }());
-var cmp = new Company("GitLab");
-var emps = new Emp("Atique", "atique.ahmed@gitlab.com");
-console.log("".concat(emps.name, " is working in ").concat(cmp.name, " & his email is ").concat(emps.email));
+var engine = new Engine();
+var cars = new Cars(engine);
+cars.engine.start();
