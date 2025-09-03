@@ -6,6 +6,179 @@ Solve **250–300 problems** across these patterns for maximum coverage.
 
 ## Must watch video - https://www.youtube.com/watch?v=WRA5OfeUP9I
 
+
+# 📘 DSA Prep
+
+## Linear
+
+### 1. Array
+- Subarray problems  
+- Kadane’s Algorithm  
+- Prefix / Suffix arrays  
+
+### 2. String
+- Palindrome  
+- Two Pointer  
+- Pattern Matching → KMP, Rabin-Karp, Z-algorithm  
+- Anagram / Substring problems  
+
+### 3. Stack & Queue
+- Expression Problems (Valid Parentheses, Min Stack, Expression Evaluation)  
+- Tree Traversal support  
+- Graph traversal support  
+- Monotonic Stack / Queue (Next Greater, Sliding Window Max)  
+- Deque (Double-ended Queue)  
+
+### 4. Linked List
+- Reverse a Linked List  
+- Detect a Loop  
+- Merge K Sorted Lists  
+- LRU Cache Implementation  
+
+### 5. HashTable
+- Frequency counting  
+- Caching / Memoization  
+
+---
+
+## Non-Linear
+
+### 1. Trees
+- Traversals (Inorder, Preorder, Postorder, Level Order)  
+- Height, Diameter, Balance check  
+- Segment Tree / Fenwick Tree (Range Queries)  
+
+### 2. Binary Search Tree (BST)
+- Insert, Delete, Lookup  
+- BFS, DFS  
+- Balanced BST  
+- Lowest Common Ancestor  
+
+### 3. Heaps & Priority Queue
+- Top K Problems  
+- Streaming Data (moving average, median)  
+- Dijkstra’s Shortest Path  
+- Scheduling & Load balancing (e.g., Zomato assigning nearest delivery person)  
+
+### 4. Graphs
+- DFS / BFS  
+- Topological Sort + Cycle Detection  
+- Shortest Path (Dijkstra, Bellman-Ford, Floyd-Warshall, A*)  
+- Minimum Spanning Tree (Kruskal / Prim)  
+- Connectivity with Union-Find  
+
+### 5. Tries
+- Auto-complete  
+- Spell Check  
+- Word Search  
+- Longest Common Prefix  
+
+### 6. Union Find (Disjoint Set)
+- Path Compression  
+- Union by Rank  
+- Dynamic connectivity problems  
+
+### 7. Matrix Problems
+- DFS/BFS in 2D grids (Islands, Word Search, Shortest Path in Matrix)  
+
+---
+
+## Algorithms
+
+### 1. Sorting
+- Merge Sort  
+- Quick Sort  
+- Selection Sort  
+- Heap Sort  
+
+### 2. Binary Search
+- Classic binary search  
+- Variants (first/last occurrence, peak element, rotated sorted array)  
+
+### 3. Bit Manipulation
+- XOR tricks  
+- Bit Masking  
+- Subsets with bitmask  
+- State Compression DP  
+
+### 4. Tree Traversals
+- DFS  
+- BFS  
+- Morris Traversal  
+
+### 5. Graph Traversals
+- BFS, DFS  
+- Topological Sort  
+- Connected Components  
+
+### 6. Shortest Path Algorithm
+- Dijkstra  
+- Bellman-Ford  
+- Floyd-Warshall  
+- A* (heuristics based)  
+
+### 7. Randomized / Streaming Algorithms
+- Reservoir Sampling  
+- Consistent Hashing  
+
+---
+
+## Problem Solving Techniques
+
+### 1. Two Pointer
+- Subarray problems  
+- Pattern Matching & Optimization  
+
+### 2. Sliding Window
+- Variable size window (Longest substring)  
+- Fixed size window (Max sum, moving averages)  
+
+### 3. Prefix Sum
+- Range queries  
+- Difference array  
+
+### 4. Fast & Slow Pointer
+- Cycle detection (Floyd’s)  
+- Middle of linked list  
+
+### 5. Divide and Conquer
+- Binary Search  
+- Merge Sort / Quick Sort  
+- Matrix Exponentiation  
+
+### 6. Greedy
+- Interval Scheduling  
+- Huffman Encoding  
+- Top K problems  
+- Dijkstra’s Algorithm  
+
+### 7. Recursion
+- Base cases & recursive tree  
+- Tail recursion  
+
+### 8. Backtracking
+- N-Queens  
+- Sudoku Solver  
+- Subsets, Permutations  
+
+### 9. Dynamic Programming
+- Start with Recursion + Memoization  
+- 1D DP (Fibonacci, Climbing Stairs)  
+- 2D DP (Grid Paths, LCS)  
+- Knapsack, Coin Change  
+- State Compression DP (TSP, scheduling)  
+
+### 10. Heap-based Techniques
+- Top K Elements  
+- Streaming Median  
+
+### 11. Meet in the Middle
+- Subset Sum  
+- Partition Problems  
+
+
+
+
 ## 🔹 Problem Distribution (Target Breakdown)
 
 ### 1. Arrays & Strings → *40–50 problems*
