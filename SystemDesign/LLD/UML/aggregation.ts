@@ -1,3 +1,5 @@
+export {}; // make file a module to avoid global name collisions
+
 class Engine {
   start() { console.log("Engine started"); }
 }

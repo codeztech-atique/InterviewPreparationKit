@@ -1,3 +1,5 @@
+export {};
+
 class Rooms {
   constructor(public roomNo: number) {}
 }
