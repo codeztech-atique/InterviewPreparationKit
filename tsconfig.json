@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "strict": true,
+    "esModuleInterop": true,
+    "outDir": "dist",
+    "types": ["node"],       // only use Node types
+    "lib": ["ES2022"],       // don’t pull in DOM unless you need it
+    "skipLibCheck": true     // optional: silences lib clashes
+  },
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules"]
+}

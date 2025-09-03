@@ -23,5 +23,9 @@
     "googleapis": "^67.0.0",
     "https": "^1.0.0",
     "jest": "^28.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.18.0",
+    "typescript": "^5.9.2"
   }
 }

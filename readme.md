@@ -4,6 +4,8 @@ This kit is designed for **FAANG-level Staff Software Engineer & Engineering Man
 It covers **core DSA**, **advanced patterns**, **system design**, and **leadership prep**.  
 Solve **250–300 problems** across these patterns for maximum coverage.  
 
+## Must watch video - https://www.youtube.com/watch?v=WRA5OfeUP9I
+
 ## 🔹 Problem Distribution (Target Breakdown)
 
 ### 1. Arrays & Strings → *40–50 problems*
