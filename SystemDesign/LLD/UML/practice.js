@@ -8,11 +8,19 @@ var Book = /** @class */ (function () {
 }());
 var Library = /** @class */ (function () {
     function Library() {
+        this.books = [];
     }
-    Library.prototype.borrow = function (book) {
-        console.log("Borrowing ".concat(book.title, " from library..."));
+    Library.prototype.addBook = function (book) {
+        this.books.push(book);
+        console.log("".concat(book.title, " added to library"));
+    };
+    Library.prototype.showBook = function () {
+        console.log(this.books);
     };
     return Library;
 }());
 var library = new Library();
-library.borrow(new Book("DSA"));
+library.addBook(new Book("DSA"));
+library.addBook(new Book("LLD"));
+library.addBook(new Book("HLD"));
+library.showBook();
