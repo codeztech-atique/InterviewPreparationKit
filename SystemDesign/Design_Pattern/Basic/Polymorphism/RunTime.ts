@@ -1,5 +1,6 @@
 // Run-Time Polymorphism (Method Overriding)
 
+export {}
 class Animal {
     sounds(): void {
         console.log("Animal makes a sound");

@@ -16,6 +16,8 @@ In short - Object of the 1 class aquire the property of another class
 
 */
 
+export {};
+
 class Animal {
     eat() {
         console.log("Animal Eat Food !!!");
