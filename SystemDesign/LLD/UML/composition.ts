@@ -1,3 +1,14 @@
+// 🔹 Composition (◆—)
+
+// Definition: Strong form of aggregation.
+
+// “Has-a” relationship, but with ownership of lifetime.
+
+// If the whole is destroyed, the parts are also destroyed.
+
+// In code: the whole creates and controls the lifecycle of its parts.
+
+
 export {};
 
 class Book {

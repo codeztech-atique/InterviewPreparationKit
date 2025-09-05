@@ -1,3 +1,14 @@
+// 🔹 Aggregation (○—)
+
+// “Has-a” relationship.
+
+// Whole (Library) contains parts (Books).
+
+// Ownership: Yes (Library keeps the Book).
+
+// Lifetime: Book can live independently of Library.
+
+
 export {};
 class Book {
   constructor(public title: string) {}

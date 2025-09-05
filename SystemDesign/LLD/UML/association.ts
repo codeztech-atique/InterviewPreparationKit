@@ -1,3 +1,11 @@
+// 🔹 Association (—)
+
+// Definition: A structural link between two classes.
+
+// Nature: Long-term, they "know about each other".
+
+// Example: A Library keeps a reference to Books.
+
 export {};
 class Book {
   constructor(public title: string) {}
