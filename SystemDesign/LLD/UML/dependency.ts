@@ -1,14 +1,16 @@
 // dependency.ts
 export {};
-class Printer {
-  print(msg: string) { console.log("Printing:", msg); }
+class Book {
+  constructor(public title: string) {}
 }
 
-class SystemReport {                 // <-- renamed from Report
-  generate(printer: Printer) {       // dependency: uses Printer temporarily
-    printer.print("System Design Report");
+class Library {
+  borrow(book: Book) {
+    console.log(`Borrowing ${book.title} from library...`);
   }
 }
 
-const report = new SystemReport();
-report.generate(new Printer());
+const library = new Library();
+library.borrow(new Book("The Alchemist"));
+
+// ✅ "Borrowing The Alchemist from library..."

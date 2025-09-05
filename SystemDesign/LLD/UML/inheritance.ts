@@ -1,14 +1,15 @@
 export {};
 
-class Person {
-  constructor(public name: string) {}
+class Book {
+  constructor(public title: string) {}
 }
 
-class Employee extends Person {
-  constructor(name: string, public role: string) {
-    super(name);
+class LibraryBook extends Book {
+  constructor(title: string, public libraryId: number) {
+    super(title);
   }
 }
 
-const emp = new Employee("Atique", "Engineer");
-console.log(`Employee Name: ${emp.name} and profile is : ${emp.role}`);
+const lb = new LibraryBook("The Alchemist", 101);
+console.log(lb.title);       // ✅ "The Alchemist"
+console.log(lb.libraryId);   // ✅ 101

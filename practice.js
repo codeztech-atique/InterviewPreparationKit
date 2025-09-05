@@ -65,6 +65,8 @@
 //     for(let i = 0; i < str.length; i++) {
 //         for(let j = i + 1; j < str.length + 1; j++) {
 //             arr.push(str.slice(i, j))
+//             str.reduce((a, b) => a + b, 0) // this will do the sum.
+            //    Math.min(...this.nums.slice(i, j));
 //         }
 //     }
 //     return arr;

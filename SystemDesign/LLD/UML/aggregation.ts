@@ -1,13 +1,14 @@
-export {}; // make file a module to avoid global name collisions
-
-class Engine {
-  start() { console.log("Engine started"); }
+export {};
+class Book {
+  constructor(public title: string) {}
 }
 
-class Cars {
-  constructor(public engine: Engine) {} // Aggregation
+class Library {
+  constructor(public books: Book[]) {}
 }
 
-const engine = new Engine();
-const car = new Cars(engine);  // Engine can exist without Car
-car.engine.start();
+const book1 = new Book("The Alchemist");
+const library = new Library([book1]);
+
+console.log(book1.title);         // ✅ "The Alchemist"
+console.log(library.books[0]);    // ✅ Book { title: 'The Alchemist' }

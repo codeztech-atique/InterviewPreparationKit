@@ -1,5 +1,7 @@
 Here you go 🚀 — short definitions + UML symbols (the exact ones you’ll see in diagrams).
 
+ACID-AR
+
 Aggregation (○—)
 ➡ A “has-a” relationship where the part can exist without the whole.
 (Hollow diamond at the whole side)

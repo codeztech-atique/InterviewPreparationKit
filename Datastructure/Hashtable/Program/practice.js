@@ -2,11 +2,21 @@
 
 var uniqueCount = ["a","b","c","d","d","e","a","b","c","f","g","h","h","h","e","a"];
 
+// const countData = (arr) => {
+//     var obj = {};
+//     arr.filter(function(i) { 
+//       obj[i] = (obj[i]||0)+1;
+//     })
+//     return obj;
+// }
+
 const countData = (arr) => {
-    var obj = {};
-    arr.filter(function(i) { 
-      obj[i] = (obj[i]||0)+1;
-    })
-    return obj;
-}
+  const map = new Map();
+  arr.forEach((i) => {
+    map.set(i, (map.get(i) || 0) + 1);
+  });
+  return map;
+};
+
+
 console.log(countData(uniqueCount))

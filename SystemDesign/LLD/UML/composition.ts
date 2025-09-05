@@ -1,20 +1,24 @@
 export {};
 
-class Rooms {
-  constructor(public roomNo: number) {}
+class Book {
+  constructor(public title: string) {}
 }
 
-class House {
-  private rooms: Rooms[] = [];
+class Library {
+  private books: Book[] = [];
+
   constructor() {
-    this.rooms.push(new Rooms(101)); // House creates rooms
+    this.books.push(new Book("The Alchemist"));
+    this.books.push(new Book("1984"));
   }
-  getHouse() {
-    console.log(this.rooms);
+
+  showBooks() {
+    this.books.forEach(b => console.log(b.title));
   }
 }
 
-const house = new House();
-house.getHouse()
+const lib = new Library();
+lib.showBooks();
 
-// If house is destroyed, rooms are gone too
+// ✅ "The Alchemist"
+// ✅ "1984"

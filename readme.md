@@ -6,7 +6,6 @@ Solve **250–300 problems** across these patterns for maximum coverage.
 
 ## Must watch video - https://www.youtube.com/watch?v=WRA5OfeUP9I
 
-
 # 📘 DSA Prep
 
 ## Linear
@@ -177,7 +176,7 @@ Solve **250–300 problems** across these patterns for maximum coverage.
 - Partition Problems  
 
 
-
+### Placement Sheet ( https://docs.google.com/spreadsheets/d/16jJF7OohnOTGCCoqepDsv5FtnDwAG6Z1njvkcEHtHxw/edit?usp=sharing )
 
 ## 🔹 Problem Distribution (Target Breakdown)
 

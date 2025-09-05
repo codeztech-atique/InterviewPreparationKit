@@ -1,14 +1,23 @@
 export {};
 
-interface Payment {
-  pay(amount: number): void;
+interface BookManager {
+  addBook(book: Book): void;
 }
 
-class UpiPayment implements Payment {
-  pay(amount: number): void {
-    console.log(`Paid ₹${amount} via UPI`);
+class Book {
+  constructor(public title: string) {}
+}
+
+class Library implements BookManager {
+  private books: Book[] = [];
+
+  addBook(book: Book): void {
+    this.books.push(book);
+    console.log(`${book.title} added to library`);
   }
 }
 
-const payment: Payment = new UpiPayment();
-payment.pay(500);
+const lib = new Library();
+lib.addBook(new Book("The Alchemist"));
+
+// ✅ "The Alchemist added to library"

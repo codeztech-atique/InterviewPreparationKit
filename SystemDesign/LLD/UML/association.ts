@@ -1,19 +1,18 @@
 export {};
-class Student {
-  constructor(public name: string, public course?: Course) {}
-  enroll(c: Course) { 
-    this.course = c; 
-  }
-}
-
-class Course {
+class Book {
   constructor(public title: string) {}
 }
 
+class Library {
+  constructor(public name: string) {}
 
-// Association: student enrolled in a course
-const student = new Student("Atique");
-const course = new Course("System Design");
-student.enroll(course); // <-- creates the association
+  linkBook(book: Book) {
+    console.log(`${book.title} is available at ${this.name}`);
+  }
+}
 
-console.log(`${student.name} is enrolled in ${student.course?.title}`);
+const book = new Book("The Alchemist");
+const library = new Library("City Library");
+library.linkBook(book);
+
+// ✅ "The Alchemist is available at City Library"
