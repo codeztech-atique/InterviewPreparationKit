@@ -199,6 +199,17 @@ console.log("Postorder:",bst.dfsPostorder());
 // 15, 3, 36, 2, 12, 28, 39
 console.log("BFS:",bst.bfs());
 
+function lcaBST(root, v1, v2) {
+  if (v1 === v2) return v1;   // if both parameters are the same
+  let low = Math.min(v1, v2), high = Math.max(v1, v2);
+  let cur = root;
+  while (cur) {
+    if (high < cur.value) cur = cur.left;
+    else if (low > cur.value) cur = cur.right;
+    else return cur.value;
+  }
+  return null;
+}
 
 function getLeafCountOfBinaryTree(node) {
     if(node === null) return 0;
@@ -211,6 +222,7 @@ function getLeafCountOfBinaryTree(node) {
 
 console.log("COUNT LEAF NODE: ", getLeafCountOfBinaryTree(bst.root));
 console.log("Leaf Nodes Are: ", leafNode);
+console.log("LCA of BST:", lcaBST(bst.root, 1, 6))
 
 function hightOfBinaryTree(node) {
    if(node == null) { 

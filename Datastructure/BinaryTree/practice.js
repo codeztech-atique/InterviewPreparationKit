@@ -207,8 +207,8 @@ class BinarySearchTree {
 const bst = new BinarySearchTree(10)
 bst.insert(5)
 bst.insert(19)
-// bst.insert(1)
-// bst.insert(6)
+bst.insert(1)
+bst.insert(6)
 bst.insert(17)
 bst.insert(21)
 
@@ -244,6 +244,19 @@ function getLeafCountOfBinaryTree(node) {
    return getLeafCountOfBinaryTree(node.left) + getLeafCountOfBinaryTree(node.right);
 } 
 
+function lcaBST(root, v1, v2) {
+  if (v1 === v2) return v1;   // if both parameters are the same
+  let low = Math.min(v1, v2), high = Math.max(v1, v2);
+  let cur = root;
+  while (cur) {
+    if (high < cur.value) cur = cur.left;
+    else if (low > cur.value) cur = cur.right;
+    else return cur.value;
+  }
+  return null;
+}
+
+
 function isBalanced(node) {
    if(!node) return 0;
 
@@ -260,6 +273,7 @@ function isBalanced(node) {
 console.log("COUNT LEAF NODE: ", getLeafCountOfBinaryTree(bst.root));
 console.log("Is Balance Tree:", isBalanced(bst.root) != -1)
 console.log("Leaf Nodes Are: ", leafNode);
+console.log("LCA of BST:", lcaBST(bst.root, 1, 6))
 
 // function hightOfBinaryTree(node) {
 //    if(node == null) {
