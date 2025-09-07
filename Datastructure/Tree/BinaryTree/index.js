@@ -298,16 +298,22 @@ function subtreeOf(root, x) {
 
 // (f) ancestors of X (from parent up to root)
 function ancestorsOf(root, x) {
-  const fp = findWithParent(root, x);
-  if (!fp) return [];
-  const res = [];
-  let cur = fp.parent;
-  while (cur) {
-    res.push(cur.value);
-    const up = findWithParent(root, cur.value);
-    cur = up ? up.parent : null;
+  const path = [];
+
+  function dfs(node) {
+    if (!node) return false;
+    path.push(node.value);              // add current to path
+    if (node.value === x) return true;  // found target
+    if (dfs(node.left) || dfs(node.right)) return true;
+    path.pop();                         // backtrack
+    return false;
   }
-  return res;
+
+  if (!dfs(root)) return [];            // x not found
+
+  // path is [root ... x]. Remove x and reverse to get [parent ... root]
+  path.pop();
+  return path.reverse();
 }
 
 function isBalanced(node) {
@@ -408,7 +414,7 @@ console.log("Level of 5 (root=0):", levelOf(bst.root, 2));              // 2
 console.log("Level of 5 (root=1):", levelOf(bst.root, 2, {oneIndexed:true})); // 3
 console.log("Subtree of 2:", subtreeOf(bst.root, 2));                   // [2,4,7,5,8]
 console.log("Subtree of 6:", subtreeOf(bst.root, 6));                   // [6,9]
-console.log("Ancestors of 2:", ancestorsOf(bst.root, 2));               // [2,1]
+console.log("Ancestors of 1:", ancestorsOf(bst.root, 1));               // [2,1]
 console.log("Daimeter of Binary Tree:", diameterOfBinaryTree(bst.root));
  
 //       1
