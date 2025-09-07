@@ -139,11 +139,11 @@ class BinarySearchTree {
    }
 
    bfs() {
-      //        15
-      //      /    \
-      //     3      36
-      //    /  \   /  \
-      //   2   12 28  39    
+      //      4
+      //    /   \
+      //   2     7
+      //  / \   / \
+      // 1   3 6   9   
       // Output - 15,3,36,2,12,28,39
       let result = [];
       let queue = []
@@ -199,7 +199,7 @@ console.log("Postorder:",bst.dfsPostorder());
 // 15, 3, 36, 2, 12, 28, 39
 console.log("BFS:",bst.bfs());
 
-function lcaBST(root, v1, v2) {
+function lcaBST(root, v1, v2) { // Last common acestor
   if (v1 === v2) return v1;   // if both parameters are the same
   let low = Math.min(v1, v2), high = Math.max(v1, v2);
   let cur = root;
@@ -238,16 +238,72 @@ function hightOfBinaryTree(node) {
    }
 }
 
-
-// Full binary tree checks: every node has 0 or 2 children 
-function isFullBinaryTree(node) {
-  if (!node) return true;
-  if (!node.left && !node.right) return true; // leaf
-  if (node.left && node.right) {
-    return isFullBinaryTree(node.left) && isFullBinaryTree(node.right);
+// Find node with its parent & level (BFS)
+function findWithParent(root, target) {
+  if (!root) return null;
+  const q = [{ node: root, parent: null, level: 0 }];
+  while (q.length) {
+    const { node, parent, level } = q.shift();
+    if (node.value === target) return { node, parent, level };
+    if (node.left)  q.push({ node: node.left,  parent: node, level: level + 1 });
+    if (node.right) q.push({ node: node.right, parent: node, level: level + 1 });
   }
-  return false; // exactly one child
+  return null;
 }
+
+// (a) children of X (values, left→right)
+function childrenOf(root, x) {
+  const fp = findWithParent(root, x);
+  if (!fp) return [];
+  const out = [];
+  if (fp.node.left)  out.push(fp.node.left.value);
+  if (fp.node.right) out.push(fp.node.right.value);
+  return out;
+}
+
+// (c) parent of X (value or null)
+function parentOf(root, x) {
+  const fp = findWithParent(root, x);
+  return fp ? (fp.parent ? fp.parent.value : null) : null;
+}
+
+// (d) level of X (depth). root=0; pass {oneIndexed:true} for root=1.
+function levelOf(root, x, opts = {}) {
+  const fp = findWithParent(root, x);
+  if (!fp) return null;
+  return opts.oneIndexed ? fp.level + 1 : fp.level;
+}
+
+// (e) subtree of X (preorder list of values)
+function subtreeOf(root, x) {
+  const fp = findWithParent(root, x);
+  if (!fp) return [];
+  const out = [];
+  (function pre(n) {
+    if (!n) return;
+    out.push(n.value);
+    pre(n.left);
+    pre(n.right);
+  })(fp.node);
+  return out;
+}
+
+// (f) ancestors of X (from parent up to root)
+function ancestorsOf(root, x) {
+  const fp = findWithParent(root, x);
+  if (!fp) return [];
+  const res = [];
+  let cur = fp.parent;
+  while (cur) {
+    res.push(cur.value);
+    const up = findWithParent(root, cur.value);
+    cur = up ? up.parent : null;
+  }
+  return res;
+}
+
+
+
 
 
 function isBalanced(node) {
@@ -264,9 +320,60 @@ function isBalanced(node) {
    return Math.max(lh, rh) + 1; // return height
 }
 
+function diameterOfBinaryTree(root) {
+  let best = 0;
+  function height(n) {
+    if (!n) return 0;
+    const lh = height(n.left);
+    const rh = height(n.right);
+    best = Math.max(best, lh + rh + 1); // '+1' counts current node
+    return Math.max(lh, rh) + 1;
+  }
+  height(root);
+  return best;
+}
+
+
+// Full binary tree checks: every node has 0 or 2 children 
+function isFullBinaryTree(node) {
+  if (!node) return true;
+  if (!node.left && !node.right) return true; // leaf
+  if (node.left && node.right) {
+    return isFullBinaryTree(node.left) && isFullBinaryTree(node.right);
+  }
+  return false; // exactly one child
+}
+
+// A tree is complete if level order has no 'null' before a non-null later.
+function isCompleteBinaryTree(root) {
+  if (!root) return true;
+  const q = [root];
+  let seenNull = false;
+  while (q.length) {
+    const n = q.shift();
+    if (!n) {
+      seenNull = true;
+      continue;
+    }
+    if (seenNull) return false; // found a node after a gap
+    q.push(n.left);
+    q.push(n.right);
+  }
+  return true;
+}
+
 console.log("HIGHT OF BINARY TREE: ", hightOfBinaryTree(bst.root));
 console.log("Is Balance Tree:", isBalanced(bst.root) != -1)
 console.log("Is Full Binary Tree:", isFullBinaryTree(bst.root));
+console.log("Is Complete Binary Tree:", isCompleteBinaryTree(bst.root));
+console.log("Children of 2:", childrenOf(bst.root, 2));                 // [4, 5]
+console.log("Parent of 3:", parentOf(bst.root, 3));                     // 1
+console.log("Level of 5 (root=0):", levelOf(bst.root, 2));              // 2
+console.log("Level of 5 (root=1):", levelOf(bst.root, 2, {oneIndexed:true})); // 3
+console.log("Subtree of 2:", subtreeOf(bst.root, 2));                   // [2,4,7,5,8]
+console.log("Subtree of 6:", subtreeOf(bst.root, 6));                   // [6,9]
+console.log("Ancestors of 2:", ancestorsOf(bst.root, 2));               // [2,1]
+console.log("Daimeter of Binary Tree:", diameterOfBinaryTree(bst.root));
  
 //       1
 //     /   \ 
