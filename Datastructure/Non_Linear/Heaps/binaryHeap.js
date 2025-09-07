@@ -63,7 +63,7 @@ class Heap {
 }
 
 // Helpers to make min-/max- heaps quickly
-const minHeap = (cmp) => new Heap(cmp ?? ((a, b) => a - b));
+exports.minHeap = (cmp) => new Heap(cmp ?? ((a, b) => a - b));
 const maxHeap = (cmp) => new Heap(cmp ?? ((a, b) => b - a));
 
 // Create a min-heap
