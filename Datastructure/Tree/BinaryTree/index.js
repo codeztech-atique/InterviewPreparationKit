@@ -49,6 +49,44 @@ class BinarySearchTree {
       }
       traverse(this.root);
    }
+
+   // Public: remove a value; returns true if removed, false if not found
+   remove(value) {
+      let removed = false;
+
+      const removeRec = (node, v) => {
+         if (!node) return null;
+
+         if (v < node.value) {
+         node.left = removeRec(node.left, v);
+         return node;
+         } else if (v > node.value) {
+         node.right = removeRec(node.right, v);
+         return node;
+         }
+
+         // Found the node
+         removed = true;
+
+         // Case 1: leaf
+         if (!node.left && !node.right) return null;
+
+         // Case 2: one child
+         if (!node.left) return node.right;
+         if (!node.right) return node.left;
+
+         // Case 3: two children -> copy inorder successor VALUE, then delete that VALUE on right
+         const succVal = this.min(node.right); // value, not node
+         node.value = succVal;
+         node.right = removeRec(node.right, succVal);
+         return node;
+      };
+
+      this.root = removeRec(this.root, value);
+      if (removed) this.count--;        // keep your size accurate
+      return removed;
+   }
+
    size() {
       return this.count;
    }
@@ -172,33 +210,6 @@ bst.insert(6)
 bst.insert(9)
 
 
-// const bst = new BinarySearchTree(1)
-// bst.insert(3)
-// bst.insert(6)
-// bst.insert(8)
-
-console.log("BST Size: ",bst.size());
-
-console.log("BST Min: ",bst.min());
-console.log("BST Max: ",bst.max());
-
-console.log("Is Found 2: ",bst.lookup(2));
-console.log("Is Found 92: ",bst.lookup(92));
-
-// DFS!!!
-// in-order: 2, 3, 12, 15, 28, 36, 39
-console.log("Inorder:",bst.dfsInorder());
-
-// pre-order: 15, 3, 2, 12, 36, 28, 39
-console.log("Preorder:",bst.dfsPreorder());
-
-// post-order: 2, 12, 3, 28, 39, 36, 15
-console.log("Postorder:",bst.dfsPostorder());
-
-// BFS!!!
-// 15, 3, 36, 2, 12, 28, 39
-console.log("BFS:",bst.bfs());
-
 function lcaBST(root, v1, v2) { // Last common acestor
   if (v1 === v2) return v1;   // if both parameters are the same
   let low = Math.min(v1, v2), high = Math.max(v1, v2);
@@ -220,9 +231,6 @@ function getLeafCountOfBinaryTree(node) {
     return getLeafCountOfBinaryTree(node.left) + getLeafCountOfBinaryTree(node.right);
 }
 
-console.log("COUNT LEAF NODE: ", getLeafCountOfBinaryTree(bst.root));
-console.log("Leaf Nodes Are: ", leafNode);
-console.log("LCA of BST:", lcaBST(bst.root, 1, 6))
 
 function hightOfBinaryTree(node) {
    if(node == null) { 
@@ -302,10 +310,6 @@ function ancestorsOf(root, x) {
   return res;
 }
 
-
-
-
-
 function isBalanced(node) {
    if (!node) return 0; // height of null = 0
 
@@ -361,6 +365,38 @@ function isCompleteBinaryTree(root) {
   }
   return true;
 }
+
+console.log("BST Size: ",bst.size());
+
+console.log("BST Min: ",bst.min());
+console.log("BST Max: ",bst.max());
+
+console.log("Is Found 2: ",bst.lookup(2));
+console.log("Is Found 92: ",bst.lookup(92));
+
+// DFS!!!
+// in-order: 2, 3, 12, 15, 28, 36, 39
+console.log("Inorder:",bst.dfsInorder());
+
+// pre-order: 15, 3, 2, 12, 36, 28, 39
+console.log("Preorder:",bst.dfsPreorder());
+
+// post-order: 2, 12, 3, 28, 39, 36, 15
+console.log("Postorder:",bst.dfsPostorder());
+
+// BFS!!!
+// 15, 3, 36, 2, 12, 28, 39
+console.log("BFS:",bst.bfs());
+
+console.log("Remove 7:", bst.remove(7));             // true
+
+console.log("BFS After remove:",bst.bfs());
+
+console.log("Postorder After remove:",bst.dfsPostorder());
+
+console.log("COUNT LEAF NODE: ", getLeafCountOfBinaryTree(bst.root));
+console.log("Leaf Nodes Are: ", leafNode);
+console.log("LCA of BST:", lcaBST(bst.root, 1, 6))
 
 console.log("HIGHT OF BINARY TREE: ", hightOfBinaryTree(bst.root));
 console.log("Is Balance Tree:", isBalanced(bst.root) != -1)
