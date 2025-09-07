@@ -67,13 +67,6 @@ class BinarySearchTree {
       return currentNode.value;
    }
 
-   // hightOfBinaryTree() {
-   //    // Rules b = (n-1)/2
-   //    let totalNodes = this.count;
-   //    let height = Math.floor((totalNodes - 1) / 2); 
-   //    return height;
-   // }
-
    lookup(value) {
       let currentNode = this.root;
       while(currentNode) {
@@ -125,6 +118,7 @@ class BinarySearchTree {
       searchTree(this.root);
       return result;
    }
+
    dfsPostorder() {
       // left, right, middle
       //        15
@@ -143,6 +137,7 @@ class BinarySearchTree {
       searchTree(this.root);
       return result;
    }
+
    bfs() {
       //        15
       //      /    \
@@ -232,6 +227,17 @@ function hightOfBinaryTree(node) {
 }
 
 
+// Full binary tree checks: every node has 0 or 2 children 
+function isFullBinaryTree(node) {
+  if (!node) return true;
+  if (!node.left && !node.right) return true; // leaf
+  if (node.left && node.right) {
+    return isFullBinaryTree(node.left) && isFullBinaryTree(node.right);
+  }
+  return false; // exactly one child
+}
+
+
 function isBalanced(node) {
    if (!node) return 0; // height of null = 0
 
@@ -248,6 +254,7 @@ function isBalanced(node) {
 
 console.log("HIGHT OF BINARY TREE: ", hightOfBinaryTree(bst.root));
 console.log("Is Balance Tree:", isBalanced(bst.root) != -1)
+console.log("Is Full Binary Tree:", isFullBinaryTree(bst.root));
  
 //       1
 //     /   \ 

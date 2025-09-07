@@ -25,7 +25,6 @@
 //   1    6 17  21
 
 let leafNode = [];
-
 class Node {
    constructor(value) {
       this.value = value;
@@ -208,8 +207,8 @@ class BinarySearchTree {
 const bst = new BinarySearchTree(10)
 bst.insert(5)
 bst.insert(19)
-bst.insert(1)
-bst.insert(6)
+// bst.insert(1)
+// bst.insert(6)
 bst.insert(17)
 bst.insert(21)
 
