@@ -25,6 +25,7 @@
 //   1    6 17  21
 
 let leafNode = [];
+
 class Node {
    constructor(value) {
       this.value = value;
@@ -33,9 +34,10 @@ class Node {
    }
 }
 
-class BinarySearchTree {
+class BinarySearchTree {   
    constructor(value) {
       this.root = new Node(value);
+      this.count++;
    }
 
    insert(value) {
@@ -54,36 +56,31 @@ class BinarySearchTree {
             } else {
                searchTree(node.right);
             }
-         } 
+         }
       }
       searchTree(this.root);
-      return this;
-   }
-
-   size() {
-      return this.root;
    }
 
    min() {
-      let currentNode = this.root;
-      while(currentNode.left) {
-         currentNode = currentNode.left;
+      let curr = this.root;
+      while(curr.left) {
+         curr = curr.left;
       }
-      return currentNode.value;
+      return curr.value;
    }
 
    max() {
-      let currentNode = this.root;
-      while(currentNode.right) {
-         currentNode = currentNode.right;
+      let curr = this.root;
+      while(curr.right) {
+         curr = curr.right;
       }
-      return currentNode.value;
+      return curr.value;
    }
 
    lookup(value) {
       let currentNode = this.root;
       while(currentNode) {
-         if(value == currentNode.value) {
+         if(currentNode.value == value) {
             return true;
          } else if(value < currentNode.value) {
             currentNode = currentNode.left;
@@ -93,7 +90,7 @@ class BinarySearchTree {
       }
       return false;
    }
-
+  
    dfsInorder() {
       // left, middle, right
       //        10
@@ -160,8 +157,8 @@ class BinarySearchTree {
       //   1    6 17  21
 
       // Output - 10,5,19,1,6,17,21
-      let result = [];
       let queue = [];
+      let result = [];
       queue.push(this.root);
       while(queue.length) {
          let currentNode = queue.shift();
@@ -174,6 +171,44 @@ class BinarySearchTree {
       }
       return result;
    }
+}
+
+
+function getLeafCountOfBinaryTree(node) {
+   if(node == null) return 0;
+   if(node.left == null && node.right == null) {
+      leafNode.push(node.value);
+      return 1;
+   }
+   return getLeafCountOfBinaryTree(node.left) + getLeafCountOfBinaryTree(node.right);
+}
+
+function hightOfBinaryTree(node) {
+   if(node == null) { 
+      return 0;
+   } else {
+      let lTree = hightOfBinaryTree(node.left);
+      let rTree = hightOfBinaryTree(node.right);
+      if(lTree > rTree) {
+         return lTree + 1;
+      } else {
+         return rTree + 1;
+      }
+   }
+}
+
+
+function isBalanced(node) {
+   if(node == null) return 0;
+  
+   let lh = isBalanced(node.left);
+   if(lh == -1) return -1;
+   let rh = isBalanced(node.right);
+   if(rh == -1) return -1;
+  
+   if(Math.abs(lh - rh) > 1) return -1;
+
+   return Math.max(lh, rh) + 1;
 }
 
 
@@ -235,73 +270,29 @@ console.log("Postorder:",bst.dfsPostorder());
 // BFS: 10, 5, 19, 1, 6, 17, 21
 console.log("BFS:",bst.bfs());
 
-function getLeafCountOfBinaryTree(node) {
-   if(node == null) return 0;
-   if(node.left == null && node.right == null) {
-      leafNode.push(node.value);
-      return 1;
-   }
-   return getLeafCountOfBinaryTree(node.left) + getLeafCountOfBinaryTree(node.right);
-} 
 
-function lcaBST(root, v1, v2) {
-  if (v1 === v2) return v1;   // if both parameters are the same
-  let low = Math.min(v1, v2), high = Math.max(v1, v2);
-  let cur = root;
-  while (cur) {
-    if (high < cur.value) cur = cur.left;
-    else if (low > cur.value) cur = cur.right;
-    else return cur.value;
-  }
-  return null;
-}
+// console.log("Remove 7:", bst.remove(7)); // true
 
+// console.log("BFS After remove:",bst.bfs());
 
-function isBalanced(node) {
-   if(!node) return 0;
-
-   let lh = isBalanced(node.left);
-   if(lh == -1) return -1;
-
-   let rh = isBalanced(node.right);
-   if(rh == -1) return -1;
-
-   if(Math.abs(lh - rh) > 1) return -1;
-   return Math.max(lh, rh) + 1;
-}
+// console.log("Postorder After remove:",bst.dfsPostorder());
 
 console.log("COUNT LEAF NODE: ", getLeafCountOfBinaryTree(bst.root));
-console.log("Is Balance Tree:", isBalanced(bst.root) != -1)
-console.log("Leaf Nodes Are: ", leafNode);
-console.log("LCA of BST:", lcaBST(bst.root, 1, 6))
-
-// function hightOfBinaryTree(node) {
-//    if(node == null) {
-//       return 0;
-//    } else {
-//       let lTree = hightOfBinaryTree(node.left);
-//       let rTree = hightOfBinaryTree(node.right);
-//       if(lTree < rTree) {
-//          return rTree + 1;
-//       } else {
-//          return lTree + 1;
-//       }
-//    }
-// }
-
-
-function hightOfBinaryTree(node) {
-   if(node == null) {
-      return 0;
-   } else {
-      let lTree = hightOfBinaryTree(node.left);
-      let rTree = hightOfBinaryTree(node.right);
-      if(lTree > rTree) {
-         return lTree + 1;
-      } else {
-         return rTree + 1;
-      }
-   }
-}
-
 console.log("HIGHT OF BINARY TREE: ", hightOfBinaryTree(bst.root));
+console.log("Leaf Nodes Are: ", leafNode);
+
+console.log("Is Balance Tree:", isBalanced(bst.root) != -1)
+// console.log("Is Full Binary Tree:", isFullBinaryTree(bst.root));
+// console.log("Is Complete Binary Tree:", isCompleteBinaryTree(bst.root));
+
+// console.log("LCA of BST:", lcaBST(bst.root, 1, 6))
+
+// console.log("Children of 2:", childrenOf(bst.root, 2));                 // [4, 5]
+// console.log("Parent of 3:", parentOf(bst.root, 3));                     // 1
+// console.log("Level of 5 (root=0):", levelOf(bst.root, 2));              // 2
+// console.log("Level of 5 (root=1):", levelOf(bst.root, 2, {oneIndexed:true})); // 3
+// console.log("Subtree of 2:", subtreeOf(bst.root, 2));                   // [2,4,7,5,8]
+// console.log("Subtree of 6:", subtreeOf(bst.root, 6));                   // [6,9]
+// console.log("Ancestors of 1:", ancestorsOf(bst.root, 1));               // [2,1]
+// console.log("Daimeter of Binary Tree:", diameterOfBinaryTree(bst.root));
+ 

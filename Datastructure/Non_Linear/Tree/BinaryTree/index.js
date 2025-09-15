@@ -372,6 +372,19 @@ function isCompleteBinaryTree(root) {
   return true;
 }
 
+function countNodes(node) {
+  if (!node) return 0;
+  return 1 + countNodes(node.left) + countNodes(node.right);
+}
+
+// Perfect Binary Tree means all the nodes are perfectly filled
+function isPerfectBinaryTree(root) {
+  // height = number of levels; your hightOfBinaryTree already returns that
+  const h = hightOfBinaryTree(root);      // e.g., perfect 3-level tree => h = 3
+  const n = countNodes(root);             // nodes in tree
+  return n === (1 << h) - 1;              // 2^h - 1
+}
+
 console.log("BST Size: ",bst.size());
 
 console.log("BST Min: ",bst.min());
@@ -408,6 +421,7 @@ console.log("HIGHT OF BINARY TREE: ", hightOfBinaryTree(bst.root));
 console.log("Is Balance Tree:", isBalanced(bst.root) != -1)
 console.log("Is Full Binary Tree:", isFullBinaryTree(bst.root));
 console.log("Is Complete Binary Tree:", isCompleteBinaryTree(bst.root));
+console.log("Is Perfect Binary Tree:", isPerfectBinaryTree(bst.root))
 console.log("Children of 2:", childrenOf(bst.root, 2));                 // [4, 5]
 console.log("Parent of 3:", parentOf(bst.root, 3));                     // 1
 console.log("Level of 5 (root=0):", levelOf(bst.root, 2));              // 2
