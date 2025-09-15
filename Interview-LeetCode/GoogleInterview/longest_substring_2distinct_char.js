@@ -34,6 +34,8 @@ var lengthOfLongestSubstringTwoDistinct = function(s) {
             // mapData = storeInAmap(mapData, s[j], j);    
 
             let str = s.slice(i, j);
+            // str.reduce((a, b) => a + b, 0) // this will do the sum.
+            // Math.min(...this.nums.slice(i, j));
             console.log(str);
             if(str.length > result.length) {
                 result = str;
