@@ -418,7 +418,7 @@ console.log("Leaf Nodes Are: ", leafNode);
 console.log("LCA of BST:", lcaBST(bst.root, 1, 6))
 
 console.log("HIGHT OF BINARY TREE: ", hightOfBinaryTree(bst.root));
-console.log("Is Balance Tree:", isBalanced(bst.root) != -1)
+console.log("Is Balance Tree ( AVL-balanced ):", isBalanced(bst.root) != -1)
 console.log("Is Full Binary Tree:", isFullBinaryTree(bst.root));
 console.log("Is Complete Binary Tree:", isCompleteBinaryTree(bst.root));
 console.log("Is Perfect Binary Tree:", isPerfectBinaryTree(bst.root))

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Analysts24x7 AI Security - Your Smart Defense Layer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #f4f9fc; margin: 0; color: #1d3557;}
+    header { background: linear-gradient(90deg,#174075 60%,#27a1df 100%);
+      color: #fff; padding: 44px 0 34px 0; text-align: center; }
+    .product-main { max-width: 900px; margin: 36px auto; background: #fff;
+      border-radius: 16px; box-shadow: 0 8px 36px #bcd7f757;
+      padding: 44px 32px 48px 32px;}
+    .product-title { color: #27a1df; font-size: 2.2em; font-weight:900; letter-spacing:.02em; margin-bottom: 9px; text-shadow: 0 2px 10px #f0f8ffa8;}
+    .subtitle { font-size: 1.18em; color: #235; margin-bottom: 18px; }
+    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 30px; margin: 44px 0 30px 0;}
+    .feature-box { border-radius: 13px; background: linear-gradient(120deg,#e9f4fa 75%,#f6fbff 100%);
+      border: 2.5px solid #27a1df22; padding: 30px 20px 20px 26px;
+      box-shadow: 0 2px 18px #82c1f811; font-size: 1.14em; position: relative;}
+    .feature-icon { width: 44px; height: 44px; border-radius: 50%; background: #27a1df;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 1.6em; font-weight: bold; margin-bottom:14px;
+      box-shadow: 0 2px 9px #27a1df44;}
+    .tagline { font-size: 1.01em; color: #228d44; background: #dbf7e9;
+      border-left: 4px solid #228d44; padding: 14px 22px; border-radius: 0 9px 9px 0;
+      font-weight: 500; letter-spacing:.04em; margin-bottom: 34px;}
+    .cta-btn { background: linear-gradient(90deg,#1fa7da 80%,#26d7c8 100%);
+      color: #fff; border: none; border-radius: 10px; font-size: 1.15em;
+      font-weight: bold; padding: 19px 44px; margin: 46px auto 0 auto; display: block; cursor: pointer; box-shadow:0 2px 17px #1fa7da33;
+      letter-spacing: 0.07em; transition: background 0.14s;}
+    .cta-btn:hover { background:linear-gradient(90deg,#1890c7 80%,#24b79e 100%);}
+    @media (max-width:650px){
+      .product-main{padding: 15px;}
+      .features{grid-template-columns:1fr;}
+    }
+    /* Modal Styles */
+    .modal-bg { display: none; position: fixed; z-index: 99; left: 0; top: 0; width: 100vw; height: 100vh; background:rgba(28,44,89,0.25);}
+    .modal { margin: 0; padding: 0; position: fixed; left: 50%; top: 53%; transform: translate(-50%, -50%);
+      width: 96vw; max-width: 470px; background: #fff; border-radius: 16px; box-shadow: 0 10px 46px #17407544; padding: 33px 18px 24px 18px; z-index:100; }
+    .modal-header {font-size: 1.3em; font-weight: 800; color: #27a1df; margin-bottom:9px;}
+    .modal-close { position: absolute; top: 16px; right: 24px; color: #174075; cursor: pointer; font-size: 1.33em;}
+    .dashboard { background: #f4f9fc; border-radius: 12px; box-shadow: 0 1px 6px #1fa7da22; margin-top:17px; padding: 15px 13px;}
+    .db-title { font-weight: 700; font-size: 1.14em; color: #1fa7da;}
+    .event-log { max-height: 180px; overflow-y: auto; margin: 12px 0 18px 0;}
+    .event { background: #e9f4fa; border-radius: 7px; padding: 7px 10px; margin-bottom: 7px; display: flex; align-items: center; font-size: .96em; }
+    .event.threat { color: #d12020; background: #fff1f1; font-weight: bold; }
+    .event .evt-label { font-weight: 700; width: 64px;}
+    .btn-row { text-align:right; margin-top: 20px; }
+    .threat-btn { background: #d12020; color: white; border: none; border-radius: 7px; padding: 9px 22px; font-weight: 700; cursor: pointer; margin-left: 6px;}
+    .threat-btn:active { background: #ad1616;}
+    .safe-ind { color: #19b350; font-weight: bold;}
+    .threat-ind { color: #d12020; font-weight: bold;}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="product-title">Analysts24x7 AI Security</div>
+    <div class="subtitle">Your always-on, AI-powered security layer for SaaS, apps, and sensitive business workflows.</div>
+  </header>
+  <main class="product-main">
+
+    <div class="tagline">
+      Instantly add <b>real-time AI defense</b> to your platform. Detect, block, and respond to threats—before damage is done. No complex setup. No security team required.
+    </div>
+
+    <div class="features">
+      <div class="feature-box">
+        <div class="feature-icon">🛡️</div>
+        <b>Self-Learning Threat Detection</b><br>
+        Finds attack patterns, policy violations, and risky users using advanced AI. Adaptively learns from your unique data & workflows.
+      </div>
+      <div class="feature-box">
+        <div class="feature-icon">🔒</div>
+        <b>Automated Data & Access Protection</b><br>
+        Monitors and secures logins, chats, file access, and API calls; flagging leaks, suspicious access, and privilege misuse in real time.
+      </div>
+      <div class="feature-box">
+        <div class="feature-icon">⚡</div>
+        <b>Instant Actions & Rules Engine</b><br>
+        Automatically blocks, locks, or alerts on threats—with rules you set. Fastest response, zero manual work.
+      </div>
+      <div class="feature-box">
+        <div class="feature-icon">📊</div>
+        <b>Live Dashboards & Compliance</b><br>
+        Easy-to-use portal with live security scores, event logs, alert status, and exportable reports for GDPR/SOC2 compliance in one click.
+      </div>
+    </div>
+
+    <button class="cta-btn" id="tryLiveBtn">
+      Try AI Security Live
+    </button>
+  </main>
+
+  <!-- Modal Dialog (hidden) -->
+  <div class="modal-bg" id="modalBg">
+    <div class="modal">
+      <div class="modal-header">AI Security Dashboard <span class="modal-close" id="closeModal">&times;</span></div>
+      <div class="dashboard">
+        <div class="db-title">Security Events Log</div>
+        <div class="event-log" id="eventLog"></div>
+        <div id="safetyInd" class="safe-ind">Your system is <b>Safe</b></div>
+        <div class="btn-row">
+          <button class="threat-btn" onclick="triggerThreat()">Simulate Threat</button>
+        </div>
+      </div>
+      <div style="font-size:.93em; color:#456; margin-top:15px;">Try simulating a suspicious login or exfiltration—see the dashboard catch it!</div>
+    </div>
+  </div>
+  <script>
+    // Demo Security Events Data
+    let events = [
+      { time: "09:01:11", label: "Login", user: "alice", status: "success", threat: false },
+      { time: "09:04:42", label: "File", user: "bob", status: "read /docs/pricing.pdf", threat: false },
+      { time: "09:06:02", label: "API", user: "charlie", status: "getUserData()", threat: false },
+    ];
+    function displayEvents() {
+      const logDiv = document.getElementById('eventLog');
+      logDiv.innerHTML = '';
+      events.forEach(e => {
+        let evtDiv = document.createElement('div');
+        evtDiv.className = 'event' + (e.threat ? ' threat':'');
+        evtDiv.innerHTML = `<span class="evt-label">${e.label}</span> ${e.user} &mdash; ${e.status} <span style="margin-left:12px;font-size:1.12em;">${e.threat ? '🚨' : ''}</span>`;
+        logDiv.appendChild(evtDiv);
+      });
+      document.getElementById("safetyInd").innerHTML = events.find(e=>e.threat) ?
+        '<span class="threat-ind">Threat Detected: User blocked, Admin alerted!</span>' :
+        '<span class="safe-ind">Your system is <b>Safe</b></span>';
+    }
+    function triggerThreat() {
+      events.push({ time: "09:07:15", label: "Login", user: "eve", status: "FAILED login from Russia (flagged)", threat: true });
+      displayEvents();
+    }
+
+    // Modal logic
+    document.getElementById('tryLiveBtn').onclick = () => {
+      displayEvents();
+      document.getElementById('modalBg').style.display = 'block';
+    };
+    document.getElementById('closeModal').onclick = () => {
+      document.getElementById('modalBg').style.display = 'none';
+      // Restore safe state for demo purposes
+      events = events.filter(e=>!e.threat);
+      displayEvents();
+    };
+    // Optional: click outside modal to close
+    document.getElementById('modalBg').onclick = e => {
+      if(e.target.id==='modalBg') document.getElementById('closeModal').onclick();
+    };
+  </script>
+</body>
+</html>
