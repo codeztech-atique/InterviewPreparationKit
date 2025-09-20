@@ -51,18 +51,18 @@ class BinarySearchTree {
    }
 
    // Public: remove a value; returns true if removed, false if not found
-   remove(value) {
+   remove(value) { // Watch this video - https://www.youtube.com/watch?v=petKaikRiIA
       let removed = false;
 
       const removeRec = (node, v) => {
          if (!node) return null;
 
          if (v < node.value) {
-         node.left = removeRec(node.left, v);
-         return node;
+            node.left = removeRec(node.left, v);
+            return node;
          } else if (v > node.value) {
-         node.right = removeRec(node.right, v);
-         return node;
+            node.right = removeRec(node.right, v);
+            return node;
          }
 
          // Found the node
@@ -90,6 +90,7 @@ class BinarySearchTree {
    size() {
       return this.count;
    }
+
    min() {
       let currentNode = this.root;
       while(currentNode.left) {
@@ -210,17 +211,6 @@ bst.insert(6)
 bst.insert(9)
 
 
-function lcaBST(root, v1, v2) { // Last common acestor
-  if (v1 === v2) return v1;   // if both parameters are the same
-  let low = Math.min(v1, v2), high = Math.max(v1, v2);
-  let cur = root;
-  while (cur) {
-    if (high < cur.value) cur = cur.left;
-    else if (low > cur.value) cur = cur.right;
-    else return cur.value;
-  }
-  return null;
-}
 
 function getLeafCountOfBinaryTree(node) {
     if(node === null) return 0;
@@ -245,6 +235,33 @@ function hightOfBinaryTree(node) {
       }
    }
 }
+
+function isBalanced(node) {
+   if (!node) return 0; // height of null = 0
+
+   let lh = isBalanced(node.left);
+   if (lh === -1) return -1; // left subtree not balanced
+
+   let rh = isBalanced(node.right);
+   if (rh === -1) return -1; // right subtree not balanced
+
+   if (Math.abs(lh - rh) > 1) return -1; // this node unbalanced
+
+   return Math.max(lh, rh) + 1; // return height
+}
+
+function lcaBST(root, v1, v2) { // Last common acestor
+   if (v1 === v2) return v1;   // if both parameters are the same
+   let low = Math.min(v1, v2), high = Math.max(v1, v2);
+   let cur = root;
+   while (cur) {
+     if (high < cur.value) cur = cur.left;
+     else if (low > cur.value) cur = cur.right;
+     else return cur.value;
+   }
+   return null;
+}
+ 
 
 // Find node with its parent & level (BFS)
 function findWithParent(root, target) {
@@ -316,20 +333,6 @@ function ancestorsOf(root, x) {
   return path.reverse();
 }
 
-function isBalanced(node) {
-   if (!node) return 0; // height of null = 0
-
-   let lh = isBalanced(node.left);
-   if (lh === -1) return -1; // left subtree not balanced
-
-   let rh = isBalanced(node.right);
-   if (rh === -1) return -1; // right subtree not balanced
-
-   if (Math.abs(lh - rh) > 1) return -1; // this node unbalanced
-
-   return Math.max(lh, rh) + 1; // return height
-}
-
 function diameterOfBinaryTree(root) {
   let best = 0;
   function height(n) {
@@ -355,26 +358,39 @@ function isFullBinaryTree(node) {
 }
 
 // A tree is complete if level order has no 'null' before a non-null later.
-function isCompleteBinaryTree(root) {
-  if (!root) return true;
-  const q = [root];
-  let seenNull = false;
-  while (q.length) {
-    const n = q.shift();
-    if (!n) {
-      seenNull = true;
-      continue;
-    }
-    if (seenNull) return false; // found a node after a gap
-    q.push(n.left);
-    q.push(n.right);
-  }
-  return true;
-}
+// function isCompleteBinaryTree(root) {
+//   if (!root) return true;
+//   const q = [root];
+//   let seenNull = false;
+//   while (q.length) {
+//     const n = q.shift();
+//     if (!n) {
+//       seenNull = true;
+//       continue;
+//     }
+//     if (seenNull) return false; // found a node after a gap
+//     q.push(n.left);
+//     q.push(n.right);
+//   }
+//   return true;
+// }
 
 function countNodes(node) {
   if (!node) return 0;
   return 1 + countNodes(node.left) + countNodes(node.right);
+}
+
+// Recursive completeness check
+function isCompleteBinaryTree(root) {
+  const total = countNodes(root);
+
+  function dfs(node, index) {
+    if (!node) return true;
+    if (index >= total) return false;
+    return dfs(node.left, 2 * index + 1) && dfs(node.right, 2 * index + 2);
+  }
+
+  return dfs(root, 0);
 }
 
 // Perfect Binary Tree means all the nodes are perfectly filled
@@ -382,7 +398,8 @@ function isPerfectBinaryTree(root) {
   // height = number of levels; your hightOfBinaryTree already returns that
   const h = hightOfBinaryTree(root);      // e.g., perfect 3-level tree => h = 3
   const n = countNodes(root);             // nodes in tree
-  return n === (1 << h) - 1;              // 2^h - 1
+  return n === (1 << h) - 1;              // 2^h - 1 --> Bit Manipulation
+  // return n == Math.pow(2, h) - 1; // Old school way
 }
 
 console.log("BST Size: ",bst.size());
