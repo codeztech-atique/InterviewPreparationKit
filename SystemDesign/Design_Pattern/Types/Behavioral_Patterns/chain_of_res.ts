@@ -1,4 +1,4 @@
-// ➡ Check request step by step.
+// ➡ Chain of Responsibility - Check request step by step.
 
 export {};
 
