@@ -1,3 +1,108 @@
+🧠 How to Remember All Design Patterns
+
+Instead of memorizing 23 patterns blindly, group them by intent:
+
+1️⃣ Creational → How to create objects?
+
+Factory / Abstract Factory → hide new, create families of objects.
+
+Builder → build step by step (when object has too many params).
+
+Singleton → only one instance (logger, config).
+
+Prototype → clone existing objects.
+
+👉 Trigger in interview: “We need multiple related objects / avoid new everywhere / configurable creation.”
+
+2️⃣ Structural → How to organize classes/objects?
+
+Adapter → make one API work with another (incompatible).
+
+Decorator → add features without modifying class.
+
+Proxy → control access (auth, caching).
+
+Facade → provide a simple interface to complex subsystems.
+
+Composite → tree-like structure (filesystem, UI).
+
+Flyweight → save memory (share common state).
+
+Bridge → separate abstraction & implementation.
+
+👉 Trigger: “We need to connect systems / add functionality dynamically / manage complex structure.”
+
+3️⃣ Behavioral → How objects communicate/act?
+
+Strategy → choose algorithm at runtime (sorting, payment).
+
+State → change behavior as state changes (order lifecycle).
+
+Observer → notify multiple subscribers (newsfeed, notifications).
+
+Command → encapsulate requests (undo/redo).
+
+Chain of Responsibility → pass request along handlers (middleware).
+
+Template Method → define skeleton, subclasses fill steps.
+
+Mediator → central hub (chatroom).
+
+Memento → save/restore state (backup/undo).
+
+Iterator → sequential access (collections).
+
+Visitor / Interpreter → rarely used in interviews.
+
+👉 Trigger: “We need different behaviors / communication between objects / lifecycle management.”
+
+🎯 How to Decide Quickly in Interview
+
+When you read a problem statement, ask:
+
+Is it about object creation?
+→ Use Creational.
+(e.g., Payment → Factory/Abstract Factory, Pizza Order → Builder).
+
+Is it about object relationships/structure?
+→ Use Structural.
+(e.g., File System → Composite, Logger with timestamp → Decorator).
+
+Is it about behavior/communication?
+→ Use Behavioral.
+(e.g., Notifications → Observer, Undo/Redo → Command + Memento).
+
+📝 Trick to Remember
+
+Think verbs for Behavioral (notify, choose, command, save).
+
+Think nouns/roles for Creational (factory, builder, prototype).
+
+Think connections for Structural (adapter, bridge, composite).
+
+⚡ Practice Method (No rote learning)
+
+Pick a problem (e.g., Parking Lot).
+
+Solve it without patterns.
+
+Ask: “Which pattern would clean this up?”
+
+Vehicle creation? → Factory
+
+Pricing models? → Strategy
+
+Notifications for full lot? → Observer
+
+👉 By practicing 15–20 problems this way, you’ll start remembering naturally when to use what.
+
+✅ Short Answer:
+Don’t memorize 23 patterns blindly.
+👉 Group them by Creational / Structural / Behavioral.
+👉 Use “trigger questions” to recall the right one.
+👉 Reinforce by applying them in LLD problems (Splitwise → Strategy, Parking Lot → Observer, etc.).
+
+
 📌 100 Low Level Design Problem Statements
 
 | #   | Problem Statement                                                       | Category          | Difficulty |
