@@ -10,6 +10,9 @@ You cannot create an object of an abstract class directly.
 */
 
 // Abstract class (cannot be directly created)
+
+export = {};
+
 abstract class Animal {
   abstract sound(): void; // only says "must have sound()"
 }

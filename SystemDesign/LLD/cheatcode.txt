@@ -1,0 +1,59 @@
+🔥 What I’d add beyond the list
+
+To become an expert (not just “pass the round”), I’d suggest adding these meta-skills:
+
+1. Design Patterns in Practice
+
+Singleton, Factory, Observer, Strategy, Decorator, Builder.
+
+These come up indirectly in LLD problems.
+👉 Example: Notification System = Observer; Cache = Singleton; Coffee Machine = Factory.
+
+2. Concurrency
+
+A few LLD problems with multi-threading:
+
+Thread-safe LRU Cache.
+
+Dining Philosophers problem.
+
+Producer–Consumer with Blocking Queue.
+👉 Companies like Google/Meta sometimes add “make it concurrent” as a Level 4 extension.
+
+3. Testing & Extensibility
+
+Always be ready to show test cases (like Uber gave you).
+
+Build habit of: write Level 1 → write tests → extend to Level 2–4.
+👉 That’s what makes you stand out as a “production-minded” engineer.
+
+4. Bridge to HLD
+
+For each LLD, practice answering: “What if this needs to handle millions of users?”
+
+Example:
+
+Splitwise → add database sharding.
+
+Cache → distributed Redis cluster.
+
+Chat → WebSockets, Kafka.
+👉 This helps because many interviewers switch from LLD → HLD in the same round.
+
+📌 My Recommendation for You
+
+Stick to the 100 problems (Top 20 first).
+
+Add Design Patterns + Concurrency practice.
+
+Build a GitHub repo with:
+
+Problem statement
+
+Class diagram
+
+Code + tests
+
+README with extensions (e.g., “How I’d scale this”)
+
+If you do that → you won’t just “clear interviews” — you’ll actually become a go-to LLD expert in real work too.
