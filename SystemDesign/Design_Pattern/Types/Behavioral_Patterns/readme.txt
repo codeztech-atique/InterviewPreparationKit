@@ -1,17 +1,24 @@
-🔹 Behavioral (CCIIMMOSSTV) → How objects act & communicate
-👉 First letters = CCIIMMOSSTV
+🎯 Behavioral Patterns (11) → Easy-to-Remember Order
+👉 First letters = CC – II – MM – OSS – TV
 
- - Chain of Responsibility → Pass request along a chain (like middleware).
- - Command → Encapsulate a request (undo/redo).
- - Interpreter → Define grammar & interpret expressions.
- - Iterator → Traverse collections without exposing details.
- - Mediator → Central hub for communication.
- - Memento → Save & restore state.
- - Observer → Notify dependents automatically.
- - State → Change behavior with state.
- - Strategy → Choose algorithm at runtime.
- - Template Method → Define skeleton, let subclasses fill steps.
- - Visitor → Add operations without changing classes.
+1. Handling Requests
+ - Chain of Responsibility → pass a request along handlers.
+ - Command → encapsulate a request.
+
+2. Working with Data/Flow
+ - Interpreter → interpret expressions.
+ - Iterator → traverse collections.
+
+3. Communication & State
+ - Mediator → central hub for interactions.
+ - Memento → save/restore state.
+ - Observer → notify dependents.
+ - State → change behavior by state.
+ - Strategy → pick algorithm at runtime.
+
+4. Structure & Extension
+ - Template Method → define algorithm skeleton.
+ - Visitor → add new operations.
 
 👉 Mnemonic: “Cool Coders Implement Ideas, Make Magic Of Smart Software Tricks & Vision”
 👉 Meaning: start with requests (Chain, Command) 
