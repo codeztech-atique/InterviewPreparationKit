@@ -66,7 +66,7 @@ class LinkedList {
       this.length++;
       this.printList();
   }
-  removeData(index) {
+  remove(index) {
       if(index > this.length) {
           return "Item can't be larger that list length";
       }
@@ -186,11 +186,14 @@ console.log(myLinkedList.printList());
 myLinkedList.remove(2);
 console.log(myLinkedList.printList());
 
-myLinkedList.removeFirst();
+myLinkedList.removeFromFirst();
 
-myLinkedList.removeLast();
+myLinkedList.removeFromLast();
 console.log(myLinkedList.printList());
-// console.log("Reverse LinkedList--------------------->");
-// myLinkedList.reverse();
+console.log("Reverse LinkedList--------------------->");
+myLinkedList.reverse();
+
+console.log("Has Cycle--------------------->");
+console.log(myLinkedList.hasCycle());
 
 console.log(JSON.stringify(myLinkedList));

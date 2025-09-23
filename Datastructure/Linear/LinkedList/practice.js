@@ -28,66 +28,53 @@ class LinkedList {
    }
 
    insert(index, value) {
-      this.length++;
       if(index >= this.length) {
          return this.append(value);
       }
+      this.length++;
       let newNode = new Node(value);
-      let leader = this.traverse(index - 1);
-      let nextNode = leader.next;
-      leader.next = newNode;
+      let leaderNode = this.traverse(index - 1);
+      let nextNode = leaderNode.next;
+      leaderNode.next = newNode;
       newNode.next = nextNode;
-      return this;
+      return this.printList();
    }
 
    remove(index) {
       if(index > this.length) {
-         return "Invalid Input !!!"
+         return "Invalid Index !!!!"
       }
       let leader = this.traverse(index - 1);
       let unwantedNode = leader.next;
       leader.next = unwantedNode.next;
       this.length--;
-      return this;
+      this.printList();
    }
 
    removeFirst() {
       if(this.length == 0) {
          return "List Empty !!!"
-      } 
-
-      if(this.length == 1) {
-         this.head = null
-         this.tail = this.head;
-         return "List is Empty !!!"
       }
       let currentNode = this.head;
       this.head = currentNode.next;
       this.length--;
-      return this.printList();
+      return this;
    }
 
    removeLast() {
       if(this.length == 0) {
          return "List Empty !!!"
-      } 
-
-      if(this.length == 1) {
-         this.head = null
-         this.tail = this.head;
-         return "List is Empty !!!"
       }
-
+      let currentNode = this.head;
       let newTail = this.head;
-      let curr = this.head;
-      while(curr.next) {
-         newTail = curr;
-         curr = curr.next;
+      while(currentNode.next) {
+         newTail = currentNode;
+         currentNode = currentNode.next;
       }
+      newTail.next = null;
       this.tail = newTail;
-      this.tail.next = null;
       this.length--;
-      return this;
+      return this.printList();
    }
 
    reverse() {
@@ -104,12 +91,25 @@ class LinkedList {
          second = temp;
       }
       this.head.next = null;
-      this.head= first;
+      this.head = first;
       return this.printList();
    }
 
+   hasCycle() {
+      let slow = this.head;
+      let fast = this.head;
+      while(fast && fast.next) {
+         slow = slow.next;
+         fast = fast.next.next;
+         if(slow == fast) {
+            return true;
+         }
+      }
+      return false;
+   }
+
    traverse(index) {
-      let counter = 0;
+      let counter = 1;
       let curr = this.head;
       while(index != counter) {
          counter++;
@@ -125,7 +125,7 @@ class LinkedList {
          result.push(curr.value);
          curr = curr.next;
       }
-      return result
+      return result;
    }
 }
 
@@ -134,6 +134,7 @@ var myLinkedList = new LinkedList(10);
 myLinkedList.append(5);
 myLinkedList.append(52);
 myLinkedList.prepend(9);
+
 myLinkedList.insert(200, 99); //If the index location more than length it gonna insert last
 myLinkedList.insert(2, 19);
 console.log(JSON.stringify(myLinkedList));
@@ -150,4 +151,10 @@ console.log(myLinkedList.printList());
 console.log("Reverse LinkedList--------------------->");
 console.log(myLinkedList.reverse());
 
-console.log(JSON.stringify(myLinkedList));
+// Making it loop
+myLinkedList.tail.next = myLinkedList.head; // ✅ full circular
+
+console.log("Has Cycle--------------------->");
+console.log(myLinkedList.hasCycle());
+
+// console.log(JSON.stringify(myLinkedList));
