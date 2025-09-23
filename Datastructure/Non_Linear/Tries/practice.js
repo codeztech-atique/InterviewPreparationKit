@@ -2,6 +2,7 @@ class Node {
     constructor() {
         this.children = new Map();
         this.isWordEnd = false;
+        this.size = 0;
     }
 }
 class Tries {
@@ -9,15 +10,15 @@ class Tries {
         this.root = new Node();
     }
 
-    insert(word, weight) {
+    insert(word, size) {
         let curr = this.root;
         for(let i = 0; i < word.length; i++) {
             let charToInsert = word[i];
             if(!(curr.children.has(charToInsert))) {
-                curr.children.set(charToInsert, new Node())
+                curr.children.set(charToInsert, new Node());
             }
+            curr.size = size;
             curr = curr.children.get(charToInsert);
-            curr.weight = weight;
         }
         curr.isWordEnd = true;
         return this;
@@ -61,52 +62,72 @@ class Tries {
     }
 
     getCommonPrefix() {
-        let ch = "", str = "";
+        // let ch = "", str = "";
+        // let node = this.root;
+        // // console.log("I am coming", node);
+        // while(node.children.size == 1 && !node.isWordEnd) {
+        //     console.log("I am coming --")
+        //     ch = Array.from(node.children.keys())[0];
+        //     str += ch;
+        //     node = node.children.get(ch);
+        // }
+        // return str;
+        let str = "", char = "";
         let node = this.root;
         while(node.children.size == 1 && !node.isWordEnd) {
-            ch = Array.from(node.children.keys())[0];
-            str += ch;
-            node = node.children.get(ch);
+           char = Array.from(node.children.keys())[0];
+           str += char;
+           node = node.children.get(char)
         }
         return str;
     }
 
     printAllTheWord() {
-        let word = [];
-        let searchTree = (node, currentWord = '') => {
+        let result = [];
+        let searchTreeDFS = (node, currWord = '') => {
             if(node.isWordEnd) {
-                word.push(currentWord);
+                result.push(currWord);
             }
-            for(const [ch, curr] of node.children.entries()) {
-                searchTree(curr, currentWord + ch);
+            for(const [ch, currNode] of node.children.entries()) {
+                searchTreeDFS(currNode, currWord + ch);
             }
         }
-        searchTree(this.root);
-        return word;
+        searchTreeDFS(this.root);
+        return result;
     }
 
     printLeafWords() {
-        let word = [];
-         let searchTree = (node) => {
-            for(const [ch, curr] of node.children.entries()) {
-                word.push({
+        let result = [];
+        let searchTreeDFS = (node) => {
+            for(const [ch, currNode] of node.children.entries()) {
+                result.push({
                     key: ch,
-                    value: curr.weight
-                })
-                searchTree(curr);
+                    value: node.size
+                });
+                searchTreeDFS(currNode);
             }
         }
-        searchTree(this.root);
-        return word;
+        searchTreeDFS(this.root);
+        return result;
+    }
+
+    autoComplete(str) {
+        let result = this.printAllTheWord();
+        return result.filter((es) => {
+            if(es.startsWith(str)) {
+                return true;
+            }
+        })
     }
 }
 
 const tries = new Tries();
 tries.insert("flower", 5);
 tries.insert("flo", 4)
-tries.insert("flow", 32);
+tries.insert("flow", 22);
 tries.insert("fltter", 3);
 tries.insert("fllet", 2);
+tries.insert("flight", 33);
 // tries.insert("hat", 6);
 // tries.insert("tree", 10);
 
@@ -118,7 +139,7 @@ console.log("Tries contains Suny:", tries.startWithPrefix("Suny"))
 
 tries.remove("flight");
 
-console.log("Tries contains flight:", tries.contains("flight"));
+console.log("After Remove - Tries contains flight:", tries.contains("flight"));
 
 
 console.log("Tries contains Atiz:", tries.contains("Atiz"));
@@ -126,3 +147,4 @@ console.log("Common Prefix:", tries.getCommonPrefix())
 console.log("Print all word:", tries.printAllTheWord())
 // console.log("Pring all word with weight:", tries.getAllChacterWith_Weight())
 console.log("Print leaf word:", tries.printLeafWords())
+console.log("Auto complete:", tries.autoComplete("fl"))

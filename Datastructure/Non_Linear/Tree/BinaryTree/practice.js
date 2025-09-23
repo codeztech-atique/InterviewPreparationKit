@@ -25,6 +25,7 @@
 //   1    6 17  21
 
 const leafNode = [];
+
 class Node {
    constructor(value) {
       this.value = value;
@@ -35,11 +36,10 @@ class Node {
 class BinarySearchTree {   
    constructor(value) {
       this.root = new Node(value);
-      this.count = 1;
+      this.count++;
    }
 
    insert(value) {
-      this.count++;
       let newNode = new Node(value);
       let searchTree = node => {
          if(value < node.value) {
@@ -60,7 +60,7 @@ class BinarySearchTree {
       return this;
    }
 
-   removeMin(node) {
+   minNode(node) {
       while(node.left) {
          node = node.left;
       }
@@ -70,7 +70,7 @@ class BinarySearchTree {
    remove(value) {
       let isRemoved = false;
       let removeRec = (node, value) => {
-         if(node == null) return null
+         if(!node) return null;
          if(value < node.value) {
             node.left = removeRec(node.left, value);
             return node;
@@ -78,40 +78,39 @@ class BinarySearchTree {
             node.right = removeRec(node.right, value);
             return node;
          }
-
          isRemoved = true;
 
-         // If leaf node
+         // If no children
          if(!node.left && !node.right) return null;
 
-         // If 1 chidren 
+         // If 1 children
          if(!node.left) return node.right;
          if(!node.right) return node.left;
 
          // If 2 children
-         let succVal = this.removeMin(node.right);
-         node.value = succVal.value;
+         const succVal = this.minNode(node.right, value);
+         node.value = succVal;
          node.right = removeRec(node.right, succVal);
-         return node;
       }
       this.root = removeRec(this.root, value);
+      if(isRemoved) this.count--;
       return isRemoved;
    }
 
    min() {
-      let currentNode = this.root;
-      while(currentNode.left) {
-         currentNode = currentNode.left;
+      let curr = this.root;
+      while(curr.left) {
+         curr = curr.left;
       }
-      return currentNode.value;
+      return curr.value;
    }
 
    max() {
-      let currentNode = this.root;
-      while(currentNode.right) {
-         currentNode = currentNode.right;
+      let curr = this.root;
+      while(curr.left) {
+         curr = curr.right;
       }
-      return currentNode.value;
+      return curr.value;
    }
 
    lookup(value) {
@@ -127,7 +126,7 @@ class BinarySearchTree {
       }
       return false;
    }
-
+   
    dfsInorder() {
       // left, middle, right
       //        10
@@ -137,10 +136,9 @@ class BinarySearchTree {
       //   1    6 17  21
 
       // Output = 1,5,6,10,17,19,21
-
       let result = [];
-      let searchTree = node => {
-         if(node.left) searchTree(node.left)
+      let searchTree = (node) => {
+         if(node.left) searchTree(node.left);
          result.push(node.value);
          if(node.right) searchTree(node.right);
       }
@@ -156,11 +154,11 @@ class BinarySearchTree {
       //    /  \   /  \
       //   1    6 17  21
       
-      // Output = 10,5,1,19,17,21
+      // Output = 10,5,1,6,19,17,21
       let result = [];
-      let searchTree = node => {
+      let searchTree = (node) => {
          result.push(node.value);
-         if(node.left) searchTree(node.left)
+         if(node.left) searchTree(node.left);
          if(node.right) searchTree(node.right);
       }
       searchTree(this.root);
@@ -175,10 +173,10 @@ class BinarySearchTree {
       //    /  \   /  \
       //   1    6 17  21
 
-      // Output = 1,6,5,17,21,19,10
+      // Output = 
       let result = [];
-      let searchTree = node => {
-         if(node.left) searchTree(node.left)
+      let searchTree = (node) => {
+         if(node.left) searchTree(node.left);
          if(node.right) searchTree(node.right);
          result.push(node.value);
       }
@@ -194,8 +192,8 @@ class BinarySearchTree {
       //   1    6 17  21
 
       // Output - 10,5,19,1,6,17,21
-      let result = [];
       let queue = [];
+      let result = [];
       queue.push(this.root);
       while(queue.length) {
          let currentNode = queue.shift();
@@ -211,32 +209,31 @@ class BinarySearchTree {
 }
 
 function getLeafCountOfBinaryTree(node) {
-   if(node == null) {
-      return 0;
-   } else if(node.left == null && node.right == null) {
+   if(node == null) return 0;
+   if(node.left == null && node.right == null) {
       leafNode.push(node.value);
       return 1;
-   } 
+   }
    return getLeafCountOfBinaryTree(node.left) + getLeafCountOfBinaryTree(node.right);
 }
 
 function hightOfBinaryTree(node) {
    if(node == null) {
-      return 0;
+      return 0
    } else {
-      let lTree = hightOfBinaryTree(node.left);
-      let rTree = hightOfBinaryTree(node.right);
-      if(lTree > rTree) {
-         return lTree + 1;
+      let lh = hightOfBinaryTree(node.left);
+      let rh = hightOfBinaryTree(node.right);
+      if(lh > rh) {
+         return lh + 1;
       } else {
-         return rTree + 1;
+         return rh + 1;
       }
    }
 }
 
 function isBalanced(node) {
-   if(!node) return null;
-
+   if(!node) return 0;
+   
    let lh = isBalanced(node.left);
    if(lh == -1) return -1;
 
@@ -244,7 +241,6 @@ function isBalanced(node) {
    if(rh == -1) return -1;
 
    if(Math.abs(lh - rh) > 1) return -1;
-   
    return Math.max(lh, rh) + 1;
 }
 
@@ -263,19 +259,20 @@ function isFullBinaryTree(node) {
 }
 
 function isCompleteBinaryTree(node) {
-   let count = countNodes(node);
-   let dfs = (node, index) => {
+   let total = countNodes(node);
+
+   const dfs = (node, index) => {
       if(!node) return true;
-      if(index >= count) return false;
+      if(index >= total) return false;
       return dfs(node.left, 2 * index + 1) && dfs(node.right, 2 * index + 2);
    }
-   return dfs(node, 0);
+   return dfs(this.root, 0);
 }
 
 function isPerfectBinaryTree(node) {
-   let n = countNodes(node);
    let h = hightOfBinaryTree(node);
-   return n == ( 1<< h) -1;
+   let n = countNodes(node);
+   return n == (1 << h) - 1;
 }
 
 
@@ -338,8 +335,8 @@ console.log("Postorder:",bst.dfsPostorder());
 console.log("BFS:",bst.bfs());
 
 
-// console.log("Remove 7:", bst.remove(5)); // true
-// console.log("Remove 21:", bst.remove(21)); // true
+console.log("Remove 7:", bst.remove(5)); // true
+console.log("Remove 21:", bst.remove(21)); // true
 
 console.log("BFS After remove:",bst.bfs());
 
