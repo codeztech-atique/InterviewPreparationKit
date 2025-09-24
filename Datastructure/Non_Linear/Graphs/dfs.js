@@ -45,6 +45,32 @@ class Graph {
     dfsVisit(start);
     return result;
   }
+
+  dfsIterative(start) {
+    if (!this.adjecencyList[start]) return [];
+
+    let stack = [start];          // use stack instead of recursion
+    let visited = new Set();
+    let result = [];
+
+    while (stack.length) {
+      let currentNode = stack.pop();   // LIFO
+      if (!visited.has(currentNode)) {
+        visited.add(currentNode);
+        result.push(currentNode);
+
+        // Push neighbors to stack
+        // (reverse ensures consistent order if you want left-to-right style)
+        for (let neighbor of [...this.adjecencyList[currentNode]].reverse()) {
+          if (!visited.has(neighbor)) {
+            stack.push(neighbor);
+          }
+        }
+      }
+    }
+    return result;
+  }
+
 } 
 
 // ---- Demo ----

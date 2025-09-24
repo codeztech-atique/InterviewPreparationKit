@@ -46,6 +46,33 @@ class Graph {
     }
     return result;
   }
+
+  bfsRecursive(start) {
+    if (!start) start = Object.keys(this.adjacentList)[0]; // default start
+
+    const visited = new Set([start]);
+    const result = [];
+    const queue = [start];
+
+    const traverse = () => {
+      if (!queue.length) return;  // base case
+
+      const node = queue.shift();
+      result.push(node);
+
+      for (const neighbor of this.adjacentList[node]) {
+        if (!visited.has(neighbor)) {
+          visited.add(neighbor);
+          queue.push(neighbor);
+        }
+      }
+
+      traverse(); // recursive step
+    };
+
+    traverse();
+    return result;
+  }
 } 
 
 // ---- Demo ----
