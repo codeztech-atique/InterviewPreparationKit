@@ -16,7 +16,6 @@ class LinkedList {
       newNode.next = this.head;
       this.head = newNode;
       this.length++;
-      return this;
    }
 
    append(value) {
@@ -24,31 +23,30 @@ class LinkedList {
       this.tail.next = newNode;
       this.tail = newNode;
       this.length++;
-      return this;
    }
 
    insert(index, value) {
       if(index >= this.length) {
          return this.append(value);
       }
-      this.length++;
       let newNode = new Node(value);
-      let leaderNode = this.traverse(index - 1);
-      let nextNode = leaderNode.next;
-      leaderNode.next = newNode;
+      let leader = this.traverse(index - 1);
+      let nextNode = leader.next;
+      leader.next = newNode;
       newNode.next = nextNode;
+      this.length++;
       return this.printList();
    }
 
    remove(index) {
       if(index > this.length) {
-         return "Invalid Index !!!!"
+         return "Invalid input !!!"
       }
       let leader = this.traverse(index - 1);
       let unwantedNode = leader.next;
       leader.next = unwantedNode.next;
       this.length--;
-      this.printList();
+      return this.printList();
    }
 
    removeFirst() {
@@ -58,19 +56,22 @@ class LinkedList {
       let currentNode = this.head;
       this.head = currentNode.next;
       this.length--;
-      return this;
+      return this.printList();
    }
 
    removeLast() {
       if(this.length == 0) {
          return "List Empty !!!"
       }
-      let currentNode = this.head;
+
+      let currNode = this.head;
       let newTail = this.head;
-      while(currentNode.next) {
-         newTail = currentNode;
-         currentNode = currentNode.next;
+
+      while(currNode.next) {
+         newTail = currNode;
+         currNode = currNode.next;
       }
+
       newTail.next = null;
       this.tail = newTail;
       this.length--;
@@ -107,6 +108,7 @@ class LinkedList {
       }
       return false;
    }
+
 
    traverse(index) {
       let counter = 1;
@@ -145,9 +147,9 @@ console.log(myLinkedList.printList());
 
 myLinkedList.removeFirst();
 
-myLinkedList.removeLast();
+console.log("Remove Last:", myLinkedList.removeLast());
 
-console.log(myLinkedList.printList());
+console.log("After Remove:", myLinkedList.printList());
 console.log("Reverse LinkedList--------------------->");
 console.log(myLinkedList.reverse());
 

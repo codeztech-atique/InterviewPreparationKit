@@ -6,7 +6,7 @@ class UndirectedGraph {
 
     addVertices(node) {
       this.adjecencyList[node] = [];
-      this.countNodes++;
+      this.count++;
     }
 
     addEdges(node1, node2) {
@@ -19,29 +19,44 @@ class UndirectedGraph {
     }
 
     bfs(start) {
-      if(!start) { 
-        start = Object.keys(this.adjecencyList)[0];
-      }
-
+      if(!start) start = Object.keys(this.adjecencyList)[0];
       let result = [];
       let queue = [start];
 
       let visited = new Set([start]);
-
       while(queue.length) {
-        let currentNode = queue.shift();
-        result.push(currentNode);
+        let current = queue.shift();
+        result.push(current);
 
-        for(let neighbor of this.adjecencyList[currentNode]) {
+        for(let neighbor of this.adjecencyList[current]) {
           if(!visited.has(neighbor)) {
-            queue.push(neighbor);
             visited.add(neighbor);
+            queue.push(neighbor);
           }
         }
       }
       return result;
     }
 
+    dfs(start) {
+      if(!start) start = Object.keys(this.adjecencyList)[0];
+      let result = [];
+      let stack = [start];
+      let visited = new Set();
+
+      while(stack.length) {
+        let current = stack.pop();
+
+        if(!visited.has(current)) {
+          visited.add(current);
+          result.push(current);
+          for(let neighbor of [...this.adjecencyList[current]].reverse()) {
+            stack.push(neighbor);
+          }
+        }
+      }
+      return result;
+    }
 }
 
 const undirectedGrph = new UndirectedGraph();
@@ -63,7 +78,10 @@ undirectedGrph.addEdges('1', '0');
 undirectedGrph.addEdges('0', '2');
 undirectedGrph.addEdges('6', '5');
 
-console.log(undirectedGrph.bfs());
-console.log(undirectedGrph.bfs('3'));
+console.log("BFS:", undirectedGrph.bfs());
+console.log("BFS:", undirectedGrph.bfs('3'));
+
+console.log("DFS:", undirectedGrph.dfs());
+console.log("DFS:", undirectedGrph.dfs('3'));
 
 console.log(undirectedGrph.showConnections());

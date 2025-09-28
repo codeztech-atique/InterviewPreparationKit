@@ -25,6 +25,14 @@ class DSU {
   }
 
   count() { return this.components; }
+
+  hasCycleUndirected(n, edges) {
+    const dsu = new DSU(n);
+    for(const [u, v] of edges) {
+      if(!dsu.union(u, v)) return true;
+    }
+    return false;
+  }
 }
 
 // --- Example ---
@@ -35,3 +43,11 @@ dsu.union(1,2);
 console.log("connected(0,2):", dsu.connected(0,2)); // true
 console.log("connected(0,3):", dsu.connected(0,3)); // false
 console.log("components:", dsu.count());            // 3
+
+
+// Has Cycle - 
+
+const edges1 = [[0,1],[1,2],[2,3],[3,4]];      // no cycle
+const edges2 = [[0,1],[1,2],[2,3],[3,1]];      // has cycle (1-2-3-1)
+console.log("hasCycleUndirected(edges1):", dsu.hasCycleUndirected(5, edges1)); // false
+console.log("hasCycleUndirected(edges2):", dsu.hasCycleUndirected(4, edges2));  // true

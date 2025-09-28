@@ -27,11 +27,11 @@ class Tries {
     contains(word) {
         let curr = this.root;
         for(let i = 0; i < word.length; i++) {
-            let charToInsert = word[i];
-            if(!(curr.children.has(charToInsert))) {
+            let charToFind = word[i];
+            if(!(curr.children.has(charToFind))) {
                 return false;
             }
-            curr = curr.children.get(charToInsert);
+            curr = curr.children.get(charToFind);
         }
         return curr.isWordEnd;
     }
@@ -39,11 +39,11 @@ class Tries {
     startWithPrefix(word) {
         let curr = this.root;
         for(let i = 0; i < word.length; i++) {
-            let charToInsert = word[i];
-            if(!(curr.children.has(charToInsert))) {
+            let charToFind = word[i];
+            if(!(curr.children.has(charToFind))) {
                 return false;
             }
-            curr = curr.children.get(charToInsert);
+            curr = curr.children.get(charToFind);
         }
         return true;
     }
@@ -51,74 +51,64 @@ class Tries {
     remove(word) {
         let curr = this.root;
         for(let i = 0; i < word.length; i++) {
-            let charToInsert = word[i];
-            if(!(curr.children.has(charToInsert))) {
+            let charToFind = word[i];
+            if(!(curr.children.has(charToFind))) {
                 return false;
             }
-            curr = curr.children.get(charToInsert);
+            curr = curr.children.get(charToFind);
         }
         curr.isWordEnd = false;
         return true;
     }
 
     getCommonPrefix() {
-        // let ch = "", str = "";
-        // let node = this.root;
-        // // console.log("I am coming", node);
-        // while(node.children.size == 1 && !node.isWordEnd) {
-        //     console.log("I am coming --")
-        //     ch = Array.from(node.children.keys())[0];
-        //     str += ch;
-        //     node = node.children.get(ch);
-        // }
-        // return str;
-        let str = "", char = "";
+        let str = "", ch = "";
         let node = this.root;
         while(node.children.size == 1 && !node.isWordEnd) {
-           char = Array.from(node.children.keys())[0];
-           str += char;
-           node = node.children.get(char)
+            ch = Array.from(node.children.keys())[0];
+            str += ch;
+            node = node.children.get(ch);
         }
         return str;
     }
 
     printAllTheWord() {
         let result = [];
-        let searchTreeDFS = (node, currWord = '') => {
+        let searchTreeDFS = (node, currentWord = '') => {
             if(node.isWordEnd) {
-                result.push(currWord);
+                result.push(currentWord);
             }
             for(const [ch, currNode] of node.children.entries()) {
-                searchTreeDFS(currNode, currWord + ch);
+                searchTreeDFS(currNode, currentWord + ch);
             }
         }
-        searchTreeDFS(this.root);
+        searchTreeDFS(this.root, "");
         return result;
     }
 
     printLeafWords() {
         let result = [];
-        let searchTreeDFS = (node) => {
+        let searchTree = (node) => {
             for(const [ch, currNode] of node.children.entries()) {
                 result.push({
                     key: ch,
                     value: node.size
-                });
-                searchTreeDFS(currNode);
+                })
+                searchTree(currNode);
             }
         }
-        searchTreeDFS(this.root);
+        searchTree(this.root);
         return result;
     }
 
     autoComplete(str) {
-        let result = this.printAllTheWord();
-        return result.filter((es) => {
-            if(es.startsWith(str)) {
+        let words = this.printAllTheWord();
+        return words.filter((ee) => {
+            if(ee.startsWith(str)) {
                 return true;
             }
         })
-    }
+    } 
 }
 
 const tries = new Tries();

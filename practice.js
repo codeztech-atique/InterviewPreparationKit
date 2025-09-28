@@ -1,3 +1,18 @@
+// Star print
+
+const starPrint = (n) => {
+    for(let i = 0; i <= n; i++) {
+        let str = "";
+        for(let j = i + 1; j >= 1; j--) {
+            str += `${j} `
+        }
+        console.log(str);
+    }
+}
+
+
+starPrint(5);
+
 // const obj = [
 //     {
 //         name: 'Atique',
@@ -32,6 +47,22 @@
 //    }
 // }
 
+// let arr = ['H', 'e', 'l', 'l', 'o'];
+
+// arr.length = arr.length * 2; // Make space (double size)
+
+// let n = arr.length;
+
+// // Traverse backwards to avoid overwriting
+// for (let i = n - 1; i >= 0; i--) {
+//     console.log("I value:", i);
+//     arr[2 * i] = arr[i];
+//     arr[2 * i + 1] = arr[i];
+// }
+
+// console.log(arr.join("")); // HHeelloo
+
+
 // const arrStr = ['sunny', 'atique', 'hello', 'bollow', 'collow'];
 // console.log(arrStr.sort(sortArr));
 
@@ -56,6 +87,10 @@
 //    return new Function(`return ${str}`)();
 // }
 
+// function parseEquation(str) {
+//     return new Function(`return ${str}`)();
+// }
+
 // console.log(parseEquation(`1+3+5+(5-3)+10`));
 
 // Get all the subssrting  
@@ -65,8 +100,8 @@
 //     for(let i = 0; i < str.length; i++) {
 //         for(let j = i + 1; j < str.length + 1; j++) {
 //             arr.push(str.slice(i, j))
-//             str.reduce((a, b) => a + b, 0) // this will do the sum.
-            //    Math.min(...this.nums.slice(i, j));
+//             // str.reduce((a, b) => a + b, 0) // this will do the sum.
+//                Math.min(...this.str.slice(i, j));
 //         }
 //     }
 //     return arr;
@@ -172,6 +207,7 @@
 //    return arr = arr.filter((i, v) => arr.indexOf(v) != arr.lastIndexOf(v));
 // }
 
+
 // const nonRepetingElements = (arr) => {
 //     return arr = arr.filter((i, v) => arr.indexOf(v) == arr.lastIndexOf(v));
 // }
@@ -196,6 +232,19 @@
 //     console.log("LCM:", (a * b) / m)
 // }
 
+// const gcdAndLcm = (m, n) => {
+//     let a = m, b = n;
+//     while(m != n) {
+//         if(m > n) {
+//             m = m - n;
+//         } else {
+//             n = n - m;
+//         }
+//     }
+//     console.log("GCD:", m);
+//     console.log("LCM:", (a * b) / m)
+// }
+
 
 // gcdAndLcm(72, 120);
 // GCD:- 24
@@ -203,6 +252,32 @@
 
 
 // Fibonacci Number
+
+// const FiboNacci = (num) => {
+//     let a = 0, b = 1, c = 0;
+//     if(num == 0) {
+//         return 0;
+//     } if(num <= 2) {
+//         return 1;
+//     }
+
+//     for(let i = 2; i <= num; i++) {
+//         let c = a + b;
+//         console.log(a, " --------> ", b);
+//         a = b;
+//         b = c
+//     }
+//     return b;
+// }
+
+// const FiboNacciRecurssion = (num) => {
+//     if(num == 0) {
+//         return 0;
+//     } if(num <= 2) {
+//         return 1;
+//     } 
+//     return FiboNacciRecurssion(num - 1) + FiboNacciRecurssion(num - 2);
+// }
 
 // const FiboNacci = (num) => {
 //     let a = 0, b = 1, c = 0;
@@ -232,18 +307,18 @@
 // console.log("FiboNacci of a Number:", FiboNacci(8));
 // console.log("FiboNacci of a Number using recurssion:", FiboNacciRecurssion(8));
 
-const SinglePrimeNumber = (number) => {
-    if(number < 2) {
-        return true;
-    } else {
-        for(let i = 2; i <= Math.sqrt(number); i++) {
-            if(number % i == 0) {
-                return false;
-            }
-        }
-    }
-    return true;
-}
+// const SinglePrimeNumber = (number) => {
+//     if(number < 2) {
+//         return true;
+//     } else {
+//         for(let i = 2; i <= Math.sqrt(number); i++) {
+//             if(number % i == 0) {
+//                 return false;
+//             }
+//         }
+//     }
+//     return true;
+// }
 
 // const SinglePrimeNumber = (number) => {
 //     if(number < 2) {

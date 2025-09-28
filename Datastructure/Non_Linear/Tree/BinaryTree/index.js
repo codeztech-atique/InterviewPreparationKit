@@ -250,18 +250,29 @@ function isBalanced(node) {
    return Math.max(lh, rh) + 1; // return height
 }
 
-function lcaBST(root, v1, v2) { // Last common acestor
-   if (v1 === v2) return v1;   // if both parameters are the same
-   let low = Math.min(v1, v2), high = Math.max(v1, v2);
-   let cur = root;
-   while (cur) {
-     if (high < cur.value) cur = cur.left;
-     else if (low > cur.value) cur = cur.right;
-     else return cur.value;
-   }
-   return null;
-}
+// Using Iterative
+// function lcaBST(root, v1, v2) { // Last common acestor
+//    if (v1 === v2) return v1;   // if both parameters are the same
+//    let low = Math.min(v1, v2), high = Math.max(v1, v2);
+//    let cur = root;
+//    while (cur) {
+//      if (high < cur.value) cur = cur.left;
+//      else if (low > cur.value) cur = cur.right;
+//      else return cur.value;
+//    }
+//    return null;
+// }
  
+// using recursion
+function lowestCommonAncestor(root, p, q) { // lcaBST
+  if (root === null || root === p || root === q) return root;
+
+  const left = lowestCommonAncestor(root.left, p, q);
+  const right = lowestCommonAncestor(root.right, p, q);
+
+  if (left && right) return root;   // p and q split across left/right
+  return left ?? right;             // both in one side, or null
+}
 
 // Find node with its parent & level (BFS)
 function findWithParent(root, target) {
