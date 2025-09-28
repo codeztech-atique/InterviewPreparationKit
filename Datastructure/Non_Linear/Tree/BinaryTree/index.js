@@ -264,11 +264,11 @@ function isBalanced(node) {
 // }
  
 // using recursion
-function lowestCommonAncestor(root, p, q) { // lcaBST
+function lcaBST(root, p, q) { // lcaBST
   if (root === null || root === p || root === q) return root;
 
-  const left = lowestCommonAncestor(root.left, p, q);
-  const right = lowestCommonAncestor(root.right, p, q);
+  const left = lcaBST(root.left, p, q);
+  const right = lcaBST(root.right, p, q);
 
   if (left && right) return root;   // p and q split across left/right
   return left ?? right;             // both in one side, or null
