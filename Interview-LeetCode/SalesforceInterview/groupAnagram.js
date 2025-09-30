@@ -58,7 +58,7 @@ class Anagram_Groups_Class {
             anagrams.get(elements).push(strs[i])
         }
         return Array.from(anagrams.values())
-      }
+    }
     
 
     sortAndCompare_Word(actualStr, compareStr) {
@@ -99,3 +99,7 @@ var groupAnagrams = function(strs) {
 // groupAnagrams([""])
 // groupAnagrams(["", "", ""])
 groupAnagrams(["ati", "ait", "tia", "dog", "god"])
+
+
+// Input: strs = ["eat","tea","tan","ate","nat","bat"]
+// Output: [["bat"],["nat","tan"],["ate","eat","tea"]]

@@ -1,17 +1,17 @@
 // Star print
 
-const starPrint = (n) => {
-    for(let i = 0; i <= n; i++) {
-        let str = "";
-        for(let j = i + 1; j >= 1; j--) {
-            str += `${j} `
-        }
-        console.log(str);
-    }
-}
+// const starPrint = (n) => {
+//     for(let i = 0; i <= n; i++) {
+//         let str = "";
+//         for(let j = i + 1; j >= 1; j--) {
+//             str += `${j} `
+//         }
+//         console.log(str);
+//     }
+// }
 
 
-starPrint(5);
+// starPrint(5);
 
 // const obj = [
 //     {
@@ -47,6 +47,20 @@ starPrint(5);
 //    }
 // }
 
+
+// const sortArr = (a, b) => {
+//     if(a > b) {
+//         return 0;
+//     } else if(a < b) {
+//         return -1;
+//     } else {
+//         return 1;
+//     }
+// }
+
+// const arrStr = ['sunny', 'atique', 'hello', 'bollow', 'collow'];
+// console.log(arrStr.sort(sortArr));
+
 // let arr = ['H', 'e', 'l', 'l', 'o'];
 
 // arr.length = arr.length * 2; // Make space (double size)
@@ -63,8 +77,7 @@ starPrint(5);
 // console.log(arr.join("")); // HHeelloo
 
 
-// const arrStr = ['sunny', 'atique', 'hello', 'bollow', 'collow'];
-// console.log(arrStr.sort(sortArr));
+
 
 // const arrNum = [4, 6, 1, 2, 44, 12, 11];
 // console.log(arrStr.sort(arrStrSort));
@@ -85,6 +98,10 @@ starPrint(5);
 
 // function parseEquation(str) {
 //    return new Function(`return ${str}`)();
+// }
+
+// function parseEquation(str) {
+//     return new Function(`return ${str}`)();
 // }
 
 // function parseEquation(str) {
@@ -142,6 +159,7 @@ starPrint(5);
 // console.log(findDuplicatesUsingHash(arr2));
 
 // let sum = a => b => b ? sum(a + b) : a;
+
 
 // Recursion of Below Problem
 // console.log(sum(1)(2)(32)());
@@ -212,6 +230,7 @@ starPrint(5);
 //     return arr = arr.filter((i, v) => arr.indexOf(v) == arr.lastIndexOf(v));
 // }
 
+
 // var arr = [4,1,2,1,2];
 // console.log(repetingElements(arr))
 // console.log(nonRepetingElements(arr))
@@ -242,7 +261,7 @@ starPrint(5);
 //         }
 //     }
 //     console.log("GCD:", m);
-//     console.log("LCM:", (a * b) / m)
+//     console.log("LCM:", (a * b) / m);
 // }
 
 
@@ -322,14 +341,14 @@ starPrint(5);
 
 // const SinglePrimeNumber = (number) => {
 //     if(number < 2) {
-//         return true
-//     }
+//         return true;
+//     } 
 //     for(let i = 2; i <= Math.sqrt(number); i++) {
-//       if(number % i == 0) {
-//           return false;
-//       }
-//    }
-//    return true;
+//         if(number % i == 0) {
+//             return false;
+//         }
+//     }
+//     return true;
 // }
 
 // const MultiplePrimeNumber = (arr) => {
@@ -383,10 +402,38 @@ starPrint(5);
 //     }
 // }
 
+
+// function removeBrackets(expression) {
+//     let arr = [];
+//     for(let i = 0; i < expression.length; i++) {
+//         let data = expression[i];
+//         if(data == "(" || data == "{" || data == "[") {
+//             arr.push(data);
+//         }
+
+//         if(arr.length == 0)  {
+//             return false;
+//         }
+
+//         switch(data) {
+//             case ')' : arr.pop(); break;
+//             case '}' : arr.pop(); break;
+//             case ']' : arr.pop(); break;
+//         }
+//     }
+//     console.log("Array:", arr)
+//     if(arr.length === 0) {
+//        return true;
+//     } else {
+//        return false;
+//     }
+// }
+
+
 // const expr = "([{}]){}{}";
 // const exprClosingBracket = "([{}]))";
 
-// if (removeBrackets(expr)) {
+// if (removeBrackets(exprClosingBracket)) {
 //    console.log("Balanced");
 // } else {
 //    console.log("Not Balanced");
@@ -464,3 +511,75 @@ starPrint(5);
 // Take distinct value from array --> 2nd Promise 
 
 // console.log(finalString, max);
+
+// const sortArr = (a, b) => {
+//     if(a < b) {
+//         return -1;
+//     } else if(a > b) {
+//         return 0;
+//     } else {
+//         return 1;
+//     }
+// }
+
+// const groupAnagrams = (arr) => {
+//     let hashMap = new Map();
+//     for(let i = 0; i < arr.length; i++) {
+//         let element = arr[i].split("").sort(sortArr).join("").trim("");
+//         console.log("Element:", element);
+//         if(!hashMap.has(element)) {
+//             hashMap.set(element, []);
+//         }
+//     }
+
+//     console.log("before:", hashMap);
+
+//     for(let i = 0; i < arr.length; i++) {
+//         let element = arr[i].split("").sort(sortArr).join("").trim("");
+//         if(hashMap.has(element)) {
+//             hashMap.get(element).push(arr[i]);
+//         }
+//     }
+
+//     console.log("after:", hashMap);
+//     console.log("Values:", Array.from(hashMap.values()));
+//     console.log("Values:", Array.from(hashMap.values()).sort((a, b) =>  a.length - b.length));
+// }
+
+// groupAnagrams(["ati", "ait", "tia", "dog", "god"])
+
+
+// Input: strs = ["eat","tea","tan","ate","nat","bat"]
+// Output: [["bat"],["nat","tan"],["ate","eat","tea"]
+
+class AmazonLex {
+    // Tentent Id - CLOTHOVIA-32
+    // Intent Id -  FAQ
+    constructor() {
+        this.hashMap = new Map();
+        // this.hashObj = {};
+    }
+
+    set(key, value) {
+        if(!this.hashMap.has(key)) {
+            this.hashMap.set(key, value);
+        }
+    }
+
+    get(key) {
+        return this.hashMap.get(key);
+    }
+}
+
+
+const mainFunction = (key, value) => {
+    const amazonLexClass = new AmazonLex();
+    amazonLexClass.set(key, value);
+
+    console.log(amazonLexClass.get(key));
+}
+
+// Frontend, AWS Lex Intent ( Cloud )
+mainFunction("order_status", "CL_ORDER_STAUS");
+mainFunction("return_refund", "CL_RETURN_REFUND");
+mainFunction("faq", "CL_FAQ");

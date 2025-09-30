@@ -16,6 +16,7 @@ class LinkedList {
       newNode.next = this.head;
       this.head = newNode;
       this.length++;
+      return this;
    }
 
    append(value) {
@@ -23,6 +24,7 @@ class LinkedList {
       this.tail.next = newNode;
       this.tail = newNode;
       this.length++;
+      return this;
    }
 
    insert(index, value) {
@@ -40,7 +42,7 @@ class LinkedList {
 
    remove(index) {
       if(index > this.length) {
-         return "Invalid input !!!"
+         return "Invalid Input !!!"
       }
       let leader = this.traverse(index - 1);
       let unwantedNode = leader.next;
@@ -53,6 +55,7 @@ class LinkedList {
       if(this.length == 0) {
          return "List Empty !!!"
       }
+
       let currentNode = this.head;
       this.head = currentNode.next;
       this.length--;
@@ -64,14 +67,12 @@ class LinkedList {
          return "List Empty !!!"
       }
 
-      let currNode = this.head;
+      let currentNode = this.head;
       let newTail = this.head;
-
-      while(currNode.next) {
-         newTail = currNode;
-         currNode = currNode.next;
+      while(currentNode.next) {
+         newTail = currentNode;
+         currentNode = currentNode.next;
       }
-
       newTail.next = null;
       this.tail = newTail;
       this.length--;
@@ -82,6 +83,7 @@ class LinkedList {
       if(!this.head.next) {
          return this.head;
       }
+
       this.tail = this.head;
       let first = this.head;
       let second = first.next;
@@ -90,7 +92,7 @@ class LinkedList {
          second.next = first;
          first = second;
          second = temp;
-      }
+      } 
       this.head.next = null;
       this.head = first;
       return this.printList();
@@ -102,13 +104,12 @@ class LinkedList {
       while(fast && fast.next) {
          slow = slow.next;
          fast = fast.next.next;
-         if(slow == fast) {
+         if(slow == fast) { 
             return true;
          }
       }
       return false;
    }
-
 
    traverse(index) {
       let counter = 1;
@@ -123,7 +124,7 @@ class LinkedList {
    printList() {
       let result = [];
       let curr = this.head;
-      while(curr) {
+      while(curr != null) {
          result.push(curr.value);
          curr = curr.next;
       }
@@ -145,7 +146,7 @@ console.log(myLinkedList.printList());
 myLinkedList.remove(2);
 console.log(myLinkedList.printList());
 
-myLinkedList.removeFirst();
+console.log("Remove first:", myLinkedList.removeFirst());
 
 console.log("Remove Last:", myLinkedList.removeLast());
 

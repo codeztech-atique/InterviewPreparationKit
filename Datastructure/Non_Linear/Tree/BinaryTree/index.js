@@ -274,6 +274,20 @@ function lcaBST(root, p, q) { // lcaBST
   return left ?? right;             // both in one side, or null
 }
 
+function diameterOfBinaryTree(root) {
+   let best = 0;
+   function height(n) {
+     if (!n) return 0;
+     const lh = height(n.left);
+     const rh = height(n.right);
+     best = Math.max(best, lh + rh + 1); // '+1' counts current node
+     return Math.max(lh, rh) + 1;
+   }
+   height(root);
+   return best;
+ }
+ 
+
 // Find node with its parent & level (BFS)
 function findWithParent(root, target) {
   if (!root) return null;
@@ -343,20 +357,6 @@ function ancestorsOf(root, x) {
   path.pop();
   return path.reverse();
 }
-
-function diameterOfBinaryTree(root) {
-  let best = 0;
-  function height(n) {
-    if (!n) return 0;
-    const lh = height(n.left);
-    const rh = height(n.right);
-    best = Math.max(best, lh + rh + 1); // '+1' counts current node
-    return Math.max(lh, rh) + 1;
-  }
-  height(root);
-  return best;
-}
-
 
 // Full binary tree checks: every node has 0 or 2 children 
 function isFullBinaryTree(node) {

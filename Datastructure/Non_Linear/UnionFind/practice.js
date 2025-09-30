@@ -1,6 +1,6 @@
 class DSU {
     constructor(n) {
-        this.parent = Array.from({length: n}, (_, i) => i);
+        this.parent = Array.from({ length: n}, (_, i) => i);
         this.components = n;
     }
 
@@ -10,7 +10,7 @@ class DSU {
     }
 
     union(a, b) {
-        const ra = this.find(a), rb = this.find(b);
+        let ra = this.find(a), rb = this.find(b);
         if(ra == rb) return false;
         this.parent[rb] = ra;
         this.components--;
@@ -19,13 +19,15 @@ class DSU {
 
     hasCycleUndirected(n, edges) {
         let dsu = new DSU(n);
+
         for(const [u, v] of edges) {
             if(!dsu.union(u, v)) {
                 return true;
             }
         }
+
         return false;
-    } 
+    }
 
     countConnectComponents(n, edges) {
         let dsu = new DSU(n);
@@ -34,7 +36,7 @@ class DSU {
             dsu.union(u, v);
         }
 
-        const groups = new Map();
+        let groups = new Map();
         for(let i = 0; i < n; i++) {
             const r = dsu.find(i);
             if(!groups.has(r)) groups.set(r, []);
@@ -45,17 +47,26 @@ class DSU {
     }
 
     kruskalMST(n, edges) {
+        edges = edges.sort((a, b) => a[2] - b[2]);
+    
         let dsu = new DSU(n);
+
         let mst = [];
         let total = 0;
+
         for(const [u, v, w] of edges) {
             if(dsu.union(u, v)) {
                 mst.push([u, v, w]);
                 total += w;
             }
+
             if(mst.length == n - 1) break;
         }
-        return { weight: total, edges: mst};
+
+        return {
+            weight: total,
+            edges: mst
+        }
     }
 
     connected(a, b) {
@@ -93,9 +104,10 @@ const weightedEdges = [
   [0,1,1],
   [1,2,2],
   [2,3,3],
-  [3,4,4],
   [0,4,10],
-  [1,3,5]
+  [1,3,5],
+  [3,4,4],
+ 
 ];
 
 console.log("MST:", dsu.kruskalMST(5, weightedEdges)); // Minimum spanning tree, Kruskal
