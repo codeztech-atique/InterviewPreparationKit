@@ -265,13 +265,14 @@ function isBalanced(node) {
  
 // using recursion
 function lcaBST(root, p, q) { // lcaBST
-  if (root === null || root === p || root === q) return root;
+  if (!node) return null;
+  if (node.value === p || node.value === q) return node;
 
-  const left = lcaBST(root.left, p, q);
-  const right = lcaBST(root.right, p, q);
+  const left = lcaBTByValue(node.left, p, q);
+  const right = lcaBTByValue(node.right, p, q);
 
-  if (left && right) return root;   // p and q split across left/right
-  return left ?? right;             // both in one side, or null
+  if (left && right) return node;  // p and q split across left/right
+  return left ?? right;  // p and q split across left/right
 }
 
 function diameterOfBinaryTree(root) {
@@ -280,7 +281,7 @@ function diameterOfBinaryTree(root) {
      if (!n) return 0;
      const lh = height(n.left);
      const rh = height(n.right);
-     best = Math.max(best, lh + rh + 1); // '+1' counts current node
+     best = Math.max(best, lh + rh); // '+1' counts current node
      return Math.max(lh, rh) + 1;
    }
    height(root);
@@ -443,7 +444,8 @@ console.log("Postorder After remove:",bst.dfsPostorder());
 
 console.log("COUNT LEAF NODE: ", getLeafCountOfBinaryTree(bst.root));
 console.log("Leaf Nodes Are: ", leafNode);
-console.log("LCA of BST:", lcaBST(bst.root, 1, 6))
+console.log("LCA of BST:", lcaBST(bst.root, 1, 6));
+console.log("LCA of BST:", lcaBST(bst.root, 1, 6)?.value);
 
 console.log("HIGHT OF BINARY TREE: ", hightOfBinaryTree(bst.root));
 console.log("Is Balance Tree ( AVL-balanced ):", isBalanced(bst.root) != -1)

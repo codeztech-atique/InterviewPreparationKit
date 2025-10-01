@@ -1,6 +1,6 @@
 class DSU {
     constructor(n) {
-        this.parent = Array.from({ length: n}, (_, i) => i);
+        this.parent = Array.from({length: n}, (_,i) => i);
         this.components = n;
     }
 
@@ -17,40 +17,35 @@ class DSU {
         return true;
     }
 
-    hasCycleUndirected(n, edges) {
+    hasCycle(n, edges) {
         let dsu = new DSU(n);
-
         for(const [u, v] of edges) {
             if(!dsu.union(u, v)) {
                 return true;
             }
         }
-
         return false;
     }
 
     countConnectComponents(n, edges) {
         let dsu = new DSU(n);
 
-        for(const [u, v] of edges) {
+        for(let [u, v] of edges) {
             dsu.union(u, v);
         }
 
         let groups = new Map();
         for(let i = 0; i < n; i++) {
-            const r = dsu.find(i);
+            const r = dsu.find(i); 
             if(!groups.has(r)) groups.set(r, []);
             groups.get(r).push(i);
         }
-
-        return Array.from(groups.values());
+        return Array.from(groups.values())
     }
 
     kruskalMST(n, edges) {
         edges = edges.sort((a, b) => a[2] - b[2]);
-    
         let dsu = new DSU(n);
-
         let mst = [];
         let total = 0;
 
@@ -59,7 +54,6 @@ class DSU {
                 mst.push([u, v, w]);
                 total += w;
             }
-
             if(mst.length == n - 1) break;
         }
 
@@ -76,6 +70,7 @@ class DSU {
     count() {
         return this.components;
     }
+
 }
 
 
@@ -93,8 +88,8 @@ console.log("components:", dsu.count());            // 3
 const edges1 = [[0, 1], [1, 2], [2, 3], [3, 4]];      // no cycle
 const edges2 = [[0, 1], [1, 2], [2, 3], [3, 1]];      // has cycle (1-2-3-1)
 const edges3 = [[0, 1], [1, 2], [3, 4], [5, 6]];
-console.log("hasCycleUndirected(edges1):", dsu.hasCycleUndirected(5, edges1)); // false
-console.log("hasCycleUndirected(edges2):", dsu.hasCycleUndirected(4, edges2));  // true
+console.log("hasCycle(edges1):", dsu.hasCycle(5, edges1)); // false
+console.log("hasCycle(edges2):", dsu.hasCycle(4, edges2));  // true
 
 // Components: [0,1,2], [3,4], [5,6]
 console.log("connectedComponents:", dsu.countConnectComponents(7, edges3));
