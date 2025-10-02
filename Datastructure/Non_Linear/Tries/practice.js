@@ -1,8 +1,8 @@
 class Node {
     constructor() {
         this.children = new Map();
-        this.isWordEnd = false;
         this.size = 0;
+        this.isWordEnd = false;
     }
 }
 class Tries {
@@ -10,14 +10,14 @@ class Tries {
         this.root = new Node();
     }
 
-    insert(word, value) {
+    insert(word, size) {
         let curr = this.root;
         for(let i = 0; i < word.length; i++) {
             let charToInsert = word[i];
             if(!(curr.children.has(charToInsert))) {
                 curr.children.set(charToInsert, new Node());
             }
-            curr.size = value;
+            curr.size = size;
             curr = curr.children.get(charToInsert);
         }
         curr.isWordEnd = true;
@@ -27,23 +27,23 @@ class Tries {
     contains(word) {
         let curr = this.root;
         for(let i = 0; i < word.length; i++) {
-            let charToInsert = word[i];
-            if(!(curr.children.has(charToInsert))) {
+            let charToSearch = word[i];
+            if(!(curr.children.has(charToSearch))) {
                 return false;
             }
-            curr = curr.children.get(charToInsert);
+            curr = curr.children.get(charToSearch);
         }
-        return curr.isWordEnd;
+        return curr.isWordEnd ;
     }
 
     startWithPrefix(word) {
         let curr = this.root;
         for(let i = 0; i < word.length; i++) {
-            let charToInsert = word[i];
-            if(!(curr.children.has(charToInsert))) {
+            let charToSearch = word[i];
+            if(!(curr.children.has(charToSearch))) {
                 return false;
             }
-            curr = curr.children.get(charToInsert);
+            curr = curr.children.get(charToSearch);
         }
         return true;
     }
@@ -51,18 +51,18 @@ class Tries {
     remove(word) {
         let curr = this.root;
         for(let i = 0; i < word.length; i++) {
-            let charToInsert = word[i];
-            if(!(curr.children.has(charToInsert))) {
+            let charToSearch = word[i];
+            if(!(curr.children.has(charToSearch))) {
                 return false;
             }
-            curr = curr.children.get(charToInsert);
+            curr = curr.children.get(charToSearch);
         }
         curr.isWordEnd = false;
         return true;
     }
 
     getCommonPrefix() {
-        let ch = "", str = "";
+        let str = "", ch = "";
         let curr = this.root;
         while(curr.children.size == 1 && !curr.isWordEnd) {
             ch = Array.from(curr.children.keys())[0];
@@ -74,42 +74,41 @@ class Tries {
 
     printAllTheWord() {
         let result = [];
-        let dfs = (node, currWord = '') => {
+        let searchTreeDFS = (node, currentWord) => {
             if(node.isWordEnd) {
-                result.push(currWord);
+                result.push(currentWord);
             }
-
-            for(const [ch, currNode] of node.children.entries()) {
-                dfs(currNode, currWord + ch);
+            for(let [ch, currNode] of node.children.entries()) {
+                searchTreeDFS(currNode, currentWord + ch);
             }
         }
-        dfs(this.root, '');
+        searchTreeDFS(this.root, '');
         return result;
     }
 
     printLeafWords() {
         let result = [];
-        let dfs = (node) => {
+        let searchTreeDFS = (node) => {
             for(const [ch, currNode] of node.children.entries()) {
                 result.push({
                     key: ch,
                     value: node.size
                 })
-                dfs(currNode);
+                searchTreeDFS(currNode);
             }
         }
-        dfs(this.root);
+        searchTreeDFS(this.root);
         return result;
     }
 
     autoComplete(str) {
-        let total = this.printAllTheWord();
-        return total.filter((e) => {
+        let totalWords = this.printAllTheWord();
+        return totalWords.filter((e) => {
             if(e.startsWith(str)) {
                 return true;
             }
         })
-    } 
+    }
 }
 
 const tries = new Tries();

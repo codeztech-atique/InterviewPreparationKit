@@ -49,10 +49,12 @@
 
 
 // const sortArr = (a, b) => {
-//     if(a > b) {
+//     a = a.toLowerCase();
+//     b = b.toLowerCase();
+//     if(a < b) {
+//         return - 1;
+//     } else if(a > b) {
 //         return 0;
-//     } else if(a < b) {
-//         return -1;
 //     } else {
 //         return 1;
 //     }
@@ -97,16 +99,9 @@
 
 
 // function parseEquation(str) {
-//    return new Function(`return ${str}`)();
+//     return new Function(`return ${str}`)()
 // }
 
-// function parseEquation(str) {
-//     return new Function(`return ${str}`)();
-// }
-
-// function parseEquation(str) {
-//     return new Function(`return ${str}`)();
-// }
 
 // console.log(parseEquation(`1+3+5+(5-3)+10`));
 
@@ -159,7 +154,6 @@
 // console.log(findDuplicatesUsingHash(arr2));
 
 // let sum = a => b => b ? sum(a + b) : a;
-
 
 // Recursion of Below Problem
 // console.log(sum(1)(2)(32)());
@@ -238,18 +232,6 @@
 
 // GCD and LCM
 
-// const gcdAndLcm = (m, n) => {
-//     let a = m, b = n;
-//     while(m != n) {
-//         if(m > n) {
-//             m = m - n;
-//         } else {
-//             n = n - m;
-//         }
-//     }
-//     console.log("GCD:", m);
-//     console.log("LCM:", (a * b) / m)
-// }
 
 // const gcdAndLcm = (m, n) => {
 //     let a = m, b = n;
@@ -273,78 +255,36 @@
 // Fibonacci Number
 
 // const FiboNacci = (num) => {
-//     let a = 0, b = 1, c = 0;
-//     if(num == 0) {
-//         return 0;
-//     } if(num <= 2) {
-//         return 1;
-//     }
+//     if (n === 1) return 1;
+//     if (n === 2) return 2;
 
-//     for(let i = 2; i <= num; i++) {
+//     let a = 1, b = 2; // base cases
+//     for (let i = 3; i <= n; i++) {
 //         let c = a + b;
-//         console.log(a, " --------> ", b);
 //         a = b;
-//         b = c
+//         b = c;
 //     }
 //     return b;
 // }
 
 // const FiboNacciRecurssion = (num) => {
-//     if(num == 0) {
-//         return 0;
-//     } if(num <= 2) {
-//         return 1;
-//     } 
+//     if (n === 1) return 1;
+//     if (n === 2) return 2;
 //     return FiboNacciRecurssion(num - 1) + FiboNacciRecurssion(num - 2);
 // }
 
-// const FiboNacci = (num) => {
-//     let a = 0, b = 1, c = 0;
-//     if(num < 1) {
-//         return 0;
-//     } if(num <= 2) {
-//         return 1;
-//     }
-//     for(let i = 2; i <= num; i++) {
-//        c = a + b;
-//        console.log(a, " ======> ", b);
-//        a = b;
-//        b = c;
-//     }
-//     return c;
-// }
 
-// const FiboNacciRecurssion = (num) => {
-//     if(num < 1) {
-//         return 0;
-//     } if(num <= 2) {
-//         return 1;
-//     }
-//     return FiboNacciRecurssion(num - 1) + FiboNacciRecurssion(num - 2);
-// }
 
 // console.log("FiboNacci of a Number:", FiboNacci(8));
 // console.log("FiboNacci of a Number using recurssion:", FiboNacciRecurssion(8));
 
-// const SinglePrimeNumber = (number) => {
-//     if(number < 2) {
-//         return true;
-//     } else {
-//         for(let i = 2; i <= Math.sqrt(number); i++) {
-//             if(number % i == 0) {
-//                 return false;
-//             }
-//         }
-//     }
-//     return true;
-// }
 
 // const SinglePrimeNumber = (number) => {
 //     if(number < 2) {
 //         return true;
-//     } 
+//     }
 //     for(let i = 2; i <= Math.sqrt(number); i++) {
-//         if(number % i == 0) {
+//         if(number % 2 == 0) {
 //             return false;
 //         }
 //     }
@@ -368,39 +308,13 @@
 // }
 
 // var arr = [1,2,4,7,11,12,15,17,19,21,27,29,43,44];
-// console.log(SinglePrimeNumber(18));
+// console.log(SinglePrimeNumber(19));
 
 // console.log(MultiplePrimeNumber(arr));
 
 
 // Check the Balanced Paranthesis
 // Solve this equation using stack
-
-// function removeBrackets(expression) {
-//     let arr = [];
-//     for(var i=0;i<expression.length;i++) {
-//        var data = expression[i];
-//        console.log("Array: ---> ")
-//        if(data === '(' || data === "{" || data === "[") {
-//           console.log("Array: ---> ", data)
-//           arr.push(data)
-//        }
-//        if(arr.length === 0) {
-//           return false;
-//        }
-//        switch(data) {
-//           case ')': arr.pop(); console.log(') --> '+arr.pop()); break;
-//           case '}': arr.pop(); console.log('} --> '+arr.pop()); break;
-//           case ']': arr.pop();  console.log('] --> '+arr.pop()); break;
-//        }
-//     }
-//     console.log("Array:", arr)
-//     if(arr.length === 0) {
-//        return true;
-//     } else {
-//        return false;
-//     }
-// }
 
 
 // function removeBrackets(expression) {
@@ -432,6 +346,7 @@
 
 // const expr = "([{}]){}{}";
 // const exprClosingBracket = "([{}]))";
+// console.log(removeBrackets(exprClosingBracket));
 
 // if (removeBrackets(exprClosingBracket)) {
 //    console.log("Balanced");
@@ -546,40 +461,23 @@
 //     console.log("Values:", Array.from(hashMap.values()).sort((a, b) =>  a.length - b.length));
 // }
 
-// groupAnagrams(["ati", "ait", "tia", "dog", "god"])
+// function sortArr(a, b) {
+//     a = a.toLowerCase();
+//     b = b.toLowerCase();
+//     if(a < b) {
+//         return -1;
+//     } else if(a > b) {
+//         return 0;
+//     } else {
+//         return 1;
+//     }
+// }
+
+
+
+
+// console.log(groupAnagrams(["ati", "ait", "tia", "dog", "god"]));
 
 
 // Input: strs = ["eat","tea","tan","ate","nat","bat"]
 // Output: [["bat"],["nat","tan"],["ate","eat","tea"]
-
-class AmazonLex {
-    // Tentent Id - CLOTHOVIA-32
-    // Intent Id -  FAQ
-    constructor() {
-        this.hashMap = new Map();
-        // this.hashObj = {};
-    }
-
-    set(key, value) {
-        if(!this.hashMap.has(key)) {
-            this.hashMap.set(key, value);
-        }
-    }
-
-    get(key) {
-        return this.hashMap.get(key);
-    }
-}
-
-
-const mainFunction = (key, value) => {
-    const amazonLexClass = new AmazonLex();
-    amazonLexClass.set(key, value);
-
-    console.log(amazonLexClass.get(key));
-}
-
-// Frontend, AWS Lex Intent ( Cloud )
-mainFunction("order_status", "CL_ORDER_STAUS");
-mainFunction("return_refund", "CL_RETURN_REFUND");
-mainFunction("faq", "CL_FAQ");

@@ -11,12 +11,10 @@ const merge = (left, right) => {
 }
 
 const mergeSort = (arr) => {
-    let half = arr.length / 2;
-    
     if(arr.length < 2) {
         return arr;
     }
-
+    let half = arr.length / 2;
     let left = arr.splice(0, half);
     return merge(mergeSort(left), mergeSort(arr));
 }

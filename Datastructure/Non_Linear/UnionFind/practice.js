@@ -88,11 +88,14 @@ console.log("components:", dsu.count());            // 3
 const edges1 = [[0, 1], [1, 2], [2, 3], [3, 4]];      // no cycle
 const edges2 = [[0, 1], [1, 2], [2, 3], [3, 1]];      // has cycle (1-2-3-1)
 const edges3 = [[0, 1], [1, 2], [3, 4], [5, 6]];
+const edges4 = [[0,1],[1,2],[0,2],[2,6],[6,7],[6,8],[0,3],[3,4],[3,5]];
 console.log("hasCycle(edges1):", dsu.hasCycle(5, edges1)); // false
 console.log("hasCycle(edges2):", dsu.hasCycle(4, edges2));  // true
+console.log("hasCycle(edges4):", dsu.hasCycle(4, edges4));  // true
 
 // Components: [0,1,2], [3,4], [5,6]
 console.log("connectedComponents:", dsu.countConnectComponents(7, edges3));
+console.log("connectedComponents:", dsu.countConnectComponents(10, edges4));
 // => [ [0,1,2], [3,4], [5,6] ]
 
 const weightedEdges = [

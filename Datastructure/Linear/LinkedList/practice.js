@@ -53,9 +53,8 @@ class LinkedList {
 
    removeFirst() {
       if(this.length == 0) {
-         return "List Empty !!!"
+         return "List Empty !!!";
       }
-
       let currentNode = this.head;
       this.head = currentNode.next;
       this.length--;
@@ -64,14 +63,13 @@ class LinkedList {
 
    removeLast() {
       if(this.length == 0) {
-         return "List Empty !!!"
+         return "List Empty !!!";
       }
-
-      let currentNode = this.head;
+      let current = this.head;
       let newTail = this.head;
-      while(currentNode.next) {
-         newTail = currentNode;
-         currentNode = currentNode.next;
+      while(current.next) {
+         newTail = current;
+         current = current.next;
       }
       newTail.next = null;
       this.tail = newTail;
@@ -83,7 +81,6 @@ class LinkedList {
       if(!this.head.next) {
          return this.head;
       }
-
       this.tail = this.head;
       let first = this.head;
       let second = first.next;
@@ -92,7 +89,7 @@ class LinkedList {
          second.next = first;
          first = second;
          second = temp;
-      } 
+      }
       this.head.next = null;
       this.head = first;
       return this.printList();
@@ -101,10 +98,11 @@ class LinkedList {
    hasCycle() {
       let slow = this.head;
       let fast = this.head;
+
       while(fast && fast.next) {
          slow = slow.next;
          fast = fast.next.next;
-         if(slow == fast) { 
+         if(slow == fast) {
             return true;
          }
       }
