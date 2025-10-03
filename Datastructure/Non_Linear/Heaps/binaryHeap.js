@@ -14,6 +14,8 @@
 
 // Visual Algo - https://visualgo.net/en/heap?slide=1
 
+
+// ---- binaryHeap.js (CommonJS) ----
 class Heap {
   constructor(cmp = (a, b) => a - b) {
     this.data = [];
@@ -62,24 +64,20 @@ class Heap {
   #swap(i, j) { [this.data[i], this.data[j]] = [this.data[j], this.data[i]]; }
 }
 
-// Helpers to make min-/max- heaps quickly
-exports.minHeap = (cmp) => new Heap(cmp ?? ((a, b) => a - b));
-exports.maxHeap = (cmp) => new Heap(cmp ?? ((a, b) => b - a));
+const minHeap = (cmp) => new Heap(cmp ?? ((a, b) => a - b));
+const maxHeap = (cmp) => new Heap(cmp ?? ((a, b) => b - a));
 
-// Create a min-heap
-const h = minHeap();
+module.exports = { Heap, minHeap, maxHeap };
 
-// Add numbers
-h.push(10);
-h.push(5);
-h.push(20);
-h.push(1);
-
-console.log("Size:", h.size());     // 4
-console.log("Peek (min):", h.peek()); // 1
-
-// Pop numbers (always gives the smallest first)
-console.log("Pop:", h.pop()); // 1
-console.log("Pop:", h.pop()); // 5
-console.log("Pop:", h.pop()); // 10
-console.log("Pop:", h.pop()); // 20
+// If you want to keep a local demo in THIS file, guard it:
+if (require.main === module) {
+  const h = minHeap();
+  h.push(10); h.push(5); h.push(20); h.push(1);
+  console.log("Size:", h.size());
+  console.log("Peek (min):", h.peek());
+  console.log("Heaps are:", h.data);
+  console.log("Pop:", h.pop());
+  console.log("Pop:", h.pop());
+  console.log("Pop:", h.pop());
+  console.log("Pop:", h.pop());
+}
