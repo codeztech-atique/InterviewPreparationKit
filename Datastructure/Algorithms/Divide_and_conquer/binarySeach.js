@@ -37,4 +37,4 @@ var search = function(nums, target) {
     return binarySearch(nums, target, 0, nums.length - 1);
 };
 
-binarySearch([-1,0,3,5,9,12], 9);
+search([-1,0,3,5,9,12], 9);

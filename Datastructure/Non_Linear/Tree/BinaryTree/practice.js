@@ -33,6 +33,7 @@ class Node {
       this.right = null;
    }
 }
+
 class BinarySearchTree {   
    constructor(value) {
       this.root = new Node(value);
@@ -41,7 +42,7 @@ class BinarySearchTree {
 
    insert(value) {
       let newNode = new Node(value);
-      let searchTree = (node) => {
+      let searchTree = node => {
          if(value < node.value) {
             if(!node.left) {
                node.left = newNode;
@@ -54,8 +55,9 @@ class BinarySearchTree {
             } else {
                searchTree(node.right);
             }
-         } 
+         }
       }
+      this.count++;
       searchTree(this.root);
       return this;
    }
@@ -63,7 +65,7 @@ class BinarySearchTree {
    remove(value) {
       let isRemoved = false;
       let removeRec = (node, value) => {
-         if(!node) return true;
+         if(!node) return null;
          if(value < node.value) {
             node.left = removeRec(node.left, value);
             return node;
@@ -73,12 +75,12 @@ class BinarySearchTree {
          }
 
          isRemoved = true;
-         if(!node) return true;
+       
+         if(!node.left && !node.right) return true;
          if(!node.left) return node.right;
          if(!node.right) return node.left;
 
-         let succVal = this.minNode(node.clear
-            , value);
+         let succVal = this.minNode(node.right, value);
          node.value = succVal;
          node.right = removeRec(node.right, succVal);
          return node;
@@ -86,6 +88,13 @@ class BinarySearchTree {
       this.root = removeRec(this.root, value);
       if(isRemoved) this.count--;
       return isRemoved;
+   }
+
+   minNode(node) {
+      while(node.left) {
+         node = node.left;
+      }
+      return node.value;
    }
 
    min() {
@@ -116,13 +125,6 @@ class BinarySearchTree {
          }
       }
       return false;
-   }
-
-   minNode(node) {
-      while(node.left) {
-         node = node.left;
-      }
-      return node.value;
    }
 
    dfsInorder() {
@@ -190,8 +192,8 @@ class BinarySearchTree {
       //   1    6 17  21
 
       // Output - 10,5,19,1,6,17,21
-      let result = [];
       let queue = [this.root];
+      let result = [];
       while(queue.length) {
          let currentNode = queue.shift();
          result.push(currentNode.value);
@@ -201,7 +203,7 @@ class BinarySearchTree {
          } if(currentNode.right) {
             queue.push(currentNode.right);
          }
-      } 
+      }
       return result;
    }
 }
@@ -211,7 +213,7 @@ function getLeafCountOfBinaryTree(node) {
    if(!node.left && !node.right) {
       leafNode.push(node.value);
       return 1;
-   }
+   } 
    return getLeafCountOfBinaryTree(node.left) + getLeafCountOfBinaryTree(node.right);
 }
 
@@ -230,46 +232,46 @@ function hightOfBinaryTree(node) {
 }
 
 function isBalanced(node) {
-   if(!node) return true;
+  if(!node) return true;
 
-   let lh = isBalanced(node.left);
-   if(lh == -1) return -1;
+  let lh = isBalanced(node.left);
+  if(lh == -1) return -1;
 
-   let rh = isBalanced(node.right);
-   if(rh == -1) return -1;
+  let rh = isBalanced(node.right);
+  if(rh == -1) return -1;
 
-   if(Math.abs(lh - rh) > 1) return -1;
-   return Math.max(lh, rh) + 1;
+  if(Math.abs(lh - rh) > 1) return -1;
+  return Math.max(lh, rh) + 1;
 }
 
 function isFullBinaryTree(node) {
    if(!node) return true;
    if(!node.left && !node.right) return true;
    if(node.left && node.right) {
-      return isFullBinaryTree(node.left) && isFullBinaryTree(node.right);
+         return isFullBinaryTree(node.left) && isFullBinaryTree(node.right);
    }
    return false;
 }
 
-function countNodes(node) {
+function countNode(node) {
    if(!node) return 0;
-   return 1 + countNodes(node.left) + countNodes(node.right);
+   return 1 + countNode(node.left) + countNode(node.right);
 }
 
 function isCompleteBinaryTree(node) {
-   let total = countNodes(node);
-   let dfs = (node, index) => {
+   let total = countNode(node);
+   let searchTreeDFS = (node, index) => {
       if(!node) return true;
       if(index >= total) return false;
-      return dfs(node.left, 2 * index + 1) && dfs(node.right, 2 * index + 2);
+      return searchTreeDFS(node.left, 2 * index + 1) && searchTreeDFS(node.right, 2 * index + 2);
    }
-   return dfs(node, 0);
+   return searchTreeDFS(this.root, 0);
 } 
 
 function isPerfectBinaryTree(node) {
-   let h = hightOfBinaryTree(node);
-   let n = countNodes(node);
-   return n == ( 1 << h) - 1;
+  let n = countNode(node);
+  let h = hightOfBinaryTree(node);
+  return n == (1 << h) - 1;
 }
 
 function lcaBST(node, p, q) {
@@ -277,27 +279,22 @@ function lcaBST(node, p, q) {
    if(node.value == p || node.value == q) {
       return node;
    }
-
    let left = lcaBST(node.left, p, q);
    let right = lcaBST(node.right, p, q);
-
    if(left && right) return node;
-
-   return left ?? right; 
+   return left ?? right;
 }
-
-
 
 function diameterOfBinaryTree(node) {
    let best = 0;
-   let height = (node) => {
+   let searchTree = (node) => {
       if(!node) return 0;
-      let left = height(node.left);
-      let right = height(node.right);
-      best = Math.max(best, left + right);
-      return Math.max(left, right) + 1;
+      let lh = searchTree(node.left);
+      let rh = searchTree(node.right);
+      best = Math.max(best, lh + rh);
+      return Math.max(lh, rh) + 1;
    }
-   height(node);
+   searchTree(node);
    return best;
 }
 

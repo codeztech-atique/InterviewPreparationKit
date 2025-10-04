@@ -53,17 +53,17 @@ class LinkedList {
 
    removeFirst() {
       if(this.length == 0) {
-         return "List Empty !!!";
+         return "List Empty !!!"
       }
-      let currentNode = this.head;
-      this.head = currentNode.next;
+      let current = this.head;
+      this.head = current.next;
       this.length--;
       return this.printList();
    }
 
    removeLast() {
       if(this.length == 0) {
-         return "List Empty !!!";
+         return "List Empty !!!"
       }
       let current = this.head;
       let newTail = this.head;
@@ -83,7 +83,7 @@ class LinkedList {
       }
       this.tail = this.head;
       let first = this.head;
-      let second = first.next;
+      let second = this.head;
       while(second) {
          let temp = second.next;
          second.next = first;
@@ -93,20 +93,6 @@ class LinkedList {
       this.head.next = null;
       this.head = first;
       return this.printList();
-   }
-
-   hasCycle() {
-      let slow = this.head;
-      let fast = this.head;
-
-      while(fast && fast.next) {
-         slow = slow.next;
-         fast = fast.next.next;
-         if(slow == fast) {
-            return true;
-         }
-      }
-      return false;
    }
 
    traverse(index) {
@@ -127,6 +113,19 @@ class LinkedList {
          curr = curr.next;
       }
       return result;
+   }
+
+   hasCycle() {
+      let slow = this.head;
+      let fast = this.head;
+      while(fast && fast.next) {
+         slow = slow.next;
+         fast = fast.next.next;
+         if(slow == fast) {
+            return true;
+         }
+      }
+      return false;
    }
 }
 

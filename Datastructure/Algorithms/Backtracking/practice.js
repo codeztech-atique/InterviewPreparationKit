@@ -8,7 +8,7 @@ function generateBinaryStrings(n) {
 
     backtrack(current + "0");
     backtrack(current + "1");
-  }  
+  }
   backtrack("");
   return result;
 }
@@ -31,5 +31,5 @@ function generateSubsetBacktrack(n) {
   return result;
 }
 
-console.log(generateSubsetBacktrack([1,2,3]));
+console.log(generateSubsetBacktrack([1,2,3,4]));
 console.log(generateBinaryStrings(2));

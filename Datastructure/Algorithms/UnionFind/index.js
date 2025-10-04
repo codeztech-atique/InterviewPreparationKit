@@ -1,7 +1,7 @@
 class DSU {
     constructor(n) {
-        this.parent = Array.from({ length: n}, (_,i) => i);
-        this.components = n;
+        this.parent = Array.from({ length: n}, (_, i) => i);
+        this.component = n;
     }
 
     find(x) {
@@ -13,8 +13,8 @@ class DSU {
         let ra = this.find(a), rb = this.find(b);
         if(ra == rb) return false;
         this.parent[rb] = ra;
-        this.components--;
-        return this;
+        this.component--;
+        return true;
     }
 
     connected(a, b) {
@@ -22,7 +22,7 @@ class DSU {
     }
 
     count() {
-        return this.components;
+        return this.component;
     }
 
     hasCycle(n, edges) {
@@ -38,16 +38,16 @@ class DSU {
     countConnectComponents(n, edges) {
         let dsu = new DSU(n);
 
-        for(let [u, v] of edges) {
+        for(const [u, v] of edges) {
             dsu.union(u, v);
         }
 
         let groups = new Map();
         for(let i = 0; i < n; i++) {
-            const r = dsu.find(i);
+            const r = dsu.find(i); 
             if(!groups.has(r)) groups.set(r, []);
             groups.get(r).push(i);
-        }
+        } 
 
         return Array.from(groups.values());
     }
@@ -59,10 +59,10 @@ class DSU {
         let total = 0;
         let mst = [];
 
-        for(let [u, v, w] of edges) {
+        for(const [u, v, w] of edges) {
             if(dsu.union(u, v)) {
-                total += w;
                 mst.push([u, v, w]);
+                total += w;
             }
         }
         return {
@@ -70,7 +70,6 @@ class DSU {
             edges : mst
         }
     }
-
 }
 
 
