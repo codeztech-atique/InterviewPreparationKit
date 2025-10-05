@@ -47,22 +47,20 @@ class Graph {
   }
 
   dfsIterative(start) {
-    if (!this.adjecencyList[start]) return [];
-
-    let stack = [start];          // use stack instead of recursion
-    let visited = new Set();
+    if(!start) start = Object.keys(this.adjacentList)[0];
+    let stack = [start];
     let result = [];
+    let visited = new Set();
 
-    while (stack.length) {
-      let currentNode = stack.pop();   // LIFO
-      if (!visited.has(currentNode)) {
-        visited.add(currentNode);
-        result.push(currentNode);
+    while(stack.length) {
+      let current = stack.pop();
 
-        // Push neighbors to stack
-        // (reverse ensures consistent order if you want left-to-right style)
-        for (let neighbor of [...this.adjecencyList[currentNode]].reverse()) {
-          if (!visited.has(neighbor)) {
+      if(!visited.has(current)) {
+        visited.add(current);
+        result.push(current);
+
+        for(let neighbor of [...this.adjacentList[current]].reverse()) {
+          if(!visited.has(neighbor)) {
             stack.push(neighbor);
           }
         }
@@ -93,8 +91,8 @@ myGraph.addEdge('6', '5');
 
 myGraph.showConnections();
 
-console.log("DFS (from top):", myGraph.dfs());   // starts from '0'
-console.log("DFS (from 3):", myGraph.dfs('3')); 
+console.log("DFS (from top):", myGraph.dfsIterative());   // starts from '0'
+console.log("DFS (from 3):", myGraph.dfsIterative('3')); 
 
 
 // 0-->1 2
