@@ -30,12 +30,11 @@
 
 var mergeIntervals = function(intervals) {
     if(!intervals || intervals.length == 0) return [];
-    intervals = intervals.sort((a, b) => a - b);
+    intervals = intervals.sort((a, b) => a[0] - b[0]);
 
-    let current = intervals[0];
     let result = [];
-
-    for(let i = 1; i < intervals.length; i++) {
+    let current = intervals[0];
+    for(let i = 0; i < intervals.length; i++) {
         let next = intervals[i];
         if(current[1] >= next[0]) {
             current[1] = Math.max(current[1], next[1]);

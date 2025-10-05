@@ -1,20 +1,19 @@
 var rob = function(nums) {
-  const n = nums.length;
-  if (n === 1) return nums[0];
+  if (nums.length === 1) return nums[0];
 
-  function robRange(lo, hi) {
-    let prev2 = 0, prev1 = 0;
-    for (let i = lo; i <= hi; i++) {
-      const take = prev2 + nums[i];
-      const skip = prev1;
-      const cur = Math.max(take, skip);
-      prev2 = prev1;
-      prev1 = cur;
+  // helper function to reuse rob1 logic
+  const robLine = (arr) => {
+    let rob1 = 0, rob2 = 0;
+    for (let n of arr) {
+      let temp = Math.max(n + rob1, rob2);
+      rob1 = rob2;
+      rob2 = temp;
     }
-    return prev1;
-  }
+    return rob2;
+  };
 
-  return Math.max(robRange(0, n - 2), robRange(1, n - 1));
+  // two cases: skip first OR skip last
+  return Math.max(robLine(nums.slice(1)), robLine(nums.slice(0, -1)));
 };
 
 console.log(robRange([2,3,2])) // 3

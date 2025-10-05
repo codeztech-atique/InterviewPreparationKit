@@ -1,18 +1,22 @@
-const binarySearch = (arr, target, start, end) => {
-    if(start > end) return -1;
-    let mid = Math.floor(start + (end - start) / 2);
-
-    if(arr[mid] == target) {
-        return mid;
-    } else if(arr[mid] < target) {
-        return binarySearch(arr, target, start + 1, end);
-    } else {
-        return binarySearch(arr, target, start, end - 1);
+const merge = (left, right) => {
+    let arr = [];
+    while(left.length && right.length) {
+        if(left[0] < right[0]) {
+            arr.push(left.shift())
+        } else {
+            arr.push(right.shift())
+        }
     }
+    return [...arr, ...left, ...right];
 }
 
-const search = (arr, target) => {
-    return binarySearch(arr, target, 0, arr.length - 1);
+const mergeSort = (arr) => {
+    let half = arr.length / 2;
+    if(arr.length < 2) {
+        return arr;
+    };
+    let left = arr.splice(0, half);
+    return merge(mergeSort(left), mergeSort(arr));
 }
 
-console.log(search([-1,0,3,5,9,12], 9));
+console.log(mergeSort([5,2,6,7,1,9,10]))
