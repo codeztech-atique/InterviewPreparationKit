@@ -1,8 +1,8 @@
 class Node {
     constructor() {
         this.children = new Map();
-        this.size = 0;
         this.isWordEnd = false;
+        this.size = 0;
     }
 }
 class Tries {
@@ -10,15 +10,15 @@ class Tries {
         this.root = new Node();
     }
 
-    insert(word, size) {
+    insert(word, value) {
         let curr = this.root;
         for(let i = 0; i < word.length; i++) {
-            let charToInsert = word[i];
-            if(!(curr.children.has(charToInsert))) {
-                curr.children.set(charToInsert, new Node());
+            let charToFind = word[i];
+            if(!(curr.children.has(charToFind))) {
+                curr.children.set(charToFind, new Node());
             }
-            curr.size = size;
-            curr = curr.children.get(charToInsert);
+            curr = curr.children.get(charToFind);
+            curr.size = value;
         }
         curr.isWordEnd = true;
         return this;
@@ -64,7 +64,7 @@ class Tries {
     getCommonPrefix() {
         let ch = "", str = "";
         let curr = this.root;
-        while(curr.children.size == 1 && !curr.isWordEnd) {
+        while(curr.size == 1 && !curr.isWordEnd) {
             ch = Array.from(curr.children.keys())[0];
             str += ch;
             curr = curr.children.get(ch);
@@ -82,7 +82,7 @@ class Tries {
                 searchTree(currNode, currentWord + ch);
             }
         }
-        searchTree(this.root, "");
+        searchTree(this.root);
         return result;
     }
 
@@ -92,7 +92,7 @@ class Tries {
             for(const [ch, currNode] of node.children.entries()) {
                 result.push({
                     key: ch,
-                    size: node.size
+                    value: currNode.size
                 })
                 searchTree(currNode);
             }
@@ -102,9 +102,9 @@ class Tries {
     }
 
     autoComplete(str) {
-        let totalWords = this.printAllTheWord();
-        return totalWords.filter((s) => {
-            if(s.startsWith(str)) {
+        let total = this.printAllTheWord();
+        return total.filter((e) => {
+            if(e.startsWith(str)) {
                 return true;
             }
         })
@@ -123,7 +123,7 @@ tries.insert("flight", 33);
 
 
 console.log("Tries contains flower:", tries.contains("flower"));
-console.log("Tries contains flow:", tries.startWithPrefix("flow"))
+console.log("Tries contains flow:", tries.startWithPrefix("fl"))
 console.log("Tries contains flight:", tries.contains("flight"));
 console.log("Tries contains Suny:", tries.startWithPrefix("Suny"))
 

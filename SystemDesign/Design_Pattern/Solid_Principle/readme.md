@@ -22,8 +22,8 @@ High-level modules should not depend on low-level modules. Both should depend on
 
 ✅ Summary with only Book–Library:
 
-SRP → Library manages books, LibraryPrinter prints them.
-OCP → Book can be extended into ReferenceBook without changing base.
-LSP → LibraryBook can replace Book safely.
-ISP → Separate Borrowable and Readable instead of forcing one big class.
-DIP → Library depends on a Logger abstraction, not directly on console.log.
+Single Responsibility Principle - SRP → Library manages books, LibraryPrinter prints them.
+Open/Closed Principle - OCP → Book can be extended into ReferenceBook without changing base.
+Liskov Substitution Principle - LSP → LibraryBook can replace Book safely.
+Interface Segregation Principle - ISP → Separate Borrowable and Readable instead of forcing one big class.
+Dependency Inversion Principle - DIP → Library depends on a Logger abstraction, not directly on console.log.

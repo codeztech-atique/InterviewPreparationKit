@@ -35,29 +35,16 @@
 
 // console.log(obj.sort(Arrsort));
 
-// function sortArr(a, b) {
-//    let aT = a.toLowerCase();
-//    let bT = b.toLowerCase();
-//    if(aT < bT) {
-//       return -1;
-//    } else if(aT > bT) {
-//     return 1;
-//    } else {
-//     return 0;
-//    }
-// }
-
 
 // const sortArr = (a, b) => {
 //     a = a.toLowerCase();
 //     b = b.toLowerCase();
 //     if(a < b) {
-//         return - 1;
+//         return -1
 //     } else if(a > b) {
 //         return 0;
-//     } else {
-//         return 1;
-//     }
+//     } 
+//     return 1;
 // }
 
 // const arrStr = ['sunny', 'atique', 'hello', 'bollow', 'collow'];
@@ -111,15 +98,15 @@
 //     let arr = [];
 //     for(let i = 0; i < str.length; i++) {
 //         for(let j = i + 1; j < str.length + 1; j++) {
-//             arr.push(str.slice(i, j))
-//             // str.reduce((a, b) => a + b, 0) // this will do the sum.
-//                Math.min(...this.str.slice(i, j));
+//             // arr.push(str.slice(i, j))
+//            // str.reduce((a, b) => a + b, 0) // this will do the sum.
+//             // Math.min(...this.str.slice(i, j));
 //         }
 //     }
 //     return arr;
 // }
 
-// var theString = 'somerandomword';
+// var theString = 'some';
 // console.log(getAllSubstrings(theString));
 
 
@@ -154,6 +141,7 @@
 // console.log(findDuplicatesUsingHash(arr2));
 
 // let sum = a => b => b ? sum(a + b) : a;
+
 
 // Recursion of Below Problem
 // console.log(sum(1)(2)(32)());
@@ -224,8 +212,14 @@
 //     return arr = arr.filter((i, v) => arr.indexOf(v) == arr.lastIndexOf(v));
 // }
 
+// const nonRepetingElements = (arr) => {
+//     return arr = arr.filter((v) => arr.indexOf(v) != arr.lastIndexOf(v));
+// }
+// const repetingElements = (arr) => {
+//     return arr = arr.filter((v) => arr.indexOf(v) == arr.lastIndexOf(v));
+// }
 
-// var arr = [4,1,2,1,2];
+// var arr = [4,1,2,1,2,4,3];
 // console.log(repetingElements(arr))
 // console.log(nonRepetingElements(arr))
 
@@ -242,8 +236,8 @@
 //             n = n - m;
 //         }
 //     }
-//     console.log("GCD:", m);
-//     console.log("LCM:", (a * b) / m);
+//     console.log("GCD:", (a * b) / m);
+//     console.log("LCM:", m);
 // }
 
 
@@ -254,12 +248,12 @@
 
 // Fibonacci Number
 
-// const FiboNacci = (num) => {
-//     if (n === 1) return 1;
-//     if (n === 2) return 2;
+// const FiboNacci = (n) => {
+//     let a = 0, b = 1;
+//     if(n == 1) return 1;
+//     if(n == 2) return 2;
 
-//     let a = 1, b = 2; // base cases
-//     for (let i = 3; i <= n; i++) {
+//     for(let i = 3; i <= n; i++) {
 //         let c = a + b;
 //         a = b;
 //         b = c;
@@ -281,10 +275,10 @@
 
 // const SinglePrimeNumber = (number) => {
 //     if(number < 2) {
-//         return true;
+//        return true;
 //     }
 //     for(let i = 2; i <= Math.sqrt(number); i++) {
-//         if(number % 2 == 0) {
+//         if(number % i == 0) {
 //             return false;
 //         }
 //     }
@@ -308,7 +302,7 @@
 // }
 
 // var arr = [1,2,4,7,11,12,15,17,19,21,27,29,43,44];
-// console.log(SinglePrimeNumber(19));
+// console.log(SinglePrimeNumber(13));
 
 // console.log(MultiplePrimeNumber(arr));
 
@@ -317,36 +311,56 @@
 // Solve this equation using stack
 
 
-// function removeBrackets(expression) {
+// function removeBrackets(str) {
 //     let arr = [];
-//     for(let i = 0; i < expression.length; i++) {
-//         let data = expression[i];
-//         if(data == "(" || data == "{" || data == "[") {
-//             arr.push(data);
+//     for(let i = 0; i < this.str.length; i++) {
+//         let char = this.str[i];
+//         if(char === '(' || char === '{' || char === '[') {
+//             this.arr.push(char);
 //         }
 
-//         if(arr.length == 0)  {
+//         if(this.arr.length == 0) {
 //             return false;
 //         }
 
-//         switch(data) {
-//             case ')' : arr.pop(); break;
-//             case '}' : arr.pop(); break;
-//             case ']' : arr.pop(); break;
+//         switch(char) {
+//             case ')': 
+//                 if(this.arr[this.arr.length - 1] === '(') {
+//                     this.arr.pop();
+//                 } else {
+//                     this.arr.push(char);
+//                 }
+//                 break;
+//             case '}': 
+//                 if(this.arr[this.arr.length - 1] === '{') {
+//                     this.arr.pop();
+//                 } else {
+//                     this.arr.push(char);
+//                 }
+//                 break;
+
+//             case ']': 
+//                 if(this.arr[this.arr.length - 1] === '[') {
+//                     this.arr.pop();
+//                 } else {
+//                     this.arr.push(char);
+//                 }
+//                 break;
 //         }
 //     }
-//     console.log("Array:", arr)
-//     if(arr.length === 0) {
-//        return true;
+
+//     console.log("Arr:", this.arr);
+//     if(this.arr.length === 0) {
+//         return true;
 //     } else {
-//        return false;
+//         return false;
 //     }
 // }
 
 
-// const expr = "([{}]){}{}";
+// const expr = "(){{}}";
 // const exprClosingBracket = "([{}]))";
-// console.log(removeBrackets(exprClosingBracket));
+// console.log(removeBrackets(expr));
 
 // if (removeBrackets(exprClosingBracket)) {
 //    console.log("Balanced");

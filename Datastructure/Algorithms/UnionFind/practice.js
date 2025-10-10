@@ -17,6 +17,14 @@ class DSU {
         return true;
     }
 
+    connected(a, b) {
+        return this.find(a) == this.find(b); 
+    }
+
+    count() {
+        return this.component;
+    }
+
     hasCycle(n, edges) {
         let dsu = new DSU(n);
 
@@ -33,11 +41,11 @@ class DSU {
         let dsu = new DSU(n);
 
         for(const [u, v] of edges) {
-            dsu.union(u, v);
+            dsu.union(u, v)
         }
 
         let groups = new Map();
-        for(let i = 0; i < n; i++) {
+        for(let i = 0; i < n; i ++) {
             const r = dsu.find(i);
             if(!groups.has(r)) groups.set(r, []);
             groups.get(r).push(i);
@@ -53,25 +61,17 @@ class DSU {
         let mst = [];
         let total = 0;
 
-        for(let [u, v, w] of edges) {
+        for(const [u, v, w] of edges) {
             if(dsu.union(u, v)) {
-                mst.push([u, v, w]);
+                mst.push([u, w, v]);
                 total += w;
             }
         }
 
         return {
             weight: total,
-            egeds: mst
+            edges: mst
         }
-    }
-
-    connected(a, b) {
-        return this.find(a) == this.find(b);
-    }
-
-    count() {
-        return this.component;
     }
 }
 

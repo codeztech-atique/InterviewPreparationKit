@@ -1,20 +1,42 @@
+// ➡ Abstract Factory – create related objects (book + cover) without naming classes.
 export {};
 
-// Abstract Factory
-interface GUIFactory {
-  createButton(): Button;
+// product types
+class Book {
+  constructor(public title: string, public format: string) {}
 }
 
-interface Button { paint(): void; }
+class Cover {
+  constructor(public style: string) {}
+}
 
-// Concrete Products
-class WinButton implements Button { paint() { console.log("Win Button"); } }
-class MacButton implements Button { paint() { console.log("Mac Button"); } }
+// abstract factory
+interface PublishingFactory {
+  createBook(title: string): Book;
+  createCover(): Cover;
+}
 
-// Concrete Factories
-class WinFactory implements GUIFactory { createButton() { return new WinButton(); } }
-class MacFactory implements GUIFactory { createButton() { return new MacButton(); } }
+// concrete factories
+class PrintFactory implements PublishingFactory {
+  createBook(title: string) { return new Book(title, "Paperback"); }
+  createCover() { return new Cover("Paper Cover"); }
+}
 
-// Client
-const factory: GUIFactory = new MacFactory();
-factory.createButton().paint();  // Mac Button
+class DigitalFactory implements PublishingFactory {
+  createBook(title: string) { return new Book(title, "ePub"); }
+  createCover() { return new Cover("Digital Artwork"); }
+}
+
+// client
+class Publisher {
+  constructor(private factory: PublishingFactory) {}
+  publish(title: string) {
+    const book = this.factory.createBook(title);
+    const cover = this.factory.createCover();
+    console.log(`📘 ${book.title} (${book.format}) with ${cover.style}`);
+  }
+}
+
+// demo
+new Publisher(new PrintFactory()).publish("HLD in Practice");
+new Publisher(new DigitalFactory()).publish("LLD for Engineers");

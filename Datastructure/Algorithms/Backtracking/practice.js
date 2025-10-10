@@ -14,22 +14,21 @@ function generateBinaryStrings(n) {
 }
 
 function generateSubsetBacktrack(n) {
-    let result = [];
-    let backtrack = (index, current) => {
-        if(index == n.length) {
-            result.push([...current]);
-            return;
-        }
-
-        backtrack(index + 1, current);
-        current.push(n[index]);
-
-        backtrack(index + 1, current);
-        current.pop();
+  let result = [];
+  let backtrack = (index, current) => {
+    if(index == n.length) {
+        result.push([...current]);
+        return;
     }
 
-    backtrack(0, []);
-    return result;
+    backtrack(index + 1, current);
+    current.push(n[index]);
+
+    backtrack(index + 1, current);
+    current.pop();
+  }
+  backtrack(0, []);
+  return result;
 }
 
 function combinationSum(arr, target) {
@@ -39,7 +38,9 @@ function combinationSum(arr, target) {
             result.push([...current]);
             return;
         }
-        if(remain < 0 || index == arr.length) return;
+        if(remain < 0 || index == arr.length) {
+            return;
+        }
 
         backtrack(index + 1, current, remain);
         current.push(arr[index]);
@@ -47,10 +48,30 @@ function combinationSum(arr, target) {
         backtrack(index, current, remain - arr[index]);
         current.pop();
     }
+
     backtrack(0, [], target);
     return result;
+}
+
+function permuteSwap(nums) {
+  let result = [];
+  let backtrack = (index) => {
+    if(index == nums.length) {
+        result.push([...nums]);
+        return;
+    }
+
+    for(let i = 0; i < nums.length; i++) {
+        [nums[index], nums[i]] = [nums[i], nums[index]];
+        backtrack(index + 1);
+        [nums[index], nums[i]] = [nums[i], nums[index]];
+    }
+  }
+  backtrack(0);
+  return result;
 }
 
 console.log(generateSubsetBacktrack([1,2,3,4]));
 console.log(generateBinaryStrings(2));
 console.log(combinationSum([2,3,6,7], 7)); // [[7],[2,2,3]]
+console.log(permuteSwap([1,2,3]));

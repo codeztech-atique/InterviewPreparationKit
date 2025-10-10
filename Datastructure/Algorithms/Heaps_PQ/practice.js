@@ -2,7 +2,7 @@ class Heap {
     constructor(cmp = (a, b) => a - b) {
         this.data = [];
         this.cmp = cmp;
-    } 
+    }
 
     size() {
         return this.data.length;
@@ -37,6 +37,7 @@ class Heap {
 
     shiftDown(i) {
         let n = this.data.length;
+       
         while(true) {
             let l = 2 * i + 1, r = 2 * i + 2;
             let best = i;
@@ -54,45 +55,45 @@ class Heap {
     }
 }
 
-let minHeap = cmp => new Heap(cmp ?? ((a, b) => a - b));
-let maxHeap = cmp => new Heap(cmp ?? ((a, b) => b - a));
+let minHeap = (cmp) => new Heap(cmp ?? ((a, b) => a - b));
+let maxHeap = (cmp) => new Heap(cmp ?? ((a, b) => b - a));
 
 
 
 function heapSort(arr) {               // ascending using min-heap
-  let h = minHeap();
-  for(let x of arr) h.push(x);
-  let out = [];
-  while(h.size()) out.push(h.pop());
-  return out;
+    let h = minHeap();
+    for(n of arr) h.push(n);
+    let out = [];
+    while(h.size()) out.push(h.pop());
+    return out;
 }   
 
 // Optional: descending
 function heapSortDesc(arr) {
-  let h = maxHeap();
-  for(let x of arr) h.push(x);
-  let out = [];
-  while(h.size()) out.push(h.pop());
-  return out;
+    let h = maxHeap();
+    for(n of arr) h.push(n);
+    let out = [];
+    while(h.size()) out.push(h.pop());
+    return out;
 }
 
 function kSmallest(arr, k) {
     let h = minHeap();
-    for(let x of arr) h.push(x);
-    let out = [];
     let i = 0;
+    for(n of arr) h.push(n);
+    let out = [];
     while(h.size() && i < k) { 
         out.push(h.pop());
         i++;
     }
     return out;
-}
+}  
 
 function kLargest(arr, k) {
     let h = maxHeap();
-    for(let x of arr) h.push(x);
-    let out = [];
     let i = 0;
+    for(n of arr) h.push(n);
+    let out = [];
     while(h.size() && i < k) { 
         out.push(h.pop());
         i++;
