@@ -1,3 +1,31 @@
+Frequently Asked Problems - 
+
+| #  | Problem                                   |  Status  | Why here / What you’ll practice                 | Key Patterns                                |
+| -- | ----------------------------------------- | :------: | ----------------------------------------------- | ------------------------------------------- |
+| 1  | **Parking Lot**                           |  ✅ Done  | Capacity, tickets, pricing, receipts            | Singleton (config), Strategy (pricing), Map |
+| 2  | **Vending Machine**                       | ❌ Undone | Core **State Machine**, money/change, inventory | State, Strategy, Command                    |
+| 3  | **Tic-Tac-Toe Game**                      | ❌ Undone | Board model, win checks, AI strategy            | OO modeling, Strategy (AI), Observer        |
+| 4  | **Logging System**                        | ❌ Undone | Levels, appenders, formatters, async sinks      | Singleton, Strategy, Observer               |
+| 5  | **Cache (LRU/LFU)**                       | ❌ Undone | O(1) DS, eviction policy                        | Strategy (eviction), Decorator/Adapter      |
+| 6  | **Rate Limiter**                          | ❌ Undone | Token/Leaky Bucket, concurrency                 | Sliding Window, Strategy                    |
+| 7  | **URL Shortener (TinyURL)**               | ❌ Undone | IDs, hashing, TTL                               | Factory, Repository, Strategy (hash)        |
+| 8  | **File System**                           | ❌ Undone | Directories, permissions, recursion             | Composite, Iterator, Command                |
+| 9  | **Pub-Sub (Kafka-like)**                  | ❌ Undone | Topics, partitions, offsets                     | Observer, Strategy (partitioner), Queueing  |
+| 10 | **Elevator System**                       | ❌ Undone | Multi-car scheduling, direction logic           | State, Strategy (scheduler), Priority Queue |
+| 11 | **Car Rental**                            | ❌ Undone | Reservations, pricing, availability             | Domain Modeling, Factory, Strategy          |
+| 12 | **Inventory Management**                  | ❌ Undone | Stock updates, events                           | Observer, CQRS/Eventing                     |
+| 13 | **ATM Machine**                           | ❌ Undone | Transaction flow, dispense notes                | State, Strategy (dispense), Facade          |
+| 14 | **Movie Ticket Booking**                  | ❌ Undone | Seat holds, payments, expiry                    | Reservation/Locking, Strategy (pricing)     |
+| 15 | **Web Crawler**                           | ❌ Undone | Fetch, parse, dedupe, politeness                | BFS/DFS, Rate Limiting, Pipeline            |
+| 16 | **WhatsApp (Chat App)**                   | ❌ Undone | Messaging, presence, media                      | Pub-Sub, Event Sourcing, Caching            |
+| 17 | **Leaderboard / Ranking**                 | ❌ Undone | Top-K, rolling windows                          | Heap/Tree, Sliding Window                   |
+| 18 | **Autocomplete / Search Suggest**         | ❌ Undone | Prefix search, ranking                          | Trie, Scoring Strategy, Caching             |
+| 19 | **Payment / Checkout System**             | ❌ Undone | Idempotency, retries, refunds                   | Saga/Orchestration, State, Strategy         |
+| 20 | **Notification Service (Email/SMS/Push)** | ❌ Undone | Fan-out, retries, templates                     | Observer, Retry/Backoff, Circuit Breaker    |
+
+
+Design Patterns - 
+
 i) Creational Patterns (How books/libraries are created)
 ii) Structural Patterns (How books/libraries are arranged)
 iii) Behavioral Patterns (How books/libraries behave)

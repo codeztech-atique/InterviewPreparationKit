@@ -1,4 +1,6 @@
 // Combination sum to reuse the same value;
+// https://leetcode.com/problems/combination-sum
+// https://leetcode.com/problems/combination-sum-ii
 
 function combinationSum(nums, target) {
   nums.sort((a, b) => a - b);       // sort is optional here

@@ -1,88 +1,60 @@
-var twoSum = (nums, target) => {
+const grouping = (arr, size) => {
     let hashMap = new Map();
-    for(let i = 0; i < nums.length; i++) {
-        let findTarget = target - nums[i];
-        if(hashMap.has(findTarget)) {
-            return [i, hashMap.get(findTarget)];
-        } else {
-            hashMap.set(nums[i], i);
-        }
-    }
-    return -1;
-}
 
-var threeSum = (nums) => {
-    nums = nums.sort((a, b) => a - b);
-    let result = [];
-
-    for(let a = 0; a < nums.length; a++) {
-        if(a > 0 && nums[a] == nums[a - 1]) continue;
-
-        let i = a + 1;
-        let j = nums.length - 1;
-
-        while(i < j) {
-            if((nums[a] + nums[i] + nums[j]) < 0) {
-                i++;
-            } else if((nums[a] + nums[i] + nums[j]) > 0) {
-                j--;
-            } else {
-                result.push([nums[a], nums[i], nums[j]]);
-                i++;
-                j--;
-
-                while(i < j && nums[i] == nums[i - 1]) i++;
-            }
+    for(let [type, u, v] of arr) {
+        if(!hashMap.has(u)) {
+            hashMap.set(u, new Set());
+        } if(!hashMap.has(v)) {
+            hashMap.set(v, new Set());
         }
     }
 
-    return result;
-}
+    for(const [type, u, v] of arr) {
+        if(type == "CONNECT") {
+            hashMap.get(u).add(v);
+            hashMap.get(v).add(u);
+        } else if(type == "DISCONNECT") {
+            hashMap.get(u).delete(v);
+            hashMap.get(v).delete(u);
+        }
+    }
+    let less = [];
+    let more = [];
 
-var fourSum = (nums, target) => {
-    nums = nums.sort((a, b) => a - b);
-    let result = [];
-
-    for(let a = 0; a < nums.length; a++) {
-        if(a > 0 && nums[a] == nums[a - 1]) continue;
-
-        for(let b = a + 1; b < nums.length; b++) {
-            if(b > a + 1 && nums[b] == nums[b - 1]) continue;
-            let i = b + 1;
-            let j = nums.length - 1;
-
-            while(i < j) {
-                if((nums[a] + nums[b] + nums[i] + nums[j]) < 0) {
-                    i++;
-                } else if((nums[a] + nums[b] + nums[i] + nums[j]) > 0) {
-                    j--;
-                } else {
-                    result.push([nums[a], nums[b], nums[i], nums[j]]);
-                    i++;
-                    j--;
-
-                    while(i < j && nums[i] == nums[i - 1]) i++;
-                    while(i < j && nums[j] == nums[j + 1]) j--;
-                }
-            }
+    for(let [user, neighbor] of hashMap.entries()) {
+        if(neighbor.size < size) {
+            less.push(user);
+        } else if(neighbor.size >= size) {
+            more.push(user);
         }
     }
 
-    return result;
+    return [less, more];
 }
 
+const events = [
+  ["CONNECT","Alice","Bob"],
+  ["DISCONNECT","Bob","Alice"],
+  ["CONNECT","Alice","Charlie"],
+  ["CONNECT","Dennis","Bob"],
+  ["CONNECT","Pam","Dennis"],
+  ["DISCONNECT","Pam","Dennis"],
+  ["CONNECT","Pam","Dennis"],
+  ["CONNECT","Edward","Bob"],
+  ["CONNECT","Dennis","Charlie"],
+  ["CONNECT","Alice","Nicole"],
+  ["CONNECT","Pam","Edward"],
+  ["DISCONNECT","Dennis","Charlie"],
+  ["CONNECT","Dennis","Edward"],
+  ["CONNECT","Charlie","Bob"]
+];
 
-console.log(twoSum([2,7,11,15], 9));
-console.log(twoSum([3,2,4], 6));
+console.log("N=3:", grouping(events, 3)); 
+// Expected groups (names may be sorted differently but memberships should match):
+// [ ["Alice","Charlie","Pam","Nicole"], ["Bob","Dennis","Edward"] ]
 
-console.log(threeSum([-1,0,1,2,-1,-4])); // Output: [[-1,-1,2],[-1,0,1]]))
-console.log(threeSum([0,1,1])); // Output: []
+console.log("N=1:", grouping(events, 1)); 
+// [ [], ["Alice","Bob","Charlie","Dennis","Edward","Nicole","Pam"] ]
 
-// ✅ Test Cases
-console.log(fourSum([1,0,-1,0,-2,2], 0)); 
-// Expected: [[-2,-1,1,2], [-2,0,0,2], [-1,0,0,1]]
-
-console.log(fourSum([2,2,2,2,2], 8)); 
-// Expected: [[2,2,2,2]]
-
-
+console.log("N=10:", grouping(events, 10)); 
+// [ ["Alice","Bob","Charlie","Dennis","Edward","Nicole","Pam"], [] ]

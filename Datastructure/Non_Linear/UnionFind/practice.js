@@ -1,6 +1,6 @@
 class DSU {
     constructor(n) {
-        this.parent = Array.from({ length: n}, (_, i) => i);
+        this.parent = Array.from({ length : n }, (_, i) => i);
         this.components = n;
     }
 
@@ -27,19 +27,18 @@ class DSU {
 
     hasCycle(n, edges) {
         let dsu = new DSU(n);
-        
+
         for(let [u, v] of edges) {
             if(!dsu.union(u, v)) {
                 return true;
             }
         }
-
         return false;
     }
 
     countConnectComponents(n, edges) {
         let dsu = new DSU(n);
-        
+
         for(const [u, v] of edges) {
             dsu.union(u, v);
         }
@@ -57,16 +56,15 @@ class DSU {
     kruskalMST(n, edges) {
         edges = edges.sort((a, b) => a[2] - b[2]);
         let dsu = new DSU(n);
+
         let mst = [];
         let total = 0;
-
         for(const [u, v, w] of edges) {
             if(dsu.union(u, v)) {
                 mst.push([u, v, w]);
                 total += w;
             }
-        }
-
+        } 
         return {
             weight: total,
             edges: mst

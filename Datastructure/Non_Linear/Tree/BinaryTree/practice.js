@@ -41,7 +41,7 @@ class BinarySearchTree {
 
    insert(value) {
       let newNode = new Node(value);
-      let searchTree = node => {
+      let searchTree = (node) => {
          if(value < node.value) {
             if(!node.left) {
                node.left = newNode;
@@ -54,16 +54,17 @@ class BinarySearchTree {
             } else {
                searchTree(node.right);
             }
-         }
+         } 
       }
       searchTree(this.root);
-      return this;
+      this.count++;
+      return this; 
    }
 
    remove(value) {
       let isRemoved = false;
       let removeRec = (node, value) => {
-         if(!node) return null
+         if(!node) return null;
          if(value < node.value) {
             node.left = removeRec(node.left, value);
             return node;
@@ -73,10 +74,7 @@ class BinarySearchTree {
          }
 
          isRemoved = true;
-
-         
          if(!node.left && !node.right) return null;
-
          if(!node.left) return node.right;
          if(!node.right) return node.left;
 
@@ -105,11 +103,18 @@ class BinarySearchTree {
    }
 
    max() {
-       let curr = this.root;
+      let curr = this.root;
       while(curr.right) {
          curr = curr.right;
       }
       return curr.value;
+   }
+
+   minNode(node) {
+      while(node.left) {
+         node = node.left;
+      }
+      return node.value;
    }
 
    lookup(value) {
@@ -124,13 +129,6 @@ class BinarySearchTree {
          }
       }
       return false;
-   } 
-
-   minNode(node) {
-      while(node.left) {
-         node = node.left;
-      }
-      return node.value;
    }
 
    dfsInorder() {
@@ -213,12 +211,12 @@ class BinarySearchTree {
       }
       return result;
    }
-    
 }
 
 function getLeafCountOfBinaryTree(node) {
-   if(node == null) return 0;
-   if(!node.left && !node.right) {
+   if(node == null) {
+      return 0;
+   } else if(!node.left && !node.right) {
       leafNode.push(node.value);
       return 1;
    }
@@ -240,7 +238,7 @@ function hightOfBinaryTree(node) {
 }
 
 function isBalanced(node) {
-   if(!node) return 0;
+   if(!node) return true;
 
    let lh = isBalanced(node.left);
    if(lh == -1) return -1;
@@ -255,9 +253,10 @@ function isBalanced(node) {
 
 function isFullBinaryTree(node) {
    if(!node) return true;
-   if(!node.left && !node.right) return true;
-   if(node.left && node.right) {
-      return isFullBinaryTree(node.left) && isFullBinaryTree(node.right)
+   if(!node.left && !node.right) {
+      return true;
+   } if(node.left && node.right) {
+      return isFullBinaryTree(node.left) && isFullBinaryTree(node.right);
    }
    return false;
 }
@@ -271,15 +270,15 @@ function isCompleteBinaryTree(node) {
    let total = countNode(node);
    let dfs = (node, index) => {
       if(!node) return true;
-      if(index >= total) return false
+      if(index >= total) return false;
       return dfs(node.left, 2 * index + 1) && dfs(node.right, 2 * index + 2);
    }
    return dfs(node, 0);
 } 
 
 function isPerfectBinaryTree(node) {
-   let h = hightOfBinaryTree(node);
    let n = countNode(node);
+   let h = hightOfBinaryTree(node);
    return n == (1 << h) - 1;
 }
 
@@ -301,7 +300,7 @@ function diameterOfBinaryTree(node) {
       let left = dfs(node.left);
       let right = dfs(node.right);
       best = Math.max(best, left + right);
-      return Math.max(left, right) + 1; 
+      return Math.max(left, right) + 1;
    }
    dfs(node);
    return best;

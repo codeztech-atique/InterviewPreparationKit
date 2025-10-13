@@ -19,8 +19,8 @@
 
  | #     | Pattern                          | Common LLD Question / Topic                                                          | Real-world Example / Trigger                                    |
 | ----- | -------------------------------- | ------------------------------------------------------------------------------------ | --------------------------------------------------------------- |
-| **1** | **Adapter**                      | 🔹 *Integrate 3rd-party Payment API / Convert Legacy Interface to New System*        | “Make two incompatible systems work together”                   |
+| **1** | **Adapter**  (Important)         | 🔹 *Integrate 3rd-party Payment API / Convert Legacy Interface to New System*        | “Make two incompatible systems work together”                   |
 | **2** | **Decorator**                    | 🔹 *Design a Coffee Machine / Pizza Customizer / Middleware Stack (Express.js)*      | Add new behavior dynamically without touching existing class    |
 | **3** | **Proxy**                        | 🔹 *Design a Cache Proxy / Virtual Proxy / API Rate Limiter / Security Proxy*        | Control access or add caching/lazy-loading around a real object |
 | **4** | **Facade** *(optional but easy)* | 🔹 *Design a Subsystem Wrapper (Order Service → Payment + Inventory + Notification)* | Simplify complex subsystem under one interface                  |
-| **5** | **Composite** *(medium level)*   | 🔹 *Design a File System (Folder/File hierarchy)*                                    | Treat individual and group objects uniformly                    |
+| **5** | **Composite** (Important )*      | 🔹 *Design a File System (Folder/File hierarchy)*                                    | Treat individual and group objects uniformly                    |

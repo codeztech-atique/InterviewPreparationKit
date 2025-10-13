@@ -1,3 +1,20 @@
+// First Important thing is - Requirement Gathering
+// Design the Entity
+
+// Class Diagram
+// Sequence Diagram
+// Activity Diagram
+
+// Dont focus on more in entity - 
+
+
+// In order to start with the problem, first do - 
+
+// Class structures
+// Design patterns
+// Relationships
+// Implementation details
+
 // Tighly couple and loosly couple 
 
 /* TypeScript example that demonstrates all the concepts 

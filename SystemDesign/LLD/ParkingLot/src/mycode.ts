@@ -1,4 +1,7 @@
-export = {};
+// Behavioral Pattern - Strategy
+
+export = {}
+
 
 enum VehicalType {
     CAR = "car",
@@ -6,38 +9,38 @@ enum VehicalType {
 }
 
 type Ticket = | {
-    id : string, 
+    id: string, 
     type: VehicalType,
-    entryTime: Date
+    entryTime: Date;
 } | {
     message: string
 }
 
 type Receipt = | {
-    id: string, 
+    id: string,
     type: VehicalType,
     entryTime: Date,
     exitTime: Date,
-    amount: number
+    price: number
 } | {
     message: string
 }
 
-type ActivateVehical = {
+type ActiveVehical = {
     type: VehicalType,
-    entryTime: Date;
+    entryTime: Date
 }
 
 interface PricingStrategy {
-    computePrice(entryTime: Date, exitTime: Date, type: VehicalType) : number;
+    computePrice(entryTime: Date, exitTime: Date, type: VehicalType) : number
 }
 
 class HourlyPricing implements PricingStrategy {
     computePrice(entryTime: Date, exitTime: Date, type: VehicalType) {
         let diff = exitTime.getTime() - entryTime.getTime();
-        let MS = 30 * 60 * 1000;
-        let actualMinutes = Math.ceil(diff / MS);
-        let rate = type == VehicalType.CAR ? 50 : 25;
+        let minutesCalculation = 30 * 60 * 1000;
+        let actualMinutes = Math.ceil(diff / minutesCalculation);
+        let rate = type == VehicalType.CAR ? 50 : 20;
         return actualMinutes * rate;
     }
 }
@@ -45,38 +48,38 @@ class HourlyPricing implements PricingStrategy {
 class ParkingLot {
     car: number;
     bike: number;
-    active: Map<string, ActivateVehical>;
+    active: Map<string, ActiveVehical>;
     pricing: HourlyPricing;
+    ticket: string = "";
     constructor(car: number, bike: number, pricing: HourlyPricing = new HourlyPricing()) {
         this.car = car;
         this.bike = bike;
+        this.active = new Map<string, ActiveVehical>();
         this.pricing = pricing;
-        this.active = new Map<string, ActivateVehical>();
     }
 
     generateTicket(type: VehicalType) {
-        return type+"-"+Math.floor(Math.random() * 1_000_000);
-        // return type+"-"+"12345";
+        return type+"-"+Math.floor(Math.random() * 1_000_0000);
+        // return type+"-44444";
     }
 
     park(type: VehicalType, entryTime: Date) : Ticket {
-        let ticket = "";
         if(type == VehicalType.CAR && this.car > 0) {
-            ticket = this.generateTicket(type);
             this.car--;
-            this.active.set(ticket, {type, entryTime});
+            this.ticket = this.generateTicket(type);
+            this.active.set(this.ticket, {type, entryTime});
         } else if(type == VehicalType.BIKE && this.bike > 0) {
-            ticket = this.generateTicket(type);
             this.bike--;
-            this.active.set(ticket, {type, entryTime});
+            this.ticket = this.generateTicket(type);
+            this.active.set(this.ticket, {type, entryTime});
         } else {
             return {
-                message: "Parking Full !!!"
+                message: "Parking Full"
             }
         }
 
         return {
-            id: ticket, 
+            id: this.ticket,
             type, 
             entryTime
         }
@@ -84,22 +87,22 @@ class ParkingLot {
 
     unpark(ticketId: string) : Receipt {
         if(this.active.has(ticketId)) {
-
-            let calculatePrice = this.pricing.computePrice(this.active.get(ticketId)?.entryTime || new Date(), new Date(), ticketId.startsWith(VehicalType.CAR) ? VehicalType.CAR : VehicalType.BIKE);
-            let entryTime = this.active.get(ticketId)?.entryTime;
-
+           
+            ticketId.startsWith(VehicalType.CAR) ? this.car++ : this.bike++;
+            let computePrice = this.pricing.computePrice(this.active.get(ticketId)?.entryTime || new Date(), new Date(),  ticketId.startsWith(VehicalType.CAR) ? VehicalType.CAR : VehicalType.BIKE);
+            
             this.active.delete(ticketId);
 
             return {
-                id: ticketId, 
+                id: ticketId,
                 type: ticketId.startsWith(VehicalType.CAR) ? VehicalType.CAR : VehicalType.BIKE,
-                entryTime: entryTime || new Date(),
-                exitTime: new Date(),
-                amount: calculatePrice
+                entryTime: this.active.get(ticketId)?.entryTime || new Date(),
+                exitTime: new Date(Date.now() - 2 * 60 * 60 * 1000),
+                price: computePrice
             }
         } else {
             return {
-                message: "Parking not found !!! The ticket is not associate with this parking !!!"
+                message: "Vehical Details not found !!!"
             }
         }
     }
@@ -108,14 +111,16 @@ class ParkingLot {
 const parking = new ParkingLot(2, 2);
 console.log(parking.park(VehicalType.CAR, new Date(Date.now() - 2 * 60 * 60 * 1000)));
 console.log(parking.park(VehicalType.CAR, new Date(Date.now() - 2 * 60 * 60 * 1000)));
+
 console.log(parking.park(VehicalType.CAR, new Date(Date.now() - 2 * 60 * 60 * 1000)));
 
 console.log(parking.park(VehicalType.BIKE, new Date(Date.now() - 2 * 60 * 60 * 1000)));
 console.log(parking.park(VehicalType.BIKE, new Date(Date.now() - 2 * 60 * 60 * 1000)));
+
 console.log(parking.park(VehicalType.BIKE, new Date(Date.now() - 2 * 60 * 60 * 1000)));
 
 
-console.log(parking.unpark("car-12345"));
-console.log(parking.unpark("bike-12345"));
-
+console.log(parking.unpark("car-44444"));
+console.log(parking.unpark("bike-44444"));
+console.log(parking.unpark("bike-44444"));
 

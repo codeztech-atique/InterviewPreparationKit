@@ -1,16 +1,16 @@
 const slidingWindow = (arr, k) => {
-    const chArr = [], res = [];
+    const chArr = [], result = [];
     for(let i = 0; i < arr.length; i++) {
         if(chArr.length == k) {
-            res.push(Math.max(...chArr));
+            result.push(Math.max(...chArr));
             chArr.shift();
-        } 
+        }
         chArr.push(arr[i]);
     }
     if(chArr.length == k) {
-        res.push(Math.max(...chArr))
+        result.push(Math.max(...chArr));
     }
-    return res;
+    return result;
 }
 
 

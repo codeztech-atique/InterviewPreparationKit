@@ -1,12 +1,12 @@
 class UndirectedGraph {
   constructor() {
     this.adjecencyList = {};
-    this.noOfNodes = 0;
+    this.noOfEdges = 0;
   }
 
   addVertices(node) {
     this.adjecencyList[node] = [];
-    this.noOfNodes++;
+    this.noOfEdges++;
   }
 
   addEdges(node1, node2) {
@@ -23,7 +23,6 @@ class UndirectedGraph {
     let queue = [start];
     let result = [];
     let visited = new Set([start]);
-
     while(queue.length) {
       let current = queue.shift();
       result.push(current);
@@ -42,14 +41,13 @@ class UndirectedGraph {
     if(!start) start = Object.keys(this.adjecencyList)[0];
     let stack = [start];
     let result = [];
-    let visited = new Set([]);
-
+    let visited = new Set();
     while(stack.length) {
       let current = stack.pop();
 
       if(!visited.has(current)) {
-        visited.add(current);
         result.push(current);
+        visited.add(current);
 
         for(const neighbor of [...this.adjecencyList[current]].reverse()) {
           if(!visited.has(neighbor)) {

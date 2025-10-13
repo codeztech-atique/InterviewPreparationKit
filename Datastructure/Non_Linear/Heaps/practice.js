@@ -1,9 +1,9 @@
 // Time complexity and sort are n log n
 class Heap {
-  constructor(cmp = (a, b) => (a - b)) {
+  constructor(cmp = (a, b) => a - b) {
     this.data = [];
     this.cmp = cmp;
-  }
+  } 
 
   size() {
     return this.data.length;
@@ -37,13 +37,13 @@ class Heap {
   }
 
   shiftDown(i) {
-    let n = this.data.length;
+    let n = this.size();
     while(true) {
       let l = 2 * i + 1, r = 2 * i + 2;
       let best = i;
       if(l < n && this.cmp(this.data[l], this.data[best]) < 0) best = l;
       if(r < n && this.cmp(this.data[r], this.data[best]) < 0) best = r;
-      if(i != best) {
+      if(i !== best) {
         this.swap(i, best);
         i = best;
       } else break;
@@ -55,10 +55,8 @@ class Heap {
   }
 }
 
-const minHeap = (cmp) => new Heap(cmp ?? ((a, b) => (a - b)));
-const maxHeap = (cmp) => new Heap(cmp ?? ((a, b) => (b - a)));
-
-
+let minHeap = (cmp) => new Heap(cmp ?? ((a, b) => a - b))
+let maxHeap = (cmp) => new Heap(cmp ?? ((a, b) => b - a))
 
 // const h = minHeap();
 // h.push(10); h.push(5); h.push(20); h.push(1);
@@ -73,25 +71,29 @@ const maxHeap = (cmp) => new Heap(cmp ?? ((a, b) => (b - a)));
 
 function heapSort(arr) {               // ascending using min-heap
   let h = minHeap();
-  for(let x of arr) h.push(x);
+  for(x of arr) h.push(x);
   let out = [];
-  while(h.size()) out.push(h.pop());
+  while(h.size()) {
+    out.push(h.pop());
+  }
   return out;
 }
 
 // Optional: descending
 function heapSortDesc(arr) {
   let h = maxHeap();
-  for(let x of arr) h.push(x);
+  for(x of arr) h.push(x);
   let out = [];
-  while(h.size()) out.push(h.pop());
+  while(h.size()) {
+    out.push(h.pop());
+  }
   return out;
 }
 
 function kSmallest(arr, k) {
-  let h = minHeap();
   let i = 0;
-  for(let x of arr) h.push(x);
+  let h = minHeap();
+  for(x of arr) h.push(x);
   let out = [];
   while(h.size() && i < k) {
     out.push(h.pop());
@@ -101,9 +103,9 @@ function kSmallest(arr, k) {
 }
 
 function kLargest(arr, k) {
-  let h = maxHeap();
   let i = 0;
-  for(let x of arr) h.push(x);
+  let h = maxHeap();
+  for(x of arr) h.push(x);
   let out = [];
   while(h.size() && i < k) {
     out.push(h.pop());

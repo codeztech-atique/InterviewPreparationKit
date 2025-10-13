@@ -8,9 +8,10 @@ O — Open/Closed Principle (OCP)
 A class should be open for extension but closed for modification.
 ➝ You can extend behavior without changing existing code.
 
-L — Liskov Substitution Principle (LSP)
+L — Liskov Substitution Principle (LSP) - Introduce by Barbara LisKov ( Year 1987 )
 Subtypes must be substitutable for their base types.
 ➝ A derived class should work wherever the base class is expected.
+➝ Or the Child class should be substituting parent class seemlessly. 
 
 I — Interface Segregation Principle (ISP)
 No client should be forced to depend on methods it does not use.
