@@ -1,5 +1,6 @@
 // D — Dependency Inversion Principle (DIP)
-// ➡ Library should depend on abstraction (not concrete logging).
+// ➡ Library should depend on interface or abstraction (not concrete logging).
+// ➡ In simple terms the DIP suggests that classes should rely on interface or abstractions rather than conrete implementaitons. 
 
 class Logger {
   log(msg) {}

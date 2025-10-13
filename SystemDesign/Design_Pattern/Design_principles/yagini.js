@@ -1,4 +1,5 @@
 // YAGNI = You Aren’t Gonna Need It.
+// No need to the extra code
 
 // Without Yagni
 
