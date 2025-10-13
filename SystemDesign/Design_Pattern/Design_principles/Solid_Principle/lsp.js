@@ -1,5 +1,6 @@
 // L — Liskov Substitution Principle (LSP)
 // ➡ Subclasses of Book should behave like Book.
+// ➡ Subclasses should be extends to a parent class
 
 class Book {
   read() {
