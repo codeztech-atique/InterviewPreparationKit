@@ -1,5 +1,8 @@
 node_modules
 
+SystemDesign/Design_Pattern/Practice/node_modules
+SystemDesign/Design_Pattern/Practice/dist
+
 SystemDesign/LLD/VendingMachine/node_modules
 SystemDesign/LLD/VendingMachine/dist
 
