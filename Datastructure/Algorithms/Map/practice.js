@@ -1,34 +1,36 @@
 const grouping = (arr, size) => {
     let hashMap = new Map();
 
-    for(let [type, u, v] of arr) {
+    let ensure = (u) => {
         if(!hashMap.has(u)) {
             hashMap.set(u, new Set());
-        } if(!hashMap.has(v)) {
-            hashMap.set(v, new Set());
         }
     }
 
-    for(const [type, u, v] of arr) {
+    for(let [type, u, v] of arr) {
+        ensure(u);
+        ensure(v);
+
         if(type == "CONNECT") {
             hashMap.get(u).add(v);
             hashMap.get(v).add(u);
-        } else if(type == "DISCONNECT") {
+        } else {
             hashMap.get(u).delete(v);
             hashMap.get(v).delete(u);
         }
     }
+
     let less = [];
     let more = [];
 
-    for(let [user, neighbor] of hashMap.entries()) {
-        if(neighbor.size < size) {
-            less.push(user);
-        } else if(neighbor.size >= size) {
-            more.push(user);
+    for(const [u, v] of hashMap.entries()) {
+        if(v.size < size) {
+            less.push(u);
+        } else {
+            more.push(u);
         }
     }
-
+     
     return [less, more];
 }
 

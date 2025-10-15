@@ -7,9 +7,11 @@ const slidingWindow = (arr, k) => {
         }
         chArr.push(arr[i]);
     }
+
     if(chArr.length == k) {
         result.push(Math.max(...chArr));
     }
+
     return result;
 }
 

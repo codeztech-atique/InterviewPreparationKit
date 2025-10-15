@@ -17,13 +17,13 @@ class Tries {
             if(!(curr.children.has(charToInsert))) {
                 curr.children.set(charToInsert, new Node());
             }
-            curr = curr.children.get(charToInsert);
             curr.size = size;
+            curr = curr.children.get(charToInsert);
         }
         curr.isWordEnd = true;
         return this;
     }
-    
+
     contains(word) {
         let curr = this.root;
         for(let i = 0; i < word.length; i++) {
@@ -74,30 +74,30 @@ class Tries {
 
     printAllTheWord() {
         let result = [];
-        let dfs = (node, currentWord = '') => {
+        let searchTree = (node, currentWord = '') => {
             if(node.isWordEnd) {
                 result.push(currentWord);
             }
             for(const [ch, currNode] of node.children.entries()) {
-                dfs(currNode, currentWord+ch);
+                searchTree(currNode, currentWord+ch)
             }
         }
-        dfs(this.root, "");
+        searchTree(this.root, '');
         return result;
     }
 
     printLeafWords() {
         let result = [];
-        let dfs = (node) => {
+        let searchTree = (node) => {
             for(const [ch, currNode] of node.children.entries()) {
                 result.push({
                     key: ch,
-                    value: currNode.size
+                    value: node.size
                 })
-                dfs(currNode);
+                searchTree(currNode);
             }
         }
-        dfs(this.root);
+        searchTree(this.root);
         return result;
     }
 
@@ -109,6 +109,7 @@ class Tries {
             }
         })
     }
+
 }
 
 const tries = new Tries();
