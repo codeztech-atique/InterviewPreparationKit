@@ -9,7 +9,6 @@ function generateBinaryStrings(n) {
         backtrack(current + "0");
         backtrack(current + "1");
     }
-
     backtrack("");
     return result;
 }
@@ -28,24 +27,23 @@ function generateSubsetBacktrack(n) {
         backtrack(index + 1, current);
         current.pop();
     }
-
     backtrack(0, []);
     return result;
 }
 
 function combinationSum(arr, target) {
     let result = [];
-    let backtrack = (index, current, remains) => {
-        if(remains == 0) {
+    let backtrack = (index, current, remain) => {
+        if(remain == 0) {
             result.push([...current]);
             return;
         }
-        if(remains < 0 || index == arr.length) return;
+        if(remain < 0 || index == arr.length) return;
 
-        backtrack(index + 1, current, remains);
+        backtrack(index + 1, current, remain);
         current.push(arr[index]);
 
-        backtrack(index, current, remains - arr[index]);
+        backtrack(index, current, remain - arr[index]);
         current.pop();
     }
     backtrack(0, [], target);
@@ -54,8 +52,9 @@ function combinationSum(arr, target) {
 
 function permuteSwap(nums) {
     let result = [];
+    const n = nums.length;
     let backtrack = (index) => {
-        if(index == nums.length) {
+        if(index == n) {
             result.push([...nums]);
             return;
         }
@@ -74,3 +73,4 @@ console.log(generateSubsetBacktrack([1,2,3,4]));
 console.log(generateBinaryStrings(2));
 console.log(combinationSum([2,3,6,7], 7)); // [[7],[2,2,3]]
 console.log(permuteSwap([1,2,3]));
+console.log(permuteSwap([3, 2, 1]));

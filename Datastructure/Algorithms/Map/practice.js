@@ -7,30 +7,30 @@ const grouping = (arr, size) => {
         }
     }
 
-    for(let [type, u, v] of arr) {
-        ensure(u);
-        ensure(v);
-
+    for(const [type, u, v] of arr) {
         if(type == "CONNECT") {
+            ensure(u);
+            ensure(v);
+
             hashMap.get(u).add(v);
             hashMap.get(v).add(u);
-        } else {
+        } else  if(type == "DISCONNECT") {
             hashMap.get(u).delete(v);
             hashMap.get(v).delete(u);
         }
     }
 
-    let less = [];
     let more = [];
+    let less = [];
 
     for(const [u, v] of hashMap.entries()) {
         if(v.size < size) {
-            less.push(u);
-        } else {
-            more.push(u);
+            less.push(u)
+        } else if(v.size >= size) {
+            more.push(u)
         }
     }
-     
+
     return [less, more];
 }
 

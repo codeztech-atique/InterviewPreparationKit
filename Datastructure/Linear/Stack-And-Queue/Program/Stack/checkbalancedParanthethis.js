@@ -1,5 +1,6 @@
 // Check the Balanced Paranthesis
 // Solve this equation using stack
+// https://leetcode.com/problems/valid-parentheses
 
 function removeBrackets(expression) {
       let arr = [];
