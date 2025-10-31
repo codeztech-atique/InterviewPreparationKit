@@ -5,9 +5,9 @@ const search = (arr, target, start, end) => {
     if(arr[mid] == target) {
         return mid;
     } else if(arr[mid] < target) {
-        return search(arr, target, start + 1, end)
+        return search(arr, target, mid + 1, end)
     } else {
-        return search(arr, target, start, end - 1);
+        return search(arr, target, start, mid - 1);
     }
 }
 
