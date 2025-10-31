@@ -1,6 +1,6 @@
 function generateBinaryStrings(n) {
     const result = [];
-    let backtrack = (current) => {
+    const backtrack = (current) => {
         if(current.length == n) {
             result.push(current);
             return;
@@ -15,7 +15,7 @@ function generateBinaryStrings(n) {
 
 function generateSubsetBacktrack(n) {
     let result = [];
-    let backtrack = (index, current) => {
+    const backtrack = (index, current) => {
         if(index == n.length) {
             result.push([...current]);
             return;
@@ -27,17 +27,16 @@ function generateSubsetBacktrack(n) {
         backtrack(index + 1, current);
         current.pop();
     }
+
     backtrack(0, []);
+
     return result;
 }
 
 function combinationSum(arr, target) {
-    let result = [];
-    let backtrack = (index, current, remain) => {
-        if(remain == 0) {
-            result.push([...current]);
-            return;
-        }
+    const result = [];
+    const backtrack = (index, current, remain) => {
+        if(remain == 0) { result.push([...current]); return; }
         if(remain < 0 || index == arr.length) return;
 
         backtrack(index + 1, current, remain);
@@ -46,15 +45,15 @@ function combinationSum(arr, target) {
         backtrack(index, current, remain - arr[index]);
         current.pop();
     }
+
     backtrack(0, [], target);
     return result;
 }
 
 function permuteSwap(nums) {
     let result = [];
-    const n = nums.length;
-    let backtrack = (index) => {
-        if(index == n) {
+    const backtrack = (index) => {
+        if(index == nums.length) {
             result.push([...nums]);
             return;
         }

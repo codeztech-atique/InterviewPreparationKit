@@ -40,18 +40,10 @@ class LinkedList {
       return this.printList();
    }
 
-   remove(index) {
-      if(index > this.length) {
-         return "Invalid Input !!!"
-      }
-      let leader = this.traverse(index - 1);
-      let unwantedNode = leader.next;
-      leader.next = unwantedNode.next;
-      this.length--;
-      return this.printList();
-   }
-
    removeFirst() {
+      if(!this.head) {
+         return "List Empty !!!"
+      }
       let current = this.head;
       this.head = current.next;
       this.length--;
@@ -59,6 +51,9 @@ class LinkedList {
    }
 
    removeLast() {
+      if(!this.head) {
+         return "List Empty !!!"
+      }
       let current = this.head;
       let newTail = this.head;
       while(current.next) {
@@ -71,8 +66,19 @@ class LinkedList {
       return this.printList();
    }
 
+   remove(index) {
+      if(index > this.length) {
+         return "Invalid Input !!!"
+      }
+      let leader = this.traverse(index - 1);
+      let unwantedNode = leader.next;
+      leader.next = unwantedNode.next;
+      this.length--;
+      return this.printList();
+   }
+
    reverse() {
-      if(!this.head.next) {
+      if(!this.head) {
          return this.head;
       }
       this.tail = this.head;

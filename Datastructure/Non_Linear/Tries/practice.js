@@ -10,16 +10,17 @@ class Tries {
         this.root = new Node();
     }
 
-    insert(word, size) {
+    insert(word, value) {
         let curr = this.root;
         for(let i = 0; i < word.length; i++) {
-            let charToInsert = word[i];
-            if(!(curr.children.has(charToInsert))) {
-                curr.children.set(charToInsert, new Node());
+            let data = word[i];
+            if(!(curr.children.has(data))) {
+                curr.children.set(data, new Node());
             }
-            curr.size = size;
-            curr = curr.children.get(charToInsert);
+            curr = curr.children.get(data);
+            curr.size = value;
         }
+
         curr.isWordEnd = true;
         return this;
     }
@@ -27,35 +28,37 @@ class Tries {
     contains(word) {
         let curr = this.root;
         for(let i = 0; i < word.length; i++) {
-            let charToInsert = word[i];
-            if(!(curr.children.has(charToInsert))) {
+            let data = word[i];
+            if(!(curr.children.has(data))) {
                 return false;
             }
-            curr = curr.children.get(charToInsert);
+            curr = curr.children.get(data);
         }
+
         return curr.isWordEnd;
     }
 
     startWithPrefix(word) {
         let curr = this.root;
         for(let i = 0; i < word.length; i++) {
-            let charToInsert = word[i];
-            if(!(curr.children.has(charToInsert))) {
+            let data = word[i];
+            if(!(curr.children.has(data))) {
                 return false;
             }
-            curr = curr.children.get(charToInsert);
+            curr = curr.children.get(data);
         }
+
         return true;
     }
 
     remove(word) {
         let curr = this.root;
         for(let i = 0; i < word.length; i++) {
-            let charToInsert = word[i];
-            if(!(curr.children.has(charToInsert))) {
+            let data = word[i];
+            if(!(curr.children.has(data))) {
                 return false;
             }
-            curr = curr.children.get(charToInsert);
+            curr = curr.children.get(data);
         }
         curr.isWordEnd = false;
         return true;
@@ -79,7 +82,7 @@ class Tries {
                 result.push(currentWord);
             }
             for(const [ch, currNode] of node.children.entries()) {
-                searchTree(currNode, currentWord+ch)
+                searchTree(currNode, currentWord + ch);
             }
         }
         searchTree(this.root, '');
@@ -92,7 +95,7 @@ class Tries {
             for(const [ch, currNode] of node.children.entries()) {
                 result.push({
                     key: ch,
-                    value: node.size
+                    value: currNode.size
                 })
                 searchTree(currNode);
             }
@@ -102,14 +105,13 @@ class Tries {
     }
 
     autoComplete(str) {
-        let total = this.printAllTheWord();
-        return total.filter((e) => {
-            if(e.startsWith(str)) {
+        let allWord = this.printAllTheWord();
+        return allWord.filter((s) => {
+            if(s.startsWith(str)) {
                 return true;
             }
         })
     }
-
 }
 
 const tries = new Tries();

@@ -1,8 +1,8 @@
 class DSU {
     constructor(n) {
-        this.parent = Array.from({ length: n }, (_,i) => i);
+        this.parent = Array.from({ length : n },  (_, i) => i);
         this.components = n;
-    } 
+    }
 
     find(x) {
         while(x != this.parent[x]) x = this.parent[x];
@@ -15,6 +15,14 @@ class DSU {
         this.parent[rb] = ra;
         this.components--;
         return true;
+    }
+
+    connected(a, b) {
+        return this.find(a) == this.find(b);
+    }
+
+    count() {
+        return this.components;
     }
 
     hasCycle(n, edges) {
@@ -32,13 +40,13 @@ class DSU {
     countConnectComponents(n, edges) {
         let dsu = new DSU(n);
 
-        for(const [u, v] of edges) {
+        for(let [u, v] of edges) {
             dsu.union(u, v);
         }
 
         let groups = new Map();
         for(let i = 0; i < n; i++) {
-            const r = dsu.find(i); 
+            const r = dsu.find(i);
             if(!groups.has(r)) groups.set(r, []);
             groups.get(r).push(i);
         }
@@ -48,31 +56,26 @@ class DSU {
 
     kruskalMST(n, edges) {
         edges = edges.sort((a, b) => a[2] - b[2]);
-        let dsu = new DSU(n);
+        const dsu = new DSU(n);
+        const mst = [];
         let total = 0;
-        let mst = [];
 
         for(const [u, v, w] of edges) {
             if(dsu.union(u, v)) {
                 mst.push([u, v, w]);
-                total += w;
             }
+
+            total += w;
+
+            if(mst.length == n - 1) break;
         }
 
         return {
-            weight: total,
-            edges: mst
+            edges: mst,
+            total: total
         }
     }
-
-    connected(a, b) {
-        return this.find(a) == this.find(b);
-    }
-
-    count() {
-        return this.components;
-    }
-}
+} 
 
 
 // Example

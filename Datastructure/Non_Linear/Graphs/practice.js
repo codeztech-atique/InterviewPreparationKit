@@ -1,25 +1,24 @@
 class UndirectedGraph {
   constructor() {
-    this.adjecencyList = {};
+    this.adjecentList = {};
     this.noOfNodes = 0;
   }
 
   addVertices(node) {
-    this.adjecencyList[node] = [];
-    this.noOfNodes = 0;
+    this.adjecentList[node] = [];
   }
 
   addEdges(node1, node2) {
-    this.adjecencyList[node1].push(node2);
-    this.adjecencyList[node2].push(node1);
+    this.adjecentList[node1].push(node2);
+    this.adjecentList[node2].push(node1);
   }
 
   showConnections() {
-    return this.adjecencyList;
+    return this.adjecentList;
   }
 
   bfs(start) {
-    if(!start) start = Object.keys(this.adjecencyList)[0];
+    if(!start) start = Object.keys(this.adjecentList)[0];
     let queue = [start];
     let result = [];
     let visited = new Set([start]);
@@ -27,10 +26,10 @@ class UndirectedGraph {
       let current = queue.shift();
       result.push(current);
 
-      for(const neighbor of this.adjecencyList[current]) {
+      for(let neighbor of this.adjecentList[current]) {
         if(!visited.has(neighbor)) {
           visited.add(neighbor);
-          queue.push(neighbor)
+          queue.push(neighbor);
         }
       }
     }
@@ -38,18 +37,17 @@ class UndirectedGraph {
   }
 
   dfs(start) {
-    if(!start) start = Object.keys(this.adjecencyList)[0];
+    if(!start) start = Object.keys(this.adjecentList)[0];
     let stack = [start];
     let result = [];
     let visited = new Set();
     while(stack.length) {
       let current = stack.pop();
-
       if(!visited.has(current)) {
         result.push(current);
         visited.add(current);
 
-        for(const neighbor of [...this.adjecencyList[current]].reverse()) {
+        for(let neighbor of [...this.adjecentList[current]].reverse()) {
           if(!visited.has(neighbor)) {
             stack.push(neighbor);
           }
