@@ -9,6 +9,7 @@ Describe the state in React.
 What is the difference between props and state?
 Explain the purpose of the setState method.
 How do you create a controlled component in React?
+
 Components and Props:
 What are React components?
 Differentiate between functional and class components.

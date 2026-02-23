@@ -9,50 +9,49 @@ function generateBinaryStrings(n) {
         backtrack(current + "0");
         backtrack(current + "1");
     }
+
     backtrack("");
     return result;
 }
 
-function generateSubsetBacktrack(n) {
+function generateSubsetBacktrack(nums) {
     let result = [];
-    const backtrack = (index, current) => {
-        if(index == n.length) {
+    let backtrack = (index, current) => {
+        if(index == nums.length) {
             result.push([...current]);
             return;
         }
 
         backtrack(index + 1, current);
-        current.push(n[index]);
-
+        current.push(nums[index]);
         backtrack(index + 1, current);
         current.pop();
     }
 
     backtrack(0, []);
-
     return result;
 }
 
-function combinationSum(arr, target) {
-    const result = [];
-    const backtrack = (index, current, remain) => {
-        if(remain == 0) { result.push([...current]); return; }
-        if(remain < 0 || index == arr.length) return;
+function combinationSum(nums, target) {
+    let result = [];
+    let backtrack = (index, current, remain) => {
+        if(remain == 0) { result.push([...current]); return; };
+        if(remain < 0 || index == nums.length) return;
 
         backtrack(index + 1, current, remain);
-        current.push(arr[index]);
-
-        backtrack(index, current, remain - arr[index]);
+        current.push(nums[index]);
+        backtrack(index, current, remain - nums[index]);
         current.pop();
     }
 
     backtrack(0, [], target);
+
     return result;
 }
 
 function permuteSwap(nums) {
     let result = [];
-    const backtrack = (index) => {
+    let backtrack = (index) => {
         if(index == nums.length) {
             result.push([...nums]);
             return;
@@ -64,12 +63,14 @@ function permuteSwap(nums) {
             [nums[index], nums[i]] = [nums[i], nums[index]];
         }
     }
+
     backtrack(0);
     return result;
 }
 
-console.log(generateSubsetBacktrack([1,2,3,4]));
 console.log(generateBinaryStrings(2));
+console.log(generateSubsetBacktrack([1,2,3,4]));
 console.log(combinationSum([2,3,6,7], 7)); // [[7],[2,2,3]]
+
 console.log(permuteSwap([1,2,3]));
 console.log(permuteSwap([3, 2, 1]));

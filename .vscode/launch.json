@@ -1,4 +1,6 @@
 {
+  // Note: GitHub Copilot auto-suggestions are controlled via VS Code settings
+  // (e.g. .vscode/settings.json), not via launch configurations.
   "version": "0.2.0",
   "configurations": [
     
