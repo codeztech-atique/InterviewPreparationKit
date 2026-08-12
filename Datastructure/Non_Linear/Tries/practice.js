@@ -2,7 +2,6 @@ class Node {
     constructor() {
         this.children = new Map();
         this.isWordEnd = false;
-        this.size = 0;
     }
 }
 class Tries {
@@ -10,107 +9,105 @@ class Tries {
         this.root = new Node();
     }
 
-    insert(word, value) {
+    insert(word) {
         let curr = this.root;
         for(let i = 0; i < word.length; i++) {
-            let data = word[i];
-            if(!(curr.children.has(data))) {
-                curr.children.set(data, new Node());
+            let charToInsert = word[i];
+            if(!curr.children.has(charToInsert)) {
+                curr.children.set(charToInsert, new Node());
             }
-            curr = curr.children.get(data);
-            curr.size = value;
+            curr.weight = 5;
+            curr = curr.children.get(charToInsert);
         }
-
         curr.isWordEnd = true;
+        curr.weight = 5;
         return this;
     }
 
     contains(word) {
         let curr = this.root;
         for(let i = 0; i < word.length; i++) {
-            let data = word[i];
-            if(!(curr.children.has(data))) {
+            let charToInsert = word[i];
+            if(!curr.children.has(charToInsert)) {
                 return false;
             }
-            curr = curr.children.get(data);
+            curr = curr.children.get(charToInsert);
         }
-
         return curr.isWordEnd;
     }
 
     startWithPrefix(word) {
         let curr = this.root;
         for(let i = 0; i < word.length; i++) {
-            let data = word[i];
-            if(!(curr.children.has(data))) {
+            let charToInsert = word[i];
+            if(!curr.children.has(charToInsert)) {
                 return false;
             }
-            curr = curr.children.get(data);
+            curr = curr.children.get(charToInsert);
         }
-
         return true;
     }
 
     remove(word) {
         let curr = this.root;
         for(let i = 0; i < word.length; i++) {
-            let data = word[i];
-            if(!(curr.children.has(data))) {
+            let charToInsert = word[i];
+            if(!curr.children.has(charToInsert)) {
                 return false;
             }
-            curr = curr.children.get(data);
+            curr = curr.children.get(charToInsert);
         }
         curr.isWordEnd = false;
         return true;
-    }
+    } 
 
     getCommonPrefix() {
-        let ch = "", str = "";
-        let curr = this.root;
-        while(curr.children.size == 1 && !curr.isWordEnd) {
-            ch = Array.from(curr.children.keys())[0];
+        let str = "", ch = "";
+        let node = this.root;
+        while(node.children.size == 1 && !node.isWordEnd) {
+            ch = Array.from(node.children.keys())[0];
             str += ch;
-            curr = curr.children.get(ch);
+            node = node.children.get(ch);
         }
         return str;
     }
 
     printAllTheWord() {
-        let result = [];
-        let searchTree = (node, currentWord = '') => {
+        let word = [];
+        let searchTreeDFS = (node, currentWord = "") => {
             if(node.isWordEnd) {
-                result.push(currentWord);
+                word.push(currentWord);
             }
             for(const [ch, currNode] of node.children.entries()) {
-                searchTree(currNode, currentWord + ch);
+                searchTreeDFS(currNode, currentWord + ch);
             }
         }
-        searchTree(this.root, '');
-        return result;
+        searchTreeDFS(this.root);
+        return word;
     }
 
     printLeafWords() {
-        let result = [];
+        let res = [];
         let searchTree = (node) => {
             for(const [ch, currNode] of node.children.entries()) {
-                result.push({
+                res.push({
                     key: ch,
-                    value: currNode.size
-                })
+                    weight: currNode.weight
+                });
                 searchTree(currNode);
             }
         }
         searchTree(this.root);
-        return result;
+        return res;
     }
 
-    autoComplete(str) {
-        let allWord = this.printAllTheWord();
-        return allWord.filter((s) => {
-            if(s.startsWith(str)) {
+    autoComplete(word) {
+        let totalWord = this.printAllTheWord();
+        return totalWord.filter((e) => {
+            if(e.startsWith(word)) {
                 return true;
             }
-        })
+        });
     }
 }
 

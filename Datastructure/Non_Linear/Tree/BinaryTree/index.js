@@ -264,12 +264,12 @@ function isBalanced(node) {
 // }
  
 // using recursion
-function lcaBST(root, p, q) { // lcaBST
+function lcaBST(node, p, q) { // lcaBST
   if (!node) return null;
   if (node.value === p || node.value === q) return node;
 
-  const left = lcaBTByValue(node.left, p, q);
-  const right = lcaBTByValue(node.right, p, q);
+  const left = lcaBST(node.left, p, q);
+  const right = lcaBST(node.right, p, q);
 
   if (left && right) return node;  // p and q split across left/right
   return left ?? right;  // p and q split across left/right

@@ -130,20 +130,12 @@ class Trie {
     // autoComplete("") → ["Atique", "Ahmed"] (empty prefix = all words)
 
     autoComplete(prefix) {
-        let curr = this.root;
-        for (let char of prefix) {
-            if (!curr.children.has(char)) return [];
-            curr = curr.children.get(char);
-        }
-        let results = [];
-        let dfs = (node, path) => {
-            if (node.isWordEnd) results.push(path);
-            for (let [ch, next] of node.children) {
-                dfs(next, path + ch);
+        let allWord = this.printAllTheWord();
+        return allWord.filter((s) => {
+            if(s.startsWith(str)) {
+                return true;
             }
-        };
-        dfs(curr, prefix);
-        return results;
+        })
     }
 }
 

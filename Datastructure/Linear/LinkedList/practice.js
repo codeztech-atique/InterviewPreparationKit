@@ -1,68 +1,44 @@
 class Node {
-   constructor(value) {
-      this.value = value;
+   constructor(val) {
+      this.val = val;
       this.next = null;
    }
 }
+
 class LinkedList {
-   constructor(value) {
-      this.head = new Node(value);
+   constructor(val) {
+      this.head = new Node(val);
       this.tail = this.head;
       this.length = 1;
    }
 
-   prepend(value) {
-      let newNode = new Node(value);
+   prepend(val) {
+      let newNode = new Node(val);
       newNode.next = this.head;
       this.head = newNode;
       this.length++;
       return this;
    }
 
-   append(value) {
-      let newNode = new Node(value);
+   append(val) {
+      let newNode = new Node(val);
       this.tail.next = newNode;
       this.tail = newNode;
       this.length++;
       return this;
    }
 
-   insert(index, value) {
-      if(index >= this.length) {
-         return this.append(value);
+   insert(index, val) {
+      if(index > this.length) {
+         return this.append(val);
       }
-      let newNode = new Node(value);
+
+      let newNode = new Node(val);
       let leader = this.traverse(index - 1);
       let nextNode = leader.next;
       leader.next = newNode;
       newNode.next = nextNode;
       this.length++;
-      return this.printList();
-   }
-
-   removeFirst() {
-      if(!this.head) {
-         return "List Empty !!!"
-      }
-      let current = this.head;
-      this.head = current.next;
-      this.length--;
-      return this.printList();
-   }
-
-   removeLast() {
-      if(!this.head) {
-         return "List Empty !!!"
-      }
-      let current = this.head;
-      let newTail = this.head;
-      while(current.next) {
-         newTail = current;
-         current = current.next;
-      }
-      newTail.next = null;
-      this.tail = newTail;
-      this.length--;
       return this.printList();
    }
 
@@ -77,8 +53,18 @@ class LinkedList {
       return this.printList();
    }
 
+   traverse(index) {
+      let counter = 0;
+      let curr = this.head;
+      while(index != counter) {
+         counter++;
+         curr = curr.next;
+      }
+      return curr;
+   }
+
    reverse() {
-      if(!this.head) {
+      if(!this.head.next) {
          return this.head;
       }
       this.tail = this.head;
@@ -95,40 +81,53 @@ class LinkedList {
       return this.printList();
    }
 
-   hasCycle() {
-      let slow = this.head;
-      let fast = this.head;
-      while(fast && fast.next) {
-         slow = slow.next;
-         fast = fast.next.next;
-         if(slow == fast) {
-            return true;
-         }
-      }
-      return false;
+   removeFirst() {
+      let currNode = this.head;
+      this.head = currNode.next;
+      this.length--;
+      return this.printList();
    }
 
-   traverse(index) {
-      let counter = 1;
-      let curr = this.head;
-      while(index != counter) {
-         counter++;
-         curr = curr.next;
+   removeLast() {
+      let currNode = this.head;
+      let newTail = this.head;
+
+      while(currNode.next) {
+         newTail = currNode;
+         currNode = currNode.next;
       }
-      return curr;
+
+      newTail.next = null;
+      this.tail = newTail;
+      this.length--;
+      return this.printList();
    }
 
    printList() {
       let result = [];
       let curr = this.head;
       while(curr != null) {
-         result.push(curr.value);
+         result.push(curr.val);
          curr = curr.next;
       }
       return result;
    }
-}
 
+   hasCycle() {
+      let slow = this.head;
+      let fast = this.head;
+      while(fast && fast.next) {
+         slow = slow.next;
+         fast = fast.next.next;
+
+         if(slow == fast) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+}
 
 var myLinkedList = new LinkedList(10);
 myLinkedList.append(5);
@@ -151,10 +150,8 @@ console.log("After Remove:", myLinkedList.printList());
 console.log("Reverse LinkedList--------------------->");
 console.log(myLinkedList.reverse());
 
-// Making it loop
+// // // Making it loop
 myLinkedList.tail.next = myLinkedList.head; // ✅ full circular
 
 console.log("Has Cycle--------------------->");
 console.log(myLinkedList.hasCycle());
-
-// console.log(JSON.stringify(myLinkedList));

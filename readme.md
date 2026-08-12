@@ -1,3 +1,7 @@
+> **Google GenAI FDE prep** → [Company/Google/README.md](Company/Google/README.md)  
+> 2-week battle plan: Round 1 agentic AI / RRK + Round 2 Python OOP coding (official PDF in `Company/Google/`).  
+> This file stays the general DSA curriculum — use the Google guide for FDE-specific prep.
+
 # 📘 FAANG Staff / Engineering Manager Preparation Kit  
 
 This kit is designed for **FAANG-level Staff Software Engineer & Engineering Manager roles**.  

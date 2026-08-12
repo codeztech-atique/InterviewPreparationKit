@@ -1,20 +1,12 @@
 class DSU {
     constructor(n) {
-        this.parent = Array.from({ length: n }, (_,i) => i);
+        this.parent = Array.from({ length : n },  (_, i) => i);
         this.components = n;
     }
 
     find(x) {
         while(x != this.parent[x]) x = this.parent[x];
         return x;
-    }
-
-    connected(a, b) {
-        return this.find(a) == this.find(b);
-    }
-
-    count() {
-        return this.components;
     }
 
     union(a, b) {
@@ -25,58 +17,65 @@ class DSU {
         return true;
     }
 
+    connected(a, b) {
+        return this.find(a) == this.find(b);
+    }
+
+    count() {
+        return this.components;
+    }
+
     hasCycle(n, edges) {
         let dsu = new DSU(n);
 
         for(const [u, v] of edges) {
             if(!dsu.union(u, v)) {
-                return false;
+                return true;
             }
         }
 
-        return true;
+        return false;
     }
 
     countConnectComponents(n, edges) {
         let dsu = new DSU(n);
 
-        for(const [u, v] of edges) {
+        for(let [u, v] of edges) {
             dsu.union(u, v);
         }
 
-        let graphs = new Map();
-        for(let i = 0; i < n ; i++) {
-            const r = this.find(i);
-            if(!graphs.has(r)) graphs.set(r, []);
-            graphs.get(r).push(i);
+        let groups = new Map();
+        for(let i = 0; i < n; i++) {
+            const r = dsu.find(i);
+            if(!groups.has(r)) groups.set(r, []);
+            groups.get(r).push(i);
         }
 
-        return Array.from(graphs.values());
+        return Array.from(groups.values());
     }
 
     kruskalMST(n, edges) {
         edges = edges.sort((a, b) => a[2] - b[2]);
-        let dsu = new DSU(n);
-        let res = [];
+        const dsu = new DSU(n);
+        const mst = [];
         let total = 0;
 
         for(const [u, v, w] of edges) {
             if(dsu.union(u, v)) {
-                res.push([u, v, w])
+                mst.push([u, v, w]);
             }
 
             total += w;
 
-            if(res.length == n - 1) break;
+            if(mst.length == n - 1) break;
         }
 
         return {
-            weight: res,
-            size: total
+            edges: mst,
+            total: total
         }
     }
-
-}
+} 
 
 
 // Example

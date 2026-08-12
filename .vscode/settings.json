@@ -1,67 +1,15 @@
 {
-  // Repo-only: disable Copilot inline code completions (ghost text).
-  // If you want other inline suggestions back, set editor.inlineSuggest.enabled to true.
-  "github.copilot.editor.enableAutoCompletions": false,
-  // Older/alternate Copilot settings keys (kept for compatibility across extension versions)
-  // to ensure Copilot stops contributing suggestions in this workspace.
-  "github.copilot.inlineSuggest.enable": false,
-  "github.copilot.enable": {
-    "*": false
-  },
-  "editor.inlineSuggest.enabled": false,
-
-  // Repo-only: disable VS Code IntelliSense suggestions while typing (non-Copilot).
-  // This removes the in-line grey preview text and the suggestion popup.
-  "editor.suggest.preview": false,
   "editor.quickSuggestions": {
+    "other": "off",
     "comments": "off",
-    "strings": "off",
-    "other": "off"
+    "strings": "off"
   },
   "editor.suggestOnTriggerCharacters": false,
-  "editor.parameterHints.enabled": false,
+  "editor.inlineSuggest.enabled": false,
   "editor.wordBasedSuggestions": "off",
-  "editor.tabCompletion": "off",
-
-  // Hard overrides for the languages used in this repo.
-  "[javascript]": {
-    "editor.inlineSuggest.enabled": false,
-    "editor.quickSuggestions": {
-      "comments": "off",
-      "strings": "off",
-      "other": "off"
-    },
-    "editor.suggestOnTriggerCharacters": false,
-    "github.copilot.editor.enableAutoCompletions": false
-  },
-  "[typescript]": {
-    "editor.inlineSuggest.enabled": false,
-    "editor.quickSuggestions": {
-      "comments": "off",
-      "strings": "off",
-      "other": "off"
-    },
-    "editor.suggestOnTriggerCharacters": false,
-    "github.copilot.editor.enableAutoCompletions": false
-  },
-  "[javascriptreact]": {
-    "editor.inlineSuggest.enabled": false,
-    "editor.quickSuggestions": {
-      "comments": "off",
-      "strings": "off",
-      "other": "off"
-    },
-    "editor.suggestOnTriggerCharacters": false,
-    "github.copilot.editor.enableAutoCompletions": false
-  },
-  "[typescriptreact]": {
-    "editor.inlineSuggest.enabled": false,
-    "editor.quickSuggestions": {
-      "comments": "off",
-      "strings": "off",
-      "other": "off"
-    },
-    "editor.suggestOnTriggerCharacters": false,
-    "github.copilot.editor.enableAutoCompletions": false
-  }
+  "editor.acceptSuggestionOnEnter": "off",
+  "editor.acceptSuggestionOnCommitCharacter": false,
+  "editor.snippetSuggestions": "none",
+  "editor.parameterHints.enabled": false,
+  "chat.disableAIFeatures": true
 }

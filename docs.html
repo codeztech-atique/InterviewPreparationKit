@@ -1,0 +1,1011 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Abstrive Developers — API Documentation</title>
+    <meta
+      name="description"
+      content="Abstrive API documentation. Integrate Atlas analytics,
+        Nexus ticketing, AI Agents, and Nova chatbot into your stack
+        with our SDKs and REST APIs."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ── Custom Properties ── */
+      :root {
+        --font-main: "Plus Jakarta Sans", sans-serif;
+        --color-bg: #ffffff;
+        --color-sidebar-bg: #fafafa;
+        --color-text: #0a0a0a;
+        --color-text-secondary: #1a1a1a;
+        --color-text-muted: #525252;
+        --color-text-light: #a3a3a3;
+        --color-accent: #0a0a0a;
+        --color-accent-hover: #262626;
+        --color-accent-light: #f5f5f5;
+        --color-border: #e5e5e5;
+        --color-border-light: #f0f0f0;
+        --color-accent-glow: rgba(0, 0, 0, 0.06);
+        --color-accent-contrast: #ffffff;
+        --color-active-bg: #f0f0f0;
+        --color-active-text: #0a0a0a;
+        --color-info-bg: #fafafa;
+        --color-info-border: #e5e5e5;
+        --color-code-bg: #f5f5f5;
+        --color-hero-bg: #f5f5f5;
+        --sidebar-width: 260px;
+        --toc-width: 210px;
+        --navbar-height: 56px;
+        --radius-sm: 6px;
+        --radius-md: 10px;
+        --radius-lg: 14px;
+        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+        --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+        --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+        --transition: 0.2s ease;
+      }
+
+      /* ── Reset ── */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: var(--font-main);
+        background: var(--color-bg);
+        color: var(--color-text);
+        line-height: 1.7;
+        letter-spacing: -0.01em;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      ul {
+        list-style: none;
+      }
+      button {
+        font-family: var(--font-main);
+      }
+
+      /* ── Top Navbar ── */
+      .topnav {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: #ffffff;
+        border-bottom: 1px solid #e5e5e5;
+        height: var(--navbar-height);
+        display: flex;
+        align-items: center;
+        padding: 0 24px;
+      }
+      .topnav__left {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+        flex-shrink: 0;
+      }
+      .topnav__logo {
+        font-weight: 700;
+        font-size: 1.2rem;
+        color: var(--color-text);
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+      .topnav__logo-icon {
+        width: 26px;
+        height: 26px;
+        background: #0a0a0a;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .topnav__logo-icon svg {
+        width: 16px;
+        height: 16px;
+        fill: #fff;
+      }
+      .topnav__links {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .topnav__link {
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: var(--color-text-secondary);
+        padding: 6px 12px;
+        border-radius: var(--radius-sm);
+        transition: all var(--transition);
+        white-space: nowrap;
+      }
+      .topnav__link:hover {
+        background: var(--color-sidebar-bg);
+        color: var(--color-text);
+      }
+      .topnav__link--active {
+        color: #0a0a0a;
+        font-weight: 600;
+        background: #f5f5f5;
+      }
+      .topnav__link--dropdown::after {
+        content: " ▾";
+        font-size: 0.7em;
+        color: var(--color-text-light);
+      }
+      .topnav__right {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .btn {
+        font-family: var(--font-main);
+        font-weight: 600;
+        font-size: 0.82rem;
+        padding: 7px 16px;
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        transition: all var(--transition);
+        border: none;
+        white-space: nowrap;
+      }
+      .btn--ghost {
+        background: #fff;
+        color: #0a0a0a;
+        border: 1px solid #e5e5e5;
+      }
+      .btn--ghost:hover {
+        background: #f5f5f5;
+        border-color: #d4d4d4;
+      }
+      .btn--accent {
+        background: #0a0a0a;
+        color: #ffffff;
+      }
+      .btn--accent:hover {
+        background: #262626;
+      }
+      .btn--accent-outline {
+        background: transparent;
+        color: #0a0a0a;
+        border: 1px solid #0a0a0a;
+      }
+      .btn--accent-outline:hover {
+        background: #f5f5f5;
+      }
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 4px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 6px;
+        margin-right: 8px;
+      }
+      .hamburger span {
+        display: block;
+        width: 18px;
+        height: 2px;
+        background: var(--color-text-secondary);
+        border-radius: 2px;
+      }
+
+      /* ── 3-Column Layout ── */
+      .docs-layout {
+        display: flex;
+        min-height: calc(100vh - var(--navbar-height));
+      }
+
+      /* ── Left Sidebar ── */
+      .sidebar {
+        width: var(--sidebar-width);
+        flex-shrink: 0;
+        background: #fafafa;
+        border-right: 1px solid #e5e5e5;
+        position: sticky;
+        top: var(--navbar-height);
+        height: calc(100vh - var(--navbar-height));
+        overflow-y: auto;
+        padding: 20px 0;
+        z-index: 40;
+      }
+      .sidebar::-webkit-scrollbar {
+        width: 4px;
+      }
+      .sidebar::-webkit-scrollbar-thumb {
+        background: var(--color-border);
+        border-radius: 4px;
+      }
+
+      .sidebar__search {
+        margin: 0 16px 20px;
+        position: relative;
+      }
+      .sidebar__search-icon {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--color-text-light);
+        pointer-events: none;
+      }
+      .sidebar__search-input {
+        width: 100%;
+        font-family: var(--font-main);
+        font-size: 0.82rem;
+        padding: 8px 12px 8px 34px;
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-sm);
+        background: var(--color-bg);
+        color: var(--color-text);
+        outline: none;
+        transition: border-color var(--transition);
+      }
+      .sidebar__search-input::placeholder {
+        color: var(--color-text-light);
+      }
+      .sidebar__search-input:focus {
+        border-color: #0a0a0a;
+      }
+
+      .sidebar__label {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--color-text-light);
+        padding: 0 20px;
+        margin-bottom: 12px;
+      }
+
+      /* Sidebar accordion sections */
+      .sidebar-section {
+        margin-bottom: 2px;
+      }
+      .sidebar-section__toggle {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        background: none;
+        border: none;
+        padding: 8px 20px;
+        font-family: var(--font-main);
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--color-text);
+        cursor: pointer;
+        transition: background var(--transition);
+        text-align: left;
+      }
+      .sidebar-section__toggle:hover {
+        background: rgba(0, 0, 0, 0.03);
+      }
+      .sidebar-section__chevron {
+        width: 16px;
+        height: 16px;
+        color: var(--color-text-light);
+        transition: transform 0.2s ease;
+        flex-shrink: 0;
+      }
+      .sidebar-section.open .sidebar-section__chevron {
+        transform: rotate(90deg);
+      }
+      .sidebar-section__items {
+        display: none;
+        padding: 2px 0 8px;
+      }
+      .sidebar-section.open .sidebar-section__items {
+        display: block;
+      }
+      .sidebar-section__link {
+        display: block;
+        font-size: 0.84rem;
+        color: var(--color-text-muted);
+        padding: 5px 20px 5px 36px;
+        border-left: 2px solid transparent;
+        transition: all var(--transition);
+        font-weight: 500;
+      }
+      .sidebar-section__link:hover {
+        color: var(--color-text);
+        background: rgba(0, 0, 0, 0.03);
+      }
+      .sidebar-section__link--active {
+        color: #0a0a0a;
+        background: #f0f0f0;
+        border-left-color: #0a0a0a;
+        font-weight: 600;
+      }
+
+      /* ── Main Content ── */
+      .main-content {
+        flex: 1;
+        min-width: 0;
+        padding: 32px 48px 64px;
+        max-width: 780px;
+      }
+
+      /* Breadcrumb */
+      .breadcrumb {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.78rem;
+        color: var(--color-text-light);
+        margin-bottom: 24px;
+      }
+      .breadcrumb a {
+        color: var(--color-text-muted);
+        transition: color var(--transition);
+      }
+      .breadcrumb a:hover {
+        color: var(--color-text);
+      }
+      .breadcrumb__sep {
+        color: var(--color-border);
+      }
+      .breadcrumb__current {
+        color: #0a0a0a;
+        font-weight: 600;
+      }
+
+      /* Page title */
+      .page-title {
+        font-weight: 800;
+        font-size: 2rem;
+        color: #0a0a0a;
+        line-height: 1.25;
+        margin-bottom: 16px;
+        letter-spacing: -0.04em;
+      }
+
+      .main-content p {
+        font-size: 0.95rem;
+        color: var(--color-text-secondary);
+        margin-bottom: 20px;
+        line-height: 1.75;
+      }
+
+      /* Section heading */
+      .section-heading {
+        font-weight: 700;
+        font-size: 1.3rem;
+        color: #0a0a0a;
+        margin: 36px 0 14px;
+        letter-spacing: -0.02em;
+      }
+
+      /* Info Banner */
+      .info-banner {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        background: #fafafa;
+        border: 1px solid #e5e5e5;
+        border-radius: 8px;
+        padding: 14px 20px;
+        margin-top: 36px;
+      }
+      .info-banner__icon {
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: #0a0a0a;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.72rem;
+        font-weight: 700;
+        flex-shrink: 0;
+      }
+      .info-banner__text {
+        flex: 1;
+        font-size: 0.88rem;
+        color: var(--color-text-secondary);
+        font-weight: 500;
+      }
+      .info-banner .btn--accent {
+        padding: 6px 14px;
+        font-size: 0.78rem;
+      }
+      .info-banner__close {
+        width: 28px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: none;
+        border: none;
+        color: var(--color-text-light);
+        cursor: pointer;
+        border-radius: 50%;
+        font-size: 1rem;
+        transition: all var(--transition);
+        flex-shrink: 0;
+      }
+      .info-banner__close:hover {
+        background: rgba(0, 0, 0, 0.05);
+        color: var(--color-text-muted);
+      }
+
+      /* ── Right TOC Sidebar ── */
+      .toc-sidebar {
+        width: var(--toc-width);
+        flex-shrink: 0;
+        position: sticky;
+        top: var(--navbar-height);
+        height: calc(100vh - var(--navbar-height));
+        overflow-y: auto;
+        padding: 32px 16px 32px 20px;
+        border-left: 1px solid var(--color-border-light);
+      }
+      .toc-sidebar::-webkit-scrollbar {
+        width: 3px;
+      }
+      .toc-sidebar::-webkit-scrollbar-thumb {
+        background: var(--color-border);
+        border-radius: 3px;
+      }
+
+      .toc__header {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--color-text-light);
+        margin-bottom: 14px;
+      }
+      .toc__header svg {
+        width: 13px;
+        height: 13px;
+        color: var(--color-text-light);
+      }
+
+      .toc__link {
+        display: block;
+        font-size: 0.8rem;
+        color: var(--color-text-muted);
+        padding: 4px 0;
+        border-left: 2px solid transparent;
+        padding-left: 12px;
+        margin-left: -1px;
+        transition: all var(--transition);
+        font-weight: 500;
+        line-height: 1.5;
+      }
+      .toc__link:hover {
+        color: var(--color-text);
+      }
+      .toc__link--active {
+        color: #0a0a0a;
+        border-left-color: #0a0a0a;
+        font-weight: 600;
+      }
+
+      /* ── Responsive ── */
+      @media (max-width: 1200px) {
+        .toc-sidebar {
+          display: none;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hamburger {
+          display: flex;
+        }
+        .topnav__links {
+          display: none;
+        }
+        .sidebar {
+          position: fixed;
+          top: var(--navbar-height);
+          left: 0;
+          bottom: 0;
+          transform: translateX(-100%);
+          transition: transform 0.25s ease;
+          z-index: 90;
+          box-shadow: none;
+        }
+        .sidebar.open {
+          transform: translateX(0);
+          box-shadow: 4px 0 24px rgba(0, 0, 0, 0.08);
+        }
+        .sidebar-overlay {
+          display: none;
+          position: fixed;
+          inset: 0;
+          top: var(--navbar-height);
+          background: rgba(0, 0, 0, 0.2);
+          z-index: 80;
+        }
+        .sidebar-overlay.active {
+          display: block;
+        }
+        .main-content {
+          padding: 24px 20px 48px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ── Top Navbar ── -->
+    <nav class="topnav">
+      <div class="topnav__left">
+        <button class="hamburger" id="hamburger" aria-label="Toggle sidebar">
+          <span></span><span></span><span></span>
+        </button>
+        <a href="index.html" class="topnav__logo">
+          <span class="topnav__logo-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M13 3L4 14h7l-2 7 9-11h-7l2-7z" />
+            </svg>
+          </span>
+          Abstrive
+        </a>
+        <div class="topnav__links">
+          <a href="#" class="topnav__link">Product</a>
+          <a href="#" class="topnav__link">Pricing</a>
+          <a href="#" class="topnav__link topnav__link--dropdown"
+            >Enterprise &amp; Support</a
+          >
+          <a href="#" class="topnav__link">Public API Network</a>
+          <a href="#" class="topnav__link topnav__link--active">Docs</a>
+        </div>
+      </div>
+      <div class="topnav__right">
+        <button class="btn btn--ghost">Sign In</button>
+        <button class="btn btn--accent">Get Started</button>
+      </div>
+    </nav>
+
+    <!-- Mobile overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- ── 3-Column Layout ── -->
+    <div class="docs-layout">
+      <!-- ── Left Sidebar ── -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar__search">
+          <span class="sidebar__search-icon">
+            <svg
+              width="15"
+              height="15"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+          </span>
+          <input
+            type="text"
+            class="sidebar__search-input"
+            placeholder="Search anything..."
+          />
+        </div>
+
+        <div class="sidebar__label">Abstrive Developer Docs</div>
+
+        <!-- Getting Started — expanded -->
+        <div class="sidebar-section open">
+          <button class="sidebar-section__toggle" aria-expanded="true">
+            Getting Started
+            <svg
+              class="sidebar-section__chevron"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+          </button>
+          <div class="sidebar-section__items">
+            <a
+              href="#overview"
+              class="sidebar-section__link sidebar-section__link--active"
+              >Overview</a
+            >
+            <a href="#get-started" class="sidebar-section__link">Quick Start</a>
+            <a href="#authentication" class="sidebar-section__link"
+              >Authentication</a
+            >
+            <a href="#" class="sidebar-section__link">Your First Request</a>
+          </div>
+        </div>
+
+        <!-- Products -->
+        <div class="sidebar-section">
+          <button class="sidebar-section__toggle" aria-expanded="false">
+            Products
+            <svg
+              class="sidebar-section__chevron"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+          </button>
+          <div class="sidebar-section__items">
+            <a href="#atlas" class="sidebar-section__link">Atlas API</a>
+            <a href="#nexus" class="sidebar-section__link">Nexus API</a>
+            <a href="#ai-agents" class="sidebar-section__link">AI Agents API</a>
+            <a href="#nova" class="sidebar-section__link">Nova API</a>
+          </div>
+        </div>
+
+        <!-- API Reference -->
+        <div class="sidebar-section">
+          <button class="sidebar-section__toggle" aria-expanded="false">
+            API Reference
+            <svg
+              class="sidebar-section__chevron"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+          </button>
+          <div class="sidebar-section__items">
+            <a href="#" class="sidebar-section__link">Endpoints</a>
+            <a href="#" class="sidebar-section__link">Request Format</a>
+            <a href="#" class="sidebar-section__link">Response Format</a>
+            <a href="#error-codes" class="sidebar-section__link">Error Codes</a>
+          </div>
+        </div>
+
+        <!-- Send Requests -->
+        <div class="sidebar-section">
+          <button class="sidebar-section__toggle" aria-expanded="false">
+            Send Requests
+            <svg
+              class="sidebar-section__chevron"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+          </button>
+          <div class="sidebar-section__items">
+            <a href="#" class="sidebar-section__link">Building Requests</a>
+            <a href="#" class="sidebar-section__link">Query Parameters</a>
+            <a href="#" class="sidebar-section__link">Request Body</a>
+            <a href="#rate-limits" class="sidebar-section__link"
+              >Rate Limiting</a
+            >
+          </div>
+        </div>
+
+        <!-- Tests & Scripts -->
+        <div class="sidebar-section">
+          <button class="sidebar-section__toggle" aria-expanded="false">
+            Tests &amp; Scripts
+            <svg
+              class="sidebar-section__chevron"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+          </button>
+          <div class="sidebar-section__items">
+            <a href="#" class="sidebar-section__link">Writing Tests</a>
+            <a href="#" class="sidebar-section__link">Pre-request Scripts</a>
+            <a href="#" class="sidebar-section__link">Test Automation</a>
+          </div>
+        </div>
+
+        <!-- Nexus — Ticketing -->
+        <div class="sidebar-section">
+          <button class="sidebar-section__toggle" aria-expanded="false">
+            Nexus — Ticketing
+            <svg
+              class="sidebar-section__chevron"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+          </button>
+          <div class="sidebar-section__items">
+            <a href="#" class="sidebar-section__link">Ticket Lifecycle</a>
+            <a href="#" class="sidebar-section__link">SLA Management</a>
+            <a href="#" class="sidebar-section__link">Routing Rules</a>
+            <a href="#" class="sidebar-section__link">Webhooks</a>
+          </div>
+        </div>
+
+        <!-- Nova — Chatbot -->
+        <div class="sidebar-section">
+          <button class="sidebar-section__toggle" aria-expanded="false">
+            Nova — Chatbot
+            <svg
+              class="sidebar-section__chevron"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+          </button>
+          <div class="sidebar-section__items">
+            <a href="#" class="sidebar-section__link">Flow Builder</a>
+            <a href="#" class="sidebar-section__link">Knowledge Base</a>
+            <a href="#" class="sidebar-section__link">Lead Capture</a>
+            <a href="#" class="sidebar-section__link">Analytics &amp; Logs</a>
+          </div>
+        </div>
+
+        <!-- Collaborate -->
+        <div class="sidebar-section">
+          <button class="sidebar-section__toggle" aria-expanded="false">
+            Collaborate
+            <svg
+              class="sidebar-section__chevron"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+          </button>
+          <div class="sidebar-section__items">
+            <a href="#" class="sidebar-section__link">Workspaces</a>
+            <a href="#" class="sidebar-section__link">Team Management</a>
+            <a href="#" class="sidebar-section__link">Role-Based Access</a>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ── Main Content ── -->
+      <main class="main-content" id="mainContent">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+          <a href="index.html">Home</a>
+          <span class="breadcrumb__sep">›</span>
+          <a href="#">Getting Started</a>
+          <span class="breadcrumb__sep">›</span>
+          <span class="breadcrumb__current">Overview</span>
+        </div>
+
+        <!-- Page Title -->
+        <h1 class="page-title" id="overview">API Platform Overview</h1>
+
+        <!-- Intro -->
+        <p>
+          Welcome to the Abstrive developer platform. Our REST APIs give you
+          full programmatic access to Atlas analytics, Nexus ticketing, AI Agent
+          workflows, and Nova's conversational AI — all under one unified API.
+          All endpoints are resource-oriented, authenticated via API keys, and
+          return consistent JSON responses.
+        </p>
+
+        <!-- Code Block -->
+        <div
+          style="
+            background: #0a0a0a;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin: 24px 0;
+            font-family: monospace;
+            font-size: 0.82rem;
+            color: #f5f5f5;
+            line-height: 1.8;
+            overflow-x: auto;
+          "
+        >
+          <span style="color: #737373"># Install the Abstrive SDK</span><br />
+          npm install @abstrive/sdk<br /><br />
+          <span style="color: #737373"
+            ># Authenticate and make your first request</span
+          ><br />
+          <span style="color: #a3a3a3">curl</span>
+          https://api.abstrive.io/v1/nexus/tickets \<br />
+          &nbsp;&nbsp;-H
+          <span style="color: #d4d4d4"
+            >"Authorization: Bearer YOUR_API_KEY"</span
+          >
+          \<br />
+          &nbsp;&nbsp;-H
+          <span style="color: #d4d4d4">"Content-Type: application/json"</span>
+        </div>
+
+        <!-- Get Started Section -->
+        <h2 class="section-heading" id="get-started">Get Started</h2>
+
+        <p>
+          The Abstrive API uses standard REST conventions with predictable
+          resource-oriented URLs. Authentication is handled via API keys passed
+          as a Bearer token in the request header. All responses return JSON —
+          including errors.
+        </p>
+
+        <p>
+          To begin: create an Abstrive workspace, navigate to Settings → API
+          Keys, generate a key, and make your first request using the SDK or raw
+          HTTP. Your key is workspace-scoped and can be rotated at any time.
+        </p>
+
+        <!-- Info Banner -->
+        <div class="info-banner" id="infoBanner">
+          <span class="info-banner__icon">ⓘ</span>
+          <span class="info-banner__text"
+            >New: Nova API v2 is live — improved response latency, multi-channel
+            support, and RAG knowledge size up to 1GB.</span
+          >
+          <button class="btn btn--accent">See What's New</button>
+          <button
+            class="info-banner__close"
+            id="closeBanner"
+            aria-label="Close banner"
+          >
+            ×
+          </button>
+        </div>
+
+        <!-- Base URL & Authentication Section -->
+        <h2 class="section-heading" id="base-url">
+          Base URL &amp; Authentication
+        </h2>
+
+        <p>
+          All API requests are made to
+          <code
+            style="
+              background: #f5f5f5;
+              padding: 2px 6px;
+              border-radius: 4px;
+              font-size: 0.88rem;
+            "
+            >https://api.abstrive.io/v1/</code
+          >. Pass your API key as a Bearer token in the Authorization header.
+          Keys are workspace-scoped — one key gives access to all four products
+          (Atlas, Nexus, AI Agents, Nova) based on your plan's permissions.
+        </p>
+
+        <div
+          style="
+            background: #0a0a0a;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin: 24px 0;
+            font-family: monospace;
+            font-size: 0.82rem;
+            color: #f5f5f5;
+            line-height: 1.8;
+            overflow-x: auto;
+          "
+        >
+          Authorization: Bearer sk_live_xxxxxxxxxxxxxxxxxxxx<br />
+          Content-Type: application/json<br />
+          X-Abstrive-Workspace: your-workspace-id
+        </div>
+      </main>
+
+      <!-- ── Right TOC Sidebar ── -->
+      <aside class="toc-sidebar">
+        <div class="toc__header">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="4" y1="6" x2="20" y2="6" />
+            <line x1="4" y1="12" x2="14" y2="12" />
+            <line x1="4" y1="18" x2="18" y2="18" />
+          </svg>
+          On this page
+        </div>
+        <a href="#overview" class="toc__link">Overview</a>
+        <a href="#get-started" class="toc__link toc__link--active"
+          >Get started</a
+        >
+        <a href="#base-url" class="toc__link">Base URL</a>
+        <a href="#authentication" class="toc__link">Authentication</a>
+        <a href="#rate-limits" class="toc__link">Rate limits</a>
+        <a href="#error-codes" class="toc__link">Error codes</a>
+        <a href="#sdks" class="toc__link">SDKs &amp; libraries</a>
+        <a href="#products" class="toc__link">Product APIs</a>
+        <a href="#changelog" class="toc__link">Changelog</a>
+      </aside>
+    </div>
+
+    <!-- ── Minimal JS ── -->
+    <script>
+      // Sidebar accordion toggle
+      document
+        .querySelectorAll(".sidebar-section__toggle")
+        .forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var section = this.closest(".sidebar-section");
+            section.classList.toggle("open");
+            this.setAttribute(
+              "aria-expanded",
+              section.classList.contains("open"),
+            );
+          });
+        });
+
+      // Mobile sidebar toggle
+      var hamburger = document.getElementById("hamburger");
+      var sidebar = document.getElementById("sidebar");
+      var overlay = document.getElementById("sidebarOverlay");
+
+      hamburger.addEventListener("click", function () {
+        sidebar.classList.toggle("open");
+        overlay.classList.toggle("active");
+      });
+      overlay.addEventListener("click", function () {
+        sidebar.classList.remove("open");
+        overlay.classList.remove("active");
+      });
+
+      // Close info banner
+      document
+        .getElementById("closeBanner")
+        .addEventListener("click", function () {
+          document.getElementById("infoBanner").style.display = "none";
+        });
+    </script>
+  </body>
+</html>

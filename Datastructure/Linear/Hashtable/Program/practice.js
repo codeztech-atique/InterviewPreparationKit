@@ -10,13 +10,13 @@ var uniqueCount = ["a","b","c","d","d","e","a","b","c","f","g","h","h","h","e","
 //     return obj;
 // }
 
-const countData = (arr) => {
-  const map = new Map();
-  arr.forEach((i) => {
-    map.set(i, (map.get(i) || 0) + 1);
+const countData = () => {
+  let obj = {};
+  uniqueCount.filter((e) => {
+    obj[e] = ( obj[e] || 0 ) + 1;
   });
-  return map;
-};
+  return obj;
+}
 
 
 console.log(countData(uniqueCount))
