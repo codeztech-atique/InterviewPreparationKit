@@ -1,5 +1,12 @@
 # Google GenAI Forward Deployed Engineer — Complete 2-Week Prep Guide
-### Personalized for Atique | Interview: ~end of July 2026 | 2 rounds: RRK (60 min) + Coding (60 min)
+### Personalized for Atique | 2 rounds: RRK (60 min) + Coding (60 min)
+
+> **This folder, in study order:**
+> 1. `FDE_QUESTION_BANK.md` — every repeated question actually reported by Google FDE candidates (+ the official PDF), with answer keys
+> 2. `GENAI_RAG_DEEP_DIVE.md` — full GenAI + RAG technical answers (LLM internals, RAG pipeline, agents, evals, security, cost, GCP stack)
+> 3. This file — the 14-day plan, frameworks, and drill sets
+> 4. `PREP_GUIDE_V2.md` — the lean last-week version
+> 5. The official PDF — Google's own rubric; re-read pages 3–4 before each round
 
 > **Your unfair advantage:** You've already done this job. Abstrive is a multi-agent platform on AWS Bedrock AgentCore. The TMNA engagement is literally "embedded builder shipping agentic AI inside an enterprise customer's environment" — that IS the FDE role description. Your job in these interviews is not to learn new material; it's to **translate what you already do daily into Google's vocabulary and evaluation rubric**.
 
